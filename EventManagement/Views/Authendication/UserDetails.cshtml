@@ -1,0 +1,63 @@
+﻿@model IEnumerable<EventManagement.Models.UserTable>
+
+@{
+    ViewBag.Title = "UserDetails";
+}
+
+<h2>UserDetails</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TUsername)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TPassword)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TMobile)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastLoginDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoleTable.TRolename)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TUsername)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TPassword)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TMobile)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastLoginDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoleTable.TRolename)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TUserid }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TUserid }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TUserid })
+        </td>
+    </tr>
+}
+
+</table>

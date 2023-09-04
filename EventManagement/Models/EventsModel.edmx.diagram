@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9a3ca21ca3374b2685981c3ed4420a07" Name="Diagram1">
+        <EntityTypeShape EntityType="EventManagementModel.datetable" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventManagementModel.eventstable" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventManagementModel.locationtable" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventManagementModel.RoleTable" Width="1.5" PointX="5.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventManagementModel.themetable" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventManagementModel.timetable" Width="1.5" PointX="0.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventManagementModel.UserTable" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventManagementModel.eventname" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="EventManagementModel.FK__eventname__event__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagementModel.FK__eventname__event__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagementModel.FK__eventname__event__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagementModel.FK__UserTable__TRole__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagementModel.FK__eventname__event__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagementModel.FK__eventname__event__412EB0B6" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

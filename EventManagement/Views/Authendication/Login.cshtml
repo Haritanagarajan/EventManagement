@@ -1,0 +1,77 @@
+﻿﻿﻿@model EventManagement.Models.UserTable
+
+@{
+    Layout = "~/Views/Shared/LoginLogoutView.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login To Continue..... :)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Smart Login Form Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements" />
+    <script type="application/x-javascript">
+         addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+        function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- css files -->
+    <link href="/smartlogin/css/style.css" rel="stylesheet" type="text/css" media="all">
+    <!-- online-fonts -->
+    <link href="//fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900iSlabo+27px&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
+    <!--//online-fonts -->
+    <style type="text/css">
+        .form-control {
+            padding: 10px; 
+        }
+        .buttons{
+            background-color:darkcyan;
+            border:none;
+        }
+        .fontts{
+            font-size:12px;
+        }
+    </style>
+
+</head>
+<body>
+    <!--header-->
+    <div class="agileheader">
+    </div>
+    <!--//header-->
+    <!--main-->
+    <div class="main-w3l maindiv">
+        <div class="w3layouts-main">
+            <h2 class="text-center">Login Now</h2>
+            @using (Html.BeginForm("Login", "Authendication", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.TextBoxFor(m => m.TUsername, new { @class = "form-control mt-3", @placeholder = "Enter your UserName", @type = "text" })
+                    @Html.ValidationMessageFor(m => m.TUsername, "", new { @class = "error" })
+                </div>
+                <div class="form-group">
+                    @Html.PasswordFor(m => m.TPassword, new { @class = "form-control mt-3", @placeholder = "Password" })
+                    @Html.ValidationMessageFor(m => m.TPassword, "", new { @class = "text-danger" })
+                </div>
+                <p class="mt-5 fontts">Don't Have an Account ?</p>
+                @Html.ActionLink("Register Now", "Register");
+                <div class="clear"></div>
+                <input type="submit" value="Submit" class="btn d-flex align-items-center offset-4 buttons mb-5" />
+            }
+        </div>
+    </div>
+    <!--//main-->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @if (@ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+            $(function () {
+                alert("@ViewBag.Message")
+            });
+        </script>
+    }
+</body>
+</html>

@@ -1,0 +1,518 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EventManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="datetable">
+          <Key>
+            <PropertyRef Name="dateid" />
+          </Key>
+          <Property Name="dateid" Type="int" Nullable="false" />
+          <Property Name="datesavailable" Type="date" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'EventManagement.dbo.eventnames' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="eventnames">
+          <Key>
+            <PropertyRef Name="eventcatering" />
+          </Key>
+          <Property Name="eventid" Type="int" />
+          <Property Name="eventnameid" Type="int" />
+          <Property Name="eventdate" Type="int" />
+          <Property Name="eventtime" Type="int" />
+          <Property Name="eventhallcapacity" Type="bigint" />
+          <Property Name="eventcatering" Type="bit" Nullable="false" />
+          <Property Name="eventlocation" Type="int" />
+          <Property Name="eventtheme" Type="int" />
+          <Property Name="eventcost" Type="bigint" />
+        </EntityType>
+        <EntityType Name="eventstable">
+          <Key>
+            <PropertyRef Name="eventsid" />
+          </Key>
+          <Property Name="eventsid" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" />
+          <Property Name="eventname" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="locationtable">
+          <Key>
+            <PropertyRef Name="locationid" />
+          </Key>
+          <Property Name="locationid" Type="int" Nullable="false" />
+          <Property Name="locationname" Type="varchar" MaxLength="20" />
+          <Property Name="pincode" Type="bigint" />
+        </EntityType>
+        <EntityType Name="RoleTables">
+          <Key>
+            <PropertyRef Name="TRoleid" />
+          </Key>
+          <Property Name="TRoleid" Type="int" Nullable="false" />
+          <Property Name="TRolename" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="themetable">
+          <Key>
+            <PropertyRef Name="themeid" />
+          </Key>
+          <Property Name="themeid" Type="int" Nullable="false" />
+          <Property Name="themename" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="timetable">
+          <Key>
+            <PropertyRef Name="timeid" />
+          </Key>
+          <Property Name="timeid" Type="int" Nullable="false" />
+          <Property Name="timesavailable" Type="time" Precision="7" />
+        </EntityType>
+        <EntityType Name="UserTables">
+          <Key>
+            <PropertyRef Name="TUserid" />
+          </Key>
+          <Property Name="TUserid" Type="int" Nullable="false" />
+          <Property Name="TUsername" Type="varchar" MaxLength="20" />
+          <Property Name="TPassword" Type="varchar" MaxLength="20" />
+          <Property Name="TEmail" Type="varchar" MaxLength="20" />
+          <Property Name="TMobile" Type="bigint" />
+          <Property Name="LastLoginDate" Type="datetime" />
+          <Property Name="TRoleid" Type="int" />
+        </EntityType>
+        <Association Name="FK__eventname__event__3F466844">
+          <End Role="eventstable" Type="Self.eventstable" Multiplicity="0..1" />
+          <End Role="eventnames" Type="Self.eventnames" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eventstable">
+              <PropertyRef Name="eventsid" />
+            </Principal>
+            <Dependent Role="eventnames">
+              <PropertyRef Name="eventid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__eventname__event__403A8C7D">
+          <End Role="datetable" Type="Self.datetable" Multiplicity="0..1" />
+          <End Role="eventnames" Type="Self.eventnames" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="datetable">
+              <PropertyRef Name="dateid" />
+            </Principal>
+            <Dependent Role="eventnames">
+              <PropertyRef Name="eventdate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__eventname__event__412EB0B6">
+          <End Role="timetable" Type="Self.timetable" Multiplicity="0..1" />
+          <End Role="eventnames" Type="Self.eventnames" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="timetable">
+              <PropertyRef Name="timeid" />
+            </Principal>
+            <Dependent Role="eventnames">
+              <PropertyRef Name="eventtime" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__eventname__event__4316F928">
+          <End Role="locationtable" Type="Self.locationtable" Multiplicity="0..1" />
+          <End Role="eventnames" Type="Self.eventnames" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="locationtable">
+              <PropertyRef Name="locationid" />
+            </Principal>
+            <Dependent Role="eventnames">
+              <PropertyRef Name="eventlocation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__eventname__event__440B1D61">
+          <End Role="themetable" Type="Self.themetable" Multiplicity="0..1" />
+          <End Role="eventnames" Type="Self.eventnames" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="themetable">
+              <PropertyRef Name="themeid" />
+            </Principal>
+            <Dependent Role="eventnames">
+              <PropertyRef Name="eventtheme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserTable__TRole__48CFD27E">
+          <End Role="RoleTables" Type="Self.RoleTables" Multiplicity="0..1" />
+          <End Role="UserTables" Type="Self.UserTables" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoleTables">
+              <PropertyRef Name="TRoleid" />
+            </Principal>
+            <Dependent Role="UserTables">
+              <PropertyRef Name="TRoleid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="Validate_User" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Username" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="EventManagementModelStoreContainer">
+          <EntitySet Name="datetable" EntityType="Self.datetable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="eventstable" EntityType="Self.eventstable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="locationtable" EntityType="Self.locationtable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoleTables" EntityType="Self.RoleTables" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="themetable" EntityType="Self.themetable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="timetable" EntityType="Self.timetable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTables" EntityType="Self.UserTables" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="eventnames" EntityType="Self.eventnames" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [eventnames].[eventid] AS [eventid], 
+    [eventnames].[eventnameid] AS [eventnameid], 
+    [eventnames].[eventdate] AS [eventdate], 
+    [eventnames].[eventtime] AS [eventtime], 
+    [eventnames].[eventhallcapacity] AS [eventhallcapacity], 
+    [eventnames].[eventcatering] AS [eventcatering], 
+    [eventnames].[eventlocation] AS [eventlocation], 
+    [eventnames].[eventtheme] AS [eventtheme], 
+    [eventnames].[eventcost] AS [eventcost]
+    FROM [dbo].[eventnames] AS [eventnames]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__eventname__event__3F466844" Association="Self.FK__eventname__event__3F466844">
+            <End Role="eventstable" EntitySet="eventstable" />
+            <End Role="eventnames" EntitySet="eventnames" />
+          </AssociationSet>
+          <AssociationSet Name="FK__eventname__event__403A8C7D" Association="Self.FK__eventname__event__403A8C7D">
+            <End Role="datetable" EntitySet="datetable" />
+            <End Role="eventnames" EntitySet="eventnames" />
+          </AssociationSet>
+          <AssociationSet Name="FK__eventname__event__412EB0B6" Association="Self.FK__eventname__event__412EB0B6">
+            <End Role="timetable" EntitySet="timetable" />
+            <End Role="eventnames" EntitySet="eventnames" />
+          </AssociationSet>
+          <AssociationSet Name="FK__eventname__event__4316F928" Association="Self.FK__eventname__event__4316F928">
+            <End Role="locationtable" EntitySet="locationtable" />
+            <End Role="eventnames" EntitySet="eventnames" />
+          </AssociationSet>
+          <AssociationSet Name="FK__eventname__event__440B1D61" Association="Self.FK__eventname__event__440B1D61">
+            <End Role="themetable" EntitySet="themetable" />
+            <End Role="eventnames" EntitySet="eventnames" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserTable__TRole__48CFD27E" Association="Self.FK__UserTable__TRole__48CFD27E">
+            <End Role="RoleTables" EntitySet="RoleTables" />
+            <End Role="UserTables" EntitySet="UserTables" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EventManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="datetable">
+          <Key>
+            <PropertyRef Name="dateid" />
+          </Key>
+          <Property Name="dateid" Type="Int32" Nullable="false" />
+          <Property Name="datesavailable" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="eventnames" Relationship="Self.FK__eventname__event__403A8C7D" FromRole="datetable" ToRole="eventnames" />
+        </EntityType>
+        <EntityType Name="eventstable">
+          <Key>
+            <PropertyRef Name="eventsid" />
+          </Key>
+          <Property Name="eventsid" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" />
+          <Property Name="eventname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="eventnames" Relationship="Self.FK__eventname__event__3F466844" FromRole="eventstable" ToRole="eventnames" />
+        </EntityType>
+        <EntityType Name="locationtable">
+          <Key>
+            <PropertyRef Name="locationid" />
+          </Key>
+          <Property Name="locationid" Type="Int32" Nullable="false" />
+          <Property Name="locationname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="pincode" Type="Int64" />
+          <NavigationProperty Name="eventnames" Relationship="Self.FK__eventname__event__4316F928" FromRole="locationtable" ToRole="eventnames" />
+        </EntityType>
+        <EntityType Name="RoleTable">
+          <Key>
+            <PropertyRef Name="TRoleid" />
+          </Key>
+          <Property Name="TRoleid" Type="Int32" Nullable="false" />
+          <Property Name="TRolename" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UserTables" Relationship="Self.FK__UserTable__TRole__48CFD27E" FromRole="RoleTables" ToRole="UserTables" />
+        </EntityType>
+        <EntityType Name="themetable">
+          <Key>
+            <PropertyRef Name="themeid" />
+          </Key>
+          <Property Name="themeid" Type="Int32" Nullable="false" />
+          <Property Name="themename" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="eventnames" Relationship="Self.FK__eventname__event__440B1D61" FromRole="themetable" ToRole="eventnames" />
+        </EntityType>
+        <EntityType Name="timetable">
+          <Key>
+            <PropertyRef Name="timeid" />
+          </Key>
+          <Property Name="timeid" Type="Int32" Nullable="false" />
+          <Property Name="timesavailable" Type="Time" Precision="7" />
+          <NavigationProperty Name="eventnames" Relationship="Self.FK__eventname__event__412EB0B6" FromRole="timetable" ToRole="eventnames" />
+        </EntityType>
+        <EntityType Name="UserTable">
+          <Key>
+            <PropertyRef Name="TUserid" />
+          </Key>
+          <Property Name="TUserid" Type="Int32" Nullable="false" />
+          <Property Name="TUsername" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TPassword" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TEmail" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TMobile" Type="Int64" />
+          <Property Name="LastLoginDate" Type="DateTime" Precision="3" />
+          <Property Name="TRoleid" Type="Int32" />
+          <NavigationProperty Name="RoleTable" Relationship="Self.FK__UserTable__TRole__48CFD27E" FromRole="UserTables" ToRole="RoleTables" />
+        </EntityType>
+        <EntityType Name="eventname">
+          <Key>
+            <PropertyRef Name="eventcatering" />
+          </Key>
+          <Property Name="eventid" Type="Int32" />
+          <Property Name="eventnameid" Type="Int32" />
+          <Property Name="eventdate" Type="Int32" />
+          <Property Name="eventtime" Type="Int32" />
+          <Property Name="eventhallcapacity" Type="Int64" />
+          <Property Name="eventcatering" Type="Boolean" Nullable="false" />
+          <Property Name="eventlocation" Type="Int32" />
+          <Property Name="eventtheme" Type="Int32" />
+          <Property Name="eventcost" Type="Int64" />
+          <NavigationProperty Name="datetable" Relationship="Self.FK__eventname__event__403A8C7D" FromRole="eventnames" ToRole="datetable" />
+          <NavigationProperty Name="eventstable" Relationship="Self.FK__eventname__event__3F466844" FromRole="eventnames" ToRole="eventstable" />
+          <NavigationProperty Name="locationtable" Relationship="Self.FK__eventname__event__4316F928" FromRole="eventnames" ToRole="locationtable" />
+          <NavigationProperty Name="themetable" Relationship="Self.FK__eventname__event__440B1D61" FromRole="eventnames" ToRole="themetable" />
+          <NavigationProperty Name="timetable" Relationship="Self.FK__eventname__event__412EB0B6" FromRole="eventnames" ToRole="timetable" />
+        </EntityType>
+        <Association Name="FK__eventname__event__403A8C7D">
+          <End Role="datetable" Type="Self.datetable" Multiplicity="0..1" />
+          <End Role="eventnames" Type="Self.eventname" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="datetable">
+              <PropertyRef Name="dateid" />
+            </Principal>
+            <Dependent Role="eventnames">
+              <PropertyRef Name="eventdate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__eventname__event__3F466844">
+          <End Role="eventstable" Type="Self.eventstable" Multiplicity="0..1" />
+          <End Role="eventnames" Type="Self.eventname" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eventstable">
+              <PropertyRef Name="eventsid" />
+            </Principal>
+            <Dependent Role="eventnames">
+              <PropertyRef Name="eventid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__eventname__event__4316F928">
+          <End Role="locationtable" Type="Self.locationtable" Multiplicity="0..1" />
+          <End Role="eventnames" Type="Self.eventname" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="locationtable">
+              <PropertyRef Name="locationid" />
+            </Principal>
+            <Dependent Role="eventnames">
+              <PropertyRef Name="eventlocation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserTable__TRole__48CFD27E">
+          <End Role="RoleTables" Type="Self.RoleTable" Multiplicity="0..1" />
+          <End Role="UserTables" Type="Self.UserTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoleTables">
+              <PropertyRef Name="TRoleid" />
+            </Principal>
+            <Dependent Role="UserTables">
+              <PropertyRef Name="TRoleid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__eventname__event__440B1D61">
+          <End Role="themetable" Type="Self.themetable" Multiplicity="0..1" />
+          <End Role="eventnames" Type="Self.eventname" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="themetable">
+              <PropertyRef Name="themeid" />
+            </Principal>
+            <Dependent Role="eventnames">
+              <PropertyRef Name="eventtheme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__eventname__event__412EB0B6">
+          <End Role="timetable" Type="Self.timetable" Multiplicity="0..1" />
+          <End Role="eventnames" Type="Self.eventname" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="timetable">
+              <PropertyRef Name="timeid" />
+            </Principal>
+            <Dependent Role="eventnames">
+              <PropertyRef Name="eventtime" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EventManagementEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="datetables" EntityType="Self.datetable" />
+          <EntitySet Name="eventstables" EntityType="Self.eventstable" />
+          <EntitySet Name="locationtables" EntityType="Self.locationtable" />
+          <EntitySet Name="RoleTables" EntityType="Self.RoleTable" />
+          <EntitySet Name="themetables" EntityType="Self.themetable" />
+          <EntitySet Name="timetables" EntityType="Self.timetable" />
+          <EntitySet Name="UserTables" EntityType="Self.UserTable" />
+          <EntitySet Name="eventnames" EntityType="Self.eventname" />
+          <AssociationSet Name="FK__eventname__event__403A8C7D" Association="Self.FK__eventname__event__403A8C7D">
+            <End Role="datetable" EntitySet="datetables" />
+            <End Role="eventnames" EntitySet="eventnames" />
+          </AssociationSet>
+          <AssociationSet Name="FK__eventname__event__3F466844" Association="Self.FK__eventname__event__3F466844">
+            <End Role="eventstable" EntitySet="eventstables" />
+            <End Role="eventnames" EntitySet="eventnames" />
+          </AssociationSet>
+          <AssociationSet Name="FK__eventname__event__4316F928" Association="Self.FK__eventname__event__4316F928">
+            <End Role="locationtable" EntitySet="locationtables" />
+            <End Role="eventnames" EntitySet="eventnames" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserTable__TRole__48CFD27E" Association="Self.FK__UserTable__TRole__48CFD27E">
+            <End Role="RoleTables" EntitySet="RoleTables" />
+            <End Role="UserTables" EntitySet="UserTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK__eventname__event__440B1D61" Association="Self.FK__eventname__event__440B1D61">
+            <End Role="themetable" EntitySet="themetables" />
+            <End Role="eventnames" EntitySet="eventnames" />
+          </AssociationSet>
+          <AssociationSet Name="FK__eventname__event__412EB0B6" Association="Self.FK__eventname__event__412EB0B6">
+            <End Role="timetable" EntitySet="timetables" />
+            <End Role="eventnames" EntitySet="eventnames" />
+          </AssociationSet>
+          <FunctionImport Name="Validate_User" ReturnType="Collection(EventManagementModel.Validate_User_Result)">
+            <Parameter Name="Username" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="Validate_User_Result">
+          <Property Type="Int32" Name="TUserid" Nullable="true" />
+          <Property Type="String" Name="Roles" Nullable="true" MaxLength="20" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EventManagementModelStoreContainer" CdmEntityContainer="EventManagementEntities">
+          <EntitySetMapping Name="datetables">
+            <EntityTypeMapping TypeName="EventManagementModel.datetable">
+              <MappingFragment StoreEntitySet="datetable">
+                <ScalarProperty Name="dateid" ColumnName="dateid" />
+                <ScalarProperty Name="datesavailable" ColumnName="datesavailable" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="eventstables">
+            <EntityTypeMapping TypeName="EventManagementModel.eventstable">
+              <MappingFragment StoreEntitySet="eventstable">
+                <ScalarProperty Name="eventsid" ColumnName="eventsid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="eventname" ColumnName="eventname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="locationtables">
+            <EntityTypeMapping TypeName="EventManagementModel.locationtable">
+              <MappingFragment StoreEntitySet="locationtable">
+                <ScalarProperty Name="locationid" ColumnName="locationid" />
+                <ScalarProperty Name="locationname" ColumnName="locationname" />
+                <ScalarProperty Name="pincode" ColumnName="pincode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleTables">
+            <EntityTypeMapping TypeName="EventManagementModel.RoleTable">
+              <MappingFragment StoreEntitySet="RoleTables">
+                <ScalarProperty Name="TRoleid" ColumnName="TRoleid" />
+                <ScalarProperty Name="TRolename" ColumnName="TRolename" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="themetables">
+            <EntityTypeMapping TypeName="EventManagementModel.themetable">
+              <MappingFragment StoreEntitySet="themetable">
+                <ScalarProperty Name="themeid" ColumnName="themeid" />
+                <ScalarProperty Name="themename" ColumnName="themename" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="timetables">
+            <EntityTypeMapping TypeName="EventManagementModel.timetable">
+              <MappingFragment StoreEntitySet="timetable">
+                <ScalarProperty Name="timeid" ColumnName="timeid" />
+                <ScalarProperty Name="timesavailable" ColumnName="timesavailable" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTables">
+            <EntityTypeMapping TypeName="EventManagementModel.UserTable">
+              <MappingFragment StoreEntitySet="UserTables">
+                <ScalarProperty Name="TUserid" ColumnName="TUserid" />
+                <ScalarProperty Name="TUsername" ColumnName="TUsername" />
+                <ScalarProperty Name="TPassword" ColumnName="TPassword" />
+                <ScalarProperty Name="TEmail" ColumnName="TEmail" />
+                <ScalarProperty Name="TMobile" ColumnName="TMobile" />
+                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+                <ScalarProperty Name="TRoleid" ColumnName="TRoleid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="eventnames">
+            <EntityTypeMapping TypeName="EventManagementModel.eventname">
+              <MappingFragment StoreEntitySet="eventnames">
+                <ScalarProperty Name="eventid" ColumnName="eventid" />
+                <ScalarProperty Name="eventnameid" ColumnName="eventnameid" />
+                <ScalarProperty Name="eventdate" ColumnName="eventdate" />
+                <ScalarProperty Name="eventtime" ColumnName="eventtime" />
+                <ScalarProperty Name="eventhallcapacity" ColumnName="eventhallcapacity" />
+                <ScalarProperty Name="eventcatering" ColumnName="eventcatering" />
+                <ScalarProperty Name="eventlocation" ColumnName="eventlocation" />
+                <ScalarProperty Name="eventtheme" ColumnName="eventtheme" />
+                <ScalarProperty Name="eventcost" ColumnName="eventcost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Validate_User" FunctionName="EventManagementModel.Store.Validate_User">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="EventManagementModel.Validate_User_Result">
+                <ScalarProperty Name="TUserid" ColumnName="TUserid" />
+                <ScalarProperty Name="Roles" ColumnName="Roles" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
