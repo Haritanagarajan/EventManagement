@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+
 namespace EventManagement.Models
 {
     using System;
@@ -14,14 +16,32 @@ namespace EventManagement.Models
     
     public partial class UserTable
     {
+        [Key]
         public int TUserid { get; set; }
+
+        [Required(ErrorMessage = "Username is required.")]
+        [RegularExpression("^[a-zA-Z]*$", ErrorMessage = "Username should accept only alphabetic characters.")]
         public string TUsername { get; set; }
+
+        [Required(ErrorMessage = "Password is required.")]
+        [RegularExpression("^(?=.*[a-z])(?=.*[A-Z])(?=.*[@123]).*$", ErrorMessage = "Password must contain at least one lowercase letter, one uppercase letter, and '@123'.")]
         public string TPassword { get; set; }
+
+        [Required(ErrorMessage = "Email is required.")]
+        [EmailAddress(ErrorMessage = "Invalid email format.")]
         public string TEmail { get; set; }
+
+        [Required(ErrorMessage = "Mobile number is required.")]
+        [RegularExpression("^[0-9]{10}$", ErrorMessage = "Mobile number should be 10 digits.")]
         public Nullable<long> TMobile { get; set; }
         public Nullable<System.DateTime> LastLoginDate { get; set; }
+
+ 
         public Nullable<int> TRoleid { get; set; }
     
         public virtual RoleTable RoleTable { get; set; }
     }
 }
+
+
+

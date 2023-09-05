@@ -1,6 +1,7 @@
 ﻿using EventManagement.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -14,38 +15,49 @@ namespace EventManagement.Controllers
     //rolemodel  UserTable      //UserTables
 
     [Authorize]
+    [AllowAnonymous]
 
     public class AuthendicationController : Controller
     {
 
         EventManagementEntities EventManagementEntities = new EventManagementEntities();
          // GET: Authendication
-         [AllowAnonymous]
         public ActionResult Login()
         {
             return View();
         }
-        [AllowAnonymous]
         [HttpGet]
         public ActionResult Register()
         {
-            List<UserTable> user = EventManagementEntities.UserTables.ToList();
-            ViewBag.UserTables = new SelectList(user, "TRoleid", "TRolename");
+            List<RoleTable> role = EventManagementEntities.RoleTables.ToList();
+            ViewBag.specificroles = new SelectList(role, "TRoleid", "TRolename");
             return View();
         }
 
         [HttpPost]
-        public ActionResult Register([Bind(Include = "TUsername,TEmail,TMobile")] UserTable user)
+        public ActionResult Register([Bind(Include = "TUsername,TPassword,TEmail,TMobile")] UserTable user)
         {
             if (ModelState.IsValid)
-
             {
+                int lastUserId = EventManagementEntities.UserTables.Max(u => u.TUserid);
+
+                user.TUserid = lastUserId + 1;
+
+                DateTime actuallogindate = DateTime.Now;
+
+                user.LastLoginDate = actuallogindate;
+
+                int roleid = 2;
+
+                user.TRoleid = roleid;
+
                 EventManagementEntities.UserTables.Add(user);
                 EventManagementEntities.SaveChanges();
                 return RedirectToAction("Login");
             }
-            return View();
+            return View(user);
         }
+
 
 
         [HttpPost]
@@ -72,32 +84,20 @@ namespace EventManagement.Controllers
                         cookie.Expires = ticket.Expiration;
                     }
                     Response.Cookies.Add(cookie);
-                    return RedirectToAction("AuthNav");
+                    return RedirectToAction("EventsName","Events");
             }
 
             ViewBag.Message = message;
             return View(user);
         }
 
-        [AllowAnonymous]
-        [Authorize]
-        public ActionResult AuthNav()
-        {
-            return View();
-        }
-
-        public ActionResult UserDetails()
-        {
-            EventManagementEntities usertabledatabase = new EventManagementEntities();
-            List<UserTable> users = usertabledatabase.UserTables.ToList();
-            return View(users);
-        }
-
-
+      
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
             return RedirectToAction("Login");
         }
+
+
     }
 }

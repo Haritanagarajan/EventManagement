@@ -130,7 +130,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AuthendicationController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\BookingController.cs" />
+    <Compile Include="Controllers\DateController.cs" />
+    <Compile Include="Controllers\EventsController.cs" />
+    <Compile Include="Controllers\LocationController.cs" />
+    <Compile Include="Controllers\ThemeController.cs" />
+    <Compile Include="Controllers\TimeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -243,18 +248,23 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Authendication\Login.cshtml" />
     <Content Include="Views\Authendication\AuthNav.cshtml" />
-    <Content Include="Views\Authendication\UserDetails.cshtml" />
     <Content Include="Views\Shared\LoginLogoutView.cshtml" />
     <Content Include="Views\Authendication\Register.cshtml" />
+    <Content Include="Views\Events\EventsName.cshtml" />
+    <Content Include="Views\Events\StatusBooked.cshtml" />
+    <Content Include="Views\Events\EventsCreate.cshtml" />
+    <Content Include="Views\Booking\BookingDetails.cshtml" />
+    <Content Include="Views\Booking\BookingCreate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\DAL\" />
+    <Folder Include="Views\Date\" />
+    <Folder Include="Views\location\" />
+    <Folder Include="Views\theme\" />
+    <Folder Include="Views\Time\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

@@ -1,0 +1,35 @@
+﻿@model EventManagement.Models.eventstable
+
+@{
+    ViewBag.Title = "StatusBooked";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>StatusBooked</h2>
+
+<div>
+    <h4>eventstable</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.eventname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.eventname)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.eventsid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

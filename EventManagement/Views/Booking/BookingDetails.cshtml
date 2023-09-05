@@ -1,0 +1,83 @@
+﻿@model EventManagement.Models.eventname
+
+@{
+    ViewBag.Title = "BookingDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>BookingDetails</h2>
+
+<div>
+    <h4>eventname</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.eventnameid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.eventnameid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.eventhallcapacity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.eventhallcapacity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.eventcost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.eventcost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.datetable.dateid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.datetable.dateid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.eventstable.eventname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.eventstable.eventname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.locationtable.locationname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.locationtable.locationname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.themetable.themename)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.themetable.themename)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.timetable.timeid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.timetable.timeid)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.eventcatering }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
