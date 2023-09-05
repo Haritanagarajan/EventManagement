@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="EventManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="EventManagementModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="datetable">
           <Key>
             <PropertyRef Name="dateid" />
@@ -12,14 +12,11 @@
           <Property Name="dateid" Type="int" Nullable="false" />
           <Property Name="datesavailable" Type="date" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'EventManagement.dbo.eventnames' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="eventnames">
           <Key>
-            <PropertyRef Name="eventcatering" />
+            <PropertyRef Name="eventnameid" />
           </Key>
           <Property Name="eventid" Type="int" />
-          <Property Name="eventnameid" Type="int" />
           <Property Name="eventdate" Type="int" />
           <Property Name="eventtime" Type="int" />
           <Property Name="eventhallcapacity" Type="bigint" />
@@ -27,6 +24,7 @@ warning 6002: The table/view 'EventManagement.dbo.eventnames' does not have a pr
           <Property Name="eventlocation" Type="int" />
           <Property Name="eventtheme" Type="int" />
           <Property Name="eventcost" Type="bigint" />
+          <Property Name="eventnameid" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="eventstable">
           <Key>
@@ -153,27 +151,15 @@ warning 6002: The table/view 'EventManagement.dbo.eventnames' does not have a pr
           <Parameter Name="Username" Type="nvarchar" Mode="In" />
           <Parameter Name="Password" Type="nvarchar" Mode="In" />
         </Function>
-        <EntityContainer Name="EventManagementModelStoreContainer">
+        <EntityContainer Name="EventManagementModel1StoreContainer">
           <EntitySet Name="datetable" EntityType="Self.datetable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="eventnames" EntityType="Self.eventnames" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="eventstable" EntityType="Self.eventstable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="locationtable" EntityType="Self.locationtable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoleTables" EntityType="Self.RoleTables" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="themetable" EntityType="Self.themetable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="timetable" EntityType="Self.timetable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserTables" EntityType="Self.UserTables" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="eventnames" EntityType="Self.eventnames" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [eventnames].[eventid] AS [eventid], 
-    [eventnames].[eventnameid] AS [eventnameid], 
-    [eventnames].[eventdate] AS [eventdate], 
-    [eventnames].[eventtime] AS [eventtime], 
-    [eventnames].[eventhallcapacity] AS [eventhallcapacity], 
-    [eventnames].[eventcatering] AS [eventcatering], 
-    [eventnames].[eventlocation] AS [eventlocation], 
-    [eventnames].[eventtheme] AS [eventtheme], 
-    [eventnames].[eventcost] AS [eventcost]
-    FROM [dbo].[eventnames] AS [eventnames]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK__eventname__event__3F466844" Association="Self.FK__eventname__event__3F466844">
             <End Role="eventstable" EntitySet="eventstable" />
             <End Role="eventnames" EntitySet="eventnames" />
@@ -203,7 +189,7 @@ warning 6002: The table/view 'EventManagement.dbo.eventnames' does not have a pr
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="EventManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="EventManagementModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="datetable">
           <Key>
             <PropertyRef Name="dateid" />
@@ -211,6 +197,25 @@ warning 6002: The table/view 'EventManagement.dbo.eventnames' does not have a pr
           <Property Name="dateid" Type="Int32" Nullable="false" />
           <Property Name="datesavailable" Type="DateTime" Precision="0" />
           <NavigationProperty Name="eventnames" Relationship="Self.FK__eventname__event__403A8C7D" FromRole="datetable" ToRole="eventnames" />
+        </EntityType>
+        <EntityType Name="eventname">
+          <Key>
+            <PropertyRef Name="eventnameid" />
+          </Key>
+          <Property Name="eventid" Type="Int32" />
+          <Property Name="eventdate" Type="Int32" />
+          <Property Name="eventtime" Type="Int32" />
+          <Property Name="eventhallcapacity" Type="Int64" />
+          <Property Name="eventcatering" Type="Boolean" Nullable="false" />
+          <Property Name="eventlocation" Type="Int32" />
+          <Property Name="eventtheme" Type="Int32" />
+          <Property Name="eventcost" Type="Int64" />
+          <Property Name="eventnameid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="datetable" Relationship="Self.FK__eventname__event__403A8C7D" FromRole="eventnames" ToRole="datetable" />
+          <NavigationProperty Name="eventstable" Relationship="Self.FK__eventname__event__3F466844" FromRole="eventnames" ToRole="eventstable" />
+          <NavigationProperty Name="timetable" Relationship="Self.FK__eventname__event__412EB0B6" FromRole="eventnames" ToRole="timetable" />
+          <NavigationProperty Name="locationtable" Relationship="Self.FK__eventname__event__4316F928" FromRole="eventnames" ToRole="locationtable" />
+          <NavigationProperty Name="themetable" Relationship="Self.FK__eventname__event__440B1D61" FromRole="eventnames" ToRole="themetable" />
         </EntityType>
         <EntityType Name="eventstable">
           <Key>
@@ -267,25 +272,6 @@ warning 6002: The table/view 'EventManagement.dbo.eventnames' does not have a pr
           <Property Name="TRoleid" Type="Int32" />
           <NavigationProperty Name="RoleTable" Relationship="Self.FK__UserTable__TRole__48CFD27E" FromRole="UserTables" ToRole="RoleTables" />
         </EntityType>
-        <EntityType Name="eventname">
-          <Key>
-            <PropertyRef Name="eventcatering" />
-          </Key>
-          <Property Name="eventid" Type="Int32" />
-          <Property Name="eventnameid" Type="Int32" />
-          <Property Name="eventdate" Type="Int32" />
-          <Property Name="eventtime" Type="Int32" />
-          <Property Name="eventhallcapacity" Type="Int64" />
-          <Property Name="eventcatering" Type="Boolean" Nullable="false" />
-          <Property Name="eventlocation" Type="Int32" />
-          <Property Name="eventtheme" Type="Int32" />
-          <Property Name="eventcost" Type="Int64" />
-          <NavigationProperty Name="datetable" Relationship="Self.FK__eventname__event__403A8C7D" FromRole="eventnames" ToRole="datetable" />
-          <NavigationProperty Name="eventstable" Relationship="Self.FK__eventname__event__3F466844" FromRole="eventnames" ToRole="eventstable" />
-          <NavigationProperty Name="locationtable" Relationship="Self.FK__eventname__event__4316F928" FromRole="eventnames" ToRole="locationtable" />
-          <NavigationProperty Name="themetable" Relationship="Self.FK__eventname__event__440B1D61" FromRole="eventnames" ToRole="themetable" />
-          <NavigationProperty Name="timetable" Relationship="Self.FK__eventname__event__412EB0B6" FromRole="eventnames" ToRole="timetable" />
-        </EntityType>
         <Association Name="FK__eventname__event__403A8C7D">
           <End Role="datetable" Type="Self.datetable" Multiplicity="0..1" />
           <End Role="eventnames" Type="Self.eventname" Multiplicity="*" />
@@ -310,6 +296,18 @@ warning 6002: The table/view 'EventManagement.dbo.eventnames' does not have a pr
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__eventname__event__412EB0B6">
+          <End Role="timetable" Type="Self.timetable" Multiplicity="0..1" />
+          <End Role="eventnames" Type="Self.eventname" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="timetable">
+              <PropertyRef Name="timeid" />
+            </Principal>
+            <Dependent Role="eventnames">
+              <PropertyRef Name="eventtime" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__eventname__event__4316F928">
           <End Role="locationtable" Type="Self.locationtable" Multiplicity="0..1" />
           <End Role="eventnames" Type="Self.eventname" Multiplicity="*" />
@@ -319,18 +317,6 @@ warning 6002: The table/view 'EventManagement.dbo.eventnames' does not have a pr
             </Principal>
             <Dependent Role="eventnames">
               <PropertyRef Name="eventlocation" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__UserTable__TRole__48CFD27E">
-          <End Role="RoleTables" Type="Self.RoleTable" Multiplicity="0..1" />
-          <End Role="UserTables" Type="Self.UserTable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="RoleTables">
-              <PropertyRef Name="TRoleid" />
-            </Principal>
-            <Dependent Role="UserTables">
-              <PropertyRef Name="TRoleid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -346,27 +332,27 @@ warning 6002: The table/view 'EventManagement.dbo.eventnames' does not have a pr
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__eventname__event__412EB0B6">
-          <End Role="timetable" Type="Self.timetable" Multiplicity="0..1" />
-          <End Role="eventnames" Type="Self.eventname" Multiplicity="*" />
+        <Association Name="FK__UserTable__TRole__48CFD27E">
+          <End Role="RoleTables" Type="Self.RoleTable" Multiplicity="0..1" />
+          <End Role="UserTables" Type="Self.UserTable" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="timetable">
-              <PropertyRef Name="timeid" />
+            <Principal Role="RoleTables">
+              <PropertyRef Name="TRoleid" />
             </Principal>
-            <Dependent Role="eventnames">
-              <PropertyRef Name="eventtime" />
+            <Dependent Role="UserTables">
+              <PropertyRef Name="TRoleid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="EventManagementEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="EventManagementEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="datetables" EntityType="Self.datetable" />
+          <EntitySet Name="eventnames" EntityType="Self.eventname" />
           <EntitySet Name="eventstables" EntityType="Self.eventstable" />
           <EntitySet Name="locationtables" EntityType="Self.locationtable" />
           <EntitySet Name="RoleTables" EntityType="Self.RoleTable" />
           <EntitySet Name="themetables" EntityType="Self.themetable" />
           <EntitySet Name="timetables" EntityType="Self.timetable" />
           <EntitySet Name="UserTables" EntityType="Self.UserTable" />
-          <EntitySet Name="eventnames" EntityType="Self.eventname" />
           <AssociationSet Name="FK__eventname__event__403A8C7D" Association="Self.FK__eventname__event__403A8C7D">
             <End Role="datetable" EntitySet="datetables" />
             <End Role="eventnames" EntitySet="eventnames" />
@@ -375,23 +361,23 @@ warning 6002: The table/view 'EventManagement.dbo.eventnames' does not have a pr
             <End Role="eventstable" EntitySet="eventstables" />
             <End Role="eventnames" EntitySet="eventnames" />
           </AssociationSet>
+          <AssociationSet Name="FK__eventname__event__412EB0B6" Association="Self.FK__eventname__event__412EB0B6">
+            <End Role="timetable" EntitySet="timetables" />
+            <End Role="eventnames" EntitySet="eventnames" />
+          </AssociationSet>
           <AssociationSet Name="FK__eventname__event__4316F928" Association="Self.FK__eventname__event__4316F928">
             <End Role="locationtable" EntitySet="locationtables" />
+            <End Role="eventnames" EntitySet="eventnames" />
+          </AssociationSet>
+          <AssociationSet Name="FK__eventname__event__440B1D61" Association="Self.FK__eventname__event__440B1D61">
+            <End Role="themetable" EntitySet="themetables" />
             <End Role="eventnames" EntitySet="eventnames" />
           </AssociationSet>
           <AssociationSet Name="FK__UserTable__TRole__48CFD27E" Association="Self.FK__UserTable__TRole__48CFD27E">
             <End Role="RoleTables" EntitySet="RoleTables" />
             <End Role="UserTables" EntitySet="UserTables" />
           </AssociationSet>
-          <AssociationSet Name="FK__eventname__event__440B1D61" Association="Self.FK__eventname__event__440B1D61">
-            <End Role="themetable" EntitySet="themetables" />
-            <End Role="eventnames" EntitySet="eventnames" />
-          </AssociationSet>
-          <AssociationSet Name="FK__eventname__event__412EB0B6" Association="Self.FK__eventname__event__412EB0B6">
-            <End Role="timetable" EntitySet="timetables" />
-            <End Role="eventnames" EntitySet="eventnames" />
-          </AssociationSet>
-          <FunctionImport Name="Validate_User" ReturnType="Collection(EventManagementModel.Validate_User_Result)">
+          <FunctionImport Name="Validate_User" ReturnType="Collection(EventManagementModel1.Validate_User_Result)">
             <Parameter Name="Username" Mode="In" Type="String" />
             <Parameter Name="Password" Mode="In" Type="String" />
           </FunctionImport>
@@ -405,17 +391,32 @@ warning 6002: The table/view 'EventManagement.dbo.eventnames' does not have a pr
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="EventManagementModelStoreContainer" CdmEntityContainer="EventManagementEntities">
+        <EntityContainerMapping StorageEntityContainer="EventManagementModel1StoreContainer" CdmEntityContainer="EventManagementEntities1">
           <EntitySetMapping Name="datetables">
-            <EntityTypeMapping TypeName="EventManagementModel.datetable">
+            <EntityTypeMapping TypeName="EventManagementModel1.datetable">
               <MappingFragment StoreEntitySet="datetable">
                 <ScalarProperty Name="dateid" ColumnName="dateid" />
                 <ScalarProperty Name="datesavailable" ColumnName="datesavailable" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="eventnames">
+            <EntityTypeMapping TypeName="EventManagementModel1.eventname">
+              <MappingFragment StoreEntitySet="eventnames">
+                <ScalarProperty Name="eventid" ColumnName="eventid" />
+                <ScalarProperty Name="eventdate" ColumnName="eventdate" />
+                <ScalarProperty Name="eventtime" ColumnName="eventtime" />
+                <ScalarProperty Name="eventhallcapacity" ColumnName="eventhallcapacity" />
+                <ScalarProperty Name="eventcatering" ColumnName="eventcatering" />
+                <ScalarProperty Name="eventlocation" ColumnName="eventlocation" />
+                <ScalarProperty Name="eventtheme" ColumnName="eventtheme" />
+                <ScalarProperty Name="eventcost" ColumnName="eventcost" />
+                <ScalarProperty Name="eventnameid" ColumnName="eventnameid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="eventstables">
-            <EntityTypeMapping TypeName="EventManagementModel.eventstable">
+            <EntityTypeMapping TypeName="EventManagementModel1.eventstable">
               <MappingFragment StoreEntitySet="eventstable">
                 <ScalarProperty Name="eventsid" ColumnName="eventsid" />
                 <ScalarProperty Name="id" ColumnName="id" />
@@ -424,7 +425,7 @@ warning 6002: The table/view 'EventManagement.dbo.eventnames' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="locationtables">
-            <EntityTypeMapping TypeName="EventManagementModel.locationtable">
+            <EntityTypeMapping TypeName="EventManagementModel1.locationtable">
               <MappingFragment StoreEntitySet="locationtable">
                 <ScalarProperty Name="locationid" ColumnName="locationid" />
                 <ScalarProperty Name="locationname" ColumnName="locationname" />
@@ -433,7 +434,7 @@ warning 6002: The table/view 'EventManagement.dbo.eventnames' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="RoleTables">
-            <EntityTypeMapping TypeName="EventManagementModel.RoleTable">
+            <EntityTypeMapping TypeName="EventManagementModel1.RoleTable">
               <MappingFragment StoreEntitySet="RoleTables">
                 <ScalarProperty Name="TRoleid" ColumnName="TRoleid" />
                 <ScalarProperty Name="TRolename" ColumnName="TRolename" />
@@ -441,7 +442,7 @@ warning 6002: The table/view 'EventManagement.dbo.eventnames' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="themetables">
-            <EntityTypeMapping TypeName="EventManagementModel.themetable">
+            <EntityTypeMapping TypeName="EventManagementModel1.themetable">
               <MappingFragment StoreEntitySet="themetable">
                 <ScalarProperty Name="themeid" ColumnName="themeid" />
                 <ScalarProperty Name="themename" ColumnName="themename" />
@@ -449,7 +450,7 @@ warning 6002: The table/view 'EventManagement.dbo.eventnames' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="timetables">
-            <EntityTypeMapping TypeName="EventManagementModel.timetable">
+            <EntityTypeMapping TypeName="EventManagementModel1.timetable">
               <MappingFragment StoreEntitySet="timetable">
                 <ScalarProperty Name="timeid" ColumnName="timeid" />
                 <ScalarProperty Name="timesavailable" ColumnName="timesavailable" />
@@ -457,7 +458,7 @@ warning 6002: The table/view 'EventManagement.dbo.eventnames' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserTables">
-            <EntityTypeMapping TypeName="EventManagementModel.UserTable">
+            <EntityTypeMapping TypeName="EventManagementModel1.UserTable">
               <MappingFragment StoreEntitySet="UserTables">
                 <ScalarProperty Name="TUserid" ColumnName="TUserid" />
                 <ScalarProperty Name="TUsername" ColumnName="TUsername" />
@@ -469,24 +470,9 @@ warning 6002: The table/view 'EventManagement.dbo.eventnames' does not have a pr
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="eventnames">
-            <EntityTypeMapping TypeName="EventManagementModel.eventname">
-              <MappingFragment StoreEntitySet="eventnames">
-                <ScalarProperty Name="eventid" ColumnName="eventid" />
-                <ScalarProperty Name="eventnameid" ColumnName="eventnameid" />
-                <ScalarProperty Name="eventdate" ColumnName="eventdate" />
-                <ScalarProperty Name="eventtime" ColumnName="eventtime" />
-                <ScalarProperty Name="eventhallcapacity" ColumnName="eventhallcapacity" />
-                <ScalarProperty Name="eventcatering" ColumnName="eventcatering" />
-                <ScalarProperty Name="eventlocation" ColumnName="eventlocation" />
-                <ScalarProperty Name="eventtheme" ColumnName="eventtheme" />
-                <ScalarProperty Name="eventcost" ColumnName="eventcost" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="Validate_User" FunctionName="EventManagementModel.Store.Validate_User">
+          <FunctionImportMapping FunctionImportName="Validate_User" FunctionName="EventManagementModel1.Store.Validate_User">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="EventManagementModel.Validate_User_Result">
+              <ComplexTypeMapping TypeName="EventManagementModel1.Validate_User_Result">
                 <ScalarProperty Name="TUserid" ColumnName="TUserid" />
                 <ScalarProperty Name="Roles" ColumnName="Roles" />
               </ComplexTypeMapping>

@@ -9,7 +9,7 @@ namespace EventManagement.Controllers
 {
     public class BookingController : Controller
     {
-        EventManagementEntities EventManagementEntities = new EventManagementEntities();
+        EventManagementEntities1 EventManagementEntities = new EventManagementEntities1();
 
         // GET: Booking
         [HttpGet]
@@ -42,7 +42,7 @@ namespace EventManagement.Controllers
 
                 EventManagementEntities.eventnames.Add(names);
                 EventManagementEntities.SaveChanges();
-                return RedirectToAction("BookingDetails");
+                return RedirectToAction("BookingDetails", names.eventnameid);
             }
             return View();
         }
@@ -50,10 +50,13 @@ namespace EventManagement.Controllers
         
         [HttpGet]
         [Authorize(Roles ="User")]
-        public ActionResult BookingDetails(int? id)
+        public ActionResult BookingDetails(int? eventnameid)
         {
-           eventname  eventname = EventManagementEntities.eventnames.Find(id);
-            return View(eventname);
+           //eventname  eventname = EventManagementEntities.eventnames.Find(eventnameid);
+            eventname selectedevent=(from s in EventManagementEntities.eventnames where s.eventnameid==eventnameid select s).FirstOrDefault();
+
+
+            return View(selectedevent);
         }
     }
 }

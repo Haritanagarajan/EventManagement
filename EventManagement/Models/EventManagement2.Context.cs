@@ -15,10 +15,10 @@ namespace EventManagement.Models
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class EventManagementEntities : DbContext
+    public partial class EventManagementEntities1 : DbContext
     {
-        public EventManagementEntities()
-            : base("name=EventManagementEntities")
+        public EventManagementEntities1()
+            : base("name=EventManagementEntities1")
         {
         }
     
@@ -28,13 +28,13 @@ namespace EventManagement.Models
         }
     
         public virtual DbSet<datetable> datetables { get; set; }
+        public virtual DbSet<eventname> eventnames { get; set; }
         public virtual DbSet<eventstable> eventstables { get; set; }
         public virtual DbSet<locationtable> locationtables { get; set; }
         public virtual DbSet<RoleTable> RoleTables { get; set; }
         public virtual DbSet<themetable> themetables { get; set; }
         public virtual DbSet<timetable> timetables { get; set; }
         public virtual DbSet<UserTable> UserTables { get; set; }
-        public virtual DbSet<eventname> eventnames { get; set; }
     
         public virtual ObjectResult<Validate_User_Result> Validate_User(string username, string password)
         {

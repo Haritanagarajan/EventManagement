@@ -15,7 +15,6 @@ namespace EventManagement.Models
     public partial class eventname
     {
         public Nullable<int> eventid { get; set; }
-        public Nullable<int> eventnameid { get; set; }
         public Nullable<int> eventdate { get; set; }
         public Nullable<int> eventtime { get; set; }
         public Nullable<long> eventhallcapacity { get; set; }
@@ -23,11 +22,12 @@ namespace EventManagement.Models
         public Nullable<int> eventlocation { get; set; }
         public Nullable<int> eventtheme { get; set; }
         public Nullable<long> eventcost { get; set; }
+        public int eventnameid { get; set; }
     
         public virtual datetable datetable { get; set; }
         public virtual eventstable eventstable { get; set; }
+        public virtual timetable timetable { get; set; }
         public virtual locationtable locationtable { get; set; }
         public virtual themetable themetable { get; set; }
-        public virtual timetable timetable { get; set; }
     }
 }
