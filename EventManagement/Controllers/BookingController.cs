@@ -42,7 +42,7 @@ namespace EventManagement.Controllers
 
                 EventManagementEntities.eventnames.Add(names);
                 EventManagementEntities.SaveChanges();
-                return RedirectToAction("BookingDetails", names.eventnameid);
+                return RedirectToAction("BookingDetails",new {eventnameid=names.eventnameid});
             }
             return View();
         }
