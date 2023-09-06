@@ -10,7 +10,7 @@ using System.Web.Security;
 
 namespace EventManagement.Controllers
 {
-    //database EventManagementEntities
+    //database EventManagementEntities2
     //usermodel  RoleTable      //RoleTables
     //rolemodel  UserTable      //UserTables
 
@@ -20,7 +20,7 @@ namespace EventManagement.Controllers
     public class AuthendicationController : Controller
     {
 
-        EventManagementEntities1 EventManagementEntities = new EventManagementEntities1();
+        EventManagementEntities3 EventManagementEntities = new EventManagementEntities3();
          // GET: Authendication
         public ActionResult Login()
         {
@@ -64,7 +64,7 @@ namespace EventManagement.Controllers
         [AllowAnonymous]
         public ActionResult Login(UserTable user)
         {
-            EventManagementEntities1 usertabledatabase = new EventManagementEntities1();
+            EventManagementEntities3 usertabledatabase = new EventManagementEntities3();
 
             Validate_User_Result roleUser = usertabledatabase.Validate_User(user.TUsername, user.TPassword).FirstOrDefault();
             string message = string.Empty;
@@ -84,6 +84,7 @@ namespace EventManagement.Controllers
                         cookie.Expires = ticket.Expiration;
                     }
                     Response.Cookies.Add(cookie);
+                    TempData["UserId"] = roleUser.TUserid.Value;
                     return RedirectToAction("EventsName","Events");
             }
 

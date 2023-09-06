@@ -23,6 +23,7 @@ namespace EventManagement.Models
         public int locationid { get; set; }
         public string locationname { get; set; }
         public Nullable<long> pincode { get; set; }
+        public bool IsDeletedlocation { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<eventname> eventnames { get; set; }

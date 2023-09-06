@@ -23,6 +23,7 @@ namespace EventManagement.Models
         public int eventsid { get; set; }
         public Nullable<int> id { get; set; }
         public string eventname { get; set; }
+        public bool IsDeleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<eventname> eventnames { get; set; }

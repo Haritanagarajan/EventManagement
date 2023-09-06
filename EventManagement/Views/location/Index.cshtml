@@ -1,0 +1,41 @@
+﻿@model IEnumerable<EventManagement.Models.locationtable>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "LocationCreate")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.locationname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pincode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsDeletedlocation)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.locationname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pincode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsDeletedlocation)
+     
+    </tr>
+}
+
+</table>

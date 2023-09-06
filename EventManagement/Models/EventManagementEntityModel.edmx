@@ -11,12 +11,15 @@
           </Key>
           <Property Name="dateid" Type="int" Nullable="false" />
           <Property Name="datesavailable" Type="date" />
+          <Property Name="IsDeleteddate" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="eventnames">
           <Key>
             <PropertyRef Name="eventnameid" />
           </Key>
           <Property Name="eventid" Type="int" />
+          <Property Name="eventnameid" Type="int" Nullable="false" />
+          <Property Name="TUserid" Type="int" />
           <Property Name="eventdate" Type="int" />
           <Property Name="eventtime" Type="int" />
           <Property Name="eventhallcapacity" Type="bigint" />
@@ -24,7 +27,6 @@
           <Property Name="eventlocation" Type="int" />
           <Property Name="eventtheme" Type="int" />
           <Property Name="eventcost" Type="bigint" />
-          <Property Name="eventnameid" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="eventstable">
           <Key>
@@ -33,6 +35,7 @@
           <Property Name="eventsid" Type="int" Nullable="false" />
           <Property Name="id" Type="int" />
           <Property Name="eventname" Type="varchar" MaxLength="20" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="locationtable">
           <Key>
@@ -41,6 +44,7 @@
           <Property Name="locationid" Type="int" Nullable="false" />
           <Property Name="locationname" Type="varchar" MaxLength="20" />
           <Property Name="pincode" Type="bigint" />
+          <Property Name="IsDeletedlocation" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="RoleTables">
           <Key>
@@ -55,6 +59,7 @@
           </Key>
           <Property Name="themeid" Type="int" Nullable="false" />
           <Property Name="themename" Type="varchar" MaxLength="20" />
+          <Property Name="IsDeletedtheme" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="timetable">
           <Key>
@@ -62,6 +67,7 @@
           </Key>
           <Property Name="timeid" Type="int" Nullable="false" />
           <Property Name="timesavailable" Type="time" Precision="7" />
+          <Property Name="IsDeletedtime" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="UserTables">
           <Key>
@@ -75,7 +81,7 @@
           <Property Name="LastLoginDate" Type="datetime" />
           <Property Name="TRoleid" Type="int" />
         </EntityType>
-        <Association Name="FK__eventname__event__3F466844">
+        <Association Name="FK__eventname__event__6FE99F9F">
           <End Role="eventstable" Type="Self.eventstable" Multiplicity="0..1" />
           <End Role="eventnames" Type="Self.eventnames" Multiplicity="*" />
           <ReferentialConstraint>
@@ -87,7 +93,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__eventname__event__403A8C7D">
+        <Association Name="FK__eventname__event__71D1E811">
           <End Role="datetable" Type="Self.datetable" Multiplicity="0..1" />
           <End Role="eventnames" Type="Self.eventnames" Multiplicity="*" />
           <ReferentialConstraint>
@@ -99,7 +105,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__eventname__event__412EB0B6">
+        <Association Name="FK__eventname__event__72C60C4A">
           <End Role="timetable" Type="Self.timetable" Multiplicity="0..1" />
           <End Role="eventnames" Type="Self.eventnames" Multiplicity="*" />
           <ReferentialConstraint>
@@ -111,7 +117,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__eventname__event__4316F928">
+        <Association Name="FK__eventname__event__74AE54BC">
           <End Role="locationtable" Type="Self.locationtable" Multiplicity="0..1" />
           <End Role="eventnames" Type="Self.eventnames" Multiplicity="*" />
           <ReferentialConstraint>
@@ -123,7 +129,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__eventname__event__440B1D61">
+        <Association Name="FK__eventname__event__75A278F5">
           <End Role="themetable" Type="Self.themetable" Multiplicity="0..1" />
           <End Role="eventnames" Type="Self.eventnames" Multiplicity="*" />
           <ReferentialConstraint>
@@ -132,6 +138,18 @@
             </Principal>
             <Dependent Role="eventnames">
               <PropertyRef Name="eventtheme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__eventname__TUser__70DDC3D8">
+          <End Role="UserTables" Type="Self.UserTables" Multiplicity="0..1" />
+          <End Role="eventnames" Type="Self.eventnames" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTables">
+              <PropertyRef Name="TUserid" />
+            </Principal>
+            <Dependent Role="eventnames">
+              <PropertyRef Name="TUserid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -160,24 +178,28 @@
           <EntitySet Name="themetable" EntityType="Self.themetable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="timetable" EntityType="Self.timetable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserTables" EntityType="Self.UserTables" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__eventname__event__3F466844" Association="Self.FK__eventname__event__3F466844">
+          <AssociationSet Name="FK__eventname__event__6FE99F9F" Association="Self.FK__eventname__event__6FE99F9F">
             <End Role="eventstable" EntitySet="eventstable" />
             <End Role="eventnames" EntitySet="eventnames" />
           </AssociationSet>
-          <AssociationSet Name="FK__eventname__event__403A8C7D" Association="Self.FK__eventname__event__403A8C7D">
+          <AssociationSet Name="FK__eventname__event__71D1E811" Association="Self.FK__eventname__event__71D1E811">
             <End Role="datetable" EntitySet="datetable" />
             <End Role="eventnames" EntitySet="eventnames" />
           </AssociationSet>
-          <AssociationSet Name="FK__eventname__event__412EB0B6" Association="Self.FK__eventname__event__412EB0B6">
+          <AssociationSet Name="FK__eventname__event__72C60C4A" Association="Self.FK__eventname__event__72C60C4A">
             <End Role="timetable" EntitySet="timetable" />
             <End Role="eventnames" EntitySet="eventnames" />
           </AssociationSet>
-          <AssociationSet Name="FK__eventname__event__4316F928" Association="Self.FK__eventname__event__4316F928">
+          <AssociationSet Name="FK__eventname__event__74AE54BC" Association="Self.FK__eventname__event__74AE54BC">
             <End Role="locationtable" EntitySet="locationtable" />
             <End Role="eventnames" EntitySet="eventnames" />
           </AssociationSet>
-          <AssociationSet Name="FK__eventname__event__440B1D61" Association="Self.FK__eventname__event__440B1D61">
+          <AssociationSet Name="FK__eventname__event__75A278F5" Association="Self.FK__eventname__event__75A278F5">
             <End Role="themetable" EntitySet="themetable" />
+            <End Role="eventnames" EntitySet="eventnames" />
+          </AssociationSet>
+          <AssociationSet Name="FK__eventname__TUser__70DDC3D8" Association="Self.FK__eventname__TUser__70DDC3D8">
+            <End Role="UserTables" EntitySet="UserTables" />
             <End Role="eventnames" EntitySet="eventnames" />
           </AssociationSet>
           <AssociationSet Name="FK__UserTable__TRole__48CFD27E" Association="Self.FK__UserTable__TRole__48CFD27E">
@@ -196,13 +218,16 @@
           </Key>
           <Property Name="dateid" Type="Int32" Nullable="false" />
           <Property Name="datesavailable" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="eventnames" Relationship="Self.FK__eventname__event__403A8C7D" FromRole="datetable" ToRole="eventnames" />
+          <Property Name="IsDeleteddate" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="eventnames" Relationship="Self.FK__eventname__event__71D1E811" FromRole="datetable" ToRole="eventnames" />
         </EntityType>
         <EntityType Name="eventname">
           <Key>
             <PropertyRef Name="eventnameid" />
           </Key>
           <Property Name="eventid" Type="Int32" />
+          <Property Name="eventnameid" Type="Int32" Nullable="false" />
+          <Property Name="TUserid" Type="Int32" />
           <Property Name="eventdate" Type="Int32" />
           <Property Name="eventtime" Type="Int32" />
           <Property Name="eventhallcapacity" Type="Int64" />
@@ -210,12 +235,12 @@
           <Property Name="eventlocation" Type="Int32" />
           <Property Name="eventtheme" Type="Int32" />
           <Property Name="eventcost" Type="Int64" />
-          <Property Name="eventnameid" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="datetable" Relationship="Self.FK__eventname__event__403A8C7D" FromRole="eventnames" ToRole="datetable" />
-          <NavigationProperty Name="eventstable" Relationship="Self.FK__eventname__event__3F466844" FromRole="eventnames" ToRole="eventstable" />
-          <NavigationProperty Name="timetable" Relationship="Self.FK__eventname__event__412EB0B6" FromRole="eventnames" ToRole="timetable" />
-          <NavigationProperty Name="locationtable" Relationship="Self.FK__eventname__event__4316F928" FromRole="eventnames" ToRole="locationtable" />
-          <NavigationProperty Name="themetable" Relationship="Self.FK__eventname__event__440B1D61" FromRole="eventnames" ToRole="themetable" />
+          <NavigationProperty Name="datetable" Relationship="Self.FK__eventname__event__71D1E811" FromRole="eventnames" ToRole="datetable" />
+          <NavigationProperty Name="eventstable" Relationship="Self.FK__eventname__event__6FE99F9F" FromRole="eventnames" ToRole="eventstable" />
+          <NavigationProperty Name="timetable" Relationship="Self.FK__eventname__event__72C60C4A" FromRole="eventnames" ToRole="timetable" />
+          <NavigationProperty Name="locationtable" Relationship="Self.FK__eventname__event__74AE54BC" FromRole="eventnames" ToRole="locationtable" />
+          <NavigationProperty Name="themetable" Relationship="Self.FK__eventname__event__75A278F5" FromRole="eventnames" ToRole="themetable" />
+          <NavigationProperty Name="UserTable" Relationship="Self.FK__eventname__TUser__70DDC3D8" FromRole="eventnames" ToRole="UserTables" />
         </EntityType>
         <EntityType Name="eventstable">
           <Key>
@@ -224,7 +249,8 @@
           <Property Name="eventsid" Type="Int32" Nullable="false" />
           <Property Name="id" Type="Int32" />
           <Property Name="eventname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="eventnames" Relationship="Self.FK__eventname__event__3F466844" FromRole="eventstable" ToRole="eventnames" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="eventnames" Relationship="Self.FK__eventname__event__6FE99F9F" FromRole="eventstable" ToRole="eventnames" />
         </EntityType>
         <EntityType Name="locationtable">
           <Key>
@@ -233,7 +259,8 @@
           <Property Name="locationid" Type="Int32" Nullable="false" />
           <Property Name="locationname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="pincode" Type="Int64" />
-          <NavigationProperty Name="eventnames" Relationship="Self.FK__eventname__event__4316F928" FromRole="locationtable" ToRole="eventnames" />
+          <Property Name="IsDeletedlocation" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="eventnames" Relationship="Self.FK__eventname__event__74AE54BC" FromRole="locationtable" ToRole="eventnames" />
         </EntityType>
         <EntityType Name="RoleTable">
           <Key>
@@ -249,7 +276,8 @@
           </Key>
           <Property Name="themeid" Type="Int32" Nullable="false" />
           <Property Name="themename" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="eventnames" Relationship="Self.FK__eventname__event__440B1D61" FromRole="themetable" ToRole="eventnames" />
+          <Property Name="IsDeletedtheme" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="eventnames" Relationship="Self.FK__eventname__event__75A278F5" FromRole="themetable" ToRole="eventnames" />
         </EntityType>
         <EntityType Name="timetable">
           <Key>
@@ -257,7 +285,8 @@
           </Key>
           <Property Name="timeid" Type="Int32" Nullable="false" />
           <Property Name="timesavailable" Type="Time" Precision="7" />
-          <NavigationProperty Name="eventnames" Relationship="Self.FK__eventname__event__412EB0B6" FromRole="timetable" ToRole="eventnames" />
+          <Property Name="IsDeletedtime" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="eventnames" Relationship="Self.FK__eventname__event__72C60C4A" FromRole="timetable" ToRole="eventnames" />
         </EntityType>
         <EntityType Name="UserTable">
           <Key>
@@ -270,9 +299,10 @@
           <Property Name="TMobile" Type="Int64" />
           <Property Name="LastLoginDate" Type="DateTime" Precision="3" />
           <Property Name="TRoleid" Type="Int32" />
+          <NavigationProperty Name="eventnames" Relationship="Self.FK__eventname__TUser__70DDC3D8" FromRole="UserTables" ToRole="eventnames" />
           <NavigationProperty Name="RoleTable" Relationship="Self.FK__UserTable__TRole__48CFD27E" FromRole="UserTables" ToRole="RoleTables" />
         </EntityType>
-        <Association Name="FK__eventname__event__403A8C7D">
+        <Association Name="FK__eventname__event__71D1E811">
           <End Role="datetable" Type="Self.datetable" Multiplicity="0..1" />
           <End Role="eventnames" Type="Self.eventname" Multiplicity="*" />
           <ReferentialConstraint>
@@ -284,7 +314,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__eventname__event__3F466844">
+        <Association Name="FK__eventname__event__6FE99F9F">
           <End Role="eventstable" Type="Self.eventstable" Multiplicity="0..1" />
           <End Role="eventnames" Type="Self.eventname" Multiplicity="*" />
           <ReferentialConstraint>
@@ -296,7 +326,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__eventname__event__412EB0B6">
+        <Association Name="FK__eventname__event__72C60C4A">
           <End Role="timetable" Type="Self.timetable" Multiplicity="0..1" />
           <End Role="eventnames" Type="Self.eventname" Multiplicity="*" />
           <ReferentialConstraint>
@@ -308,7 +338,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__eventname__event__4316F928">
+        <Association Name="FK__eventname__event__74AE54BC">
           <End Role="locationtable" Type="Self.locationtable" Multiplicity="0..1" />
           <End Role="eventnames" Type="Self.eventname" Multiplicity="*" />
           <ReferentialConstraint>
@@ -320,7 +350,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__eventname__event__440B1D61">
+        <Association Name="FK__eventname__event__75A278F5">
           <End Role="themetable" Type="Self.themetable" Multiplicity="0..1" />
           <End Role="eventnames" Type="Self.eventname" Multiplicity="*" />
           <ReferentialConstraint>
@@ -329,6 +359,18 @@
             </Principal>
             <Dependent Role="eventnames">
               <PropertyRef Name="eventtheme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__eventname__TUser__70DDC3D8">
+          <End Role="UserTables" Type="Self.UserTable" Multiplicity="0..1" />
+          <End Role="eventnames" Type="Self.eventname" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTables">
+              <PropertyRef Name="TUserid" />
+            </Principal>
+            <Dependent Role="eventnames">
+              <PropertyRef Name="TUserid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -344,7 +386,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="EventManagementEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="EventManagementEntities3" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="datetables" EntityType="Self.datetable" />
           <EntitySet Name="eventnames" EntityType="Self.eventname" />
           <EntitySet Name="eventstables" EntityType="Self.eventstable" />
@@ -353,24 +395,28 @@
           <EntitySet Name="themetables" EntityType="Self.themetable" />
           <EntitySet Name="timetables" EntityType="Self.timetable" />
           <EntitySet Name="UserTables" EntityType="Self.UserTable" />
-          <AssociationSet Name="FK__eventname__event__403A8C7D" Association="Self.FK__eventname__event__403A8C7D">
+          <AssociationSet Name="FK__eventname__event__71D1E811" Association="Self.FK__eventname__event__71D1E811">
             <End Role="datetable" EntitySet="datetables" />
             <End Role="eventnames" EntitySet="eventnames" />
           </AssociationSet>
-          <AssociationSet Name="FK__eventname__event__3F466844" Association="Self.FK__eventname__event__3F466844">
+          <AssociationSet Name="FK__eventname__event__6FE99F9F" Association="Self.FK__eventname__event__6FE99F9F">
             <End Role="eventstable" EntitySet="eventstables" />
             <End Role="eventnames" EntitySet="eventnames" />
           </AssociationSet>
-          <AssociationSet Name="FK__eventname__event__412EB0B6" Association="Self.FK__eventname__event__412EB0B6">
+          <AssociationSet Name="FK__eventname__event__72C60C4A" Association="Self.FK__eventname__event__72C60C4A">
             <End Role="timetable" EntitySet="timetables" />
             <End Role="eventnames" EntitySet="eventnames" />
           </AssociationSet>
-          <AssociationSet Name="FK__eventname__event__4316F928" Association="Self.FK__eventname__event__4316F928">
+          <AssociationSet Name="FK__eventname__event__74AE54BC" Association="Self.FK__eventname__event__74AE54BC">
             <End Role="locationtable" EntitySet="locationtables" />
             <End Role="eventnames" EntitySet="eventnames" />
           </AssociationSet>
-          <AssociationSet Name="FK__eventname__event__440B1D61" Association="Self.FK__eventname__event__440B1D61">
+          <AssociationSet Name="FK__eventname__event__75A278F5" Association="Self.FK__eventname__event__75A278F5">
             <End Role="themetable" EntitySet="themetables" />
+            <End Role="eventnames" EntitySet="eventnames" />
+          </AssociationSet>
+          <AssociationSet Name="FK__eventname__TUser__70DDC3D8" Association="Self.FK__eventname__TUser__70DDC3D8">
+            <End Role="UserTables" EntitySet="UserTables" />
             <End Role="eventnames" EntitySet="eventnames" />
           </AssociationSet>
           <AssociationSet Name="FK__UserTable__TRole__48CFD27E" Association="Self.FK__UserTable__TRole__48CFD27E">
@@ -391,12 +437,13 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="EventManagementModel1StoreContainer" CdmEntityContainer="EventManagementEntities1">
+        <EntityContainerMapping StorageEntityContainer="EventManagementModel1StoreContainer" CdmEntityContainer="EventManagementEntities3">
           <EntitySetMapping Name="datetables">
             <EntityTypeMapping TypeName="EventManagementModel1.datetable">
               <MappingFragment StoreEntitySet="datetable">
                 <ScalarProperty Name="dateid" ColumnName="dateid" />
                 <ScalarProperty Name="datesavailable" ColumnName="datesavailable" />
+                <ScalarProperty Name="IsDeleteddate" ColumnName="IsDeleteddate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -404,6 +451,8 @@
             <EntityTypeMapping TypeName="EventManagementModel1.eventname">
               <MappingFragment StoreEntitySet="eventnames">
                 <ScalarProperty Name="eventid" ColumnName="eventid" />
+                <ScalarProperty Name="eventnameid" ColumnName="eventnameid" />
+                <ScalarProperty Name="TUserid" ColumnName="TUserid" />
                 <ScalarProperty Name="eventdate" ColumnName="eventdate" />
                 <ScalarProperty Name="eventtime" ColumnName="eventtime" />
                 <ScalarProperty Name="eventhallcapacity" ColumnName="eventhallcapacity" />
@@ -411,7 +460,6 @@
                 <ScalarProperty Name="eventlocation" ColumnName="eventlocation" />
                 <ScalarProperty Name="eventtheme" ColumnName="eventtheme" />
                 <ScalarProperty Name="eventcost" ColumnName="eventcost" />
-                <ScalarProperty Name="eventnameid" ColumnName="eventnameid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -421,6 +469,7 @@
                 <ScalarProperty Name="eventsid" ColumnName="eventsid" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="eventname" ColumnName="eventname" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -430,6 +479,7 @@
                 <ScalarProperty Name="locationid" ColumnName="locationid" />
                 <ScalarProperty Name="locationname" ColumnName="locationname" />
                 <ScalarProperty Name="pincode" ColumnName="pincode" />
+                <ScalarProperty Name="IsDeletedlocation" ColumnName="IsDeletedlocation" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -446,6 +496,7 @@
               <MappingFragment StoreEntitySet="themetable">
                 <ScalarProperty Name="themeid" ColumnName="themeid" />
                 <ScalarProperty Name="themename" ColumnName="themename" />
+                <ScalarProperty Name="IsDeletedtheme" ColumnName="IsDeletedtheme" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -454,6 +505,7 @@
               <MappingFragment StoreEntitySet="timetable">
                 <ScalarProperty Name="timeid" ColumnName="timeid" />
                 <ScalarProperty Name="timesavailable" ColumnName="timesavailable" />
+                <ScalarProperty Name="IsDeletedtime" ColumnName="IsDeletedtime" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

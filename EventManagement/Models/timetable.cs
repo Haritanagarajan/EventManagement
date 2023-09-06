@@ -22,6 +22,7 @@ namespace EventManagement.Models
     
         public int timeid { get; set; }
         public Nullable<System.TimeSpan> timesavailable { get; set; }
+        public bool IsDeletedtime { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<eventname> eventnames { get; set; }

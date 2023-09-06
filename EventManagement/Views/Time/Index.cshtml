@@ -1,0 +1,35 @@
+﻿@model IEnumerable<EventManagement.Models.timetable>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "TimeCreate")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.timesavailable)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsDeletedtime)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.timesavailable)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsDeletedtime)
+        </td>
+    </tr>
+}
+
+</table>

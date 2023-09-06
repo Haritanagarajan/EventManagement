@@ -1,3 +1,4 @@
+﻿
 ﻿@model EventManagement.Models.eventname
 
 @{
@@ -7,76 +8,76 @@
 
 <h2>BookingCreate</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
 
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-horizontal">
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.eventid, "eventid", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("eventid", ViewBag.Events as SelectList, "-- Select Events --", new { @class = "fom-corntrol" })
-            @Html.ValidationMessageFor(model => model.eventid, "", new { @class = "text-danger" })
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.eventid, "eventid", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("eventid", ViewBag.Events as SelectList, "-- Select Events --", new { @class = "fom-corntrol" })
+                @Html.ValidationMessageFor(model => model.eventid, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-   
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.eventdate, "eventdate", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("eventdate", ViewBag.Date as SelectList, "-- Select Date --", new { @class = "fom-corntrol" })
-            @Html.ValidationMessageFor(model => model.eventdate, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.eventdate, "eventdate", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("eventdate", ViewBag.Date as SelectList, "-- Select Date --", new { @class = "fom-corntrol" })
+                @Html.ValidationMessageFor(model => model.eventdate, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.eventtime, "eventtime", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("eventtime", ViewBag.Time as SelectList, "-- Select Time Slots --", new { @class = "fom-corntrol" })
-            @Html.ValidationMessageFor(model => model.eventtime, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.eventtime, "eventtime", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("eventtime", ViewBag.Time as SelectList, "-- Select Time Slots --", new { @class = "fom-corntrol" })
+                @Html.ValidationMessageFor(model => model.eventtime, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-   
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.eventcatering, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <div class="checkbox">
-                @Html.EditorFor(model => model.eventcatering)
-                @Html.ValidationMessageFor(model => model.eventcatering, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.eventcatering, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.eventcatering)
+                    @Html.ValidationMessageFor(model => model.eventcatering, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.eventlocation, "eventlocation", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("eventlocation", ViewBag.Location as SelectList, "-- Select Locations --", new { @class = "fom-corntrol" })
+                @Html.ValidationMessageFor(model => model.eventlocation, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.eventtheme, "eventtheme", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("eventtheme", ViewBag.Theme as SelectList, "-- Select Theme --", new { @class = "fom-corntrol" })
+                @Html.ValidationMessageFor(model => model.eventtheme, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
     </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.eventlocation, "eventlocation", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("eventlocation", ViewBag.Location as SelectList, "-- Select Locations --", new { @class = "fom-corntrol" })
-            @Html.ValidationMessageFor(model => model.eventlocation, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.eventtheme, "eventtheme", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("eventtheme", ViewBag.Theme as SelectList, "-- Select Theme --", new { @class = "fom-corntrol" })
-            @Html.ValidationMessageFor(model => model.eventtheme, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
-        </div>
-    </div>
-</div>
 }
 
 <div>

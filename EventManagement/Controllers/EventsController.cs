@@ -8,19 +8,22 @@ using System.Web.Mvc;
 namespace EventManagement.Controllers
 {
     [Authorize]
+    [AllowAnonymous]
     public class EventsController : Controller
     {
-        EventManagementEntities1 EventManagementEntities = new EventManagementEntities1();
+        EventManagementEntities3     EventManagementEntities = new EventManagementEntities3();
 
 
         // GET: Events
         [Authorize(Roles = "User")]
-
         public ActionResult EventsName()
         {
             List<eventstable> events = EventManagementEntities.eventstables.ToList();
+            var eventNamesId = events.Select(e=>e.eventsid).ToList();
             return View(events);
         }
+
+
 
         [HttpGet]
         [Authorize(Roles ="Admin")]

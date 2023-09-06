@@ -1,0 +1,36 @@
+﻿@model IEnumerable<EventManagement.Models.datetable>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "DateCreate")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.datesavailable)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsDeleteddate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.datesavailable)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsDeleteddate)
+        </td>
+        
+    </tr>
+}
+
+</table>

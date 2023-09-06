@@ -22,6 +22,7 @@ namespace EventManagement.Models
     
         public int dateid { get; set; }
         public Nullable<System.DateTime> datesavailable { get; set; }
+        public bool IsDeleteddate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<eventname> eventnames { get; set; }

@@ -20,7 +20,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.TUsername, htmlAttributes: new { @class = "control-label col-md-2 " })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.TUsername, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.TUsername, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your UserName", @type = "text" } })
             @Html.ValidationMessageFor(model => model.TUsername, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -28,7 +28,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.TPassword, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.TPassword, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.PasswordFor(model => model.TPassword, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your Password", @type = "password" } })
             @Html.ValidationMessageFor(model => model.TPassword, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -36,7 +36,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.TEmail, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.TEmail, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.TEmail, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your EmailId", @type = "email" } })
             @Html.ValidationMessageFor(model => model.TEmail, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -44,7 +44,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.TMobile, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.TMobile, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.TMobile, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your  Mobile Number", @type = "text" } })
             @Html.ValidationMessageFor(model => model.TMobile, "", new { @class = "text-danger" })
         </div>
     </div>

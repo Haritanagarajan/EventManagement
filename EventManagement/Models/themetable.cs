@@ -22,6 +22,7 @@ namespace EventManagement.Models
     
         public int themeid { get; set; }
         public string themename { get; set; }
+        public bool IsDeletedtheme { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<eventname> eventnames { get; set; }
