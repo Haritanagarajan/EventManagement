@@ -135,7 +135,6 @@ namespace EventManagement.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("LoginForm", "Login");
         }
-    }
 
 
     public ActionResult Logout()
@@ -144,7 +143,7 @@ namespace EventManagement.Controllers
             return RedirectToAction("Login");
         }
 
-
-
     }
+
+
 }
