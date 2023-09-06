@@ -11,7 +11,7 @@ namespace EventManagement.Controllers
     [AllowAnonymous]
     public class EventsController : Controller
     {
-        EventManagementEntities3     EventManagementEntities = new EventManagementEntities3();
+        EventManagementEntities4     EventManagementEntities = new EventManagementEntities4();
 
 
         // GET: Events

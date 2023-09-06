@@ -20,7 +20,7 @@ namespace EventManagement.Controllers
     public class AuthendicationController : Controller
     {
 
-        EventManagementEntities3 EventManagementEntities = new EventManagementEntities3();
+        EventManagementEntities4 EventManagementEntities = new EventManagementEntities4();
          // GET: Authendication
         public ActionResult Login()
         {
@@ -35,10 +35,19 @@ namespace EventManagement.Controllers
         }
 
         [HttpPost]
-        public ActionResult Register([Bind(Include = "TUsername,TPassword,TEmail,TMobile")] UserTable user)
+        public ActionResult Register(HttpPostedFileBase Tprofile ,[Bind(Include = "TUsername,TPassword,TEmail,TMobile")] UserTable user)
         {
             if (ModelState.IsValid)
             {
+
+                byte[] profile;
+
+                using (var reader = new BinaryReader(Tprofile.InputStream))
+                {
+                    profile = reader.ReadBytes(Tprofile.ContentLength);
+                }
+                user.Tprofile = profile;
+
                 int lastUserId = EventManagementEntities.UserTables.Max(u => u.TUserid);
 
                 user.TUserid = lastUserId + 1;
@@ -64,7 +73,7 @@ namespace EventManagement.Controllers
         [AllowAnonymous]
         public ActionResult Login(UserTable user)
         {
-            EventManagementEntities3 usertabledatabase = new EventManagementEntities3();
+            EventManagementEntities4 usertabledatabase = new EventManagementEntities4();
 
             Validate_User_Result roleUser = usertabledatabase.Validate_User(user.TUsername, user.TPassword).FirstOrDefault();
             string message = string.Empty;
@@ -92,12 +101,49 @@ namespace EventManagement.Controllers
             return View(user);
         }
 
-      
-        public ActionResult Logout()
+
+        [HttpGet]
+        [Authorize(Roles= "Admin")]
+        public ActionResult Delete(int? id)
+        {
+            UserTable user = EventManagementEntities.UserTables.Find(id);
+            return View(user); 
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult UserDeleteConfirmed(int? id)
+        {
+            UserTable tr = EventManagementEntities.UserTables.Find(id);
+            EventManagementEntities.UserTables.Remove(tr);
+            EventManagementEntities.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+
+        public ActionResult Details(int? id)
+        {
+            UserTable user = EventManagementEntities.UserTables.Find(id);
+            return View(user);
+        }
+
+        public ActionResult LogoutForm()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("LoginForm", "Login");
+        }
+    }
+
+
+    public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
             return RedirectToAction("Login");
         }
+
 
 
     }

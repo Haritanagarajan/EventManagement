@@ -13,7 +13,7 @@ namespace EventManagement.Controllers
     {
 
         // GET: location
-        EventManagementEntities3 EventManagementEntities3 = new EventManagementEntities3();
+        EventManagementEntities4 EventManagementEntities3 = new EventManagementEntities4();
 
         [Authorize(Roles = "Admin")]
         public ActionResult Index()

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="EventManagementModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="EventManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="datetable">
           <Key>
             <PropertyRef Name="dateid" />
@@ -80,6 +80,7 @@
           <Property Name="TMobile" Type="bigint" />
           <Property Name="LastLoginDate" Type="datetime" />
           <Property Name="TRoleid" Type="int" />
+          <Property Name="Tprofile" Type="varbinary(max)" />
         </EntityType>
         <Association Name="FK__eventname__event__6FE99F9F">
           <End Role="eventstable" Type="Self.eventstable" Multiplicity="0..1" />
@@ -169,7 +170,7 @@
           <Parameter Name="Username" Type="nvarchar" Mode="In" />
           <Parameter Name="Password" Type="nvarchar" Mode="In" />
         </Function>
-        <EntityContainer Name="EventManagementModel1StoreContainer">
+        <EntityContainer Name="EventManagementModelStoreContainer">
           <EntitySet Name="datetable" EntityType="Self.datetable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="eventnames" EntityType="Self.eventnames" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="eventstable" EntityType="Self.eventstable" Schema="dbo" store:Type="Tables" />
@@ -211,7 +212,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="EventManagementModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="EventManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="datetable">
           <Key>
             <PropertyRef Name="dateid" />
@@ -299,6 +300,7 @@
           <Property Name="TMobile" Type="Int64" />
           <Property Name="LastLoginDate" Type="DateTime" Precision="3" />
           <Property Name="TRoleid" Type="Int32" />
+          <Property Name="Tprofile" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="eventnames" Relationship="Self.FK__eventname__TUser__70DDC3D8" FromRole="UserTables" ToRole="eventnames" />
           <NavigationProperty Name="RoleTable" Relationship="Self.FK__UserTable__TRole__48CFD27E" FromRole="UserTables" ToRole="RoleTables" />
         </EntityType>
@@ -386,7 +388,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="EventManagementEntities3" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="EventManagementEntities4" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="datetables" EntityType="Self.datetable" />
           <EntitySet Name="eventnames" EntityType="Self.eventname" />
           <EntitySet Name="eventstables" EntityType="Self.eventstable" />
@@ -423,7 +425,7 @@
             <End Role="RoleTables" EntitySet="RoleTables" />
             <End Role="UserTables" EntitySet="UserTables" />
           </AssociationSet>
-          <FunctionImport Name="Validate_User" ReturnType="Collection(EventManagementModel1.Validate_User_Result)">
+          <FunctionImport Name="Validate_User" ReturnType="Collection(EventManagementModel.Validate_User_Result)">
             <Parameter Name="Username" Mode="In" Type="String" />
             <Parameter Name="Password" Mode="In" Type="String" />
           </FunctionImport>
@@ -437,9 +439,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="EventManagementModel1StoreContainer" CdmEntityContainer="EventManagementEntities3">
+        <EntityContainerMapping StorageEntityContainer="EventManagementModelStoreContainer" CdmEntityContainer="EventManagementEntities4">
           <EntitySetMapping Name="datetables">
-            <EntityTypeMapping TypeName="EventManagementModel1.datetable">
+            <EntityTypeMapping TypeName="EventManagementModel.datetable">
               <MappingFragment StoreEntitySet="datetable">
                 <ScalarProperty Name="dateid" ColumnName="dateid" />
                 <ScalarProperty Name="datesavailable" ColumnName="datesavailable" />
@@ -448,7 +450,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="eventnames">
-            <EntityTypeMapping TypeName="EventManagementModel1.eventname">
+            <EntityTypeMapping TypeName="EventManagementModel.eventname">
               <MappingFragment StoreEntitySet="eventnames">
                 <ScalarProperty Name="eventid" ColumnName="eventid" />
                 <ScalarProperty Name="eventnameid" ColumnName="eventnameid" />
@@ -464,7 +466,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="eventstables">
-            <EntityTypeMapping TypeName="EventManagementModel1.eventstable">
+            <EntityTypeMapping TypeName="EventManagementModel.eventstable">
               <MappingFragment StoreEntitySet="eventstable">
                 <ScalarProperty Name="eventsid" ColumnName="eventsid" />
                 <ScalarProperty Name="id" ColumnName="id" />
@@ -474,7 +476,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="locationtables">
-            <EntityTypeMapping TypeName="EventManagementModel1.locationtable">
+            <EntityTypeMapping TypeName="EventManagementModel.locationtable">
               <MappingFragment StoreEntitySet="locationtable">
                 <ScalarProperty Name="locationid" ColumnName="locationid" />
                 <ScalarProperty Name="locationname" ColumnName="locationname" />
@@ -484,7 +486,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="RoleTables">
-            <EntityTypeMapping TypeName="EventManagementModel1.RoleTable">
+            <EntityTypeMapping TypeName="EventManagementModel.RoleTable">
               <MappingFragment StoreEntitySet="RoleTables">
                 <ScalarProperty Name="TRoleid" ColumnName="TRoleid" />
                 <ScalarProperty Name="TRolename" ColumnName="TRolename" />
@@ -492,7 +494,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="themetables">
-            <EntityTypeMapping TypeName="EventManagementModel1.themetable">
+            <EntityTypeMapping TypeName="EventManagementModel.themetable">
               <MappingFragment StoreEntitySet="themetable">
                 <ScalarProperty Name="themeid" ColumnName="themeid" />
                 <ScalarProperty Name="themename" ColumnName="themename" />
@@ -501,7 +503,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="timetables">
-            <EntityTypeMapping TypeName="EventManagementModel1.timetable">
+            <EntityTypeMapping TypeName="EventManagementModel.timetable">
               <MappingFragment StoreEntitySet="timetable">
                 <ScalarProperty Name="timeid" ColumnName="timeid" />
                 <ScalarProperty Name="timesavailable" ColumnName="timesavailable" />
@@ -510,7 +512,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserTables">
-            <EntityTypeMapping TypeName="EventManagementModel1.UserTable">
+            <EntityTypeMapping TypeName="EventManagementModel.UserTable">
               <MappingFragment StoreEntitySet="UserTables">
                 <ScalarProperty Name="TUserid" ColumnName="TUserid" />
                 <ScalarProperty Name="TUsername" ColumnName="TUsername" />
@@ -519,12 +521,13 @@
                 <ScalarProperty Name="TMobile" ColumnName="TMobile" />
                 <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
                 <ScalarProperty Name="TRoleid" ColumnName="TRoleid" />
+                <ScalarProperty Name="Tprofile" ColumnName="Tprofile" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="Validate_User" FunctionName="EventManagementModel1.Store.Validate_User">
+          <FunctionImportMapping FunctionImportName="Validate_User" FunctionName="EventManagementModel.Store.Validate_User">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="EventManagementModel1.Validate_User_Result">
+              <ComplexTypeMapping TypeName="EventManagementModel.Validate_User_Result">
                 <ScalarProperty Name="TUserid" ColumnName="TUserid" />
                 <ScalarProperty Name="Roles" ColumnName="Roles" />
               </ComplexTypeMapping>

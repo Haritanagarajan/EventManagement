@@ -141,46 +141,46 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\datetable.cs">
-      <DependentUpon>EventManagementEntityModel.tt</DependentUpon>
+      <DependentUpon>EventManagement.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\EventManagementEntityModel.Context.cs">
+    <Compile Include="Models\EventManagement.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EventManagementEntityModel.Context.tt</DependentUpon>
+      <DependentUpon>EventManagement.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\EventManagementEntityModel.cs">
+    <Compile Include="Models\EventManagement.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EventManagementEntityModel.tt</DependentUpon>
+      <DependentUpon>EventManagement.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\EventManagementEntityModel.Designer.cs">
+    <Compile Include="Models\EventManagement.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EventManagementEntityModel.edmx</DependentUpon>
+      <DependentUpon>EventManagement.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\eventname.cs">
-      <DependentUpon>EventManagementEntityModel.tt</DependentUpon>
+      <DependentUpon>EventManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\eventstable.cs">
-      <DependentUpon>EventManagementEntityModel.tt</DependentUpon>
+      <DependentUpon>EventManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\locationtable.cs">
-      <DependentUpon>EventManagementEntityModel.tt</DependentUpon>
+      <DependentUpon>EventManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RoleTable.cs">
-      <DependentUpon>EventManagementEntityModel.tt</DependentUpon>
+      <DependentUpon>EventManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\themetable.cs">
-      <DependentUpon>EventManagementEntityModel.tt</DependentUpon>
+      <DependentUpon>EventManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\timetable.cs">
-      <DependentUpon>EventManagementEntityModel.tt</DependentUpon>
+      <DependentUpon>EventManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserTable.cs">
-      <DependentUpon>EventManagementEntityModel.tt</DependentUpon>
+      <DependentUpon>EventManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Validate_User_Result.cs">
-      <DependentUpon>EventManagementEntityModel.tt</DependentUpon>
+      <DependentUpon>EventManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -204,15 +204,15 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\EventManagementEntityModel.Context.tt">
+    <Content Include="Models\EventManagement.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EventManagementEntityModel.edmx</DependentUpon>
-      <LastGenOutput>EventManagementEntityModel.Context.cs</LastGenOutput>
+      <DependentUpon>EventManagement.edmx</DependentUpon>
+      <LastGenOutput>EventManagement.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\EventManagementEntityModel.tt">
+    <Content Include="Models\EventManagement.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EventManagementEntityModel.edmx</DependentUpon>
-      <LastGenOutput>EventManagementEntityModel.cs</LastGenOutput>
+      <DependentUpon>EventManagement.edmx</DependentUpon>
+      <LastGenOutput>EventManagement.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -220,12 +220,12 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\EventManagementEntityModel.edmx">
+    <EntityDeploy Include="Models\EventManagement.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>EventManagementEntityModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>EventManagement.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\EventManagementEntityModel.edmx.diagram">
-      <DependentUpon>EventManagementEntityModel.edmx</DependentUpon>
+    <Content Include="Models\EventManagement.edmx.diagram">
+      <DependentUpon>EventManagement.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -269,6 +269,8 @@
     <Content Include="Views\location\LocationCreate.cshtml" />
     <Content Include="Views\theme\Index.cshtml" />
     <Content Include="Views\theme\ThemeCreate.cshtml" />
+    <Content Include="Views\Authendication\Delete.cshtml" />
+    <Content Include="Views\Authendication\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

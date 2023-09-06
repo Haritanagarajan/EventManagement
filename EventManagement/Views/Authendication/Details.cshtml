@@ -1,0 +1,75 @@
+﻿@model EventManagement.Models.UserTable
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>UserTable</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TUsername)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TUsername)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TPassword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TPassword)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TMobile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TMobile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastLoginDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastLoginDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tprofile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tprofile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RoleTable.TRolename)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoleTable.TRolename)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TUserid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,81 @@
+﻿@model EventManagement.Models.UserTable
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>UserTable</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TUsername)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TUsername)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TPassword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TPassword)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TMobile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TMobile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastLoginDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastLoginDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tprofile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tprofile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RoleTable.TRolename)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoleTable.TRolename)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
