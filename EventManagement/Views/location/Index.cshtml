@@ -34,7 +34,12 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.IsDeletedlocation)
-     
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.locationid }) |
+            @Html.ActionLink("Details", "Details", new { id = item.locationid }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.locationid })
+        </td>
     </tr>
 }
 

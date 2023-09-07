@@ -11,7 +11,8 @@ namespace EventManagement.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class timetable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,9 +20,15 @@ namespace EventManagement.Models
         {
             this.eventnames = new HashSet<eventname>();
         }
-    
+
+
+        [Required(ErrorMessage ="timeid is required.")]
         public int timeid { get; set; }
+
+        [Required(ErrorMessage = "time is required.")]
         public Nullable<System.TimeSpan> timesavailable { get; set; }
+
+        [Required(ErrorMessage = "IsDeletedTime is required.")]
         public bool IsDeletedtime { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

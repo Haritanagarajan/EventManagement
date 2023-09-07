@@ -1,11 +1,11 @@
 ﻿@model EventManagement.Models.eventstable
 
 @{
-    ViewBag.Title = "StatusBooked";
+    ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>StatusBooked</h2>
+<h2>Details</h2>
 
 <div>
     <h4>eventstable</h4>
@@ -25,6 +25,14 @@
 
         <dd>
             @Html.DisplayFor(model => model.eventname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsDeleted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsDeleted)
         </dd>
 
     </dl>

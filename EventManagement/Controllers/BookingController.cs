@@ -19,7 +19,6 @@ namespace EventManagement.Controllers
         public ActionResult BookingCreate()
         {
 
-            
                 List<datetable> date = EventManagementEntities.datetables.ToList();
                 ViewBag.Date = new SelectList(date, "dateid", "datesavailable");
                 List<timetable> time = EventManagementEntities.timetables.ToList();
@@ -75,7 +74,6 @@ namespace EventManagement.Controllers
                 Console.WriteLine(ex.Message);
                 return new HttpStatusCodeResult(404, "Error in eventnameid" + ex.Message);
             }
-            //eventname  eventname = EventManagementEntities.eventnames.Find(eventnameid);
 
 
            

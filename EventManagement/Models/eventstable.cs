@@ -11,7 +11,8 @@ namespace EventManagement.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class eventstable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,12 +20,21 @@ namespace EventManagement.Models
         {
             this.eventnames = new HashSet<eventname>();
         }
-    
+
+        [Required(ErrorMessage = "eventsid is required.")]
         public int eventsid { get; set; }
+
+
         public Nullable<int> id { get; set; }
+
+
+        [Required(ErrorMessage = "eventname is required.")]
         public string eventname { get; set; }
+
+
+        [Required(ErrorMessage = "IsDeleted is required.")]
         public bool IsDeleted { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<eventname> eventnames { get; set; }
     }

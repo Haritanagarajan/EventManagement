@@ -29,7 +29,11 @@
         <td>
             @Html.DisplayFor(modelItem => item.IsDeletedtheme)
         </td>
-       
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.themeid }) |
+            @Html.ActionLink("Details", "Details", new { id = item.themeid }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.themeid })
+        </td>
     </tr>
 }
 

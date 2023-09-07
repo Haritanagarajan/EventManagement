@@ -2,8 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -21,15 +23,26 @@ namespace EventManagement.Controllers
     {
 
         EventManagementEntities4 EventManagementEntities = new EventManagementEntities4();
-         // GET: Authendication
+        // GET: Authendication
+        [AllowAnonymous]
         public ActionResult Login()
         {
             return View();
         }
+
+        [Authorize(Roles="Admin")]
+
+        [HttpGet]
+        public ActionResult Index()
+        {
+            List<UserTable> users = EventManagementEntities.UserTables.ToList();
+            return View(users);
+        }
+
         [HttpGet]
         public ActionResult Register()
         {
-            List<RoleTable> role = EventManagementEntities.RoleTables.ToList();
+            List<UserTable> role = EventManagementEntities.UserTables.ToList();
             ViewBag.specificroles = new SelectList(role, "TRoleid", "TRolename");
             return View();
         }
@@ -130,6 +143,72 @@ namespace EventManagement.Controllers
             return View(user);
         }
 
+        [HttpGet]
+        [Authorize(Roles="Admin")]
+        public ActionResult Edit(int? id)
+        {
+            UserTable user = EventManagementEntities.UserTables.Find(id);
+            List<RoleTable> role = EventManagementEntities.RoleTables.ToList();
+            ViewBag.Roles = new SelectList(role, "TRoleid", "TRolename");
+            return View(user);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(int? id, HttpPostedFileBase Tprofile, [Bind(Include = "TUsername,TPassword,TEmail,TMobile,TRoleid")] UserTable updatedUser)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            UserTable existingUser = EventManagementEntities.UserTables.Find(id);
+
+            if (existingUser == null)
+            {
+                return HttpNotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                if (Tprofile != null && Tprofile.ContentLength > 0)
+                {
+                    byte[] profile;
+
+                    using (var reader = new BinaryReader(Tprofile.InputStream))
+                    {
+                        profile = reader.ReadBytes(Tprofile.ContentLength);
+                    }
+
+                    existingUser.Tprofile = profile;
+                }
+
+                existingUser.TUsername = updatedUser.TUsername;
+                existingUser.TPassword = updatedUser.TPassword;
+                existingUser.TEmail = updatedUser.TEmail;
+                existingUser.TMobile = updatedUser.TMobile;
+                existingUser.LastLoginDate = DateTime.Now;
+                existingUser.TRoleid = updatedUser.TRoleid;
+
+
+                EventManagementEntities.Entry(existingUser).State = EntityState.Modified;
+
+                try
+                {
+                    EventManagementEntities.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch (DbUpdateConcurrencyException ex)
+                {
+                   
+                    ModelState.AddModelError(string.Empty, "Concurrency error occurred.");
+                }
+            }
+
+          
+            return View(existingUser);
+        }
+
+
         public ActionResult LogoutForm()
         {
             FormsAuthentication.SignOut();
@@ -147,3 +226,6 @@ namespace EventManagement.Controllers
 
 
 }
+
+
+

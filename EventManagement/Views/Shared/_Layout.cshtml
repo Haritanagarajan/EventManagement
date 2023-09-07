@@ -21,13 +21,12 @@
             {
                 <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        @Html.ActionLink("Events", "EventsCreate", "Events", null, new { @class = "nav-link text-center" })
-                        @Html.ActionLink("Date", "DateCreate", "Date", null, new { @class = "nav-link text-center" })
-                        @Html.ActionLink("Time", "TimeCreate", "Time", null, new { @class = "nav-link text-center" })
-                        @Html.ActionLink("Theme", "ThemeCreate", "Theme", null, new { @class = "nav-link text-center" })
-                        @Html.ActionLink("Location", "LocationCreate", "Location", null, new { @class = "nav-link text-center" })
-                        @Html.ActionLink("UserDetails", "Details", "Authendication", null, new { @class = "nav-link text-center" })
-                        @Html.ActionLink("UserDelete", "Delete", "Authendication", null, new { @class = "nav-link text-center" })
+                        @Html.ActionLink("Date", "Index", "Date", null, new { @class = "nav-link text-center" })
+                        @Html.ActionLink("Time", "Index", "Time", null, new { @class = "nav-link text-center" })
+                        @Html.ActionLink("Theme", "Index", "Theme", null, new { @class = "nav-link text-center" })
+                        @Html.ActionLink("Location", "Index", "Location", null, new { @class = "nav-link text-center" })
+                        @*@Html.ActionLink("UserDetails", "Index", "Authendication", null, new { @class = "nav-link text-center" })*@
+                        @Html.ActionLink("EventDetails", "Index", "Events", null, new { @class = "nav-link text-center" })
 
                     </ul>
                 </div>

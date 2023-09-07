@@ -29,6 +29,11 @@
         <td>
             @Html.DisplayFor(modelItem => item.IsDeletedtime)
         </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.timeid }) |
+            @Html.ActionLink("Details", "Details", new { id = item.timeid }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.timeid })
+        </td>
     </tr>
 }
 

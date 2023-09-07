@@ -1,0 +1,35 @@
+﻿@model EventManagement.Models.timetable
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>timetable</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.timesavailable)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.timesavailable)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsDeletedtime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsDeletedtime)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.timeid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

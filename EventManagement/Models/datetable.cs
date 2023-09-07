@@ -11,7 +11,8 @@ namespace EventManagement.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class datetable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,11 +20,18 @@ namespace EventManagement.Models
         {
             this.eventnames = new HashSet<eventname>();
         }
-    
+
+        [Required]
         public int dateid { get; set; }
+
+        [Required(ErrorMessage = "datesavailable is required.")]
+        [DataType(DataType.Date, ErrorMessage = "Invalid datetime format for datesavailable.")]
         public Nullable<System.DateTime> datesavailable { get; set; }
+
+        [Required(ErrorMessage = "IsDeleteddate is required.")]
+        [Range(typeof(bool), "true", "false", ErrorMessage = "IsDeleteddate must be a boolean value.")]
         public bool IsDeleteddate { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<eventname> eventnames { get; set; }
     }

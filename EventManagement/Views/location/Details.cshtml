@@ -1,0 +1,43 @@
+﻿@model EventManagement.Models.locationtable
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>locationtable</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.locationname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.locationname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pincode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pincode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsDeletedlocation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsDeletedlocation)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.locationid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

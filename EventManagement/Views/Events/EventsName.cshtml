@@ -16,24 +16,23 @@
         <th>
             @Html.DisplayNameFor(model => model.eventname)
         </th>
-        <th>
-            Booking
-        </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.eventname)
-        </td>
-        <td>
-            @Html.ActionLink("Book Now", "BookNow")
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.eventname)
+            </td>
+         
+        </tr>
+
+    }
+    @Html.ActionLink("Book Now", "BookNow")
+
 
 </table>
