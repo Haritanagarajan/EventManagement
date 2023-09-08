@@ -7,13 +7,14 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.IO;
 
 namespace EventManagement.Controllers
 {
     [Authorize]
     public class EventsController : Controller
     {
-        EventManagementEntities4     EventManagementEntities = new EventManagementEntities4();
+        EventManagement1Entities2 EventManagementEntities = new EventManagement1Entities2();
 
 
         // GET: Events
@@ -21,57 +22,77 @@ namespace EventManagement.Controllers
         [AllowAnonymous]
         public ActionResult EventsName()
         {
-            List<eventstable> events = EventManagementEntities.eventstables.ToList();
-            var eventNamesId = events.Select(e=>e.eventsid).ToList();
+            List<EventName> events = EventManagementEntities.EventNames.ToList();
             return View(events);
         }
 
         [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
-            List<eventstable> events = EventManagementEntities.eventstables.ToList();
-            var eventNamesId = events.Select(e => e.eventsid).ToList();
+            List<EventName> events = EventManagementEntities.EventNames.ToList();
             return View(events);
         }
 
 
         [HttpGet]
-        [Authorize(Roles ="Admin")]
+        [Authorize(Roles = "Admin")]
         public ActionResult EventsCreate(int? id)
         {
-            eventstable events = EventManagementEntities.eventstables.Find(id);
+            EventName events = EventManagementEntities.EventNames.Find(id);
             return View(events);
         }
 
 
         [HttpPost]
-        public ActionResult EventsCreate([Bind(Include = "eventsid,id,eventname")] eventstable eventnames)
+        [ValidateAntiForgeryToken]
+        public ActionResult EventsCreate(HttpPostedFileBase eventimage, [Bind(Include = "eventname1")] EventName eventnames)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
+                byte[] profile;
 
-                int lastUserId = EventManagementEntities.eventstables.Max(u => u.eventsid);
+                using (var reader = new BinaryReader(eventimage.InputStream))
+                {
+                    profile = reader.ReadBytes(eventimage.ContentLength);
+                }
+                eventnames.eventimage = profile;
 
-                eventnames.eventsid = lastUserId + 1;
+                int lastUserId = EventManagementEntities.EventNames.Max(u => u.eventid);
 
-                int lastUserId2 = (int)EventManagementEntities.eventstables.Max(u => u.id);
+                eventnames.eventid = lastUserId + 1;
 
-                eventnames.id = lastUserId2 + 1;
 
-                EventManagementEntities.eventstables.Add(eventnames);
+                EventManagementEntities.EventNames.Add(eventnames);
                 EventManagementEntities.SaveChanges();
                 RedirectToAction("Index");
             }
             return View();
         }
 
-       
+
+
+
+
 
         [HttpGet]
         [Authorize(Roles = "User")]
-        public ActionResult BookNow()
-        {  
-            return RedirectToAction("BookingCreate","Booking");
+        public ActionResult EventDirect(int? eventid)
+        {
+           if(eventid == 1)
+            {
+                TempData["eventid"] = eventid;
+
+                return RedirectToAction("BirthdayCreate", "Birthday");
+
+            }
+            if (eventid == 2)
+            {
+                TempData["eventid"] = eventid;
+
+                return RedirectToAction("BabyshowerCreate", "Babyshower");
+            }
+
+            return Content("Not a Valid event id");
         }
 
 
@@ -80,7 +101,7 @@ namespace EventManagement.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
-            eventstable eventstable = EventManagementEntities.eventstables.Find(id);
+            EventName eventstable = EventManagementEntities.EventNames.Find(id);
             return View(eventstable);
         }
 
@@ -88,8 +109,8 @@ namespace EventManagement.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EventDeleteConfirmed(int? id)
         {
-            eventstable tr = EventManagementEntities.eventstables.Find(id);
-            EventManagementEntities.eventstables.Remove(tr);
+            EventName tr = EventManagementEntities.EventNames.Find(id);
+            EventManagementEntities.EventNames.Remove(tr);
             EventManagementEntities.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -100,7 +121,7 @@ namespace EventManagement.Controllers
 
         public ActionResult Details(int? id)
         {
-            eventstable eventstable = EventManagementEntities.eventstables.Find(id);
+            EventName eventstable = EventManagementEntities.EventNames.Find(id);
             return View(eventstable);
         }
 
@@ -108,19 +129,19 @@ namespace EventManagement.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
-            eventstable eventstable = EventManagementEntities.eventstables.Find(id);
+            EventName eventstable = EventManagementEntities.EventNames.Find(id);
             return View(eventstable);
         }
 
         [HttpPost]
-        public ActionResult Edit(int? id, [Bind(Include = "eventname,IsDeleted")] eventstable updateevent)
+        public ActionResult Edit(int? id, HttpPostedFileBase eventimage,[Bind(Include = "eventname1,eventd")] EventName updateevent)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            eventstable existingUser = EventManagementEntities.eventstables.Find(id);
+            EventName existingUser = EventManagementEntities.EventNames.Find(id);
 
             if (existingUser == null)
             {
@@ -129,9 +150,20 @@ namespace EventManagement.Controllers
 
             if (ModelState.IsValid)
             {
+                if (eventimage != null && eventimage.ContentLength > 0)
+                {
+                    byte[] profile;
 
-                existingUser.eventname = updateevent.eventname;
-                existingUser.IsDeleted = updateevent.IsDeleted;
+                    using (var reader = new BinaryReader(eventimage.InputStream))
+                    {
+                        profile = reader.ReadBytes(eventimage.ContentLength);
+                    }
+
+                    existingUser.eventimage = profile;
+                }
+
+                existingUser.eventname1 = updateevent.eventname1;
+                existingUser.eventd = updateevent.eventd;
 
 
 

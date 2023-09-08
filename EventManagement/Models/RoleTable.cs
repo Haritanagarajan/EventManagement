@@ -11,23 +11,20 @@ namespace EventManagement.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
-    public partial class RoleTable
+    
+    public partial class Roletable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public RoleTable()
+        public Roletable()
         {
-            this.UserTables = new HashSet<UserTable>();
+            this.Usertables = new HashSet<Usertable>();
         }
-
+    
         public int TRoleid { get; set; }
-
-
         public string TRolename { get; set; }
-
-
+        public byte[] TRoleimage { get; set; }
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserTable> UserTables { get; set; }
+        public virtual ICollection<Usertable> Usertables { get; set; }
     }
 }

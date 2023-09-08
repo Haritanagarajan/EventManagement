@@ -7,15 +7,16 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.IO;
 
 namespace EventManagement.Controllers
 {
- 
+
 
     public class ThemeController : Controller
     {
         // GET: theme
-        EventManagementEntities4 EventManagementEntities = new EventManagementEntities4();
+        EventManagement1Entities2 EventManagementEntities = new EventManagement1Entities2();
 
         [Authorize(Roles = "Admin")]
 
@@ -36,10 +37,18 @@ namespace EventManagement.Controllers
         }
 
         [HttpPost]
-        public ActionResult ThemeCreate([Bind(Include = "themename")] themetable themes)
+        public ActionResult ThemeCreate(HttpPostedFileBase themeimage,[Bind(Include = "themename")] themetable themes)
         {
             if (ModelState.IsValid)
             {
+                byte[] profile;
+
+                using (var reader = new BinaryReader(themeimage.InputStream))
+                {
+                    profile = reader.ReadBytes(themeimage.ContentLength);
+                }
+                themes.themeimage = profile;
+
                 int lastUserId = EventManagementEntities.themetables.Max(u => u.themeid);
 
                 themes.themeid = lastUserId + 1;
@@ -88,7 +97,7 @@ namespace EventManagement.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(int? id, [Bind(Include = "themename,IsDeletedtheme")] themetable updatetheme)
+        public ActionResult Edit(int? id, HttpPostedFileBase themeimage ,[Bind(Include = "themename,themed")] themetable updatetheme)
         {
             if (id == null)
             {
@@ -104,9 +113,20 @@ namespace EventManagement.Controllers
 
             if (ModelState.IsValid)
             {
+                if (themeimage != null && themeimage.ContentLength > 0)
+                {
+                    byte[] profile;
+
+                    using (var reader = new BinaryReader(themeimage.InputStream))
+                    {
+                        profile = reader.ReadBytes(themeimage.ContentLength);
+                    }
+
+                    existingUser.themeimage = profile;
+                }
 
                 existingUser.themename = updatetheme.themename;
-                existingUser.IsDeletedtheme = updatetheme.IsDeletedtheme;
+                existingUser.themed = updatetheme.themed;
 
 
 

@@ -26,11 +26,11 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IsDeletedtime, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.timed, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
-                    @Html.EditorFor(model => model.IsDeletedtime)
-                    @Html.ValidationMessageFor(model => model.IsDeletedtime, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.timed)
+                    @Html.ValidationMessageFor(model => model.timed, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>

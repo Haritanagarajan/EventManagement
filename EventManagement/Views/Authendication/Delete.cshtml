@@ -1,4 +1,4 @@
-﻿@model EventManagement.Models.UserTable
+﻿@model EventManagement.Models.Usertable
 
 @{
     ViewBag.Title = "Delete";
@@ -9,7 +9,7 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>UserTable</h4>
+    <h4>Usertable</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -21,6 +21,14 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.TEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TEmail)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.TPassword)
         </dt>
 
@@ -29,11 +37,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.TEmail)
+            @Html.DisplayNameFor(model => model.TConfirmPassword)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TEmail)
+            @Html.DisplayFor(model => model.TConfirmPassword)
         </dd>
 
         <dt>
@@ -45,6 +53,22 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.TGender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TGender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TAge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TAge)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.LastLoginDate)
         </dt>
 
@@ -53,19 +77,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Tprofile)
+            @Html.DisplayNameFor(model => model.TProfife)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Tprofile)
+            <img src="data:image;base64,@Convert.ToBase64String(Model.TProfife)" alt="Employee Image" width="70" />
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.RoleTable.TRolename)
+            @Html.DisplayNameFor(model => model.Roletable.TRolename)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.RoleTable.TRolename)
+            @Html.DisplayFor(model => model.Roletable.TRolename)
         </dd>
 
     </dl>

@@ -7,6 +7,7 @@
 
 <h2>Details</h2>
 
+<h3>Are you sure you want to delete this?</h3>
 <div>
     <h4>locationtable</h4>
     <hr />
@@ -28,16 +29,29 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.IsDeletedlocation)
+            @Html.DisplayNameFor(model => model.locationd)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.IsDeletedlocation)
+            @Html.DisplayFor(model => model.locationd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.locationimage)
+        </dt>
+
+        <dd>
+            <img src="data:image;base64,@Convert.ToBase64String(Model.locationimage)" alt="Employee Image" width="70" />
         </dd>
 
     </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.locationid }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

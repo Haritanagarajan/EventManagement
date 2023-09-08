@@ -13,7 +13,7 @@ namespace EventManagement.Controllers
    
     public class DateController : Controller
     {
-        EventManagementEntities4 EventManagementEntities = new EventManagementEntities4();
+        EventManagement1Entities2 EventManagementEntities = new EventManagement1Entities2();
 
         [Authorize(Roles ="Admin")]
         public ActionResult Index()
@@ -32,7 +32,7 @@ namespace EventManagement.Controllers
         }
 
         [HttpPost]
-        public ActionResult DateCreate([Bind(Include = "dateid,datesavailable")] datetable dates)
+        public ActionResult DateCreate([Bind(Include = "dateid,datesavailable,dated")] datetable dates)
         {
             if(ModelState.IsValid)
             {
@@ -83,7 +83,7 @@ namespace EventManagement.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(int? id, [Bind(Include = "datesavailable,IsDeleteddate")] datetable updatedate)
+        public ActionResult Edit(int? id, [Bind(Include = "datesavailable,dated")] datetable updatedate)
         {
             if (id == null)
             {
@@ -101,7 +101,7 @@ namespace EventManagement.Controllers
             {
 
                 existingUser.datesavailable = updatedate.datesavailable;
-                existingUser.IsDeleteddate = updatedate.IsDeleteddate;
+                existingUser.dated = updatedate.dated;
 
 
 

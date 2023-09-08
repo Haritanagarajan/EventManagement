@@ -11,31 +11,25 @@ namespace EventManagement.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class locationtable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public locationtable()
         {
-            this.eventnames = new HashSet<eventname>();
+            this.babyshowertables = new HashSet<babyshowertable>();
+            this.birthdaytables = new HashSet<birthdaytable>();
         }
-
-        [Required(ErrorMessage = "locationid is required.")]
+    
         public int locationid { get; set; }
-
-
-        [Required(ErrorMessage = "locationname is required.")]
         public string locationname { get; set; }
-
-        [Required]
         public Nullable<long> pincode { get; set; }
-
-
-        [Required(ErrorMessage = "IsDeletedlocation is required.")]
-        public bool IsDeletedlocation { get; set; }
-
+        public bool locationd { get; set; }
+        public byte[] locationimage { get; set; }
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<eventname> eventnames { get; set; }
+        public virtual ICollection<babyshowertable> babyshowertables { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<birthdaytable> birthdaytables { get; set; }
     }
 }

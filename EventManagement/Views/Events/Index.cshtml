@@ -1,4 +1,4 @@
-﻿@model IEnumerable<EventManagement.Models.eventstable>
+﻿@model IEnumerable<EventManagement.Models.EventName>
 
 @{
     ViewBag.Title = "Index";
@@ -8,18 +8,18 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "EventsCreate")
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.id)
+            @Html.DisplayNameFor(model => model.eventname1)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.eventname)
+            @Html.DisplayNameFor(model => model.eventimage)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IsDeleted)
+            @Html.DisplayNameFor(model => model.eventd)
         </th>
         <th></th>
     </tr>
@@ -27,18 +27,22 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.id)
+            @Html.DisplayFor(modelItem => item.eventname1)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.eventname)
+            @if (item.eventimage != null)
+            {
+                <img src="data:image;base64,@Convert.ToBase64String(item.eventimage)" alt="Employee Image" width="70" />
+            }
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.eventd)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.IsDeleted)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.eventsid }) |
-            @Html.ActionLink("Details", "Details", new { id=item.eventsid }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.eventsid })
+            @Html.ActionLink("Edit", "Edit", new { id = item.eventid }) |
+            @Html.ActionLink("Details", "Details", new { id = item.eventid }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.eventid })
         </td>
     </tr>
 }

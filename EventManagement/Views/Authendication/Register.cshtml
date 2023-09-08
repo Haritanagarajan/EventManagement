@@ -1,73 +1,96 @@
-﻿﻿@model EventManagement.Models.UserTable
+﻿@model EventManagement.Models.Usertable
 
 @{
     ViewBag.Title = "Register";
-    Layout = "~/Views/Shared/LoginLogoutView.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<h2>Register</h2>
 
-
-@using (Html.BeginForm("Register", "Authendication", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Register", "Authendication", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal mt-3">
-        <h2 class="text-center">Register Now</h2>
-
+    <div class="form-horizontal">
+        <h4>Usertable</h4>
+        <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
 
         <div class="form-group">
-            @Html.LabelFor(model => model.TUsername, htmlAttributes: new { @class = "control-label col-md-2 " })
+            @Html.LabelFor(model => model.TUsername, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.TUsername, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your UserName", @type = "text" } })
+                @Html.EditorFor(model => model.TUsername, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.TUsername, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.TPassword, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.PasswordFor(model => model.TPassword, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your Password", @type = "password" } })
-                @Html.ValidationMessageFor(model => model.TPassword, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.TEmail, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.TEmail, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your EmailId", @type = "email" } })
+                @Html.EditorFor(model => model.TEmail, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.TEmail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TPassword, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TPassword, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TConfirmPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TConfirmPassword, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.TMobile, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.TMobile, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your  Mobile Number", @type = "text" } })
+                @Html.EditorFor(model => model.TMobile, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.TMobile, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Tprofile, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.TGender, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <input type="file" id="Tprofile" name="Tprofile" class="form-control" />
-                @Html.ValidationMessageFor(model => model.Tprofile, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.TGender, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TGender, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group mb-2 mt-3">
+        <div class="form-group">
+            @Html.LabelFor(model => model.TAge, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TAge, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TAge, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TProfife, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" id="TProfife" name="TProfife" class="form-control" />
+                @Html.ValidationMessageFor(model => model.TProfife, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Register" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
-<style>
-
-    .form-control {
-        width: 150%;
-    }
-</style>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

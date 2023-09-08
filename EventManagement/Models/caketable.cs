@@ -11,31 +11,24 @@ namespace EventManagement.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
-    public partial class eventstable
+    
+    public partial class caketable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public eventstable()
+        public caketable()
         {
-            this.eventnames = new HashSet<eventname>();
+            this.babyshowertables = new HashSet<babyshowertable>();
+            this.birthdaytables = new HashSet<birthdaytable>();
         }
-
-        [Required(ErrorMessage = "eventsid is required.")]
-        public int eventsid { get; set; }
-
-
-        public Nullable<int> id { get; set; }
-
-
-        [Required(ErrorMessage = "eventname is required.")]
-        public string eventname { get; set; }
-
-
-        [Required(ErrorMessage = "IsDeleted is required.")]
-        public bool IsDeleted { get; set; }
-
+    
+        public int cakeid { get; set; }
+        public string cakesavailable { get; set; }
+        public bool caked { get; set; }
+        public byte[] cakeimage { get; set; }
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<eventname> eventnames { get; set; }
+        public virtual ICollection<babyshowertable> babyshowertables { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<birthdaytable> birthdaytables { get; set; }
     }
 }

@@ -1,0 +1,110 @@
+﻿@model EventManagement.Models.birthdaytable
+
+@{
+    ViewBag.Title = "BirthdayCreate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>BirthdayCreate</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>birthdaytable</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+   
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.bdaydecorations, "bdaydecorations", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("bdaydecorations",ViewBag.Decor as SelectList, "Decor" , new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.bdaydecorations, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.bdaytheme, "bdaytheme", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("bdaytheme",ViewBag.Theme as SelectList , "Themes" ,new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.bdaytheme, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.bdaychairs, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.bdaychairs, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.bdaychairs, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.bdaytables, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.bdaytables, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.bdaytables, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+   
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.bdaydate, "bdaydate", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("bdaydate", ViewBag.Date as SelectList, "Date" , new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.bdaydate, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+   
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.bdaytime, "bdaytime", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("bdaytime", ViewBag.Time as SelectList , "Time" , new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.bdaytime, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.bdaycakes, "bdaycakes", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("bdaycakes", ViewBag.Cake as SelectList ,  "Cakes " ,  new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.bdaycakes, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.bdaylocation, "bdaylocation", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("bdaylocation", ViewBag.Location as SelectList , "Locations" ,new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.bdaylocation, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+  
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.bdaybeverages, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.bdaybeverages)
+                @Html.ValidationMessageFor(model => model.bdaybeverages, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

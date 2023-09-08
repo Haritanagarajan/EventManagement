@@ -130,8 +130,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AuthendicationController.cs" />
-    <Compile Include="Controllers\BookingController.cs" />
+    <Compile Include="Controllers\BabyshowerController.cs" />
+    <Compile Include="Controllers\BirthdayController.cs" />
+    <Compile Include="Controllers\CakeController.cs" />
     <Compile Include="Controllers\DateController.cs" />
+    <Compile Include="Controllers\DecorationController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\LocationController.cs" />
@@ -140,47 +143,56 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\babyshowertable.cs">
+      <DependentUpon>EM2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\birthdaytable.cs">
+      <DependentUpon>EM2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\caketable.cs">
+      <DependentUpon>EM2.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\datetable.cs">
-      <DependentUpon>EventManagement.tt</DependentUpon>
+      <DependentUpon>EM2.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\EventManagement.Context.cs">
+    <Compile Include="Models\decorationtable.cs">
+      <DependentUpon>EM2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EM2.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EventManagement.Context.tt</DependentUpon>
+      <DependentUpon>EM2.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\EventManagement.cs">
+    <Compile Include="Models\EM2.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EventManagement.tt</DependentUpon>
+      <DependentUpon>EM2.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\EventManagement.Designer.cs">
+    <Compile Include="Models\EM2.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EventManagement.edmx</DependentUpon>
+      <DependentUpon>EM2.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\eventname.cs">
-      <DependentUpon>EventManagement.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\eventstable.cs">
-      <DependentUpon>EventManagement.tt</DependentUpon>
+    <Compile Include="Models\EventName.cs">
+      <DependentUpon>EM2.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\locationtable.cs">
-      <DependentUpon>EventManagement.tt</DependentUpon>
+      <DependentUpon>EM2.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\RoleTable.cs">
-      <DependentUpon>EventManagement.tt</DependentUpon>
+    <Compile Include="Models\Roletable.cs">
+      <DependentUpon>EM2.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\themetable.cs">
-      <DependentUpon>EventManagement.tt</DependentUpon>
+      <DependentUpon>EM2.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\timetable.cs">
-      <DependentUpon>EventManagement.tt</DependentUpon>
+      <DependentUpon>EM2.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\UserTable.cs">
-      <DependentUpon>EventManagement.tt</DependentUpon>
+    <Compile Include="Models\Usertable.cs">
+      <DependentUpon>EM2.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Validate_User_Result.cs">
-      <DependentUpon>EventManagement.tt</DependentUpon>
+      <DependentUpon>EM2.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -204,15 +216,15 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\EventManagement.Context.tt">
+    <Content Include="Models\EM2.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EventManagement.edmx</DependentUpon>
-      <LastGenOutput>EventManagement.Context.cs</LastGenOutput>
+      <DependentUpon>EM2.edmx</DependentUpon>
+      <LastGenOutput>EM2.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\EventManagement.tt">
+    <Content Include="Models\EM2.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EventManagement.edmx</DependentUpon>
-      <LastGenOutput>EventManagement.cs</LastGenOutput>
+      <DependentUpon>EM2.edmx</DependentUpon>
+      <LastGenOutput>EM2.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -220,12 +232,12 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\EventManagement.edmx">
+    <EntityDeploy Include="Models\EM2.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>EventManagement.Designer.cs</LastGenOutput>
+      <LastGenOutput>EM2.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\EventManagement.edmx.diagram">
-      <DependentUpon>EventManagement.edmx</DependentUpon>
+    <Content Include="Models\EM2.edmx.diagram">
+      <DependentUpon>EM2.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -249,45 +261,57 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Authendication\Login.cshtml" />
     <Content Include="Views\Shared\LoginLogoutView.cshtml" />
-    <Content Include="Views\Authendication\Register.cshtml" />
-    <Content Include="Views\Events\EventsName.cshtml" />
-    <Content Include="Views\Events\EventsCreate.cshtml" />
-    <Content Include="Views\Booking\BookingDetails.cshtml" />
-    <Content Include="Views\Booking\BookingCreate.cshtml" />
     <Content Include="Views\Error\Error404.cshtml" />
     <Content Include="Views\Error\Error201.cshtml" />
     <Content Include="Views\Error\Error204.cshtml" />
     <Content Include="Views\Error\Error200.cshtml" />
-    <Content Include="Views\Date\DateCreate.cshtml" />
-    <Content Include="Views\Date\Index.cshtml" />
-    <Content Include="Views\Time\Index.cshtml" />
-    <Content Include="Views\Time\TimeCreate.cshtml" />
-    <Content Include="Views\location\Index.cshtml" />
-    <Content Include="Views\location\LocationCreate.cshtml" />
-    <Content Include="Views\theme\Index.cshtml" />
-    <Content Include="Views\theme\ThemeCreate.cshtml" />
+    <Content Include="Views\Authendication\Index.cshtml" />
+    <Content Include="Views\Authendication\Register.cshtml" />
+    <Content Include="Views\Authendication\Login.cshtml" />
     <Content Include="Views\Authendication\Delete.cshtml" />
     <Content Include="Views\Authendication\Details.cshtml" />
-    <Content Include="Views\Authendication\Index.cshtml" />
     <Content Include="Views\Authendication\Edit.cshtml" />
+    <Content Include="Views\Time\Index.cshtml" />
+    <Content Include="Views\Time\TimeCreate.cshtml" />
     <Content Include="Views\Time\Delete.cshtml" />
     <Content Include="Views\Time\Details.cshtml" />
     <Content Include="Views\Time\Edit.cshtml" />
-    <Content Include="Views\theme\Delete.cshtml" />
-    <Content Include="Views\theme\Details.cshtml" />
-    <Content Include="Views\theme\Edit.cshtml" />
-    <Content Include="Views\location\Delete.cshtml" />
-    <Content Include="Views\location\Details.cshtml" />
-    <Content Include="Views\location\Edit.cshtml" />
+    <Content Include="Views\Theme\Index.cshtml" />
+    <Content Include="Views\Theme\ThemeCreate.cshtml" />
+    <Content Include="Views\Theme\Delete.cshtml" />
+    <Content Include="Views\Theme\Details.cshtml" />
+    <Content Include="Views\Theme\Edit.cshtml" />
+    <Content Include="Views\Location\Index.cshtml" />
+    <Content Include="Views\Location\LocationCreate.cshtml" />
+    <Content Include="Views\Location\Delete.cshtml" />
+    <Content Include="Views\Location\Details.cshtml" />
+    <Content Include="Views\Location\Edit.cshtml" />
+    <Content Include="Views\Events\EventsName.cshtml" />
+    <Content Include="Views\Events\Index.cshtml" />
+    <Content Include="Views\Events\EventsCreate.cshtml" />
     <Content Include="Views\Events\Delete.cshtml" />
     <Content Include="Views\Events\Details.cshtml" />
     <Content Include="Views\Events\Edit.cshtml" />
-    <Content Include="Views\Events\Index.cshtml" />
-    <Content Include="Views\Date\Edit.cshtml" />
-    <Content Include="Views\Date\Details.cshtml" />
+    <Content Include="Views\Decoration\Index.cshtml" />
+    <Content Include="Views\Decoration\DecorCreate.cshtml" />
+    <Content Include="Views\Decoration\Delete.cshtml" />
+    <Content Include="Views\Decoration\Details.cshtml" />
+    <Content Include="Views\Decoration\Edit.cshtml" />
+    <Content Include="Views\Date\Index.cshtml" />
+    <Content Include="Views\Date\DateCreate.cshtml" />
     <Content Include="Views\Date\Delete.cshtml" />
+    <Content Include="Views\Date\Details.cshtml" />
+    <Content Include="Views\Date\Edit.cshtml" />
+    <Content Include="Views\Cake\Index.cshtml" />
+    <Content Include="Views\Cake\CakeCreate.cshtml" />
+    <Content Include="Views\Cake\Delete.cshtml" />
+    <Content Include="Views\Cake\Details.cshtml" />
+    <Content Include="Views\Cake\Edit.cshtml" />
+    <Content Include="Views\Birthday\BirthdayCreate.cshtml" />
+    <Content Include="Views\BabySHOWER\BabyshowerCreate.cshtml" />
+    <Content Include="Views\Birthday\BirthdayDetails.cshtml" />
+    <Content Include="Views\BabySHOWER\BabyshowerDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

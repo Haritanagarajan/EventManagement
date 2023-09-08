@@ -16,7 +16,7 @@
             @Html.DisplayNameFor(model => model.datesavailable)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IsDeleteddate)
+            @Html.DisplayNameFor(model => model.dated)
         </th>
         <th></th>
     </tr>
@@ -27,14 +27,13 @@
             @Html.DisplayFor(modelItem => item.datesavailable)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.IsDeleteddate)
+            @Html.DisplayFor(modelItem => item.dated)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.dateid }) |
-            @Html.ActionLink("Details", "Details", new { id = item.dateid }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.dateid })
+            @Html.ActionLink("Edit", "Edit", new { id=item.dateid }) |
+            @Html.ActionLink("Details", "Details", new { id=item.dateid }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.dateid })
         </td>
-
     </tr>
 }
 

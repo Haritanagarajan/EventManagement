@@ -7,16 +7,17 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.IO;
 
 namespace EventManagement.Controllers
 {
-    
+
 
     public class LocationController : Controller
     {
 
         // GET: location
-        EventManagementEntities4 EventManagementEntities = new EventManagementEntities4();
+        EventManagement1Entities2 EventManagementEntities = new EventManagement1Entities2();
 
         [Authorize(Roles = "Admin")]
         public ActionResult Index()
@@ -35,11 +36,19 @@ namespace EventManagement.Controllers
         }
 
         [HttpPost]
-        public ActionResult LocationCreate([Bind(Include = "locationname,pincode")] locationtable locations)
+        public ActionResult LocationCreate(HttpPostedFileBase locationimage, [Bind(Include = "locationname,pincode")] locationtable locations)
         {
             if (ModelState.IsValid)
             {
-                  int lastUserId = EventManagementEntities.locationtables.Max(u => u.locationid);
+                byte[] profile;
+
+                using (var reader = new BinaryReader(locationimage.InputStream))
+                {
+                    profile = reader.ReadBytes(locationimage.ContentLength);
+                }
+                locations.locationimage = profile;
+
+                int lastUserId = EventManagementEntities.locationtables.Max(u => u.locationid);
 
                 locations.locationid = lastUserId + 1;
                 EventManagementEntities.locationtables.Add(locations);
@@ -88,7 +97,7 @@ namespace EventManagement.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(int? id, [Bind(Include = "locationname,pincode,IsDeletedtlocation")] locationtable updatelocation)
+        public ActionResult Edit(int? id, HttpPostedFileBase locationimage,[Bind(Include = "locationname,pincode,locationd")] locationtable updatelocation)
         {
             if (id == null)
             {
@@ -104,8 +113,19 @@ namespace EventManagement.Controllers
 
             if (ModelState.IsValid)
             {
+                if (locationimage != null && locationimage.ContentLength > 0)
+                {
+                    byte[] profile;
 
-                existingUser.IsDeletedlocation = updatelocation.IsDeletedlocation;
+                    using (var reader = new BinaryReader(locationimage.InputStream))
+                    {
+                        profile = reader.ReadBytes(locationimage.ContentLength);
+                    }
+
+                    existingUser.locationimage = profile;
+                }
+
+                existingUser.locationd = updatelocation.locationd;
                 existingUser.pincode = updatelocation.pincode;
 
 

@@ -16,7 +16,7 @@
             @Html.DisplayNameFor(model => model.timesavailable)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IsDeletedtime)
+            @Html.DisplayNameFor(model => model.timed)
         </th>
         <th></th>
     </tr>
@@ -27,12 +27,12 @@
             @Html.DisplayFor(modelItem => item.timesavailable)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.IsDeletedtime)
+            @Html.DisplayFor(modelItem => item.timed)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.timeid }) |
-            @Html.ActionLink("Details", "Details", new { id = item.timeid }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.timeid })
+            @Html.ActionLink("Edit", "Edit", new { id=item.timeid }) |
+            @Html.ActionLink("Details", "Details", new { id=item.timeid }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.timeid })
         </td>
     </tr>
 }

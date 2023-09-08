@@ -7,15 +7,15 @@
 
 <h2>LocationCreate</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("LocationCreate", "Location", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>locationtable</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-       
+
 
         <div class="form-group">
             @Html.LabelFor(model => model.locationname, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -34,12 +34,20 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IsDeletedlocation, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.locationd, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
-                    @Html.EditorFor(model => model.IsDeletedlocation)
-                    @Html.ValidationMessageFor(model => model.IsDeletedlocation, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.locationd)
+                    @Html.ValidationMessageFor(model => model.locationd, "", new { @class = "text-danger" })
                 </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.locationimage, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" id="locationimage" name="locationimage" class="form-control" />
+                @Html.ValidationMessageFor(model => model.locationimage, "", new { @class = "text-danger" })
             </div>
         </div>
 

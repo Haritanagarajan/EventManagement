@@ -7,10 +7,10 @@
 
 <h2>Edit</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Theme", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>themetable</h4>
         <hr />
@@ -26,12 +26,20 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IsDeletedtheme, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.themed, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
-                    @Html.EditorFor(model => model.IsDeletedtheme)
-                    @Html.ValidationMessageFor(model => model.IsDeletedtheme, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.themed)
+                    @Html.ValidationMessageFor(model => model.themed, "", new { @class = "text-danger" })
                 </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.themeimage, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" id="themeimage" name="themeimage" class="form-control" />
+                @Html.ValidationMessageFor(model => model.themeimage, "", new { @class = "text-danger" })
             </div>
         </div>
 

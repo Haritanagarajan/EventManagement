@@ -29,11 +29,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.IsDeletedlocation)
+            @Html.DisplayNameFor(model => model.locationd)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.IsDeletedlocation)
+            @Html.DisplayFor(model => model.locationd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.locationimage)
+        </dt>
+
+        <dd>
+            <img src="data:image;base64,@Convert.ToBase64String(Model.locationimage)" alt="Employee Image" width="70" />
         </dd>
 
     </dl>

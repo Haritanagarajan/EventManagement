@@ -16,9 +16,14 @@
             @Html.DisplayNameFor(model => model.themename)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IsDeletedtheme)
+            @Html.DisplayNameFor(model => model.themed)
         </th>
-        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.themeimage)
+        </th>
+      <th>
+          Options
+      </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -27,8 +32,15 @@
             @Html.DisplayFor(modelItem => item.themename)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.IsDeletedtheme)
+            @Html.DisplayFor(modelItem => item.themed)
         </td>
+        <td>
+            @if (item.themeimage != null)
+            {
+                <img src="data:image;base64,@Convert.ToBase64String(item.themeimage)" alt="Employee Image" width="70" />
+            }
+        </td>
+        
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.themeid }) |
             @Html.ActionLink("Details", "Details", new { id = item.themeid }) |

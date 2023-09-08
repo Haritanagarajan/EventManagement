@@ -1,4 +1,4 @@
-﻿@model IEnumerable<EventManagement.Models.UserTable>
+﻿@model IEnumerable<EventManagement.Models.Usertable>
 
 @{
     ViewBag.Title = "Index";
@@ -7,31 +7,38 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Register")
-</p>
+
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.TUsername)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.TEmail)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.TPassword)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TEmail)
+            @Html.DisplayNameFor(model => model.TConfirmPassword)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.TMobile)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.TGender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TAge)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.LastLoginDate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Tprofile)
+            @Html.DisplayNameFor(model => model.TProfife)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.RoleTable.TRolename)
+            @Html.DisplayNameFor(model => model.Roletable.TRolename)
         </th>
         <th></th>
     </tr>
@@ -42,25 +49,34 @@
             @Html.DisplayFor(modelItem => item.TUsername)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.TEmail)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.TPassword)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TEmail)
+            @Html.DisplayFor(modelItem => item.TConfirmPassword)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.TMobile)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.TGender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TAge)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.LastLoginDate)
         </td>
         <td>
-            @if (item.Tprofile != null)
+            @if (item.TProfife != null)
             {
-                <img src="data:image;base64,@Convert.ToBase64String(item.Tprofile)" alt="Employee Image" width="70" />
+                <img src="data:image;base64,@Convert.ToBase64String(item.TProfife)" alt="Employee Image" width="70" />
             }
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.RoleTable.TRolename)
+            @Html.DisplayFor(modelItem => item.Roletable.TRolename)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.TUserid }) |

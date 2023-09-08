@@ -12,9 +12,8 @@ using System.Web.Security;
 
 namespace EventManagement.Controllers
 {
-    //database EventManagementEntities2
-    //usermodel  RoleTable      //RoleTables
-    //rolemodel  UserTable      //UserTables
+    //database EventManagement1Entities1
+
 
     [Authorize]
     [AllowAnonymous]
@@ -22,7 +21,7 @@ namespace EventManagement.Controllers
     public class AuthendicationController : Controller
     {
 
-        EventManagementEntities4 EventManagementEntities = new EventManagementEntities4();
+        EventManagement1Entities2 EventManagementEntities = new EventManagement1Entities2();
         // GET: Authendication
         [AllowAnonymous]
         public ActionResult Login()
@@ -35,33 +34,33 @@ namespace EventManagement.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            List<UserTable> users = EventManagementEntities.UserTables.ToList();
+            List<Usertable> users = EventManagementEntities.Usertables.ToList();
             return View(users);
         }
 
         [HttpGet]
         public ActionResult Register()
         {
-            List<UserTable> role = EventManagementEntities.UserTables.ToList();
+            List<Usertable> role = EventManagementEntities.Usertables.ToList();
             ViewBag.specificroles = new SelectList(role, "TRoleid", "TRolename");
             return View();
         }
 
         [HttpPost]
-        public ActionResult Register(HttpPostedFileBase Tprofile ,[Bind(Include = "TUsername,TPassword,TEmail,TMobile")] UserTable user)
+        public ActionResult Register(HttpPostedFileBase TProfife, [Bind(Include = "TUsername,TPassword,TConfirmPassword,TEmail,TMobile,TAge,TGender")] Usertable user)
         {
             if (ModelState.IsValid)
             {
 
                 byte[] profile;
 
-                using (var reader = new BinaryReader(Tprofile.InputStream))
+                using (var reader = new BinaryReader(TProfife.InputStream))
                 {
-                    profile = reader.ReadBytes(Tprofile.ContentLength);
+                    profile = reader.ReadBytes(TProfife.ContentLength);
                 }
-                user.Tprofile = profile;
+                user.TProfife = profile;
 
-                int lastUserId = EventManagementEntities.UserTables.Max(u => u.TUserid);
+                int lastUserId = EventManagementEntities.Usertables.Max(u => u.TUserid);
 
                 user.TUserid = lastUserId + 1;
 
@@ -69,11 +68,11 @@ namespace EventManagement.Controllers
 
                 user.LastLoginDate = actuallogindate;
 
-                int roleid = 2;
+                int roleid = 21;
 
                 user.TRoleid = roleid;
 
-                EventManagementEntities.UserTables.Add(user);
+                EventManagementEntities.Usertables.Add(user);
                 EventManagementEntities.SaveChanges();
                 return RedirectToAction("Login");
             }
@@ -84,9 +83,9 @@ namespace EventManagement.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult Login(UserTable user)
+        public ActionResult Login(Usertable user)
         {
-            EventManagementEntities4 usertabledatabase = new EventManagementEntities4();
+            EventManagement1Entities2 usertabledatabase = new EventManagement1Entities2();
 
             Validate_User_Result roleUser = usertabledatabase.Validate_User(user.TUsername, user.TPassword).FirstOrDefault();
             string message = string.Empty;
@@ -119,7 +118,7 @@ namespace EventManagement.Controllers
         [Authorize(Roles= "Admin")]
         public ActionResult Delete(int? id)
         {
-            UserTable user = EventManagementEntities.UserTables.Find(id);
+            Usertable user = EventManagementEntities.Usertables.Find(id);
             return View(user); 
         }
 
@@ -127,8 +126,8 @@ namespace EventManagement.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult UserDeleteConfirmed(int? id)
         {
-            UserTable tr = EventManagementEntities.UserTables.Find(id);
-            EventManagementEntities.UserTables.Remove(tr);
+            Usertable tr = EventManagementEntities.Usertables.Find(id);
+            EventManagementEntities.Usertables.Remove(tr);
             EventManagementEntities.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -139,7 +138,7 @@ namespace EventManagement.Controllers
 
         public ActionResult Details(int? id)
         {
-            UserTable user = EventManagementEntities.UserTables.Find(id);
+            Usertable user = EventManagementEntities.Usertables.Find(id);
             return View(user);
         }
 
@@ -147,21 +146,21 @@ namespace EventManagement.Controllers
         [Authorize(Roles="Admin")]
         public ActionResult Edit(int? id)
         {
-            UserTable user = EventManagementEntities.UserTables.Find(id);
-            List<RoleTable> role = EventManagementEntities.RoleTables.ToList();
+            Usertable user = EventManagementEntities.Usertables.Find(id);
+            List<Roletable> role = EventManagementEntities.Roletables.ToList();
             ViewBag.Roles = new SelectList(role, "TRoleid", "TRolename");
             return View(user);
         }
 
         [HttpPost]
-        public ActionResult Edit(int? id, HttpPostedFileBase Tprofile, [Bind(Include = "TUsername,TPassword,TEmail,TMobile,TRoleid")] UserTable updatedUser)
+        public ActionResult Edit(int? id, HttpPostedFileBase TProfife, [Bind(Include = "TUsername,TPassword,TEmail,TMobile,TRoleid")] Usertable updatedUser)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            UserTable existingUser = EventManagementEntities.UserTables.Find(id);
+            Usertable existingUser = EventManagementEntities.Usertables.Find(id);
 
             if (existingUser == null)
             {
@@ -170,16 +169,16 @@ namespace EventManagement.Controllers
 
             if (ModelState.IsValid)
             {
-                if (Tprofile != null && Tprofile.ContentLength > 0)
+                if (TProfife != null && TProfife.ContentLength > 0)
                 {
                     byte[] profile;
 
-                    using (var reader = new BinaryReader(Tprofile.InputStream))
+                    using (var reader = new BinaryReader(TProfife.InputStream))
                     {
-                        profile = reader.ReadBytes(Tprofile.ContentLength);
+                        profile = reader.ReadBytes(TProfife.ContentLength);
                     }
 
-                    existingUser.Tprofile = profile;
+                    existingUser.TProfife = profile;
                 }
 
                 existingUser.TUsername = updatedUser.TUsername;

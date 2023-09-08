@@ -11,12 +11,12 @@ using System.Web.Mvc;
 
 namespace EventManagement.Controllers
 {
-   
+
 
     public class TimeController : Controller
     {
         // GET: Time
-        EventManagementEntities4 EventManagementEntities = new EventManagementEntities4();
+        EventManagement1Entities2 EventManagementEntities = new EventManagement1Entities2();
 
         [Authorize(Roles = "Admin")]
 
@@ -36,7 +36,7 @@ namespace EventManagement.Controllers
         }
 
         [HttpPost]
-        public ActionResult TimeCreate([Bind(Include = "timesavailable,IsDeletedtime")] timetable timess)
+        public ActionResult TimeCreate([Bind(Include = "timeid,timesavailable,timed")] timetable timess)
         {
             if (ModelState.IsValid)
             {
@@ -85,12 +85,12 @@ namespace EventManagement.Controllers
         public ActionResult Edit(int? id)
         {
             timetable time = EventManagementEntities.timetables.Find(id);
-         
+
             return View(time);
         }
 
         [HttpPost]
-        public ActionResult Edit(int? id,[Bind(Include = "timeid,timesavailable,IsDeletedtime")] timetable updatetime)
+        public ActionResult Edit(int? id, [Bind(Include = "timesavailable,timed")] timetable updatetime)
         {
             if (id == null)
             {
@@ -106,12 +106,10 @@ namespace EventManagement.Controllers
 
             if (ModelState.IsValid)
             {
-               
-                existingUser.timeid = updatetime.timeid;
-                existingUser.timesavailable = updatetime.timesavailable;
-                existingUser.IsDeletedtime = updatetime.IsDeletedtime;
-               
 
+                existingUser.timesavailable = updatetime.timesavailable;
+                existingUser.timed = updatetime.timed;
+           
 
                 EventManagementEntities.Entry(existingUser).State = EntityState.Modified;
 

@@ -1,0 +1,50 @@
+﻿@model IEnumerable<EventManagement.Models.decorationtable>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "DecorCreate")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.decoravailable)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.decord)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.decorimage)
+        </th>
+        <th>options</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.decoravailable)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.decord)
+        </td>
+        <td>
+            @if (item.decorimage != null)
+            {
+                <img src="data:image;base64,@Convert.ToBase64String(item.decorimage)" alt="Employee Image" width="70" />
+            }
+        </td>
+       
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.decorid }) |
+            @Html.ActionLink("Details", "Details", new { id = item.decorid }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.decorid })
+        </td>
+    </tr>
+}
+
+</table>

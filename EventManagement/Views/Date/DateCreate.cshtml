@@ -15,7 +15,7 @@
         <h4>datetable</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-      
+       
 
         <div class="form-group">
             @Html.LabelFor(model => model.datesavailable, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -26,11 +26,11 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IsDeleteddate, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.dated, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
-                    @Html.EditorFor(model => model.IsDeleteddate)
-                    @Html.ValidationMessageFor(model => model.IsDeleteddate, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.dated)
+                    @Html.ValidationMessageFor(model => model.dated, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>

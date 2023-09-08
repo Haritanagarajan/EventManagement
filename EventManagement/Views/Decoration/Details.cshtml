@@ -1,0 +1,43 @@
+﻿@model EventManagement.Models.decorationtable
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>decorationtable</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.decoravailable)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.decoravailable)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.decord)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.decord)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.decorimage)
+        </dt>
+
+        <dd>
+            <img src="data:image;base64,@Convert.ToBase64String(Model.decorimage)" alt="Employee Image" width="70" />
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.decorid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -11,26 +11,24 @@ namespace EventManagement.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class themetable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public themetable()
         {
-            this.eventnames = new HashSet<eventname>();
+            this.babyshowertables = new HashSet<babyshowertable>();
+            this.birthdaytables = new HashSet<birthdaytable>();
         }
-
-        [Required(ErrorMessage = "themeid is required.")]
+    
         public int themeid { get; set; }
-
-        [Required(ErrorMessage = "themename is required.")]
         public string themename { get; set; }
-
-        [Required(ErrorMessage = "IsDeletedTheme is required.")]
-        public bool IsDeletedtheme { get; set; }
+        public bool themed { get; set; }
+        public byte[] themeimage { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<eventname> eventnames { get; set; }
+        public virtual ICollection<babyshowertable> babyshowertables { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<birthdaytable> birthdaytables { get; set; }
     }
 }
