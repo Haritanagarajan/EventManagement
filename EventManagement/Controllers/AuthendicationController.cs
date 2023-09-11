@@ -21,7 +21,7 @@ namespace EventManagement.Controllers
     public class AuthendicationController : Controller
     {
 
-        EventManagement1Entities2 EventManagementEntities = new EventManagement1Entities2();
+        EventManagement1Entities3 EventManagementEntities = new EventManagement1Entities3();
         // GET: Authendication
         [AllowAnonymous]
         public ActionResult Login()
@@ -85,7 +85,7 @@ namespace EventManagement.Controllers
         [AllowAnonymous]
         public ActionResult Login(Usertable user)
         {
-            EventManagement1Entities2 usertabledatabase = new EventManagement1Entities2();
+            EventManagement1Entities3 usertabledatabase = new EventManagement1Entities3();
 
             Validate_User_Result roleUser = usertabledatabase.Validate_User(user.TUsername, user.TPassword).FirstOrDefault();
             string message = string.Empty;

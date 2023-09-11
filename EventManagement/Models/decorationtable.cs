@@ -17,8 +17,13 @@ namespace EventManagement.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public decorationtable()
         {
+            this.Anniversaries = new HashSet<Anniversary>();
             this.babyshowertables = new HashSet<babyshowertable>();
+            this.BachelorParties = new HashSet<BachelorParty>();
             this.birthdaytables = new HashSet<birthdaytable>();
+            this.CocktailParties = new HashSet<CocktailParty>();
+            this.Reunions = new HashSet<Reunion>();
+            this.Weddings = new HashSet<Wedding>();
         }
     
         public int decorid { get; set; }
@@ -27,8 +32,18 @@ namespace EventManagement.Models
         public byte[] decorimage { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Anniversary> Anniversaries { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<babyshowertable> babyshowertables { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BachelorParty> BachelorParties { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<birthdaytable> birthdaytables { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CocktailParty> CocktailParties { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Reunion> Reunions { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Wedding> Weddings { get; set; }
     }
 }

@@ -9,7 +9,7 @@ namespace EventManagement.Controllers
 {
     public class BirthdayController : Controller
     {
-        EventManagement1Entities2 EventManagementEntities = new EventManagement1Entities2();
+        EventManagement1Entities3 EventManagementEntities = new EventManagement1Entities3();
 
        
         // GET: Booking

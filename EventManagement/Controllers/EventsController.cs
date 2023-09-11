@@ -14,7 +14,7 @@ namespace EventManagement.Controllers
     [Authorize]
     public class EventsController : Controller
     {
-        EventManagement1Entities2 EventManagementEntities = new EventManagement1Entities2();
+        EventManagement1Entities3 EventManagementEntities = new EventManagement1Entities3();
 
 
         // GET: Events
@@ -90,6 +90,36 @@ namespace EventManagement.Controllers
                 TempData["eventid"] = eventid;
 
                 return RedirectToAction("BabyshowerCreate", "Babyshower");
+            }
+            if (eventid == 3)
+            {
+                TempData["eventid"] = eventid;
+
+                return RedirectToAction("AnniCreate", "Anniversary");
+            }
+            if (eventid == 4)
+            {
+                TempData["eventid"] = eventid;
+
+                return RedirectToAction("BachelorCreate", "Bachelor");
+            }
+            if (eventid == 5)
+            {
+                TempData["eventid"] = eventid;
+
+                return RedirectToAction("CocktailCreate", "Cocktail");
+            }
+            if (eventid == 6)
+            {
+                TempData["eventid"] = eventid;
+
+                return RedirectToAction("ReunionCreate", "Reunion");
+            }
+            if (eventid == 7)
+            {
+                TempData["eventid"] = eventid;
+
+                return RedirectToAction("WeddingCreate", "Wedding");
             }
 
             return Content("Not a Valid event id");

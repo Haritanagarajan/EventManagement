@@ -15,10 +15,10 @@ namespace EventManagement.Models
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class EventManagement1Entities2 : DbContext
+    public partial class EventManagement1Entities3 : DbContext
     {
-        public EventManagement1Entities2()
-            : base("name=EventManagement1Entities2")
+        public EventManagement1Entities3()
+            : base("name=EventManagement1Entities3")
         {
         }
     
@@ -27,17 +27,23 @@ namespace EventManagement.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<AddtoCart> AddtoCarts { get; set; }
+        public virtual DbSet<Anniversary> Anniversaries { get; set; }
         public virtual DbSet<babyshowertable> babyshowertables { get; set; }
+        public virtual DbSet<BachelorParty> BachelorParties { get; set; }
         public virtual DbSet<birthdaytable> birthdaytables { get; set; }
         public virtual DbSet<caketable> caketables { get; set; }
+        public virtual DbSet<CocktailParty> CocktailParties { get; set; }
         public virtual DbSet<datetable> datetables { get; set; }
         public virtual DbSet<decorationtable> decorationtables { get; set; }
         public virtual DbSet<EventName> EventNames { get; set; }
         public virtual DbSet<locationtable> locationtables { get; set; }
+        public virtual DbSet<Reunion> Reunions { get; set; }
         public virtual DbSet<Roletable> Roletables { get; set; }
         public virtual DbSet<themetable> themetables { get; set; }
         public virtual DbSet<timetable> timetables { get; set; }
         public virtual DbSet<Usertable> Usertables { get; set; }
+        public virtual DbSet<Wedding> Weddings { get; set; }
     
         public virtual ObjectResult<Validate_User_Result> Validate_User(string username, string password)
         {

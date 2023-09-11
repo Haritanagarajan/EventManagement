@@ -129,70 +129,93 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AnniversaryController.cs" />
     <Compile Include="Controllers\AuthendicationController.cs" />
     <Compile Include="Controllers\BabyshowerController.cs" />
+    <Compile Include="Controllers\BachelorController.cs" />
     <Compile Include="Controllers\BirthdayController.cs" />
     <Compile Include="Controllers\CakeController.cs" />
+    <Compile Include="Controllers\CocktailController.cs" />
     <Compile Include="Controllers\DateController.cs" />
     <Compile Include="Controllers\DecorationController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\LocationController.cs" />
+    <Compile Include="Controllers\ReunionController.cs" />
     <Compile Include="Controllers\ThemeController.cs" />
     <Compile Include="Controllers\TimeController.cs" />
+    <Compile Include="Controllers\WeddingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AddtoCart.cs">
+      <DependentUpon>EM1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Anniversary.cs">
+      <DependentUpon>EM1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\babyshowertable.cs">
-      <DependentUpon>EM2.tt</DependentUpon>
+      <DependentUpon>EM1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BachelorParty.cs">
+      <DependentUpon>EM1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\birthdaytable.cs">
-      <DependentUpon>EM2.tt</DependentUpon>
+      <DependentUpon>EM1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\caketable.cs">
-      <DependentUpon>EM2.tt</DependentUpon>
+      <DependentUpon>EM1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CocktailParty.cs">
+      <DependentUpon>EM1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\datetable.cs">
-      <DependentUpon>EM2.tt</DependentUpon>
+      <DependentUpon>EM1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\decorationtable.cs">
-      <DependentUpon>EM2.tt</DependentUpon>
+      <DependentUpon>EM1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\EM2.Context.cs">
+    <Compile Include="Models\EM1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EM2.Context.tt</DependentUpon>
+      <DependentUpon>EM1.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\EM2.cs">
+    <Compile Include="Models\EM1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EM2.tt</DependentUpon>
+      <DependentUpon>EM1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\EM2.Designer.cs">
+    <Compile Include="Models\EM1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EM2.edmx</DependentUpon>
+      <DependentUpon>EM1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\EventName.cs">
-      <DependentUpon>EM2.tt</DependentUpon>
+      <DependentUpon>EM1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\locationtable.cs">
-      <DependentUpon>EM2.tt</DependentUpon>
+      <DependentUpon>EM1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reunion.cs">
+      <DependentUpon>EM1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Roletable.cs">
-      <DependentUpon>EM2.tt</DependentUpon>
+      <DependentUpon>EM1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\themetable.cs">
-      <DependentUpon>EM2.tt</DependentUpon>
+      <DependentUpon>EM1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\timetable.cs">
-      <DependentUpon>EM2.tt</DependentUpon>
+      <DependentUpon>EM1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Usertable.cs">
-      <DependentUpon>EM2.tt</DependentUpon>
+      <DependentUpon>EM1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Validate_User_Result.cs">
-      <DependentUpon>EM2.tt</DependentUpon>
+      <DependentUpon>EM1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Wedding.cs">
+      <DependentUpon>EM1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -216,15 +239,15 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\EM2.Context.tt">
+    <Content Include="Models\EM1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EM2.edmx</DependentUpon>
-      <LastGenOutput>EM2.Context.cs</LastGenOutput>
+      <DependentUpon>EM1.edmx</DependentUpon>
+      <LastGenOutput>EM1.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\EM2.tt">
+    <Content Include="Models\EM1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EM2.edmx</DependentUpon>
-      <LastGenOutput>EM2.cs</LastGenOutput>
+      <DependentUpon>EM1.edmx</DependentUpon>
+      <LastGenOutput>EM1.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -232,12 +255,12 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\EM2.edmx">
+    <EntityDeploy Include="Models\EM1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>EM2.Designer.cs</LastGenOutput>
+      <LastGenOutput>EM1.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\EM2.edmx.diagram">
-      <DependentUpon>EM2.edmx</DependentUpon>
+    <Content Include="Models\EM1.edmx.diagram">
+      <DependentUpon>EM1.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -312,9 +335,20 @@
     <Content Include="Views\BabySHOWER\BabyshowerCreate.cshtml" />
     <Content Include="Views\Birthday\BirthdayDetails.cshtml" />
     <Content Include="Views\BabySHOWER\BabyshowerDetails.cshtml" />
+    <Content Include="Views\Anniversary\AnniCreate.cshtml" />
+    <Content Include="Views\Anniversary\AnniDetails.cshtml" />
+    <Content Include="Views\Cocktail\CocktailCreate.cshtml" />
+    <Content Include="Views\Cocktail\CocktailDetails.cshtml" />
+    <Content Include="Views\Bachelor\BachelorCreate.cshtml" />
+    <Content Include="Views\Bachelor\BachelorDetails.cshtml" />
+    <Content Include="Views\Reunion\ReunionCreate.cshtml" />
+    <Content Include="Views\Reunion\ReunionDetails.cshtml" />
+    <Content Include="Views\Wedding\WeddingCreate.cshtml" />
+    <Content Include="Views\Wedding\WeddingDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Assets\" />
     <Folder Include="Models\DAL\" />
   </ItemGroup>
   <ItemGroup>

@@ -12,28 +12,31 @@ namespace EventManagement.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class birthdaytable
+    public partial class Anniversary
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public birthdaytable()
+        public Anniversary()
         {
             this.AddtoCarts = new HashSet<AddtoCart>();
         }
     
         public int id { get; set; }
-        public Nullable<int> bdayuserid { get; set; }
-        public Nullable<int> bdayid { get; set; }
-        public Nullable<int> bdaydecorations { get; set; }
-        public Nullable<int> bdaytheme { get; set; }
-        public Nullable<int> bdaychairs { get; set; }
-        public Nullable<int> bdaytables { get; set; }
-        public Nullable<int> bdayhallcapacity { get; set; }
-        public Nullable<int> bdaydate { get; set; }
-        public Nullable<int> bdaytime { get; set; }
-        public Nullable<int> bdaycakes { get; set; }
-        public Nullable<int> bdaylocation { get; set; }
-        public Nullable<long> bdayeventcost { get; set; }
-        public bool bdaybeverages { get; set; }
+        public Nullable<int> anniuserid { get; set; }
+        public Nullable<int> anniid { get; set; }
+        public Nullable<int> annidecorations { get; set; }
+        public Nullable<int> annitheme { get; set; }
+        public Nullable<int> annichairs { get; set; }
+        public Nullable<int> annitables { get; set; }
+        public Nullable<int> annihallcapacity { get; set; }
+        public Nullable<int> annidate { get; set; }
+        public Nullable<int> annitime { get; set; }
+        public Nullable<int> annicakes { get; set; }
+        public Nullable<int> annilocation { get; set; }
+        public Nullable<long> annieventcost { get; set; }
+        public bool annibeverages { get; set; }
+        public bool anniPhotography { get; set; }
+        public bool anniStyling { get; set; }
+        public bool anniHospitality { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AddtoCart> AddtoCarts { get; set; }

@@ -12,28 +12,28 @@ namespace EventManagement.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class babyshowertable
+    public partial class BachelorParty
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public babyshowertable()
+        public BachelorParty()
         {
             this.AddtoCarts = new HashSet<AddtoCart>();
         }
     
         public int id { get; set; }
-        public Nullable<int> babyshoweruserid { get; set; }
-        public Nullable<int> babyshowerid { get; set; }
-        public Nullable<int> babyshowerdecorations { get; set; }
-        public Nullable<int> babyshowertheme { get; set; }
-        public Nullable<int> babyshowerchairs { get; set; }
-        public Nullable<int> babyshowertables { get; set; }
-        public Nullable<int> babyshowerhallcapacity { get; set; }
-        public Nullable<int> babyshowerdate { get; set; }
-        public Nullable<int> babyshowertime { get; set; }
-        public Nullable<int> babyshowercakes { get; set; }
-        public Nullable<int> babyshowerlocation { get; set; }
-        public Nullable<long> babyshowereventcost { get; set; }
-        public bool babyshowerbeverages { get; set; }
+        public Nullable<int> bacheloruserid { get; set; }
+        public Nullable<int> bachelorid { get; set; }
+        public Nullable<int> bachelordecorations { get; set; }
+        public Nullable<int> bachelortheme { get; set; }
+        public Nullable<int> bachelorchairs { get; set; }
+        public Nullable<int> bachelortables { get; set; }
+        public Nullable<int> bachelorhallcapacity { get; set; }
+        public Nullable<int> bachelordate { get; set; }
+        public Nullable<int> bachelortime { get; set; }
+        public Nullable<int> bachelorcakes { get; set; }
+        public Nullable<int> bachelorlocation { get; set; }
+        public Nullable<long> bacheloreventcost { get; set; }
+        public bool bachelorbeverages { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AddtoCart> AddtoCarts { get; set; }

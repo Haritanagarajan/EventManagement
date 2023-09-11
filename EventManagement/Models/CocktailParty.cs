@@ -12,38 +12,38 @@ namespace EventManagement.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class babyshowertable
+    public partial class CocktailParty
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public babyshowertable()
+        public CocktailParty()
         {
             this.AddtoCarts = new HashSet<AddtoCart>();
         }
     
         public int id { get; set; }
-        public Nullable<int> babyshoweruserid { get; set; }
-        public Nullable<int> babyshowerid { get; set; }
-        public Nullable<int> babyshowerdecorations { get; set; }
-        public Nullable<int> babyshowertheme { get; set; }
-        public Nullable<int> babyshowerchairs { get; set; }
-        public Nullable<int> babyshowertables { get; set; }
-        public Nullable<int> babyshowerhallcapacity { get; set; }
-        public Nullable<int> babyshowerdate { get; set; }
-        public Nullable<int> babyshowertime { get; set; }
-        public Nullable<int> babyshowercakes { get; set; }
-        public Nullable<int> babyshowerlocation { get; set; }
-        public Nullable<long> babyshowereventcost { get; set; }
-        public bool babyshowerbeverages { get; set; }
+        public Nullable<int> cockuserid { get; set; }
+        public Nullable<int> cockid { get; set; }
+        public Nullable<int> cockdecorations { get; set; }
+        public Nullable<int> cocktheme { get; set; }
+        public Nullable<int> cockchairs { get; set; }
+        public Nullable<int> cocktables { get; set; }
+        public Nullable<int> cockhallcapacity { get; set; }
+        public Nullable<int> cockdate { get; set; }
+        public Nullable<int> cocktime { get; set; }
+        public Nullable<int> cockcakes { get; set; }
+        public Nullable<int> cocklocation { get; set; }
+        public Nullable<long> cockeventcost { get; set; }
+        public bool cockbeverages { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AddtoCart> AddtoCarts { get; set; }
-        public virtual Usertable Usertable { get; set; }
-        public virtual EventName EventName { get; set; }
-        public virtual decorationtable decorationtable { get; set; }
-        public virtual themetable themetable { get; set; }
-        public virtual datetable datetable { get; set; }
-        public virtual timetable timetable { get; set; }
         public virtual caketable caketable { get; set; }
+        public virtual decorationtable decorationtable { get; set; }
+        public virtual datetable datetable { get; set; }
+        public virtual EventName EventName { get; set; }
         public virtual locationtable locationtable { get; set; }
+        public virtual themetable themetable { get; set; }
+        public virtual timetable timetable { get; set; }
+        public virtual Usertable Usertable { get; set; }
     }
 }

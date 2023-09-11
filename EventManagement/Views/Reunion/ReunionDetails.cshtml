@@ -1,0 +1,147 @@
+﻿@model EventManagement.Models.Reunion
+
+@{
+    ViewBag.Title = "ReunionDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ReunionDetails</h2>
+
+<div>
+    <h4>Reunion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.reunionchairs)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.reunionchairs)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.reuniontables)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.reuniontables)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.reunionhallcapacity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.reunionhallcapacity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.reunioneventcost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.reunioneventcost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.reunionbeverages)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.reunionbeverages)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.reunionPhotography)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.reunionPhotography)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.reunionStyling)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.reunionStyling)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.reunionHospitality)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.reunionHospitality)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.caketable.cakesavailable)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.caketable.cakesavailable)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.datetable.datesavailable)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.datetable.datesavailable)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.decorationtable.decoravailable)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.decorationtable.decoravailable)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EventName.eventname1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventName.eventname1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.locationtable.locationname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.locationtable.locationname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usertable.TUsername)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usertable.TUsername)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.themetable.themename)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.themetable.themename)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.timetable.timesavailable)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.timetable.timesavailable)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.id }) |*@
+    @Html.ActionLink("Back to List", "Index")
+</p>

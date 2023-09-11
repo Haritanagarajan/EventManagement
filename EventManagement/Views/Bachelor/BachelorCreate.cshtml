@@ -1,0 +1,109 @@
+﻿@model EventManagement.Models.BachelorParty
+
+@{
+    ViewBag.Title = "BachelorCreate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>BachelorCreate</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>BachelorParty</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.bachelordecorations, "bachelordecorations", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("bachelordecorations", ViewBag.Decor as SelectList, "Decor", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.bachelordecorations, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.bachelortheme, "bachelortheme", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("bachelortheme", ViewBag.Theme as SelectList, "Themes", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.bachelortheme, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.bachelorchairs, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.bachelorchairs, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.bachelorchairs, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.bachelortables, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.bachelortables, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.bachelortables, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.bachelordate, "bachelordate", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("bachelordate", ViewBag.Date as SelectList, "Date", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.bachelordate, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.bachelortime, "bachelortime", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("bachelortime", ViewBag.Time as SelectList, "Time", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.bachelortime, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.bachelorcakes, "bachelorcakes", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("bachelorcakes", ViewBag.Cake as SelectList, "Cakes ", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.bachelorcakes, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.bachelorlocation, "bachelorlocation", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("bachelorlocation", ViewBag.Location as SelectList, "Locations", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.bachelorlocation, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.bachelorbeverages, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.bachelorbeverages)
+                @Html.ValidationMessageFor(model => model.bachelorbeverages, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

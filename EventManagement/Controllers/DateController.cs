@@ -13,7 +13,7 @@ namespace EventManagement.Controllers
    
     public class DateController : Controller
     {
-        EventManagement1Entities2 EventManagementEntities = new EventManagement1Entities2();
+        EventManagement1Entities3 EventManagementEntities = new EventManagement1Entities3();
 
         [Authorize(Roles ="Admin")]
         public ActionResult Index()

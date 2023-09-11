@@ -7,17 +7,16 @@ using System.Web.Mvc;
 
 namespace EventManagement.Controllers
 {
-    public class BabyshowerController : Controller
+    public class CocktailController : Controller
     {
-        // GET: BabySHOWER
+        // GET: Cocktail
         EventManagement1Entities3 EventManagementEntities = new EventManagement1Entities3();
 
 
         // GET: Booking
         [HttpGet]
         [Authorize(Roles = "User")]
-
-        public ActionResult BabyshowerCreate()
+        public ActionResult CocktailCreate()
         {
 
             List<datetable> date = EventManagementEntities.datetables.ToList();
@@ -44,27 +43,30 @@ namespace EventManagement.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult BabyshowerCreate([Bind(Include = "babyshowerdecorations,babyshowertheme,babyshowerchairs,babyshowertables,babyshowerhallcapacity,babyshowerdate,babyshowertime,babyshowercakes,babyshowerlocation,babyshowereventcost,babyshowerbeverages")] babyshowertable baby)
+        public ActionResult CocktailCreate([Bind(Include = "cockdecorations,cocktheme,cockchairs,cocktables,cockhallcapacity,cockdate,cocktime,cockcakes,cocklocation,cockeventcost,cockbeverages")] CocktailParty cock)
         {
             if (ModelState.IsValid)
             {
-                int lastUserId = EventManagementEntities.babyshowertables.Any() ? EventManagementEntities.babyshowertables.Max(u => u.id) : 0;
+
+                int lastUserId = EventManagementEntities.CocktailParties.Any() ? EventManagementEntities.CocktailParties.Max(u => u.id) : 0;
+
                 int? userId = TempData["UserId"] as int?;
-                int? babyeventId = TempData["eventid"] as int?;
-                if (userId.HasValue && babyeventId.HasValue)
+
+                int? cockeventId = TempData["eventid"] as int?;
+                if (userId.HasValue && cockeventId.HasValue)
                 {
-                    baby.babyshoweruserid = userId.Value;
-                    baby.babyshowerid = babyeventId.Value;
+                    cock.cockuserid = userId.Value;
+                    cock.cockid = cockeventId.Value;
 
                 }
 
-                baby.id = lastUserId + 1;
-                baby.babyshowerhallcapacity = 500;
-                baby.babyshowereventcost = 1000;
+                cock.id = lastUserId + 1;
+                cock.cockhallcapacity = 500;
+                cock.cockeventcost = 1000;
 
-                EventManagementEntities.babyshowertables.Add(baby);
+                EventManagementEntities.CocktailParties.Add(cock);
                 EventManagementEntities.SaveChanges();
-                return RedirectToAction("BabyshowerDetails", new { id = baby.id });
+                return RedirectToAction("CocktailDetails", new { id = cock.id });
             }
             return View();
         }
@@ -73,12 +75,11 @@ namespace EventManagement.Controllers
 
         [HttpGet]
         [Authorize(Roles = "User")]
-        public ActionResult BabyshowerDetails(int? id)
+        public ActionResult CocktailDetails(int? id)
         {
-
             try
             {
-                babyshowertable selectedevent = (from s in EventManagementEntities.babyshowertables where s.id == id select s).FirstOrDefault();
+                CocktailParty selectedevent = (from s in EventManagementEntities.CocktailParties where s.id == id select s).FirstOrDefault();
                 return View(selectedevent);
             }
             catch (Exception ex)
@@ -90,20 +91,3 @@ namespace EventManagement.Controllers
         }
     }
 }
-
-
-
-//id int primary key,
-//babyshoweruserid int references Usertable(TUserid),
-//babyshowerid int references EventNames(eventid),
-//babyshowerdecorations int references decorationtable(decorid),
-//babyshowertheme int references themetable(themeid),
-//babyshowerchairs int,
-//babyshowertables int,
-//babyshowerhallcapacity int,
-//babyshowerdate int references datetable(dateid),
-//babyshowertime int references timetable(timeid),
-//babyshowercakes int references caketable(cakeid),
-//babyshowerlocation  int references locationtable(locationid),
-//babyshowereventcost bigint,
-//babyshowerbeverages bit not null default 0
