@@ -153,7 +153,7 @@ namespace EventManagement.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(int? id, HttpPostedFileBase TProfife, [Bind(Include = "TUsername,TPassword,TEmail,TMobile,TRoleid")] Usertable updatedUser)
+        public ActionResult Edit(int? id, HttpPostedFileBase TProfife,[Bind(Include = "TUsername,TPassword,TEmail,TMobile,TRoleid")] Usertable updatedUser)
         {
             if (id == null)
             {

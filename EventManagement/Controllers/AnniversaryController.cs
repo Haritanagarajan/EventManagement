@@ -1,7 +1,11 @@
 ﻿using EventManagement.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -73,6 +77,72 @@ namespace EventManagement.Controllers
             return View();
         }
 
+        [HttpGet]
+        [Authorize(Roles = "User")]
+
+        public ActionResult Edit(int? id)
+        {
+            Anniversary anni = EventManagementEntities.Anniversaries.Find(id);
+
+            List<datetable> date = EventManagementEntities.datetables.ToList();
+            ViewBag.Date = new SelectList(date, "dateid", "datesavailable");
+
+            List<timetable> time = EventManagementEntities.timetables.ToList();
+            ViewBag.Time = new SelectList(time, "timeid", "timesavailable");
+
+            List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
+            ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");
+
+            List<locationtable> location = EventManagementEntities.locationtables.ToList();
+            ViewBag.Location = new SelectList(location, "locationid", "locationname");
+
+            List<themetable> theme = EventManagementEntities.themetables.ToList();
+            ViewBag.Theme = new SelectList(theme, "themeid", "themename");
+
+            List<decorationtable> decor = EventManagementEntities.decorationtables.ToList();
+            ViewBag.Decor = new SelectList(decor, "decorid", "decoravailable");
+
+            List<caketable> cake = EventManagementEntities.caketables.ToList();
+            ViewBag.Cake = new SelectList(cake, "cakeid", "cakesavailable");
+
+            return View(anni);
+        }
+
+
+        [HttpPost]
+        public ActionResult Edit([Bind(Include = "id,anniid,anniuserid,annieventcost,annihallcapacity,annidecorations,annitheme,annichairs,annitables,annihallcapacity,annidate,annitime,annicakes,annilocation,annieventcost,annibeverages,anniPhotography,anniStyling,anniHospitality")] Anniversary updatedAnni)
+        {
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    int? userId = TempData["UserId"] as int?;
+
+                    int? annieventId = TempData["eventid"] as int?;
+                    if (userId.HasValue && annieventId.HasValue)
+                    {
+                        updatedAnni.anniuserid = userId.Value;
+                        updatedAnni.anniid = annieventId.Value;
+
+                    }
+                    EventManagementEntities.Entry(updatedAnni).State = EntityState.Modified;
+                    EventManagementEntities.SaveChanges();
+                    return Content("Successfully edited");
+                }
+                catch (DbUpdateConcurrencyException ex)
+                {
+                    // Handle concurrency conflicts here
+                    ModelState.AddModelError(string.Empty, "Concurrency error occurred.");
+                }
+
+            }
+
+            return View();
+        }
+
+
+
 
 
         [HttpGet]
@@ -91,5 +161,7 @@ namespace EventManagement.Controllers
             }
 
         }
+
+
     }
 }

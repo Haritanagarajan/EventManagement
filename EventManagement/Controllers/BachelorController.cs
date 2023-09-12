@@ -1,6 +1,8 @@
 ﻿using EventManagement.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -70,6 +72,73 @@ namespace EventManagement.Controllers
             }
             return View();
         }
+
+
+        [HttpGet]
+        [Authorize(Roles = "User")]
+
+        public ActionResult Edit(int? id)
+        {
+            BachelorParty bachelor = EventManagementEntities.BachelorParties.Find(id);
+
+            List<datetable> date = EventManagementEntities.datetables.ToList();
+            ViewBag.Date = new SelectList(date, "dateid", "datesavailable");
+
+            List<timetable> time = EventManagementEntities.timetables.ToList();
+            ViewBag.Time = new SelectList(time, "timeid", "timesavailable");
+
+            List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
+            ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");
+
+            List<locationtable> location = EventManagementEntities.locationtables.ToList();
+            ViewBag.Location = new SelectList(location, "locationid", "locationname");
+
+            List<themetable> theme = EventManagementEntities.themetables.ToList();
+            ViewBag.Theme = new SelectList(theme, "themeid", "themename");
+
+            List<decorationtable> decor = EventManagementEntities.decorationtables.ToList();
+            ViewBag.Decor = new SelectList(decor, "decorid", "decoravailable");
+
+            List<caketable> cake = EventManagementEntities.caketables.ToList();
+            ViewBag.Cake = new SelectList(cake, "cakeid", "cakesavailable");
+
+            return View(bachelor);
+        }
+
+
+        [HttpPost]
+        public ActionResult Edit([Bind(Include = "id,bacheloruserid,bachelorid,bachelordecorations,bachelortheme,bachelorchairs,bachelortables,bachelorhallcapacity,bachelordate,bachelortime,bachelorcakes,bachelorlocation,bacheloreventcost,bachelorbeverages")] BachelorParty bat)
+        {
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    int? userId = TempData["UserId"] as int?;
+
+                    int? batventId = TempData["eventid"] as int?;
+                    if (userId.HasValue && batventId.HasValue)
+                    {
+                        bat.bacheloruserid = userId.Value;
+                        bat.bachelorid = batventId.Value;
+
+                    }
+                    EventManagementEntities.Entry(bat).State = EntityState.Modified;
+                    EventManagementEntities.SaveChanges();
+                    return Content("Successfully edited");
+                }
+                catch (DbUpdateConcurrencyException ex)
+                {
+                    // Handle concurrency conflicts here
+                    ModelState.AddModelError(string.Empty, "Concurrency error occurred.");
+                }
+
+            }
+
+            return View();
+        }
+
+
 
 
 

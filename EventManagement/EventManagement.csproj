@@ -345,6 +345,13 @@
     <Content Include="Views\Reunion\ReunionDetails.cshtml" />
     <Content Include="Views\Wedding\WeddingCreate.cshtml" />
     <Content Include="Views\Wedding\WeddingDetails.cshtml" />
+    <Content Include="Views\Anniversary\Edit.cshtml" />
+    <Content Include="Views\BabySHOWER\Edit.cshtml" />
+    <Content Include="Views\Bachelor\Edit.cshtml" />
+    <Content Include="Views\Birthday\Edit.cshtml" />
+    <Content Include="Views\Cocktail\Edit.cshtml" />
+    <Content Include="Views\Reunion\Edit.cshtml" />
+    <Content Include="Views\Wedding\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

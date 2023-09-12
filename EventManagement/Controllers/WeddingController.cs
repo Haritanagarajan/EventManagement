@@ -1,6 +1,8 @@
 ﻿using EventManagement.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -68,6 +70,70 @@ namespace EventManagement.Controllers
                 EventManagementEntities.SaveChanges();
                 return RedirectToAction("WeddingDetails", new { id = wed.id });
             }
+            return View();
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "User")]
+
+        public ActionResult Edit(int? id)
+        {
+            Wedding baby = EventManagementEntities.Weddings.Find(id);
+
+            List<datetable> date = EventManagementEntities.datetables.ToList();
+            ViewBag.Date = new SelectList(date, "dateid", "datesavailable");
+
+            List<timetable> time = EventManagementEntities.timetables.ToList();
+            ViewBag.Time = new SelectList(time, "timeid", "timesavailable");
+
+            List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
+            ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");
+
+            List<locationtable> location = EventManagementEntities.locationtables.ToList();
+            ViewBag.Location = new SelectList(location, "locationid", "locationname");
+
+            List<themetable> theme = EventManagementEntities.themetables.ToList();
+            ViewBag.Theme = new SelectList(theme, "themeid", "themename");
+
+            List<decorationtable> decor = EventManagementEntities.decorationtables.ToList();
+            ViewBag.Decor = new SelectList(decor, "decorid", "decoravailable");
+
+            List<caketable> cake = EventManagementEntities.caketables.ToList();
+            ViewBag.Cake = new SelectList(cake, "cakeid", "cakesavailable");
+
+            return View(baby);
+        }
+
+
+        [HttpPost]
+        public ActionResult Edit([Bind(Include = "id,weddingid,weddinguserid,weddingdecorations,weddingtheme,weddingchairs,weddingtables,weddinghallcapacity,weddingdate,weddingtime,weddingcakes,weddinglocation,weddingeventcost,weddingbeverages,weddingPhotography,weddingStyling,weddingHospitality")] Wedding wed)
+        {
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    int? userId = TempData["UserId"] as int?;
+
+                    int? wedventId = TempData["eventid"] as int?;
+                    if (userId.HasValue && wedventId.HasValue)
+                    {
+                        wed.weddinguserid = userId.Value;
+                        wed.weddingid = wedventId.Value;
+
+                    }
+                    EventManagementEntities.Entry(wed).State = EntityState.Modified;
+                    EventManagementEntities.SaveChanges();
+                    return Content("Successfully edited");
+                }
+                catch (DbUpdateConcurrencyException ex)
+                {
+                    // Handle concurrency conflicts here
+                    ModelState.AddModelError(string.Empty, "Concurrency error occurred.");
+                }
+
+            }
+
             return View();
         }
 
