@@ -220,6 +220,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\cake-new.jpg" />
+    <Content Include="Assets\EventPulse.gif" />
+    <Content Include="Assets\EventPulse.mp4" />
+    <Content Include="Assets\ezgif.com-crop.gif" />
+    <Content Include="Assets\lo.jpg" />
+    <Content Include="Assets\log.webp" />
+    <Content Include="Assets\login.jpg" />
+    <Content Include="Assets\logo-eventpulse-removebg-preview %281%29.png" />
+    <Content Include="Assets\P.gif" />
+    <Content Include="Assets\pexels-vlada-karpovich-7150167 %282160p%29.mp4" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -284,7 +294,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Shared\LoginLogoutView.cshtml" />
     <Content Include="Views\Error\Error404.cshtml" />
     <Content Include="Views\Error\Error201.cshtml" />
     <Content Include="Views\Error\Error204.cshtml" />
@@ -355,7 +364,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Assets\" />
     <Folder Include="Models\DAL\" />
   </ItemGroup>
   <ItemGroup>

@@ -2,95 +2,168 @@
 
 @{
     ViewBag.Title = "Register";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = null;
 }
 
-<h2>Register</h2>
+<script src="https://kit.fontawesome.com/91232b44e6.js" crossorigin="anonymous"></script>
 
-@using (Html.BeginForm("Register", "Authendication", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
-{
-    @Html.AntiForgeryToken()
+<div class="row" id="main-row">
+    <div class="col-4">
+        <div class="main-w3l maindiv">
+            <div class="w3layouts-main text-center">
+                <h2>Register Now</h2>
+                @using (Html.BeginForm("Register", "Authendication", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
 
-    <div class="form-horizontal">
-        <h4>Usertable</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <i class="fa-solid fa-user-secret"></i> @Html.EditorFor(model => model.TUsername, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your Username" } })
+                            @Html.ValidationMessageFor(model => model.TUsername, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <i class="fa-solid fa-envelope"></i>@Html.EditorFor(model => model.TEmail, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your Email" } })
+                            @Html.ValidationMessageFor(model => model.TEmail, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.TUsername, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TUsername, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TUsername, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <i class="fa-solid fa-lock"></i>@Html.EditorFor(model => model.TPassword, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your Password" } })
+                            @Html.ValidationMessageFor(model => model.TPassword, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.TEmail, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TEmail, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TEmail, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <i class="fa-solid fa-check-double"></i>@Html.EditorFor(model => model.TConfirmPassword, new { htmlAttributes = new { @class = "form-control", @placeholder = "Confirm your password" } })
+                            @Html.ValidationMessageFor(model => model.TConfirmPassword, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.TPassword, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TPassword, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TPassword, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <i class="fa-solid fa-mobile"></i>@Html.EditorFor(model => model.TMobile, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your Mobile no " } })
+                            @Html.ValidationMessageFor(model => model.TMobile, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.TConfirmPassword, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TConfirmPassword, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <i class="fa-solid fa-person-half-dress"></i>@Html.EditorFor(model => model.TGender, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your Gender" } })
+                            @Html.ValidationMessageFor(model => model.TGender, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.TMobile, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TMobile, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TMobile, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <i class="fa-solid fa-arrow-up-9-1"></i> @Html.EditorFor(model => model.TAge, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your Age" } })
+                            @Html.ValidationMessageFor(model => model.TAge, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.TGender, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TGender, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TGender, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <div class="form-group">
+                        <div class="col-md-10"  id="TProfife">
+                            <i class="fa-solid fa-image"></i><input type="file" name="TProfife" id="image" class="form-control" />
+                            @Html.ValidationMessageFor(model => model.TProfife, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.TAge, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TAge, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TAge, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.TProfife, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input type="file" id="TProfife" name="TProfife" class="form-control" />
-                @Html.ValidationMessageFor(model => model.TProfife, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10" id="buttons">
+                            <button type="submit" value="Create" class="custom-btn btn-2">Connect</button>
+                        </div>
+                    </div>
+                }
             </div>
         </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
+
+
+
+<style>
+    body {
+        background-image: url(/Assets/login.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .maindiv {
+        backdrop-filter: blur(6px);
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 2em 3em;
+        text-align: center;
+    }
+    #buttons {
+        margin-top: 10px;
+    }
+    #main-row {
+        margin-top: 3em;
+    }
+
+    .form-control::placeholder {
+        color: #d9d9d9;
+    }
+
+    .form-control {
+        padding: 1em 0;
+        background-color: transparent;
+        border-top: none;
+        border-right: none;
+        border-left: none;
+        border-bottom-color: black;
+        outline: none;
+    }
+
+    .custom-btn {
+        width: 100%;
+        height: 33px;
+        color: #fff;
+        border-radius: 5px;
+        padding: 10px 25px;
+        font-family: 'Lato', sans-serif;
+        font-weight: 500;
+        background: transparent;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        display: inline-block;
+        box-shadow: inset 2px 2px 2px 0px rgba(255,255,255,.5), 7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1);
+        outline: none;
+    }
+
+    .btn-2 {
+  
+  background-color:black;
+        border: none;
+    }
+
+        .btn-2:before {
+            height: 0%;
+            width: 2px;
+        }
+
+        .btn-2:hover {
+            box-shadow: 4px 4px 6px 0 rgba(255,255,255,.5), -4px -4px 6px 0 rgba(116, 125, 136, .5), inset -4px -4px 6px 0 rgba(255,255,255,.2), inset 4px 4px 6px 0 rgba(0, 0, 0, .4);
+        }
+        
+       #TProfife {
+        color:black;
+        margin-top:20px;
+        height:45px;
+        justify-content:center;
+        padding-left:80px;
+        }
+       #image{
+           padding-left:10px;
+           color:white;
+       }
+</style>

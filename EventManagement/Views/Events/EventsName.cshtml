@@ -5,7 +5,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>EventsName</h2>
 
 
 @*<table class="table">
@@ -39,41 +38,72 @@
 
     </table>*@
 
+<div class="container-fluid">
+    <div class="row">
+        <div class="section-2 p-0">
+            <video playsinline autoplay muted loop poster="" id="home-bg-video" width="100%" height="600vh">
+                <source src="~/Assets/pexels-vlada-karpovich-7150167 (2160p).mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+</div>
 
+<div class="container-fluid text-center mb-n5">
+    <div class="row">
+        <div class="col-12">
+            <img src="~/Assets/P.gif" width="20%" />
+            <p style="font-style:italic;font-size:20px;">Welcome to the beating heart of our event, Pulse! Let the rhythm of excitement guide you through this incredible journey</p>
+        </div>
+    </div>
+</div>
 
-<div class="container">
+<div class="container mt-5 main">
     <div class="row">
         @foreach (var item in Model)
         {
             <div class="col-lg-4">
-                <div class="card mt-3">
+                <div class="card mt-5 mb-3">
                     <div class="card-img-top">
-                       <div class="hover10 column">
+                        <div class="hover10 column">
 
-                           @if (item.eventimage != null)
-                           {
-                               <img src="data:image;base64,@Convert.ToBase64String(item.eventimage)" alt="Employee Image" id="main-img" />
-                              
-                           }
-                       </div>
-                       <div class="card-body">
-                           <div class="card-title">
-                               @Html.DisplayFor(modelItem => item.eventname1)
-                           </div>
-                           <div class="card-text">
-                               <button class="custom-btn btn-12"><span>  @Html.ActionLink("BookNow", "EventDirect", new { @eventid = item.eventid })</span><span>Click!</span></button>
-                           </div>
-                       </div>
+                            @if (item.eventimage != null)
+                            {
+                                <img src="data:image;base64,@Convert.ToBase64String(item.eventimage)" alt="Employee Image" id="main-img" />
+
+                            }
+                        </div>
+                        <div class="card-img-overlay">
+                            <div class="card-title">
+                                @Html.DisplayFor(modelItem => item.eventname1)
+                                @Html.ActionLink("BookNow", "EventDirect", new { @eventid = item.eventid }, new { @style = "color:#4d004e;text-decoration:none;font-weight:bold;" })
+                            </div>
+                            <div class="card-text">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
         }
 
     </div>
 </div>
-  
+
 
 <style>
+    .card-img-overlay {
+        margin-top: 7.5em;
+    }
+
+    .card-title {
+        font-style: italic;
+        padding: 5em 2em 0 .5em;
+        margin-left: .4em;
+    }
+
+    #home-bg-video {
+        object-fit: cover;
+    }
+
     #main-img {
         width: 100%;
         height: 15vw;
@@ -161,8 +191,4 @@
             -moz-transform: rotateX(-90deg);
             transform: rotateX(-90deg);
         }
-
-
-
-
 </style>
