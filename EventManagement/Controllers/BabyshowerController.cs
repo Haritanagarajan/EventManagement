@@ -12,7 +12,7 @@ namespace EventManagement.Controllers
     public class BabyshowerController : Controller
     {
         // GET: BabySHOWER
-        EventManagement2Entities EventManagementEntities = new EventManagement2Entities();
+        EventManagement2Entities1 EventManagementEntities = new EventManagement2Entities1();
 
 
         // GET: Booking

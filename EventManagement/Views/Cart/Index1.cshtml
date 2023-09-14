@@ -1,0 +1,302 @@
+﻿
+@model EventManagement.ViewModel.CartViewModel
+
+@{
+    ViewBag.Title = "Cart";
+}
+
+<p>welcome to .....EventPulse @User.Identity.Name</p>
+<p>welcome to .....EventPulse @User.Identity.IsAuthenticated</p>
+
+
+@if (Model.birthdaytable.Any())
+{
+    <h5 class="text-uppercase p-2 text-center">Birthday</h5>
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark text-black">
+            <tr>
+                <th>@Html.DisplayNameFor(m => Model.birthdaytable.FirstOrDefault().bdaydate)</th>
+                <th>@Html.DisplayNameFor(m => Model.birthdaytable.FirstOrDefault().bdaytime)</th>
+                <th>@Html.DisplayNameFor(m => Model.birthdaytable.FirstOrDefault().bdaylocation)</th>
+                <th>@Html.DisplayNameFor(m => Model.birthdaytable.FirstOrDefault().bdaycakes)</th>
+                <th>@Html.DisplayNameFor(m => Model.birthdaytable.FirstOrDefault().bdaytheme)</th>
+                <th>@Html.DisplayNameFor(m => Model.birthdaytable.FirstOrDefault().bdaydecorations)</th>
+                <th>@Html.DisplayNameFor(m => Model.birthdaytable.FirstOrDefault().bdayeventcost)</th>
+                <th>@Html.DisplayNameFor(m => Model.birthdaytable.FirstOrDefault().bdayid)</th>
+                <th>@Html.DisplayNameFor(m => Model.birthdaytable.FirstOrDefault().bdayuserid)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var bday in Model.birthdaytable)
+            {
+                int? userId = TempData["UserId"] as int?;
+
+                if (TempData["UserId"] != null && TempData["UserId"].ToString() == bday.bdayuserid.ToString())
+                {
+                    <tr>
+                        <td>@bday.bdaydate</td>
+                        <td>@bday.bdaytime</td>
+                        <td>@bday.bdaylocation</td>
+                        <td>@bday.bdayeventcost</td>
+                        <td>@bday.bdayuserid</td>
+                        <td>@bday.bdaytheme</td>
+                        <td>@bday.bdaycakes</td>
+                        <td>@bday.bdaydecorations</td>
+                        <td>@bday.bdayid</td>
+
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+}
+
+
+@if (Model.babyshowertable.Any())
+{
+    <h5 class="text-uppercase p-2 text-center">babyshowertable</h5>
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark text-black">
+            <tr>
+                <th>@Html.DisplayNameFor(m => Model.babyshowertable.FirstOrDefault().babyshowerdate)</th>
+                <th>@Html.DisplayNameFor(m => Model.babyshowertable.FirstOrDefault().babyshowertime)</th>
+                <th>@Html.DisplayNameFor(m => Model.babyshowertable.FirstOrDefault().babyshowerlocation)</th>
+                <th>@Html.DisplayNameFor(m => Model.babyshowertable.FirstOrDefault().babyshowercakes)</th>
+                <th>@Html.DisplayNameFor(m => Model.babyshowertable.FirstOrDefault().babyshowertheme)</th>
+                <th>@Html.DisplayNameFor(m => Model.babyshowertable.FirstOrDefault().babyshowerdecorations)</th>
+                <th>@Html.DisplayNameFor(m => Model.babyshowertable.FirstOrDefault().babyshowereventcost)</th>
+                <th>@Html.DisplayNameFor(m => Model.babyshowertable.FirstOrDefault().babyshowerid)</th>
+                <th>@Html.DisplayNameFor(m => Model.babyshowertable.FirstOrDefault().babyshoweruserid)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var baby in Model.babyshowertable)
+            {
+                int? userId = TempData["UserId"] as int?;
+
+                if (TempData["UserId"] != null && TempData["UserId"].ToString() == baby.babyshoweruserid.ToString())
+                {
+                    <tr>
+                        <td>@baby.babyshowerdate</td>
+                        <td>@baby.babyshowertime</td>
+                        <td>@baby.babyshowerlocation</td>
+                        <td>@baby.babyshowereventcost</td>
+                        <td>@baby.babyshoweruserid</td>
+                        <td>@baby.babyshowertheme</td>
+                        <td>@baby.babyshowercakes</td>
+                        <td>@baby.babyshowerdecorations</td>
+                        <td>@baby.babyshowerid</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+}
+
+@if (Model.Anniversary.Any())
+
+{
+    <h5 class="text-uppercase p-2 text-center">Anniversary</h5>
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark text-black">
+            <tr>
+                <th>@Html.DisplayNameFor(m => Model.Anniversary.FirstOrDefault().annidate)</th>
+                <th>@Html.DisplayNameFor(m => Model.Anniversary.FirstOrDefault().annitime)</th>
+                <th>@Html.DisplayNameFor(m => Model.Anniversary.FirstOrDefault().annilocation)</th>
+                <th>@Html.DisplayNameFor(m => Model.Anniversary.FirstOrDefault().annicakes)</th>
+                <th>@Html.DisplayNameFor(m => Model.Anniversary.FirstOrDefault().annitheme)</th>
+                <th>@Html.DisplayNameFor(m => Model.Anniversary.FirstOrDefault().annidecorations)</th>
+                <th>@Html.DisplayNameFor(m => Model.Anniversary.FirstOrDefault().annieventcost)</th>
+                <th>@Html.DisplayNameFor(m => Model.Anniversary.FirstOrDefault().anniid)</th>
+                <th>@Html.DisplayNameFor(m => Model.Anniversary.FirstOrDefault().anniuserid)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var anni in Model.Anniversary)
+            {
+                int? userId = TempData["UserId"] as int?;
+
+                if (TempData["UserId"] != null && TempData["UserId"].ToString() == anni.anniuserid.ToString())
+                {
+                    <tr>
+                        <td>@anni.annidate</td>
+                        <td>@anni.annitime</td>
+                        <td>@anni.annilocation</td>
+                        <td>@anni.annieventcost</td>
+                        <td>@anni.anniuserid</td>
+                        <td>@anni.annitheme</td>
+                        <td>@anni.annicakes</td>
+                        <td>@anni.annidecorations</td>
+                        <td>@anni.anniid</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+}
+
+@if (Model.BachelorParty.Any())
+{
+    <h5 class="text-uppercase p-2 text-center">BachelorParty</h5>
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark text-black">
+            <tr>
+                <th>@Html.DisplayNameFor(m => Model.BachelorParty.FirstOrDefault().bachelordate)</th>
+                <th>@Html.DisplayNameFor(m => Model.BachelorParty.FirstOrDefault().bachelortime)</th>
+                <th>@Html.DisplayNameFor(m => Model.BachelorParty.FirstOrDefault().bachelorlocation)</th>
+                <th>@Html.DisplayNameFor(m => Model.BachelorParty.FirstOrDefault().bachelorcakes)</th>
+                <th>@Html.DisplayNameFor(m => Model.BachelorParty.FirstOrDefault().bachelortheme)</th>
+                <th>@Html.DisplayNameFor(m => Model.BachelorParty.FirstOrDefault().bachelordecorations)</th>
+                <th>@Html.DisplayNameFor(m => Model.BachelorParty.FirstOrDefault().bacheloreventcost)</th>
+                <th>@Html.DisplayNameFor(m => Model.BachelorParty.FirstOrDefault().bachelorid)</th>
+                <th>@Html.DisplayNameFor(m => Model.BachelorParty.FirstOrDefault().bacheloruserid)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var bachelor in Model.BachelorParty)
+            {
+                int? userId = TempData["UserId"] as int?;
+
+                if (TempData["UserId"] != null && TempData["UserId"].ToString() == bachelor.bacheloruserid.ToString())
+                {
+                    <tr>
+                        <td>@bachelor.bachelordate</td>
+                        <td>@bachelor.bachelortime</td>
+                        <td>@bachelor.bachelorlocation</td>
+                        <td>@bachelor.bachelorcakes</td>
+                        <td>@bachelor.bachelortheme</td>
+                        <td>@bachelor.bachelordecorations</td>
+                        <td>@bachelor.bacheloreventcost</td>
+                        <td>@bachelor.bachelorid</td>
+                        <td>@bachelor.bacheloruserid</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+}
+
+
+@if (Model.CocktailParty.Any())
+{
+    <h5 class="text-uppercase p-2 text-center">CocktailParty</h5>
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark text-black">
+            <tr>
+                <th>@Html.DisplayNameFor(m => Model.CocktailParty.FirstOrDefault().cockdate)</th>
+                <th>@Html.DisplayNameFor(m => Model.CocktailParty.FirstOrDefault().cocktime)</th>
+                <th>@Html.DisplayNameFor(m => Model.CocktailParty.FirstOrDefault().cocklocation)</th>
+                <th>@Html.DisplayNameFor(m => Model.CocktailParty.FirstOrDefault().cockcakes)</th>
+                <th>@Html.DisplayNameFor(m => Model.CocktailParty.FirstOrDefault().cocktheme)</th>
+                <th>@Html.DisplayNameFor(m => Model.CocktailParty.FirstOrDefault().cockdecorations)</th>
+                <th>@Html.DisplayNameFor(m => Model.CocktailParty.FirstOrDefault().cockeventcost)</th>
+                <th>@Html.DisplayNameFor(m => Model.CocktailParty.FirstOrDefault().cockid)</th>
+                <th>@Html.DisplayNameFor(m => Model.CocktailParty.FirstOrDefault().cockuserid)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var cock in Model.CocktailParty)
+            {
+                int? userId = TempData["UserId"] as int?;
+
+                if (TempData["UserId"] != null && TempData["UserId"].ToString() == cock.cockuserid.ToString())
+                {
+                    <tr>
+                        <td>@cock.cockdate</td>
+                        <td>@cock.cocktime</td>
+                        <td>@cock.cocklocation</td>
+                        <td>@cock.cockcakes</td>
+                        <td>@cock.cocktheme</td>
+                        <td>@cock.cockdecorations</td>
+                        <td>@cock.cockeventcost</td>
+                        <td>@cock.cockid</td>
+                        <td>@cock.cockuserid</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+}
+
+
+@if (Model.Wedding.Any())
+{
+    <h5 class="text-uppercase p-2 text-center">Wedding</h5>
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark text-black">
+            <tr>
+                <th>@Html.DisplayNameFor(m => Model.Wedding.FirstOrDefault().weddingdate)</th>
+                <th>@Html.DisplayNameFor(m => Model.Wedding.FirstOrDefault().weddingtime)</th>
+                <th>@Html.DisplayNameFor(m => Model.Wedding.FirstOrDefault().weddinglocation)</th>
+                <th>@Html.DisplayNameFor(m => Model.Wedding.FirstOrDefault().weddingcakes)</th>
+                <th>@Html.DisplayNameFor(m => Model.Wedding.FirstOrDefault().weddingtheme)</th>
+                <th>@Html.DisplayNameFor(m => Model.Wedding.FirstOrDefault().weddingdecorations)</th>
+                <th>@Html.DisplayNameFor(m => Model.Wedding.FirstOrDefault().weddingeventcost)</th>
+                <th>@Html.DisplayNameFor(m => Model.Wedding.FirstOrDefault().weddingid)</th>
+                <th>@Html.DisplayNameFor(m => Model.Wedding.FirstOrDefault().weddinguserid)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var wedding in Model.Wedding)
+            {
+                int? userId = TempData["UserId"] as int?;
+
+                if (TempData["UserId"] != null && TempData["UserId"].ToString() == wedding.weddinguserid.ToString() && User.Identity.IsAuthenticated)
+                {
+                    <tr>
+                        <td>@wedding.weddingdate</td>
+                        <td>@wedding.weddingtime</td>
+                        <td>@wedding.weddinglocation</td>
+                        <td>@wedding.weddingcakes</td>
+                        <td>@wedding.weddingtheme</td>
+                        <td>@wedding.weddingdecorations</td>
+                        <td>@wedding.weddingeventcost</td>
+                        <td>@wedding.weddingid</td>
+                        <td>@wedding.weddinguserid</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+}
+
+
+@if (Model.Reunion.Any())
+{ 
+    <h5 class="text-uppercase p-2 text-center">Reunion</h5>
+<table class="table table-bordered table-striped">
+    <thead class="thead-dark text-black">
+        <tr>
+            <th>@Html.DisplayNameFor(m => Model.Reunion.FirstOrDefault().reuniondate)</th>
+            <th>@Html.DisplayNameFor(m => Model.Reunion.FirstOrDefault().reuniontime)</th>
+            <th>@Html.DisplayNameFor(m => Model.Reunion.FirstOrDefault().reunionlocation)</th>
+            <th>@Html.DisplayNameFor(m => Model.Reunion.FirstOrDefault().reunioncakes)</th>
+            <th>@Html.DisplayNameFor(m => Model.Reunion.FirstOrDefault().reuniontheme)</th>
+            <th>@Html.DisplayNameFor(m => Model.Reunion.FirstOrDefault().reuniondecorations)</th>
+            <th>@Html.DisplayNameFor(m => Model.Reunion.FirstOrDefault().reunioneventcost)</th>
+            <th>@Html.DisplayNameFor(m => Model.Reunion.FirstOrDefault().reunionid)</th>
+            <th>@Html.DisplayNameFor(m => Model.Reunion.FirstOrDefault().reunionuserid)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var reunion in Model.Reunion)
+        {
+            int? userId = TempData["UserId"] as int?;
+
+            <tr>
+                <td>@reunion.reuniondate</td>
+                <td>@reunion.reuniontime</td>
+                <td>@reunion.reunionlocation</td>
+                <td>@reunion.reunioncakes</td>
+                <td>@reunion.reuniontheme</td>
+                <td>@reunion.reuniondecorations</td>
+                <td>@reunion.reunioneventcost</td>
+                <td>@reunion.reunionid</td>
+                <td>@reunion.reunionuserid</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+}

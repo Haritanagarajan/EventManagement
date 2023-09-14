@@ -14,7 +14,7 @@ namespace EventManagement.Controllers
     [Authorize]
     public class EventsController : Controller
     {
-        EventManagement2Entities EventManagementEntities = new EventManagement2Entities();
+        EventManagement2Entities1 EventManagementEntities = new EventManagement2Entities1();
 
 
         // GET: Events
@@ -22,9 +22,13 @@ namespace EventManagement.Controllers
         [AllowAnonymous]
         public ActionResult EventsName()
         {
+
             List<EventName> events = EventManagementEntities.EventNames.ToList();
-            return View(events);
+                return View(events);
+           
         }
+
+
 
         [Authorize(Roles = "Admin")]
         public ActionResult Index()
@@ -49,7 +53,9 @@ namespace EventManagement.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 byte[] profile;
+
 
                 using (var reader = new BinaryReader(eventimage.InputStream))
                 {
@@ -61,16 +67,17 @@ namespace EventManagement.Controllers
 
                 eventnames.eventid = lastUserId + 1;
 
+               
 
                 EventManagementEntities.EventNames.Add(eventnames);
+
                 EventManagementEntities.SaveChanges();
-                RedirectToAction("Index");
+
+
+               return  RedirectToAction("Index");
             }
             return View();
         }
-
-
-
 
 
 
@@ -81,6 +88,7 @@ namespace EventManagement.Controllers
            if(eventid == 1)
             {
                 TempData["eventid"] = eventid;
+
 
                 return RedirectToAction("BirthdayCreate", "Birthday");
 
@@ -109,6 +117,8 @@ namespace EventManagement.Controllers
             {
                 TempData["eventid"] = eventid;
 
+
+
                 return RedirectToAction("AnniCreate", "Anniversary");
 
             }
@@ -116,11 +126,14 @@ namespace EventManagement.Controllers
             {
                 TempData["eventid"] = eventid;
 
+
+
                 return RedirectToAction("ReunionCreate", "Reunion");
             }
             if (eventid == 7)
             {
                 TempData["eventid"] = eventid;
+
 
                 return RedirectToAction("CocktailCreate", "Cocktail");
 

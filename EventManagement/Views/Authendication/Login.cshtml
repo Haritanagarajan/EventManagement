@@ -29,11 +29,11 @@
                             @Html.AntiForgeryToken()
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                             <div class="form-group">
-                                <i class="fa-solid fa-user-secret"></i> @Html.TextBoxFor(m => m.TUsername, new { @class = "form-control mt-3", @placeholder = "Enter your UserName", @type = "text" })
+                                <i class="fa-solid fa-user-secret" style="color:black"></i> @Html.TextBoxFor(m => m.TUsername, new { @class = "form-control mt-3", @placeholder = "Enter your UserName", @type = "text" })
                                 @Html.ValidationMessageFor(m => m.TUsername, "", new { @class = "error" })
                             </div>
                             <div class="form-group">
-                                <i class="fa-solid fa-lock"></i> @Html.PasswordFor(m => m.TPassword, new { @class = "form-control mt-3", @placeholder = "Password" })
+                                <i class="fa-solid fa-lock" style="color:black"></i> @Html.PasswordFor(m => m.TPassword, new { @class = "form-control mt-3", @placeholder = "Password" })
                                 @Html.ValidationMessageFor(m => m.TPassword, "", new { @class = "text-danger" })
                             </div>
 

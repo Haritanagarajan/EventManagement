@@ -12,7 +12,7 @@ namespace EventManagement.Controllers
     public class CocktailController : Controller
     {
         // GET: Cocktail
-        EventManagement2Entities EventManagementEntities = new EventManagement2Entities();
+        EventManagement2Entities1 EventManagementEntities = new EventManagement2Entities1();
 
 
         // GET: Booking

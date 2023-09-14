@@ -22,6 +22,7 @@ namespace EventManagement.Models
             this.BachelorParties = new HashSet<BachelorParty>();
             this.birthdaytables = new HashSet<birthdaytable>();
             this.CocktailParties = new HashSet<CocktailParty>();
+            this.EventNames = new HashSet<EventName>();
             this.Reunions = new HashSet<Reunion>();
             this.Weddings = new HashSet<Wedding>();
         }
@@ -49,6 +50,8 @@ namespace EventManagement.Models
         public virtual ICollection<birthdaytable> birthdaytables { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CocktailParty> CocktailParties { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EventName> EventNames { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Reunion> Reunions { get; set; }
         public virtual Roletable Roletable { get; set; }

@@ -30,6 +30,7 @@ namespace EventManagement.Models
         public string eventname1 { get; set; }
         public byte[] eventimage { get; set; }
         public bool eventd { get; set; }
+        public Nullable<int> eventuserid { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Anniversary> Anniversaries { get; set; }
@@ -41,6 +42,7 @@ namespace EventManagement.Models
         public virtual ICollection<birthdaytable> birthdaytables { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CocktailParty> CocktailParties { get; set; }
+        public virtual Usertable Usertable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Reunion> Reunions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

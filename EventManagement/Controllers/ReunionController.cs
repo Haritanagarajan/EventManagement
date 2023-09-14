@@ -15,7 +15,7 @@ namespace EventManagement.Controllers
     public class ReunionController : Controller
     {
         // GET: Reunion
-        EventManagement2Entities EventManagementEntities = new EventManagement2Entities();
+        EventManagement2Entities1 EventManagementEntities = new EventManagement2Entities1();
 
 
         // GET: Booking
@@ -58,6 +58,7 @@ namespace EventManagement.Controllers
                 int? userId = TempData["UserId"] as int?;
 
                 int? reeventId = TempData["eventid"] as int?;
+
                 if (userId.HasValue && reeventId.HasValue)
                 {
                     re.reunionuserid = userId.Value;
