@@ -149,80 +149,82 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AddtoCart.cs">
-      <DependentUpon>EM1.tt</DependentUpon>
+      <DependentUpon>Events.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Anniversary.cs">
-      <DependentUpon>EM1.tt</DependentUpon>
+      <DependentUpon>Events.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\babyshowertable.cs">
-      <DependentUpon>EM1.tt</DependentUpon>
+      <DependentUpon>Events.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BachelorParty.cs">
-      <DependentUpon>EM1.tt</DependentUpon>
+      <DependentUpon>Events.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\birthdaytable.cs">
-      <DependentUpon>EM1.tt</DependentUpon>
+      <DependentUpon>Events.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\caketable.cs">
-      <DependentUpon>EM1.tt</DependentUpon>
+      <DependentUpon>Events.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CocktailParty.cs">
-      <DependentUpon>EM1.tt</DependentUpon>
+      <DependentUpon>Events.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\datetable.cs">
-      <DependentUpon>EM1.tt</DependentUpon>
+      <DependentUpon>Events.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\decorationtable.cs">
-      <DependentUpon>EM1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\EM1.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EM1.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\EM1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EM1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\EM1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EM1.edmx</DependentUpon>
+      <DependentUpon>Events.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EventName.cs">
-      <DependentUpon>EM1.tt</DependentUpon>
+      <DependentUpon>Events.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Events.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Events.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Events.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Events.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Events.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Events.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\locationtable.cs">
-      <DependentUpon>EM1.tt</DependentUpon>
+      <DependentUpon>Events.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Reunion.cs">
-      <DependentUpon>EM1.tt</DependentUpon>
+      <DependentUpon>Events.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Roletable.cs">
-      <DependentUpon>EM1.tt</DependentUpon>
+      <DependentUpon>Events.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\themetable.cs">
-      <DependentUpon>EM1.tt</DependentUpon>
+      <DependentUpon>Events.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\timetable.cs">
-      <DependentUpon>EM1.tt</DependentUpon>
+      <DependentUpon>Events.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Usertable.cs">
-      <DependentUpon>EM1.tt</DependentUpon>
+      <DependentUpon>Events.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Validate_User_Result.cs">
-      <DependentUpon>EM1.tt</DependentUpon>
+      <DependentUpon>Events.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Wedding.cs">
-      <DependentUpon>EM1.tt</DependentUpon>
+      <DependentUpon>Events.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\cake-new.jpg" />
+    <Content Include="Assets\eventpulse-removebg-preview.png" />
     <Content Include="Assets\EventPulse.gif" />
     <Content Include="Assets\EventPulse.mp4" />
+    <Content Include="Assets\eventpulse.png" />
     <Content Include="Assets\ezgif.com-crop.gif" />
     <Content Include="Assets\lo.jpg" />
     <Content Include="Assets\log.webp" />
@@ -249,15 +251,15 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\EM1.Context.tt">
+    <Content Include="Models\Events.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EM1.edmx</DependentUpon>
-      <LastGenOutput>EM1.Context.cs</LastGenOutput>
+      <DependentUpon>Events.edmx</DependentUpon>
+      <LastGenOutput>Events.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\EM1.tt">
+    <Content Include="Models\Events.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EM1.edmx</DependentUpon>
-      <LastGenOutput>EM1.cs</LastGenOutput>
+      <DependentUpon>Events.edmx</DependentUpon>
+      <LastGenOutput>Events.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -265,12 +267,12 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\EM1.edmx">
+    <EntityDeploy Include="Models\Events.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>EM1.Designer.cs</LastGenOutput>
+      <LastGenOutput>Events.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\EM1.edmx.diagram">
-      <DependentUpon>EM1.edmx</DependentUpon>
+    <Content Include="Models\Events.edmx.diagram">
+      <DependentUpon>Events.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

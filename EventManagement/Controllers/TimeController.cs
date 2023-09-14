@@ -16,7 +16,7 @@ namespace EventManagement.Controllers
     public class TimeController : Controller
     {
         // GET: Time
-        EventManagement1Entities3 EventManagementEntities = new EventManagement1Entities3();
+        EventManagement2Entities EventManagementEntities = new EventManagement2Entities();
 
         [Authorize(Roles = "Admin")]
 

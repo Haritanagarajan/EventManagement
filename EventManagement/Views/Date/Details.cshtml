@@ -5,31 +5,37 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<div class="container" style="color: #014E00;font-style:italic;">
 
-<div>
-    <h4>datetable</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.datesavailable)
-        </dt>
+    <h2 class="text-center mt-3">Details</h2>
 
-        <dd>
-            @Html.DisplayFor(model => model.datesavailable)
-        </dd>
+    <div>
+        <h4>datetable</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.datesavailable)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.dated)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.datesavailable)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.dated)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.dated)
+            </dt>
 
-    </dl>
+            <dd>
+                @Html.DisplayFor(model => model.dated)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        <a href="@Url.Action("Edit",  new { id= Model.dateid })">
+            <i class="fa-solid fa-pen-to-square" style="color:#4d004e;"></i>
+        </a> |
+        @Html.ActionLink("Back", "Index")
+    </p>
+
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.dateid }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

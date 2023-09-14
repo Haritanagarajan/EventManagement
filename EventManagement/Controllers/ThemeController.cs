@@ -16,7 +16,7 @@ namespace EventManagement.Controllers
     public class ThemeController : Controller
     {
         // GET: theme
-        EventManagement1Entities3 EventManagementEntities = new EventManagement1Entities3();
+        EventManagement2Entities EventManagementEntities = new EventManagement2Entities();
 
         [Authorize(Roles = "Admin")]
 

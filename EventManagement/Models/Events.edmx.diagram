@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ba81f79747ee4cbcacb2c1a17de8064c" Name="Diagram1">
+        <EntityTypeShape EntityType="EventManagement2Model.AddtoCart" Width="1.5" PointX="11.25" PointY="23.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventManagement2Model.Anniversary" Width="1.5" PointX="3" PointY="22.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventManagement2Model.babyshowertable" Width="1.5" PointX="6" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventManagement2Model.BachelorParty" Width="1.5" PointX="9" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventManagement2Model.birthdaytable" Width="1.5" PointX="3" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventManagement2Model.caketable" Width="1.5" PointX="0.75" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventManagement2Model.CocktailParty" Width="1.5" PointX="3" PointY="29.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventManagement2Model.datetable" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventManagement2Model.decorationtable" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventManagement2Model.EventName" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventManagement2Model.locationtable" Width="1.5" PointX="0.75" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventManagement2Model.Reunion" Width="1.5" PointX="6" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventManagement2Model.Roletable" Width="1.5" PointX="1.5" PointY="37.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventManagement2Model.themetable" Width="1.5" PointX="0.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventManagement2Model.timetable" Width="1.5" PointX="0.75" PointY="27.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventManagement2Model.Usertable" Width="1.5" PointX="0.75" PointY="31.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventManagement2Model.Wedding" Width="1.5" PointX="6" PointY="29.25" IsExpanded="true" />
+        <AssociationConnector Association="EventManagement2Model.FK__AddtoCart__carta__4C6B5938" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__AddtoCart__cartb__489AC854" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__AddtoCart__cartb__498EEC8D" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__AddtoCart__cartb__4A8310C6" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__AddtoCart__cartc__4E53A1AA" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__AddtoCart__cartr__4D5F7D71" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__AddtoCart__cartw__4B7734FF" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__Anniversa__annic__2739D489" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__Anniversa__annid__236943A5" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__Anniversa__annid__25518C17" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__Anniversa__annii__22751F6C" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__Anniversa__annil__282DF8C2" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__Anniversa__annit__245D67DE" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__Anniversa__annit__2645B050" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__Anniversa__anniu__2180FB33" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__babyshowe__babys__00200768" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__babyshowe__babys__01142BA1" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__babyshowe__babys__02084FDA" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__babyshowe__babys__02FC7413" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__babyshowe__babys__7C4F7684" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__babyshowe__babys__7D439ABD" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__babyshowe__babys__7E37BEF6" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__babyshowe__babys__7F2BE32F" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__BachelorP__bache__07C12930" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__BachelorP__bache__08B54D69" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__BachelorP__bache__09A971A2" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__BachelorP__bache__0A9D95DB" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__BachelorP__bache__0B91BA14" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__BachelorP__bache__0C85DE4D" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__BachelorP__bache__0D7A0286" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__BachelorP__bache__0E6E26BF" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__birthdayt__bdayc__76969D2E" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__birthdayt__bdayd__72C60C4A" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__birthdayt__bdayd__74AE54BC" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__birthdayt__bdayi__71D1E811" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__birthdayt__bdayl__778AC167" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__birthdayt__bdayt__73BA3083" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__birthdayt__bdayt__75A278F5" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__birthdayt__bdayu__70DDC3D8" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__CocktailP__cockc__43D61337" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__Reunion__reunion__3587F3E0" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__Wedding__wedding__18EBB532" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__CocktailP__cockd__40058253" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__CocktailP__cockd__41EDCAC5" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__CocktailP__cocki__3F115E1A" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__CocktailP__cockl__44CA3770" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__CocktailP__cockt__40F9A68C" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__CocktailP__cockt__42E1EEFE" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__CocktailP__cocku__3E1D39E1" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__Reunion__reunion__339FAB6E" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__Wedding__wedding__17036CC0" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__Reunion__reunion__31B762FC" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__Wedding__wedding__151B244E" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__Reunion__reunion__30C33EC3" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__Wedding__wedding__14270015" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__Reunion__reunion__367C1819" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__Wedding__wedding__19DFD96B" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__Reunion__reunion__2FCF1A8A" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__Reunion__reunion__32AB8735" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__Reunion__reunion__3493CFA7" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__Usertable__TRole__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__Wedding__wedding__160F4887" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__Wedding__wedding__17F790F9" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagement2Model.FK__Wedding__wedding__1332DBDC" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

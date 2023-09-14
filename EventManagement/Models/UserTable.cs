@@ -34,8 +34,9 @@ namespace EventManagement.Models
         public Nullable<long> TMobile { get; set; }
         public string TGender { get; set; }
         public Nullable<int> TAge { get; set; }
+        public Nullable<System.DateTime> TDob { get; set; }
         public Nullable<System.DateTime> LastLoginDate { get; set; }
-        public byte[] TProfife { get; set; }
+        public byte[] TProfile { get; set; }
         public Nullable<int> TRoleid { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -15,7 +15,7 @@ namespace EventManagement.Controllers
     public class ReunionController : Controller
     {
         // GET: Reunion
-        EventManagement1Entities3 EventManagementEntities = new EventManagement1Entities3();
+        EventManagement2Entities EventManagementEntities = new EventManagement2Entities();
 
 
         // GET: Booking

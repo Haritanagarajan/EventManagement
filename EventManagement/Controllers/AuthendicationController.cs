@@ -21,7 +21,7 @@ namespace EventManagement.Controllers
     public class AuthendicationController : Controller
     {
 
-        EventManagement1Entities3 EventManagementEntities = new EventManagement1Entities3();
+        EventManagement2Entities EventManagementEntities = new EventManagement2Entities();
         // GET: Authendication
         [AllowAnonymous]
         public ActionResult Login()
@@ -47,18 +47,18 @@ namespace EventManagement.Controllers
         }
 
         [HttpPost]
-        public ActionResult Register(HttpPostedFileBase TProfife, [Bind(Include = "TUsername,TPassword,TConfirmPassword,TEmail,TMobile,TAge,TGender")] Usertable user)
+        public ActionResult Register(HttpPostedFileBase TProfile, [Bind(Include = "TUsername,TDob,TPassword,TConfirmPassword,TEmail,TMobile,TAge,TGender")] Usertable user)
         {
             if (ModelState.IsValid)
             {
 
                 byte[] profile;
 
-                using (var reader = new BinaryReader(TProfife.InputStream))
+                using (var reader = new BinaryReader(TProfile.InputStream))
                 {
-                    profile = reader.ReadBytes(TProfife.ContentLength);
+                    profile = reader.ReadBytes(TProfile.ContentLength);
                 }
-                user.TProfife = profile;
+                user.TProfile = profile;
 
                 int lastUserId = EventManagementEntities.Usertables.Max(u => u.TUserid);
 
@@ -68,7 +68,7 @@ namespace EventManagement.Controllers
 
                 user.LastLoginDate = actuallogindate;
 
-                int roleid = 21;
+                int roleid = 2;
 
                 user.TRoleid = roleid;
 
@@ -85,7 +85,7 @@ namespace EventManagement.Controllers
         [AllowAnonymous]
         public ActionResult Login(Usertable user)
         {
-            EventManagement1Entities3 usertabledatabase = new EventManagement1Entities3();
+            EventManagement2Entities usertabledatabase = new EventManagement2Entities();
 
             Validate_User_Result roleUser = usertabledatabase.Validate_User(user.TUsername, user.TPassword).FirstOrDefault();
             string message = string.Empty;
@@ -153,7 +153,7 @@ namespace EventManagement.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(int? id, HttpPostedFileBase TProfife,[Bind(Include = "TUsername,TPassword,TEmail,TMobile,TRoleid")] Usertable updatedUser)
+        public ActionResult Edit(int? id, HttpPostedFileBase TProfile, [Bind(Include = "TUsername,TPassword,TEmail,TMobile,TRoleid")] Usertable updatedUser)
         {
             if (id == null)
             {
@@ -169,16 +169,16 @@ namespace EventManagement.Controllers
 
             if (ModelState.IsValid)
             {
-                if (TProfife != null && TProfife.ContentLength > 0)
+                if (TProfile != null && TProfile.ContentLength > 0)
                 {
                     byte[] profile;
 
-                    using (var reader = new BinaryReader(TProfife.InputStream))
+                    using (var reader = new BinaryReader(TProfile.InputStream))
                     {
-                        profile = reader.ReadBytes(TProfife.ContentLength);
+                        profile = reader.ReadBytes(TProfile.ContentLength);
                     }
 
-                    existingUser.TProfife = profile;
+                    existingUser.TProfile = profile;
                 }
 
                 existingUser.TUsername = updatedUser.TUsername;

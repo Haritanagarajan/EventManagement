@@ -15,10 +15,10 @@ namespace EventManagement.Models
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class EventManagement1Entities3 : DbContext
+    public partial class EventManagement2Entities : DbContext
     {
-        public EventManagement1Entities3()
-            : base("name=EventManagement1Entities3")
+        public EventManagement2Entities()
+            : base("name=EventManagement2Entities")
         {
         }
     
