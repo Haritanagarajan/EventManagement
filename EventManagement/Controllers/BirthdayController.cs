@@ -51,9 +51,9 @@ namespace EventManagement.Controllers
                 
                 int lastUserId = EventManagementEntities.birthdaytables.Any() ? EventManagementEntities.birthdaytables.Max(u => u.id) : 0;
                 
-                int? userId = TempData["UserId"] as int?;
+                int? userId = Session["UserId"] as int?;
 
-                int? bdayeventId = TempData["eventid"] as int?;
+                int? bdayeventId = Session["eventid"] as int?;
                 if (userId.HasValue && bdayeventId.HasValue)
                 {
                     bday.bdayuserid = userId.Value;
@@ -115,9 +115,9 @@ namespace EventManagement.Controllers
             {
                 try
                 {
-                    int? userId = TempData["UserId"] as int?;
+                    int? userId = Session["UserId"] as int?;
 
-                    int? bdayventId = TempData["eventid"] as int?;
+                    int? bdayventId = Session["eventid"] as int?;
                     if (userId.HasValue && bdayventId.HasValue)
                     {
                         bday.bdayuserid = userId.Value;

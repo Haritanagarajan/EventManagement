@@ -52,9 +52,9 @@ namespace EventManagement.Controllers
 
                 int lastUserId = EventManagementEntities.BachelorParties.Any() ? EventManagementEntities.BachelorParties.Max(u => u.id) : 0;
 
-                int? userId = TempData["UserId"] as int?;
+                int? userId = Session["UserId"] as int?;
 
-                int? bateventId = TempData["eventid"] as int?;
+                int? bateventId = Session["eventid"] as int?;
                 if (userId.HasValue && bateventId.HasValue)
                 {
                     bat.bacheloruserid = userId.Value;
@@ -114,9 +114,9 @@ namespace EventManagement.Controllers
             {
                 try
                 {
-                    int? userId = TempData["UserId"] as int?;
+                    int? userId = Session["UserId"] as int?;
 
-                    int? batventId = TempData["eventid"] as int?;
+                    int? batventId = Session["eventid"] as int?;
                     if (userId.HasValue && batventId.HasValue)
                     {
                         bat.bacheloruserid = userId.Value;

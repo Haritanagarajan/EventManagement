@@ -52,7 +52,7 @@ namespace EventManagement.Controllers
 
                 int lastUserId = EventManagementEntities.CocktailParties.Any() ? EventManagementEntities.CocktailParties.Max(u => u.id) : 0;
 
-                int? userId = TempData["UserId"] as int?;
+                int? userId = Session["UserId"] as int?;
 
                 int? cockeventId = TempData["eventid"] as int?;
                 if (userId.HasValue && cockeventId.HasValue)

@@ -51,8 +51,8 @@ namespace EventManagement.Controllers
             if (ModelState.IsValid)
             {
                 int lastUserId = EventManagementEntities.babyshowertables.Any() ? EventManagementEntities.babyshowertables.Max(u => u.id) : 0;
-                int? userId = TempData["UserId"] as int?;
-                int? babyeventId = TempData["eventid"] as int?;
+                int? userId = Session["UserId"] as int?;
+                int? babyeventId = Session["eventid"] as int?;
                 if (userId.HasValue && babyeventId.HasValue)
                 {
                     baby.babyshoweruserid = userId.Value;

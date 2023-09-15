@@ -56,9 +56,9 @@ namespace EventManagement.Controllers
 
                 int lastUserId = EventManagementEntities.Anniversaries.Any() ? EventManagementEntities.Anniversaries.Max(u => u.id) : 0;
 
-                int? userId = TempData["UserId"] as int?;
+                int? userId = Session["UserId"] as int?;
 
-                int? annieventId = TempData["eventid"] as int?;
+                int? annieventId = Session["eventid"] as int?;
                 if (userId.HasValue && annieventId.HasValue)
                 {
                     anni.anniuserid = userId.Value;

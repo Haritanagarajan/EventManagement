@@ -105,7 +105,7 @@ namespace EventManagement.Controllers
                         cookie.Expires = ticket.Expiration;
                     }
                     Response.Cookies.Add(cookie);
-                    TempData["UserId"] = roleUser.TUserid.Value;
+                    Session["UserId"] = roleUser.TUserid.Value;
                     return RedirectToAction("EventsName","Events");
             }
 

@@ -87,7 +87,7 @@ namespace EventManagement.Controllers
         {
            if(eventid == 1)
             {
-                TempData["eventid"] = eventid;
+                Session["eventid"] = eventid;
 
 
                 return RedirectToAction("BirthdayCreate", "Birthday");
@@ -95,27 +95,27 @@ namespace EventManagement.Controllers
             }
             if (eventid == 2)
             {
-                TempData["eventid"] = eventid;
+                Session["eventid"] = eventid;
 
                 return RedirectToAction("WeddingCreate", "Wedding");
 
             }
             if (eventid == 3)
             {
-                TempData["eventid"] = eventid;
+                Session["eventid"] = eventid;
 
                 return RedirectToAction("BabyshowerCreate", "Babyshower");
 
             }
             if (eventid == 4)
             {
-                TempData["eventid"] = eventid;
+                Session["eventid"] = eventid;
 
                 return RedirectToAction("BachelorCreate", "Bachelor");
             }
             if (eventid == 5)
             {
-                TempData["eventid"] = eventid;
+                Session["eventid"] = eventid;
 
 
 
@@ -124,7 +124,7 @@ namespace EventManagement.Controllers
             }
             if (eventid == 6)
             {
-                TempData["eventid"] = eventid;
+                Session["eventid"] = eventid;
 
 
 
@@ -132,7 +132,7 @@ namespace EventManagement.Controllers
             }
             if (eventid == 7)
             {
-                TempData["eventid"] = eventid;
+                Session["eventid"] = eventid;
 
 
                 return RedirectToAction("CocktailCreate", "Cocktail");
