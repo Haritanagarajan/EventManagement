@@ -15,10 +15,10 @@ namespace EventManagement.Models
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class EventManagement2Entities1 : DbContext
+    public partial class EventManagement2Entities2 : DbContext
     {
-        public EventManagement2Entities1()
-            : base("name=EventManagement2Entities1")
+        public EventManagement2Entities2()
+            : base("name=EventManagement2Entities2")
         {
         }
     
@@ -34,14 +34,12 @@ namespace EventManagement.Models
         public virtual DbSet<birthdaytable> birthdaytables { get; set; }
         public virtual DbSet<caketable> caketables { get; set; }
         public virtual DbSet<CocktailParty> CocktailParties { get; set; }
-        public virtual DbSet<datetable> datetables { get; set; }
         public virtual DbSet<decorationtable> decorationtables { get; set; }
         public virtual DbSet<EventName> EventNames { get; set; }
         public virtual DbSet<locationtable> locationtables { get; set; }
         public virtual DbSet<Reunion> Reunions { get; set; }
         public virtual DbSet<Roletable> Roletables { get; set; }
         public virtual DbSet<themetable> themetables { get; set; }
-        public virtual DbSet<timetable> timetables { get; set; }
         public virtual DbSet<Usertable> Usertables { get; set; }
         public virtual DbSet<Wedding> Weddings { get; set; }
     

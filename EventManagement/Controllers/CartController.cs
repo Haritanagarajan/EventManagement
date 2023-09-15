@@ -10,8 +10,8 @@ namespace EventManagement.Controllers
 {
     public class CartController : Controller
     {
-        EventManagement2Entities1 EventManagementEntities = new EventManagement2Entities1();
-        private readonly EventManagement2Entities1 db = new EventManagement2Entities1();
+        EventManagement2Entities2 EventManagementEntities = new EventManagement2Entities2();
+        private readonly EventManagement2Entities2 db = new EventManagement2Entities2();
 
         // GET: Cart
         public ActionResult Index()

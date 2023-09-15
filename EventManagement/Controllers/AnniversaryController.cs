@@ -16,7 +16,7 @@ namespace EventManagement.Controllers
     public class AnniversaryController : Controller
     {
         // GET: Anniversary
-        EventManagement2Entities1 EventManagementEntities = new EventManagement2Entities1();
+        EventManagement2Entities2 EventManagementEntities = new EventManagement2Entities2();
 
 
         // GET: Booking
@@ -24,12 +24,7 @@ namespace EventManagement.Controllers
         [Authorize(Roles = "User")]
         public ActionResult AnniCreate()
         {
-
-            List<datetable> date = EventManagementEntities.datetables.ToList();
-            ViewBag.Date = new SelectList(date, "dateid", "datesavailable");
-
-            List<timetable> time = EventManagementEntities.timetables.ToList();
-            ViewBag.Time = new SelectList(time, "timeid", "timesavailable");
+      
 
             List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
             ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");
@@ -43,13 +38,14 @@ namespace EventManagement.Controllers
             List<decorationtable> decor = EventManagementEntities.decorationtables.ToList();
             ViewBag.Decor = new SelectList(decor, "decorid", "decoravailable");
 
+
             List<caketable> cake = EventManagementEntities.caketables.ToList();
             ViewBag.Cake = new SelectList(cake, "cakeid", "cakesavailable");
 
             return View();
         }
         [HttpPost]
-        public ActionResult AnniCreate([Bind(Include = "annidecorations,annitheme,annichairs,annitables,annihallcapacity,annidate,annitime,annicakes,annilocation,annieventcost,annibeverages,anniPhotography,anniStyling,anniHospitality")] Anniversary anni)
+        public ActionResult AnniCreate([Bind(Include = "annidatetime,annidecorations,annitheme,annichairs,annitables,annihallcapacity,annicakes,annilocation,annieventcost,annibeverages,anniPhotography,anniStyling,anniHospitality")] Anniversary anni)
         {
             if (ModelState.IsValid)
             {
@@ -84,11 +80,7 @@ namespace EventManagement.Controllers
         {
             Anniversary anni = EventManagementEntities.Anniversaries.Find(id);
 
-            List<datetable> date = EventManagementEntities.datetables.ToList();
-            ViewBag.Date = new SelectList(date, "dateid", "datesavailable");
-
-            List<timetable> time = EventManagementEntities.timetables.ToList();
-            ViewBag.Time = new SelectList(time, "timeid", "timesavailable");
+          
 
             List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
             ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");
@@ -110,16 +102,16 @@ namespace EventManagement.Controllers
 
 
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "id,anniid,anniuserid,annieventcost,annihallcapacity,annidecorations,annitheme,annichairs,annitables,annihallcapacity,annidate,annitime,annicakes,annilocation,annieventcost,annibeverages,anniPhotography,anniStyling,anniHospitality")] Anniversary updatedAnni)
+        public ActionResult Edit([Bind(Include = "id,annidatetime,anniid,anniuserid,annieventcost,annihallcapacity,annidecorations,annitheme,annichairs,annitables,annihallcapacity,annicakes,annilocation,annieventcost,annibeverages,anniPhotography,anniStyling,anniHospitality")] Anniversary updatedAnni)
         {
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    int? userId = TempData["UserId"] as int?;
+                    int? userId = Session["UserId"] as int?;
 
-                    int? annieventId = TempData["eventid"] as int?;
+                    int? annieventId = Session["eventid"] as int?;
                     if (userId.HasValue && annieventId.HasValue)
                     {
                         updatedAnni.anniuserid = userId.Value;

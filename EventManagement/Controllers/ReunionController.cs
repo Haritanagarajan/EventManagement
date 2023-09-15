@@ -15,7 +15,7 @@ namespace EventManagement.Controllers
     public class ReunionController : Controller
     {
         // GET: Reunion
-        EventManagement2Entities1 EventManagementEntities = new EventManagement2Entities1();
+        EventManagement2Entities2 EventManagementEntities = new EventManagement2Entities2();
 
 
         // GET: Booking
@@ -24,11 +24,7 @@ namespace EventManagement.Controllers
         public ActionResult ReunionCreate()
         {
 
-            List<datetable> date = EventManagementEntities.datetables.ToList();
-            ViewBag.Date = new SelectList(date, "dateid", "datesavailable");
-
-            List<timetable> time = EventManagementEntities.timetables.ToList();
-            ViewBag.Time = new SelectList(time, "timeid", "timesavailable");
+           
 
             List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
             ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");
@@ -48,16 +44,16 @@ namespace EventManagement.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult ReunionCreate([Bind(Include = "reuniondecorations,reuniontheme,reunionchairs,reuniontables,reunionhallcapacity,reuniondate,reuniontime,reunioncakes,reunionlocation,reunioneventcost,reunionbeverages,reunionPhotography,reunionStyling,reunionHospitality")] Reunion re)
+        public ActionResult ReunionCreate([Bind(Include = "reuniondatetime,reuniondecorations,reuniontheme,reunionchairs,reuniontables,reunionhallcapacity,reunioncakes,reunionlocation,reunioneventcost,reunionbeverages,reunionPhotography,reunionStyling,reunionHospitality")] Reunion re)
         {
             if (ModelState.IsValid)
             {
 
                 int lastUserId = EventManagementEntities.Reunions.Any() ? EventManagementEntities.Reunions.Max(u => u.id) : 0;
 
-                int? userId = TempData["UserId"] as int?;
+                int? userId = Session["UserId"] as int?;
 
-                int? reeventId = TempData["eventid"] as int?;
+                int? reeventId = Session["eventid"] as int?;
 
                 if (userId.HasValue && reeventId.HasValue)
                 {
@@ -84,11 +80,7 @@ namespace EventManagement.Controllers
         {
             Reunion re = EventManagementEntities.Reunions.Find(id);
 
-            List<datetable> date = EventManagementEntities.datetables.ToList();
-            ViewBag.Date = new SelectList(date, "dateid", "datesavailable");
-
-            List<timetable> time = EventManagementEntities.timetables.ToList();
-            ViewBag.Time = new SelectList(time, "timeid", "timesavailable");
+          
 
             List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
             ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");
@@ -110,16 +102,16 @@ namespace EventManagement.Controllers
 
 
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "id,reunionid,reunionuserid,reuniondecorations,reuniontheme,reunionchairs,reuniontables,reunionhallcapacity,reuniondate,reuniontime,reunioncakes,reunionlocation,reunioneventcost,reunionbeverages,reunionPhotography,reunionStyling,reunionHospitality")] Reunion re)
+        public ActionResult Edit([Bind(Include = "reuniondatetime,id,reunionid,reunionuserid,reuniondecorations,reuniontheme,reunionchairs,reuniontables,reunionhallcapacity,reunioncakes,reunionlocation,reunioneventcost,reunionbeverages,reunionPhotography,reunionStyling,reunionHospitality")] Reunion re)
         {
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    int? userId = TempData["UserId"] as int?;
+                    int? userId = Session["UserId"] as int?;
 
-                    int? reventId = TempData["eventid"] as int?;
+                    int? reventId = Session["eventid"] as int?;
                     if (userId.HasValue && reventId.HasValue)
                     {
                         re.reunionuserid = userId.Value;

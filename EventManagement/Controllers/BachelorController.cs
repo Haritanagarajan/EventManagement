@@ -12,7 +12,7 @@ namespace EventManagement.Controllers
     public class BachelorController : Controller
     {
         // GET: Bachelor
-        EventManagement2Entities1 EventManagementEntities = new EventManagement2Entities1();
+        EventManagement2Entities2 EventManagementEntities = new EventManagement2Entities2();
 
 
         // GET: Booking
@@ -21,11 +21,6 @@ namespace EventManagement.Controllers
         public ActionResult BachelorCreate()
         {
 
-            List<datetable> date = EventManagementEntities.datetables.ToList();
-            ViewBag.Date = new SelectList(date, "dateid", "datesavailable");
-
-            List<timetable> time = EventManagementEntities.timetables.ToList();
-            ViewBag.Time = new SelectList(time, "timeid", "timesavailable");
 
             List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
             ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");
@@ -45,7 +40,7 @@ namespace EventManagement.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult BachelorCreate([Bind(Include = "bachelordecorations,bachelortheme,bachelorchairs,bachelortables,bachelorhallcapacity,bachelordate,bachelortime,bachelorcakes,bachelorlocation,bacheloreventcost,bachelorbeverages")] BachelorParty bat)
+        public ActionResult BachelorCreate([Bind(Include = "bachelordatetime,bachelordecorations,bachelortheme,bachelorchairs,bachelortables,bachelorhallcapacity,bachelorcakes,bachelorlocation,bacheloreventcost,bachelorbeverages")] BachelorParty bat)
         {
             if (ModelState.IsValid)
             {
@@ -81,11 +76,7 @@ namespace EventManagement.Controllers
         {
             BachelorParty bachelor = EventManagementEntities.BachelorParties.Find(id);
 
-            List<datetable> date = EventManagementEntities.datetables.ToList();
-            ViewBag.Date = new SelectList(date, "dateid", "datesavailable");
-
-            List<timetable> time = EventManagementEntities.timetables.ToList();
-            ViewBag.Time = new SelectList(time, "timeid", "timesavailable");
+          
 
             List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
             ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");
@@ -107,7 +98,7 @@ namespace EventManagement.Controllers
 
 
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "id,bacheloruserid,bachelorid,bachelordecorations,bachelortheme,bachelorchairs,bachelortables,bachelorhallcapacity,bachelordate,bachelortime,bachelorcakes,bachelorlocation,bacheloreventcost,bachelorbeverages")] BachelorParty bat)
+        public ActionResult Edit([Bind(Include = "bachelordatetime,id,bacheloruserid,bachelorid,bachelordecorations,bachelortheme,bachelorchairs,bachelortables,bachelorhallcapacity,bachelorcakes,bachelorlocation,bacheloreventcost,bachelorbeverages")] BachelorParty bat)
         {
 
             if (ModelState.IsValid)

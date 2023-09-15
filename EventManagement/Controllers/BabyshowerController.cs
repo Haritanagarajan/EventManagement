@@ -12,7 +12,7 @@ namespace EventManagement.Controllers
     public class BabyshowerController : Controller
     {
         // GET: BabySHOWER
-        EventManagement2Entities1 EventManagementEntities = new EventManagement2Entities1();
+        EventManagement2Entities2 EventManagementEntities = new EventManagement2Entities2();
 
 
         // GET: Booking
@@ -22,11 +22,7 @@ namespace EventManagement.Controllers
         public ActionResult BabyshowerCreate()
         {
 
-            List<datetable> date = EventManagementEntities.datetables.ToList();
-            ViewBag.Date = new SelectList(date, "dateid", "datesavailable");
-
-            List<timetable> time = EventManagementEntities.timetables.ToList();
-            ViewBag.Time = new SelectList(time, "timeid", "timesavailable");
+          
 
             List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
             ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");
@@ -46,7 +42,7 @@ namespace EventManagement.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult BabyshowerCreate([Bind(Include = "babyshowerdecorations,babyshowertheme,babyshowerchairs,babyshowertables,babyshowerhallcapacity,babyshowerdate,babyshowertime,babyshowercakes,babyshowerlocation,babyshowereventcost,babyshowerbeverages")] babyshowertable baby)
+        public ActionResult BabyshowerCreate([Bind(Include = "babyshowerdatetime,babyshowerdecorations,babyshowertheme,babyshowerchairs,babyshowertables,babyshowerhallcapacity,babyshowercakes,babyshowerlocation,babyshowereventcost,babyshowerbeverages")] babyshowertable baby)
         {
             if (ModelState.IsValid)
             {
@@ -78,11 +74,7 @@ namespace EventManagement.Controllers
         {
             babyshowertable baby = EventManagementEntities.babyshowertables.Find(id);
 
-            List<datetable> date = EventManagementEntities.datetables.ToList();
-            ViewBag.Date = new SelectList(date, "dateid", "datesavailable");
-
-            List<timetable> time = EventManagementEntities.timetables.ToList();
-            ViewBag.Time = new SelectList(time, "timeid", "timesavailable");
+           
 
             List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
             ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");
@@ -104,16 +96,16 @@ namespace EventManagement.Controllers
 
 
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "id,babyshoweruserid,babyshowerid,babyshowerdecorations,babyshowertheme,babyshowerchairs,babyshowertables,babyshowerhallcapacity,babyshowerdate,babyshowertime,babyshowercakes,babyshowerlocation,babyshowereventcost,babyshowerbeverages")] babyshowertable baby)
+        public ActionResult Edit([Bind(Include = "babyshowerdatetime,id,babyshoweruserid,babyshowerid,babyshowerdecorations,babyshowertheme,babyshowerchairs,babyshowertables,babyshowerhallcapacity,babyshowercakes,babyshowerlocation,babyshowereventcost,babyshowerbeverages")] babyshowertable baby)
         {
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    int? userId = TempData["UserId"] as int?;
+                    int? userId = Session["UserId"] as int?;
 
-                    int? babyventId = TempData["eventid"] as int?;
+                    int? babyventId = Session["eventid"] as int?;
                     if (userId.HasValue && babyventId.HasValue)
                     {
                         baby.babyshoweruserid = userId.Value;

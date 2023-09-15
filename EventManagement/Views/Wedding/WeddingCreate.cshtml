@@ -7,10 +7,10 @@
 
 <h2>WeddingCreate</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
 <div class="form-horizontal">
     <h4>Wedding</h4>
     <hr />
@@ -47,25 +47,30 @@
         </div>
     </div>
 
-
-
     <div class="form-group">
-        @Html.LabelFor(model => model.weddingdate, "weddingdate", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.weddingdatetime, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownList("weddingdate", ViewBag.Date as SelectList, "Date", new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.weddingdate, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.weddingdatetime, new { htmlAttributes = new { @class = "form-control datepicker" } })
+            @Html.ValidationMessageFor(model => model.weddingdatetime, "", new { @class = "text-danger" })
         </div>
     </div>
 
-
-
     <div class="form-group">
-        @Html.LabelFor(model => model.weddingtime, "weddingtime", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.weddingtime, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownList("weddingtime", ViewBag.Time as SelectList, "Time", new { @class = "form-control" })
+            <input type="time" class="timepicker" name="weddingtime" />
+
+            @*@Html.TextBoxFor(model => model.weddingtime, new { htmlAttributes = new { @class = "form-control timepicker" } })*@
             @Html.ValidationMessageFor(model => model.weddingtime, "", new { @class = "text-danger" })
         </div>
     </div>
+
+    @*<div>
+        <input type="time" class="timepicker" />
+    </div>*@
+
+
+
 
     <div class="form-group">
         @Html.LabelFor(model => model.weddingcakes, "weddingcakes", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -137,3 +142,39 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryui")
+    @Styles.Render("~/Content/cssjqryUi")
+
+    <!-- Include jQuery Timepicker scripts and stylesheets -->
+    <link rel="stylesheet" href="path-to-your-jquery-timepicker.css">
+    <script src="path-to-your-jquery-timepicker.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $(".datepicker").datepicker({
+                minDate: new Date(),
+                beforeShowDay: function (date) {
+                    var blockDates = [new Date(new Date().getFullYear(), 8, 19), new Date(new Date().getFullYear(), 8, 20)];
+                    var dateString = (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear();
+                    return [blockDates.indexOf(dateString) === -1];
+                }
+            });
+
+            var timerVal = moment().format('hh:mm A');
+
+            $('.timepicker').timepicker(
+                {
+                    template: 'dropdown',
+                    minuteStep: 1,
+                    secondStep: 1,
+                    showMeridian: true,
+                    defaultTime: timerVal
+                });
+        });
+    </script>
+}
+
+
+

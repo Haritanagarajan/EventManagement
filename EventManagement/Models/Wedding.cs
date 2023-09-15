@@ -28,8 +28,7 @@ namespace EventManagement.Models
         public Nullable<int> weddingchairs { get; set; }
         public Nullable<int> weddingtables { get; set; }
         public Nullable<int> weddinghallcapacity { get; set; }
-        public Nullable<int> weddingdate { get; set; }
-        public Nullable<int> weddingtime { get; set; }
+        public Nullable<System.DateTime> weddingdatetime { get; set; }
         public Nullable<int> weddingcakes { get; set; }
         public Nullable<int> weddinglocation { get; set; }
         public Nullable<long> weddingeventcost { get; set; }
@@ -37,16 +36,15 @@ namespace EventManagement.Models
         public bool weddingPhotography { get; set; }
         public bool weddingStyling { get; set; }
         public bool weddingHospitality { get; set; }
+        public Nullable<System.TimeSpan> weddingtime { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AddtoCart> AddtoCarts { get; set; }
         public virtual caketable caketable { get; set; }
-        public virtual datetable datetable { get; set; }
         public virtual decorationtable decorationtable { get; set; }
         public virtual EventName EventName { get; set; }
         public virtual locationtable locationtable { get; set; }
         public virtual themetable themetable { get; set; }
-        public virtual timetable timetable { get; set; }
         public virtual Usertable Usertable { get; set; }
     }
 }

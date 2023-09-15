@@ -14,7 +14,7 @@ namespace EventManagement.Controllers
     [Authorize]
     public class EventsController : Controller
     {
-        EventManagement2Entities1 EventManagementEntities = new EventManagement2Entities1();
+        EventManagement2Entities2 EventManagementEntities = new EventManagement2Entities2();
 
 
         // GET: Events

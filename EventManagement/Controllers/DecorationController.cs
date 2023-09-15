@@ -15,7 +15,7 @@ namespace EventManagement.Controllers
     {
         // GET: Decoration
         // GET: location
-        EventManagement2Entities1 EventManagementEntities = new EventManagement2Entities1();
+        EventManagement2Entities2 EventManagementEntities = new EventManagement2Entities2();
 
         [Authorize(Roles = "Admin")]
         public ActionResult Index()

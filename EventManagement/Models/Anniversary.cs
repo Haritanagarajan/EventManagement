@@ -28,8 +28,7 @@ namespace EventManagement.Models
         public Nullable<int> annichairs { get; set; }
         public Nullable<int> annitables { get; set; }
         public Nullable<int> annihallcapacity { get; set; }
-        public Nullable<int> annidate { get; set; }
-        public Nullable<int> annitime { get; set; }
+        public Nullable<System.DateTime> annidatetime { get; set; }
         public Nullable<int> annicakes { get; set; }
         public Nullable<int> annilocation { get; set; }
         public Nullable<long> annieventcost { get; set; }
@@ -37,16 +36,15 @@ namespace EventManagement.Models
         public bool anniPhotography { get; set; }
         public bool anniStyling { get; set; }
         public bool anniHospitality { get; set; }
+        public Nullable<System.TimeSpan> annitime { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AddtoCart> AddtoCarts { get; set; }
         public virtual caketable caketable { get; set; }
         public virtual decorationtable decorationtable { get; set; }
-        public virtual datetable datetable { get; set; }
         public virtual EventName EventName { get; set; }
         public virtual locationtable locationtable { get; set; }
         public virtual themetable themetable { get; set; }
-        public virtual timetable timetable { get; set; }
         public virtual Usertable Usertable { get; set; }
     }
 }

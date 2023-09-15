@@ -11,7 +11,7 @@ namespace EventManagement.Controllers
 {
     public class BirthdayController : Controller
     {
-        EventManagement2Entities1 EventManagementEntities = new EventManagement2Entities1();
+        EventManagement2Entities2 EventManagementEntities = new EventManagement2Entities2();
 
        
         // GET: Booking
@@ -20,11 +20,7 @@ namespace EventManagement.Controllers
         public ActionResult BirthdayCreate()
         {
 
-            List<datetable> date = EventManagementEntities.datetables.ToList();
-            ViewBag.Date = new SelectList(date, "dateid", "datesavailable");
-
-            List<timetable> time = EventManagementEntities.timetables.ToList();
-            ViewBag.Time = new SelectList(time, "timeid", "timesavailable");
+           
 
             List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
             ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");
@@ -44,7 +40,7 @@ namespace EventManagement.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult BirthdayCreate([Bind(Include = "bdaydecorations,bdaytheme,bdaychairs,bdaytables,bdayhallcapacity,bdaydate,bdaytime,bdaycakes,bdaylocation,bdayeventcost,bdaybeverages")] birthdaytable bday)
+        public ActionResult BirthdayCreate([Bind(Include = "bdaydatetime,bdaydecorations,bdaytheme,bdaychairs,bdaytables,bdayhallcapacity,bdaycakes,bdaylocation,bdayeventcost,bdaybeverages")] birthdaytable bday)
         {
             if (ModelState.IsValid)
             {
@@ -82,12 +78,7 @@ namespace EventManagement.Controllers
         {
             birthdaytable bday = EventManagementEntities.birthdaytables.Find(id);
 
-            List<datetable> date = EventManagementEntities.datetables.ToList();
-            ViewBag.Date = new SelectList(date, "dateid", "datesavailable");
-
-            List<timetable> time = EventManagementEntities.timetables.ToList();
-            ViewBag.Time = new SelectList(time, "timeid", "timesavailable");
-
+           
             List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
             ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");
 
@@ -108,7 +99,7 @@ namespace EventManagement.Controllers
 
 
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "id,bdayid,bdayuserid,bdaydecorations,bdaytheme,bdaychairs,bdaytables,bdayhallcapacity,bdaydate,bdaytime,bdaycakes,bdaylocation,bdayeventcost,bdaybeverages")] birthdaytable bday)
+        public ActionResult Edit([Bind(Include = "bdaydatetime,id,bdayid,bdayuserid,bdaydecorations,bdaytheme,bdaychairs,bdaytables,bdayhallcapacity,bdaycakes,bdaylocation,bdayeventcost,bdaybeverages")] birthdaytable bday)
         {
 
             if (ModelState.IsValid)

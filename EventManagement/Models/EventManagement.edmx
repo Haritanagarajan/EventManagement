@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="EventManagement2Model1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="EventManagement2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AddtoCart">
           <Key>
             <PropertyRef Name="id" />
@@ -30,8 +30,8 @@
           <Property Name="annichairs" Type="int" />
           <Property Name="annitables" Type="int" />
           <Property Name="annihallcapacity" Type="int" />
-          <Property Name="annidate" Type="int" />
-          <Property Name="annitime" Type="int" />
+          <Property Name="annidatetime" Type="datetime" />
+          <Property Name="annitime" Type="time" Precision="7" />
           <Property Name="annicakes" Type="int" />
           <Property Name="annilocation" Type="int" />
           <Property Name="annieventcost" Type="bigint" />
@@ -52,8 +52,8 @@
           <Property Name="babyshowerchairs" Type="int" />
           <Property Name="babyshowertables" Type="int" />
           <Property Name="babyshowerhallcapacity" Type="int" />
-          <Property Name="babyshowerdate" Type="int" />
-          <Property Name="babyshowertime" Type="int" />
+          <Property Name="babyshowerdatetime" Type="datetime" />
+          <Property Name="babyshowertime" Type="time" Precision="7" />
           <Property Name="babyshowercakes" Type="int" />
           <Property Name="babyshowerlocation" Type="int" />
           <Property Name="babyshowereventcost" Type="bigint" />
@@ -71,8 +71,8 @@
           <Property Name="bachelorchairs" Type="int" />
           <Property Name="bachelortables" Type="int" />
           <Property Name="bachelorhallcapacity" Type="int" />
-          <Property Name="bachelordate" Type="int" />
-          <Property Name="bachelortime" Type="int" />
+          <Property Name="bachelordatetime" Type="datetime" />
+          <Property Name="bachelortime" Type="time" Precision="7" />
           <Property Name="bachelorcakes" Type="int" />
           <Property Name="bachelorlocation" Type="int" />
           <Property Name="bacheloreventcost" Type="bigint" />
@@ -90,8 +90,8 @@
           <Property Name="bdaychairs" Type="int" />
           <Property Name="bdaytables" Type="int" />
           <Property Name="bdayhallcapacity" Type="int" />
-          <Property Name="bdaydate" Type="int" />
-          <Property Name="bdaytime" Type="int" />
+          <Property Name="bdaydatetime" Type="datetime" />
+          <Property Name="bdaytime" Type="time" Precision="7" />
           <Property Name="bdaycakes" Type="int" />
           <Property Name="bdaylocation" Type="int" />
           <Property Name="bdayeventcost" Type="bigint" />
@@ -118,20 +118,12 @@
           <Property Name="cockchairs" Type="int" />
           <Property Name="cocktables" Type="int" />
           <Property Name="cockhallcapacity" Type="int" />
-          <Property Name="cockdate" Type="int" />
-          <Property Name="cocktime" Type="int" />
+          <Property Name="cockdatetime" Type="datetime" />
+          <Property Name="cocktime" Type="time" Precision="7" />
           <Property Name="cockcakes" Type="int" />
           <Property Name="cocklocation" Type="int" />
           <Property Name="cockeventcost" Type="bigint" />
           <Property Name="cockbeverages" Type="bit" Nullable="false" />
-        </EntityType>
-        <EntityType Name="datetable">
-          <Key>
-            <PropertyRef Name="dateid" />
-          </Key>
-          <Property Name="dateid" Type="int" Nullable="false" />
-          <Property Name="datesavailable" Type="date" />
-          <Property Name="dated" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="decorationtable">
           <Key>
@@ -174,8 +166,8 @@
           <Property Name="reunionchairs" Type="int" />
           <Property Name="reuniontables" Type="int" />
           <Property Name="reunionhallcapacity" Type="int" />
-          <Property Name="reuniondate" Type="int" />
-          <Property Name="reuniontime" Type="int" />
+          <Property Name="reuniondatetime" Type="datetime" />
+          <Property Name="reuniontime" Type="time" Precision="7" />
           <Property Name="reunioncakes" Type="int" />
           <Property Name="reunionlocation" Type="int" />
           <Property Name="reunioneventcost" Type="bigint" />
@@ -200,14 +192,6 @@
           <Property Name="themename" Type="varchar" MaxLength="20" />
           <Property Name="themed" Type="bit" Nullable="false" />
           <Property Name="themeimage" Type="varbinary(max)" />
-        </EntityType>
-        <EntityType Name="timetable">
-          <Key>
-            <PropertyRef Name="timeid" />
-          </Key>
-          <Property Name="timeid" Type="int" Nullable="false" />
-          <Property Name="timesavailable" Type="time" Precision="7" />
-          <Property Name="timed" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Usertable">
           <Key>
@@ -238,8 +222,8 @@
           <Property Name="weddingchairs" Type="int" />
           <Property Name="weddingtables" Type="int" />
           <Property Name="weddinghallcapacity" Type="int" />
-          <Property Name="weddingdate" Type="int" />
-          <Property Name="weddingtime" Type="int" />
+          <Property Name="weddingdatetime" Type="datetime" />
+          <Property Name="weddingtime" Type="time" Precision="7" />
           <Property Name="weddingcakes" Type="int" />
           <Property Name="weddinglocation" Type="int" />
           <Property Name="weddingeventcost" Type="bigint" />
@@ -248,7 +232,7 @@
           <Property Name="weddingStyling" Type="bit" Nullable="false" />
           <Property Name="weddingHospitality" Type="bit" Nullable="false" />
         </EntityType>
-        <Association Name="FK__AddtoCart__carta__52E34C9D">
+        <Association Name="FK__AddtoCart__carta__7F80E8EA">
           <End Role="Anniversary" Type="Self.Anniversary" Multiplicity="0..1" />
           <End Role="AddtoCart" Type="Self.AddtoCart" Multiplicity="*" />
           <ReferentialConstraint>
@@ -260,7 +244,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__AddtoCart__cartb__4F12BBB9">
+        <Association Name="FK__AddtoCart__cartb__7BB05806">
           <End Role="birthdaytable" Type="Self.birthdaytable" Multiplicity="0..1" />
           <End Role="AddtoCart" Type="Self.AddtoCart" Multiplicity="*" />
           <ReferentialConstraint>
@@ -272,7 +256,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__AddtoCart__cartb__5006DFF2">
+        <Association Name="FK__AddtoCart__cartb__7CA47C3F">
           <End Role="babyshowertable" Type="Self.babyshowertable" Multiplicity="0..1" />
           <End Role="AddtoCart" Type="Self.AddtoCart" Multiplicity="*" />
           <ReferentialConstraint>
@@ -284,7 +268,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__AddtoCart__cartb__50FB042B">
+        <Association Name="FK__AddtoCart__cartb__7D98A078">
           <End Role="BachelorParty" Type="Self.BachelorParty" Multiplicity="0..1" />
           <End Role="AddtoCart" Type="Self.AddtoCart" Multiplicity="*" />
           <ReferentialConstraint>
@@ -296,7 +280,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__AddtoCart__cartc__54CB950F">
+        <Association Name="FK__AddtoCart__cartc__0169315C">
           <End Role="CocktailParty" Type="Self.CocktailParty" Multiplicity="0..1" />
           <End Role="AddtoCart" Type="Self.AddtoCart" Multiplicity="*" />
           <ReferentialConstraint>
@@ -308,7 +292,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__AddtoCart__cartr__53D770D6">
+        <Association Name="FK__AddtoCart__cartr__00750D23">
           <End Role="Reunion" Type="Self.Reunion" Multiplicity="0..1" />
           <End Role="AddtoCart" Type="Self.AddtoCart" Multiplicity="*" />
           <ReferentialConstraint>
@@ -320,7 +304,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__AddtoCart__cartw__51EF2864">
+        <Association Name="FK__AddtoCart__cartw__7E8CC4B1">
           <End Role="Wedding" Type="Self.Wedding" Multiplicity="0..1" />
           <End Role="AddtoCart" Type="Self.AddtoCart" Multiplicity="*" />
           <ReferentialConstraint>
@@ -332,7 +316,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Anniversa__annic__1F63A897">
+        <Association Name="FK__Anniversa__annic__60083D91">
           <End Role="caketable" Type="Self.caketable" Multiplicity="0..1" />
           <End Role="Anniversary" Type="Self.Anniversary" Multiplicity="*" />
           <ReferentialConstraint>
@@ -344,7 +328,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Anniversa__annid__1B9317B3">
+        <Association Name="FK__Anniversa__annid__5E1FF51F">
           <End Role="decorationtable" Type="Self.decorationtable" Multiplicity="0..1" />
           <End Role="Anniversary" Type="Self.Anniversary" Multiplicity="*" />
           <ReferentialConstraint>
@@ -356,19 +340,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Anniversa__annid__1D7B6025">
-          <End Role="datetable" Type="Self.datetable" Multiplicity="0..1" />
-          <End Role="Anniversary" Type="Self.Anniversary" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="datetable">
-              <PropertyRef Name="dateid" />
-            </Principal>
-            <Dependent Role="Anniversary">
-              <PropertyRef Name="annidate" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Anniversa__annii__1A9EF37A">
+        <Association Name="FK__Anniversa__annii__5D2BD0E6">
           <End Role="EventNames" Type="Self.EventNames" Multiplicity="0..1" />
           <End Role="Anniversary" Type="Self.Anniversary" Multiplicity="*" />
           <ReferentialConstraint>
@@ -380,7 +352,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Anniversa__annil__2057CCD0">
+        <Association Name="FK__Anniversa__annil__60FC61CA">
           <End Role="locationtable" Type="Self.locationtable" Multiplicity="0..1" />
           <End Role="Anniversary" Type="Self.Anniversary" Multiplicity="*" />
           <ReferentialConstraint>
@@ -392,7 +364,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Anniversa__annit__1C873BEC">
+        <Association Name="FK__Anniversa__annit__5F141958">
           <End Role="themetable" Type="Self.themetable" Multiplicity="0..1" />
           <End Role="Anniversary" Type="Self.Anniversary" Multiplicity="*" />
           <ReferentialConstraint>
@@ -404,19 +376,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Anniversa__annit__1E6F845E">
-          <End Role="timetable" Type="Self.timetable" Multiplicity="0..1" />
-          <End Role="Anniversary" Type="Self.Anniversary" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="timetable">
-              <PropertyRef Name="timeid" />
-            </Principal>
-            <Dependent Role="Anniversary">
-              <PropertyRef Name="annitime" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Anniversa__anniu__19AACF41">
+        <Association Name="FK__Anniversa__anniu__5C37ACAD">
           <End Role="Usertable" Type="Self.Usertable" Multiplicity="0..1" />
           <End Role="Anniversary" Type="Self.Anniversary" Multiplicity="*" />
           <ReferentialConstraint>
@@ -428,7 +388,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__babyshowe__babys__74794A92">
+        <Association Name="FK__babyshowe__babys__3F9B6DFF">
           <End Role="Usertable" Type="Self.Usertable" Multiplicity="0..1" />
           <End Role="babyshowertable" Type="Self.babyshowertable" Multiplicity="*" />
           <ReferentialConstraint>
@@ -440,7 +400,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__babyshowe__babys__756D6ECB">
+        <Association Name="FK__babyshowe__babys__408F9238">
           <End Role="EventNames" Type="Self.EventNames" Multiplicity="0..1" />
           <End Role="babyshowertable" Type="Self.babyshowertable" Multiplicity="*" />
           <ReferentialConstraint>
@@ -452,7 +412,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__babyshowe__babys__76619304">
+        <Association Name="FK__babyshowe__babys__4183B671">
           <End Role="decorationtable" Type="Self.decorationtable" Multiplicity="0..1" />
           <End Role="babyshowertable" Type="Self.babyshowertable" Multiplicity="*" />
           <ReferentialConstraint>
@@ -464,7 +424,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__babyshowe__babys__7755B73D">
+        <Association Name="FK__babyshowe__babys__4277DAAA">
           <End Role="themetable" Type="Self.themetable" Multiplicity="0..1" />
           <End Role="babyshowertable" Type="Self.babyshowertable" Multiplicity="*" />
           <ReferentialConstraint>
@@ -476,31 +436,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__babyshowe__babys__7849DB76">
-          <End Role="datetable" Type="Self.datetable" Multiplicity="0..1" />
-          <End Role="babyshowertable" Type="Self.babyshowertable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="datetable">
-              <PropertyRef Name="dateid" />
-            </Principal>
-            <Dependent Role="babyshowertable">
-              <PropertyRef Name="babyshowerdate" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__babyshowe__babys__793DFFAF">
-          <End Role="timetable" Type="Self.timetable" Multiplicity="0..1" />
-          <End Role="babyshowertable" Type="Self.babyshowertable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="timetable">
-              <PropertyRef Name="timeid" />
-            </Principal>
-            <Dependent Role="babyshowertable">
-              <PropertyRef Name="babyshowertime" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__babyshowe__babys__7A3223E8">
+        <Association Name="FK__babyshowe__babys__436BFEE3">
           <End Role="caketable" Type="Self.caketable" Multiplicity="0..1" />
           <End Role="babyshowertable" Type="Self.babyshowertable" Multiplicity="*" />
           <ReferentialConstraint>
@@ -512,7 +448,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__babyshowe__babys__7B264821">
+        <Association Name="FK__babyshowe__babys__4460231C">
           <End Role="locationtable" Type="Self.locationtable" Multiplicity="0..1" />
           <End Role="babyshowertable" Type="Self.babyshowertable" Multiplicity="*" />
           <ReferentialConstraint>
@@ -524,91 +460,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__BachelorP__bache__00DF2177">
-          <End Role="EventNames" Type="Self.EventNames" Multiplicity="0..1" />
-          <End Role="BachelorParty" Type="Self.BachelorParty" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="EventNames">
-              <PropertyRef Name="eventid" />
-            </Principal>
-            <Dependent Role="BachelorParty">
-              <PropertyRef Name="bachelorid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__BachelorP__bache__01D345B0">
-          <End Role="decorationtable" Type="Self.decorationtable" Multiplicity="0..1" />
-          <End Role="BachelorParty" Type="Self.BachelorParty" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="decorationtable">
-              <PropertyRef Name="decorid" />
-            </Principal>
-            <Dependent Role="BachelorParty">
-              <PropertyRef Name="bachelordecorations" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__BachelorP__bache__02C769E9">
-          <End Role="themetable" Type="Self.themetable" Multiplicity="0..1" />
-          <End Role="BachelorParty" Type="Self.BachelorParty" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="themetable">
-              <PropertyRef Name="themeid" />
-            </Principal>
-            <Dependent Role="BachelorParty">
-              <PropertyRef Name="bachelortheme" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__BachelorP__bache__03BB8E22">
-          <End Role="datetable" Type="Self.datetable" Multiplicity="0..1" />
-          <End Role="BachelorParty" Type="Self.BachelorParty" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="datetable">
-              <PropertyRef Name="dateid" />
-            </Principal>
-            <Dependent Role="BachelorParty">
-              <PropertyRef Name="bachelordate" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__BachelorP__bache__04AFB25B">
-          <End Role="timetable" Type="Self.timetable" Multiplicity="0..1" />
-          <End Role="BachelorParty" Type="Self.BachelorParty" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="timetable">
-              <PropertyRef Name="timeid" />
-            </Principal>
-            <Dependent Role="BachelorParty">
-              <PropertyRef Name="bachelortime" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__BachelorP__bache__05A3D694">
-          <End Role="caketable" Type="Self.caketable" Multiplicity="0..1" />
-          <End Role="BachelorParty" Type="Self.BachelorParty" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="caketable">
-              <PropertyRef Name="cakeid" />
-            </Principal>
-            <Dependent Role="BachelorParty">
-              <PropertyRef Name="bachelorcakes" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__BachelorP__bache__0697FACD">
-          <End Role="locationtable" Type="Self.locationtable" Multiplicity="0..1" />
-          <End Role="BachelorParty" Type="Self.BachelorParty" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="locationtable">
-              <PropertyRef Name="locationid" />
-            </Principal>
-            <Dependent Role="BachelorParty">
-              <PropertyRef Name="bachelorlocation" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__BachelorP__bache__7FEAFD3E">
+        <Association Name="FK__BachelorP__bache__4830B400">
           <End Role="Usertable" Type="Self.Usertable" Multiplicity="0..1" />
           <End Role="BachelorParty" Type="Self.BachelorParty" Multiplicity="*" />
           <ReferentialConstraint>
@@ -620,7 +472,67 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__birthdayt__bdayc__4A4E069C">
+        <Association Name="FK__BachelorP__bache__4924D839">
+          <End Role="EventNames" Type="Self.EventNames" Multiplicity="0..1" />
+          <End Role="BachelorParty" Type="Self.BachelorParty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventNames">
+              <PropertyRef Name="eventid" />
+            </Principal>
+            <Dependent Role="BachelorParty">
+              <PropertyRef Name="bachelorid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BachelorP__bache__4A18FC72">
+          <End Role="decorationtable" Type="Self.decorationtable" Multiplicity="0..1" />
+          <End Role="BachelorParty" Type="Self.BachelorParty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="decorationtable">
+              <PropertyRef Name="decorid" />
+            </Principal>
+            <Dependent Role="BachelorParty">
+              <PropertyRef Name="bachelordecorations" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BachelorP__bache__4B0D20AB">
+          <End Role="themetable" Type="Self.themetable" Multiplicity="0..1" />
+          <End Role="BachelorParty" Type="Self.BachelorParty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="themetable">
+              <PropertyRef Name="themeid" />
+            </Principal>
+            <Dependent Role="BachelorParty">
+              <PropertyRef Name="bachelortheme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BachelorP__bache__4C0144E4">
+          <End Role="caketable" Type="Self.caketable" Multiplicity="0..1" />
+          <End Role="BachelorParty" Type="Self.BachelorParty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="caketable">
+              <PropertyRef Name="cakeid" />
+            </Principal>
+            <Dependent Role="BachelorParty">
+              <PropertyRef Name="bachelorcakes" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BachelorP__bache__4CF5691D">
+          <End Role="locationtable" Type="Self.locationtable" Multiplicity="0..1" />
+          <End Role="BachelorParty" Type="Self.BachelorParty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="locationtable">
+              <PropertyRef Name="locationid" />
+            </Principal>
+            <Dependent Role="BachelorParty">
+              <PropertyRef Name="bachelorlocation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__birthdayt__bdayc__39E294A9">
           <End Role="caketable" Type="Self.caketable" Multiplicity="0..1" />
           <End Role="birthdaytable" Type="Self.birthdaytable" Multiplicity="*" />
           <ReferentialConstraint>
@@ -632,7 +544,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__birthdayt__bdayd__467D75B8">
+        <Association Name="FK__birthdayt__bdayd__37FA4C37">
           <End Role="decorationtable" Type="Self.decorationtable" Multiplicity="0..1" />
           <End Role="birthdaytable" Type="Self.birthdaytable" Multiplicity="*" />
           <ReferentialConstraint>
@@ -644,19 +556,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__birthdayt__bdayd__4865BE2A">
-          <End Role="datetable" Type="Self.datetable" Multiplicity="0..1" />
-          <End Role="birthdaytable" Type="Self.birthdaytable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="datetable">
-              <PropertyRef Name="dateid" />
-            </Principal>
-            <Dependent Role="birthdaytable">
-              <PropertyRef Name="bdaydate" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__birthdayt__bdayi__4589517F">
+        <Association Name="FK__birthdayt__bdayi__370627FE">
           <End Role="EventNames" Type="Self.EventNames" Multiplicity="0..1" />
           <End Role="birthdaytable" Type="Self.birthdaytable" Multiplicity="*" />
           <ReferentialConstraint>
@@ -668,7 +568,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__birthdayt__bdayl__4B422AD5">
+        <Association Name="FK__birthdayt__bdayl__3AD6B8E2">
           <End Role="locationtable" Type="Self.locationtable" Multiplicity="0..1" />
           <End Role="birthdaytable" Type="Self.birthdaytable" Multiplicity="*" />
           <ReferentialConstraint>
@@ -680,7 +580,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__birthdayt__bdayt__477199F1">
+        <Association Name="FK__birthdayt__bdayt__38EE7070">
           <End Role="themetable" Type="Self.themetable" Multiplicity="0..1" />
           <End Role="birthdaytable" Type="Self.birthdaytable" Multiplicity="*" />
           <ReferentialConstraint>
@@ -692,19 +592,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__birthdayt__bdayt__4959E263">
-          <End Role="timetable" Type="Self.timetable" Multiplicity="0..1" />
-          <End Role="birthdaytable" Type="Self.birthdaytable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="timetable">
-              <PropertyRef Name="timeid" />
-            </Principal>
-            <Dependent Role="birthdaytable">
-              <PropertyRef Name="bdaytime" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__birthdayt__bdayu__44952D46">
+        <Association Name="FK__birthdayt__bdayu__361203C5">
           <End Role="Usertable" Type="Self.Usertable" Multiplicity="0..1" />
           <End Role="birthdaytable" Type="Self.birthdaytable" Multiplicity="*" />
           <ReferentialConstraint>
@@ -716,7 +604,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CocktailP__cockc__3BFFE745">
+        <Association Name="FK__CocktailP__cockc__76EBA2E9">
           <End Role="caketable" Type="Self.caketable" Multiplicity="0..1" />
           <End Role="CocktailParty" Type="Self.CocktailParty" Multiplicity="*" />
           <ReferentialConstraint>
@@ -728,7 +616,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CocktailP__cockd__382F5661">
+        <Association Name="FK__CocktailP__cockd__75035A77">
           <End Role="decorationtable" Type="Self.decorationtable" Multiplicity="0..1" />
           <End Role="CocktailParty" Type="Self.CocktailParty" Multiplicity="*" />
           <ReferentialConstraint>
@@ -740,19 +628,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CocktailP__cockd__3A179ED3">
-          <End Role="datetable" Type="Self.datetable" Multiplicity="0..1" />
-          <End Role="CocktailParty" Type="Self.CocktailParty" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="datetable">
-              <PropertyRef Name="dateid" />
-            </Principal>
-            <Dependent Role="CocktailParty">
-              <PropertyRef Name="cockdate" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__CocktailP__cocki__373B3228">
+        <Association Name="FK__CocktailP__cocki__740F363E">
           <End Role="EventNames" Type="Self.EventNames" Multiplicity="0..1" />
           <End Role="CocktailParty" Type="Self.CocktailParty" Multiplicity="*" />
           <ReferentialConstraint>
@@ -764,7 +640,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CocktailP__cockl__3CF40B7E">
+        <Association Name="FK__CocktailP__cockl__77DFC722">
           <End Role="locationtable" Type="Self.locationtable" Multiplicity="0..1" />
           <End Role="CocktailParty" Type="Self.CocktailParty" Multiplicity="*" />
           <ReferentialConstraint>
@@ -776,7 +652,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CocktailP__cockt__39237A9A">
+        <Association Name="FK__CocktailP__cockt__75F77EB0">
           <End Role="themetable" Type="Self.themetable" Multiplicity="0..1" />
           <End Role="CocktailParty" Type="Self.CocktailParty" Multiplicity="*" />
           <ReferentialConstraint>
@@ -788,19 +664,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CocktailP__cockt__3B0BC30C">
-          <End Role="timetable" Type="Self.timetable" Multiplicity="0..1" />
-          <End Role="CocktailParty" Type="Self.CocktailParty" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="timetable">
-              <PropertyRef Name="timeid" />
-            </Principal>
-            <Dependent Role="CocktailParty">
-              <PropertyRef Name="cocktime" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__CocktailP__cocku__36470DEF">
+        <Association Name="FK__CocktailP__cocku__731B1205">
           <End Role="Usertable" Type="Self.Usertable" Multiplicity="0..1" />
           <End Role="CocktailParty" Type="Self.CocktailParty" Multiplicity="*" />
           <ReferentialConstraint>
@@ -824,7 +688,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Reunion__reunion__27F8EE98">
+        <Association Name="FK__Reunion__reunion__67A95F59">
           <End Role="Usertable" Type="Self.Usertable" Multiplicity="0..1" />
           <End Role="Reunion" Type="Self.Reunion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -836,7 +700,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Reunion__reunion__28ED12D1">
+        <Association Name="FK__Reunion__reunion__689D8392">
           <End Role="EventNames" Type="Self.EventNames" Multiplicity="0..1" />
           <End Role="Reunion" Type="Self.Reunion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -848,7 +712,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Reunion__reunion__29E1370A">
+        <Association Name="FK__Reunion__reunion__6991A7CB">
           <End Role="decorationtable" Type="Self.decorationtable" Multiplicity="0..1" />
           <End Role="Reunion" Type="Self.Reunion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -860,7 +724,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Reunion__reunion__2AD55B43">
+        <Association Name="FK__Reunion__reunion__6A85CC04">
           <End Role="themetable" Type="Self.themetable" Multiplicity="0..1" />
           <End Role="Reunion" Type="Self.Reunion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -872,31 +736,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Reunion__reunion__2BC97F7C">
-          <End Role="datetable" Type="Self.datetable" Multiplicity="0..1" />
-          <End Role="Reunion" Type="Self.Reunion" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="datetable">
-              <PropertyRef Name="dateid" />
-            </Principal>
-            <Dependent Role="Reunion">
-              <PropertyRef Name="reuniondate" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Reunion__reunion__2CBDA3B5">
-          <End Role="timetable" Type="Self.timetable" Multiplicity="0..1" />
-          <End Role="Reunion" Type="Self.Reunion" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="timetable">
-              <PropertyRef Name="timeid" />
-            </Principal>
-            <Dependent Role="Reunion">
-              <PropertyRef Name="reuniontime" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Reunion__reunion__2DB1C7EE">
+        <Association Name="FK__Reunion__reunion__6B79F03D">
           <End Role="caketable" Type="Self.caketable" Multiplicity="0..1" />
           <End Role="Reunion" Type="Self.Reunion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -908,7 +748,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Reunion__reunion__2EA5EC27">
+        <Association Name="FK__Reunion__reunion__6C6E1476">
           <End Role="locationtable" Type="Self.locationtable" Multiplicity="0..1" />
           <End Role="Reunion" Type="Self.Reunion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -932,7 +772,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Wedding__wedding__0B5CAFEA">
+        <Association Name="FK__Wedding__wedding__50C5FA01">
           <End Role="Usertable" Type="Self.Usertable" Multiplicity="0..1" />
           <End Role="Wedding" Type="Self.Wedding" Multiplicity="*" />
           <ReferentialConstraint>
@@ -944,7 +784,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Wedding__wedding__0C50D423">
+        <Association Name="FK__Wedding__wedding__51BA1E3A">
           <End Role="EventNames" Type="Self.EventNames" Multiplicity="0..1" />
           <End Role="Wedding" Type="Self.Wedding" Multiplicity="*" />
           <ReferentialConstraint>
@@ -956,7 +796,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Wedding__wedding__0D44F85C">
+        <Association Name="FK__Wedding__wedding__52AE4273">
           <End Role="decorationtable" Type="Self.decorationtable" Multiplicity="0..1" />
           <End Role="Wedding" Type="Self.Wedding" Multiplicity="*" />
           <ReferentialConstraint>
@@ -968,7 +808,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Wedding__wedding__0E391C95">
+        <Association Name="FK__Wedding__wedding__53A266AC">
           <End Role="themetable" Type="Self.themetable" Multiplicity="0..1" />
           <End Role="Wedding" Type="Self.Wedding" Multiplicity="*" />
           <ReferentialConstraint>
@@ -980,31 +820,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Wedding__wedding__0F2D40CE">
-          <End Role="datetable" Type="Self.datetable" Multiplicity="0..1" />
-          <End Role="Wedding" Type="Self.Wedding" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="datetable">
-              <PropertyRef Name="dateid" />
-            </Principal>
-            <Dependent Role="Wedding">
-              <PropertyRef Name="weddingdate" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Wedding__wedding__10216507">
-          <End Role="timetable" Type="Self.timetable" Multiplicity="0..1" />
-          <End Role="Wedding" Type="Self.Wedding" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="timetable">
-              <PropertyRef Name="timeid" />
-            </Principal>
-            <Dependent Role="Wedding">
-              <PropertyRef Name="weddingtime" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Wedding__wedding__11158940">
+        <Association Name="FK__Wedding__wedding__54968AE5">
           <End Role="caketable" Type="Self.caketable" Multiplicity="0..1" />
           <End Role="Wedding" Type="Self.Wedding" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1016,7 +832,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Wedding__wedding__1209AD79">
+        <Association Name="FK__Wedding__wedding__558AAF1E">
           <End Role="locationtable" Type="Self.locationtable" Multiplicity="0..1" />
           <End Role="Wedding" Type="Self.Wedding" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1032,7 +848,7 @@
           <Parameter Name="Username" Type="nvarchar" Mode="In" />
           <Parameter Name="Password" Type="nvarchar" Mode="In" />
         </Function>
-        <EntityContainer Name="EventManagement2Model1StoreContainer">
+        <EntityContainer Name="EventManagement2ModelStoreContainer">
           <EntitySet Name="AddtoCart" EntityType="Self.AddtoCart" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Anniversary" EntityType="Self.Anniversary" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="babyshowertable" EntityType="Self.babyshowertable" Schema="dbo" store:Type="Tables" />
@@ -1040,201 +856,159 @@
           <EntitySet Name="birthdaytable" EntityType="Self.birthdaytable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="caketable" EntityType="Self.caketable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CocktailParty" EntityType="Self.CocktailParty" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="datetable" EntityType="Self.datetable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="decorationtable" EntityType="Self.decorationtable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EventNames" EntityType="Self.EventNames" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="locationtable" EntityType="Self.locationtable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Reunion" EntityType="Self.Reunion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roletable" EntityType="Self.Roletable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="themetable" EntityType="Self.themetable" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="timetable" EntityType="Self.timetable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usertable" EntityType="Self.Usertable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Wedding" EntityType="Self.Wedding" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__AddtoCart__carta__52E34C9D" Association="Self.FK__AddtoCart__carta__52E34C9D">
+          <AssociationSet Name="FK__AddtoCart__carta__7F80E8EA" Association="Self.FK__AddtoCart__carta__7F80E8EA">
             <End Role="Anniversary" EntitySet="Anniversary" />
             <End Role="AddtoCart" EntitySet="AddtoCart" />
           </AssociationSet>
-          <AssociationSet Name="FK__AddtoCart__cartb__4F12BBB9" Association="Self.FK__AddtoCart__cartb__4F12BBB9">
+          <AssociationSet Name="FK__AddtoCart__cartb__7BB05806" Association="Self.FK__AddtoCart__cartb__7BB05806">
             <End Role="birthdaytable" EntitySet="birthdaytable" />
             <End Role="AddtoCart" EntitySet="AddtoCart" />
           </AssociationSet>
-          <AssociationSet Name="FK__AddtoCart__cartb__5006DFF2" Association="Self.FK__AddtoCart__cartb__5006DFF2">
+          <AssociationSet Name="FK__AddtoCart__cartb__7CA47C3F" Association="Self.FK__AddtoCart__cartb__7CA47C3F">
             <End Role="babyshowertable" EntitySet="babyshowertable" />
             <End Role="AddtoCart" EntitySet="AddtoCart" />
           </AssociationSet>
-          <AssociationSet Name="FK__AddtoCart__cartb__50FB042B" Association="Self.FK__AddtoCart__cartb__50FB042B">
+          <AssociationSet Name="FK__AddtoCart__cartb__7D98A078" Association="Self.FK__AddtoCart__cartb__7D98A078">
             <End Role="BachelorParty" EntitySet="BachelorParty" />
             <End Role="AddtoCart" EntitySet="AddtoCart" />
           </AssociationSet>
-          <AssociationSet Name="FK__AddtoCart__cartc__54CB950F" Association="Self.FK__AddtoCart__cartc__54CB950F">
+          <AssociationSet Name="FK__AddtoCart__cartc__0169315C" Association="Self.FK__AddtoCart__cartc__0169315C">
             <End Role="CocktailParty" EntitySet="CocktailParty" />
             <End Role="AddtoCart" EntitySet="AddtoCart" />
           </AssociationSet>
-          <AssociationSet Name="FK__AddtoCart__cartr__53D770D6" Association="Self.FK__AddtoCart__cartr__53D770D6">
+          <AssociationSet Name="FK__AddtoCart__cartr__00750D23" Association="Self.FK__AddtoCart__cartr__00750D23">
             <End Role="Reunion" EntitySet="Reunion" />
             <End Role="AddtoCart" EntitySet="AddtoCart" />
           </AssociationSet>
-          <AssociationSet Name="FK__AddtoCart__cartw__51EF2864" Association="Self.FK__AddtoCart__cartw__51EF2864">
+          <AssociationSet Name="FK__AddtoCart__cartw__7E8CC4B1" Association="Self.FK__AddtoCart__cartw__7E8CC4B1">
             <End Role="Wedding" EntitySet="Wedding" />
             <End Role="AddtoCart" EntitySet="AddtoCart" />
           </AssociationSet>
-          <AssociationSet Name="FK__Anniversa__annic__1F63A897" Association="Self.FK__Anniversa__annic__1F63A897">
+          <AssociationSet Name="FK__Anniversa__annic__60083D91" Association="Self.FK__Anniversa__annic__60083D91">
             <End Role="caketable" EntitySet="caketable" />
             <End Role="Anniversary" EntitySet="Anniversary" />
           </AssociationSet>
-          <AssociationSet Name="FK__Anniversa__annid__1B9317B3" Association="Self.FK__Anniversa__annid__1B9317B3">
+          <AssociationSet Name="FK__Anniversa__annid__5E1FF51F" Association="Self.FK__Anniversa__annid__5E1FF51F">
             <End Role="decorationtable" EntitySet="decorationtable" />
             <End Role="Anniversary" EntitySet="Anniversary" />
           </AssociationSet>
-          <AssociationSet Name="FK__Anniversa__annid__1D7B6025" Association="Self.FK__Anniversa__annid__1D7B6025">
-            <End Role="datetable" EntitySet="datetable" />
-            <End Role="Anniversary" EntitySet="Anniversary" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Anniversa__annii__1A9EF37A" Association="Self.FK__Anniversa__annii__1A9EF37A">
+          <AssociationSet Name="FK__Anniversa__annii__5D2BD0E6" Association="Self.FK__Anniversa__annii__5D2BD0E6">
             <End Role="EventNames" EntitySet="EventNames" />
             <End Role="Anniversary" EntitySet="Anniversary" />
           </AssociationSet>
-          <AssociationSet Name="FK__Anniversa__annil__2057CCD0" Association="Self.FK__Anniversa__annil__2057CCD0">
+          <AssociationSet Name="FK__Anniversa__annil__60FC61CA" Association="Self.FK__Anniversa__annil__60FC61CA">
             <End Role="locationtable" EntitySet="locationtable" />
             <End Role="Anniversary" EntitySet="Anniversary" />
           </AssociationSet>
-          <AssociationSet Name="FK__Anniversa__annit__1C873BEC" Association="Self.FK__Anniversa__annit__1C873BEC">
+          <AssociationSet Name="FK__Anniversa__annit__5F141958" Association="Self.FK__Anniversa__annit__5F141958">
             <End Role="themetable" EntitySet="themetable" />
             <End Role="Anniversary" EntitySet="Anniversary" />
           </AssociationSet>
-          <AssociationSet Name="FK__Anniversa__annit__1E6F845E" Association="Self.FK__Anniversa__annit__1E6F845E">
-            <End Role="timetable" EntitySet="timetable" />
-            <End Role="Anniversary" EntitySet="Anniversary" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Anniversa__anniu__19AACF41" Association="Self.FK__Anniversa__anniu__19AACF41">
+          <AssociationSet Name="FK__Anniversa__anniu__5C37ACAD" Association="Self.FK__Anniversa__anniu__5C37ACAD">
             <End Role="Usertable" EntitySet="Usertable" />
             <End Role="Anniversary" EntitySet="Anniversary" />
           </AssociationSet>
-          <AssociationSet Name="FK__babyshowe__babys__74794A92" Association="Self.FK__babyshowe__babys__74794A92">
+          <AssociationSet Name="FK__babyshowe__babys__3F9B6DFF" Association="Self.FK__babyshowe__babys__3F9B6DFF">
             <End Role="Usertable" EntitySet="Usertable" />
             <End Role="babyshowertable" EntitySet="babyshowertable" />
           </AssociationSet>
-          <AssociationSet Name="FK__babyshowe__babys__756D6ECB" Association="Self.FK__babyshowe__babys__756D6ECB">
+          <AssociationSet Name="FK__babyshowe__babys__408F9238" Association="Self.FK__babyshowe__babys__408F9238">
             <End Role="EventNames" EntitySet="EventNames" />
             <End Role="babyshowertable" EntitySet="babyshowertable" />
           </AssociationSet>
-          <AssociationSet Name="FK__babyshowe__babys__76619304" Association="Self.FK__babyshowe__babys__76619304">
+          <AssociationSet Name="FK__babyshowe__babys__4183B671" Association="Self.FK__babyshowe__babys__4183B671">
             <End Role="decorationtable" EntitySet="decorationtable" />
             <End Role="babyshowertable" EntitySet="babyshowertable" />
           </AssociationSet>
-          <AssociationSet Name="FK__babyshowe__babys__7755B73D" Association="Self.FK__babyshowe__babys__7755B73D">
+          <AssociationSet Name="FK__babyshowe__babys__4277DAAA" Association="Self.FK__babyshowe__babys__4277DAAA">
             <End Role="themetable" EntitySet="themetable" />
             <End Role="babyshowertable" EntitySet="babyshowertable" />
           </AssociationSet>
-          <AssociationSet Name="FK__babyshowe__babys__7849DB76" Association="Self.FK__babyshowe__babys__7849DB76">
-            <End Role="datetable" EntitySet="datetable" />
-            <End Role="babyshowertable" EntitySet="babyshowertable" />
-          </AssociationSet>
-          <AssociationSet Name="FK__babyshowe__babys__793DFFAF" Association="Self.FK__babyshowe__babys__793DFFAF">
-            <End Role="timetable" EntitySet="timetable" />
-            <End Role="babyshowertable" EntitySet="babyshowertable" />
-          </AssociationSet>
-          <AssociationSet Name="FK__babyshowe__babys__7A3223E8" Association="Self.FK__babyshowe__babys__7A3223E8">
+          <AssociationSet Name="FK__babyshowe__babys__436BFEE3" Association="Self.FK__babyshowe__babys__436BFEE3">
             <End Role="caketable" EntitySet="caketable" />
             <End Role="babyshowertable" EntitySet="babyshowertable" />
           </AssociationSet>
-          <AssociationSet Name="FK__babyshowe__babys__7B264821" Association="Self.FK__babyshowe__babys__7B264821">
+          <AssociationSet Name="FK__babyshowe__babys__4460231C" Association="Self.FK__babyshowe__babys__4460231C">
             <End Role="locationtable" EntitySet="locationtable" />
             <End Role="babyshowertable" EntitySet="babyshowertable" />
           </AssociationSet>
-          <AssociationSet Name="FK__BachelorP__bache__00DF2177" Association="Self.FK__BachelorP__bache__00DF2177">
-            <End Role="EventNames" EntitySet="EventNames" />
-            <End Role="BachelorParty" EntitySet="BachelorParty" />
-          </AssociationSet>
-          <AssociationSet Name="FK__BachelorP__bache__01D345B0" Association="Self.FK__BachelorP__bache__01D345B0">
-            <End Role="decorationtable" EntitySet="decorationtable" />
-            <End Role="BachelorParty" EntitySet="BachelorParty" />
-          </AssociationSet>
-          <AssociationSet Name="FK__BachelorP__bache__02C769E9" Association="Self.FK__BachelorP__bache__02C769E9">
-            <End Role="themetable" EntitySet="themetable" />
-            <End Role="BachelorParty" EntitySet="BachelorParty" />
-          </AssociationSet>
-          <AssociationSet Name="FK__BachelorP__bache__03BB8E22" Association="Self.FK__BachelorP__bache__03BB8E22">
-            <End Role="datetable" EntitySet="datetable" />
-            <End Role="BachelorParty" EntitySet="BachelorParty" />
-          </AssociationSet>
-          <AssociationSet Name="FK__BachelorP__bache__04AFB25B" Association="Self.FK__BachelorP__bache__04AFB25B">
-            <End Role="timetable" EntitySet="timetable" />
-            <End Role="BachelorParty" EntitySet="BachelorParty" />
-          </AssociationSet>
-          <AssociationSet Name="FK__BachelorP__bache__05A3D694" Association="Self.FK__BachelorP__bache__05A3D694">
-            <End Role="caketable" EntitySet="caketable" />
-            <End Role="BachelorParty" EntitySet="BachelorParty" />
-          </AssociationSet>
-          <AssociationSet Name="FK__BachelorP__bache__0697FACD" Association="Self.FK__BachelorP__bache__0697FACD">
-            <End Role="locationtable" EntitySet="locationtable" />
-            <End Role="BachelorParty" EntitySet="BachelorParty" />
-          </AssociationSet>
-          <AssociationSet Name="FK__BachelorP__bache__7FEAFD3E" Association="Self.FK__BachelorP__bache__7FEAFD3E">
+          <AssociationSet Name="FK__BachelorP__bache__4830B400" Association="Self.FK__BachelorP__bache__4830B400">
             <End Role="Usertable" EntitySet="Usertable" />
             <End Role="BachelorParty" EntitySet="BachelorParty" />
           </AssociationSet>
-          <AssociationSet Name="FK__birthdayt__bdayc__4A4E069C" Association="Self.FK__birthdayt__bdayc__4A4E069C">
+          <AssociationSet Name="FK__BachelorP__bache__4924D839" Association="Self.FK__BachelorP__bache__4924D839">
+            <End Role="EventNames" EntitySet="EventNames" />
+            <End Role="BachelorParty" EntitySet="BachelorParty" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BachelorP__bache__4A18FC72" Association="Self.FK__BachelorP__bache__4A18FC72">
+            <End Role="decorationtable" EntitySet="decorationtable" />
+            <End Role="BachelorParty" EntitySet="BachelorParty" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BachelorP__bache__4B0D20AB" Association="Self.FK__BachelorP__bache__4B0D20AB">
+            <End Role="themetable" EntitySet="themetable" />
+            <End Role="BachelorParty" EntitySet="BachelorParty" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BachelorP__bache__4C0144E4" Association="Self.FK__BachelorP__bache__4C0144E4">
+            <End Role="caketable" EntitySet="caketable" />
+            <End Role="BachelorParty" EntitySet="BachelorParty" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BachelorP__bache__4CF5691D" Association="Self.FK__BachelorP__bache__4CF5691D">
+            <End Role="locationtable" EntitySet="locationtable" />
+            <End Role="BachelorParty" EntitySet="BachelorParty" />
+          </AssociationSet>
+          <AssociationSet Name="FK__birthdayt__bdayc__39E294A9" Association="Self.FK__birthdayt__bdayc__39E294A9">
             <End Role="caketable" EntitySet="caketable" />
             <End Role="birthdaytable" EntitySet="birthdaytable" />
           </AssociationSet>
-          <AssociationSet Name="FK__birthdayt__bdayd__467D75B8" Association="Self.FK__birthdayt__bdayd__467D75B8">
+          <AssociationSet Name="FK__birthdayt__bdayd__37FA4C37" Association="Self.FK__birthdayt__bdayd__37FA4C37">
             <End Role="decorationtable" EntitySet="decorationtable" />
             <End Role="birthdaytable" EntitySet="birthdaytable" />
           </AssociationSet>
-          <AssociationSet Name="FK__birthdayt__bdayd__4865BE2A" Association="Self.FK__birthdayt__bdayd__4865BE2A">
-            <End Role="datetable" EntitySet="datetable" />
-            <End Role="birthdaytable" EntitySet="birthdaytable" />
-          </AssociationSet>
-          <AssociationSet Name="FK__birthdayt__bdayi__4589517F" Association="Self.FK__birthdayt__bdayi__4589517F">
+          <AssociationSet Name="FK__birthdayt__bdayi__370627FE" Association="Self.FK__birthdayt__bdayi__370627FE">
             <End Role="EventNames" EntitySet="EventNames" />
             <End Role="birthdaytable" EntitySet="birthdaytable" />
           </AssociationSet>
-          <AssociationSet Name="FK__birthdayt__bdayl__4B422AD5" Association="Self.FK__birthdayt__bdayl__4B422AD5">
+          <AssociationSet Name="FK__birthdayt__bdayl__3AD6B8E2" Association="Self.FK__birthdayt__bdayl__3AD6B8E2">
             <End Role="locationtable" EntitySet="locationtable" />
             <End Role="birthdaytable" EntitySet="birthdaytable" />
           </AssociationSet>
-          <AssociationSet Name="FK__birthdayt__bdayt__477199F1" Association="Self.FK__birthdayt__bdayt__477199F1">
+          <AssociationSet Name="FK__birthdayt__bdayt__38EE7070" Association="Self.FK__birthdayt__bdayt__38EE7070">
             <End Role="themetable" EntitySet="themetable" />
             <End Role="birthdaytable" EntitySet="birthdaytable" />
           </AssociationSet>
-          <AssociationSet Name="FK__birthdayt__bdayt__4959E263" Association="Self.FK__birthdayt__bdayt__4959E263">
-            <End Role="timetable" EntitySet="timetable" />
-            <End Role="birthdaytable" EntitySet="birthdaytable" />
-          </AssociationSet>
-          <AssociationSet Name="FK__birthdayt__bdayu__44952D46" Association="Self.FK__birthdayt__bdayu__44952D46">
+          <AssociationSet Name="FK__birthdayt__bdayu__361203C5" Association="Self.FK__birthdayt__bdayu__361203C5">
             <End Role="Usertable" EntitySet="Usertable" />
             <End Role="birthdaytable" EntitySet="birthdaytable" />
           </AssociationSet>
-          <AssociationSet Name="FK__CocktailP__cockc__3BFFE745" Association="Self.FK__CocktailP__cockc__3BFFE745">
+          <AssociationSet Name="FK__CocktailP__cockc__76EBA2E9" Association="Self.FK__CocktailP__cockc__76EBA2E9">
             <End Role="caketable" EntitySet="caketable" />
             <End Role="CocktailParty" EntitySet="CocktailParty" />
           </AssociationSet>
-          <AssociationSet Name="FK__CocktailP__cockd__382F5661" Association="Self.FK__CocktailP__cockd__382F5661">
+          <AssociationSet Name="FK__CocktailP__cockd__75035A77" Association="Self.FK__CocktailP__cockd__75035A77">
             <End Role="decorationtable" EntitySet="decorationtable" />
             <End Role="CocktailParty" EntitySet="CocktailParty" />
           </AssociationSet>
-          <AssociationSet Name="FK__CocktailP__cockd__3A179ED3" Association="Self.FK__CocktailP__cockd__3A179ED3">
-            <End Role="datetable" EntitySet="datetable" />
-            <End Role="CocktailParty" EntitySet="CocktailParty" />
-          </AssociationSet>
-          <AssociationSet Name="FK__CocktailP__cocki__373B3228" Association="Self.FK__CocktailP__cocki__373B3228">
+          <AssociationSet Name="FK__CocktailP__cocki__740F363E" Association="Self.FK__CocktailP__cocki__740F363E">
             <End Role="EventNames" EntitySet="EventNames" />
             <End Role="CocktailParty" EntitySet="CocktailParty" />
           </AssociationSet>
-          <AssociationSet Name="FK__CocktailP__cockl__3CF40B7E" Association="Self.FK__CocktailP__cockl__3CF40B7E">
+          <AssociationSet Name="FK__CocktailP__cockl__77DFC722" Association="Self.FK__CocktailP__cockl__77DFC722">
             <End Role="locationtable" EntitySet="locationtable" />
             <End Role="CocktailParty" EntitySet="CocktailParty" />
           </AssociationSet>
-          <AssociationSet Name="FK__CocktailP__cockt__39237A9A" Association="Self.FK__CocktailP__cockt__39237A9A">
+          <AssociationSet Name="FK__CocktailP__cockt__75F77EB0" Association="Self.FK__CocktailP__cockt__75F77EB0">
             <End Role="themetable" EntitySet="themetable" />
             <End Role="CocktailParty" EntitySet="CocktailParty" />
           </AssociationSet>
-          <AssociationSet Name="FK__CocktailP__cockt__3B0BC30C" Association="Self.FK__CocktailP__cockt__3B0BC30C">
-            <End Role="timetable" EntitySet="timetable" />
-            <End Role="CocktailParty" EntitySet="CocktailParty" />
-          </AssociationSet>
-          <AssociationSet Name="FK__CocktailP__cocku__36470DEF" Association="Self.FK__CocktailP__cocku__36470DEF">
+          <AssociationSet Name="FK__CocktailP__cocku__731B1205" Association="Self.FK__CocktailP__cocku__731B1205">
             <End Role="Usertable" EntitySet="Usertable" />
             <End Role="CocktailParty" EntitySet="CocktailParty" />
           </AssociationSet>
@@ -1242,35 +1016,27 @@
             <End Role="Usertable" EntitySet="Usertable" />
             <End Role="EventNames" EntitySet="EventNames" />
           </AssociationSet>
-          <AssociationSet Name="FK__Reunion__reunion__27F8EE98" Association="Self.FK__Reunion__reunion__27F8EE98">
+          <AssociationSet Name="FK__Reunion__reunion__67A95F59" Association="Self.FK__Reunion__reunion__67A95F59">
             <End Role="Usertable" EntitySet="Usertable" />
             <End Role="Reunion" EntitySet="Reunion" />
           </AssociationSet>
-          <AssociationSet Name="FK__Reunion__reunion__28ED12D1" Association="Self.FK__Reunion__reunion__28ED12D1">
+          <AssociationSet Name="FK__Reunion__reunion__689D8392" Association="Self.FK__Reunion__reunion__689D8392">
             <End Role="EventNames" EntitySet="EventNames" />
             <End Role="Reunion" EntitySet="Reunion" />
           </AssociationSet>
-          <AssociationSet Name="FK__Reunion__reunion__29E1370A" Association="Self.FK__Reunion__reunion__29E1370A">
+          <AssociationSet Name="FK__Reunion__reunion__6991A7CB" Association="Self.FK__Reunion__reunion__6991A7CB">
             <End Role="decorationtable" EntitySet="decorationtable" />
             <End Role="Reunion" EntitySet="Reunion" />
           </AssociationSet>
-          <AssociationSet Name="FK__Reunion__reunion__2AD55B43" Association="Self.FK__Reunion__reunion__2AD55B43">
+          <AssociationSet Name="FK__Reunion__reunion__6A85CC04" Association="Self.FK__Reunion__reunion__6A85CC04">
             <End Role="themetable" EntitySet="themetable" />
             <End Role="Reunion" EntitySet="Reunion" />
           </AssociationSet>
-          <AssociationSet Name="FK__Reunion__reunion__2BC97F7C" Association="Self.FK__Reunion__reunion__2BC97F7C">
-            <End Role="datetable" EntitySet="datetable" />
-            <End Role="Reunion" EntitySet="Reunion" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Reunion__reunion__2CBDA3B5" Association="Self.FK__Reunion__reunion__2CBDA3B5">
-            <End Role="timetable" EntitySet="timetable" />
-            <End Role="Reunion" EntitySet="Reunion" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Reunion__reunion__2DB1C7EE" Association="Self.FK__Reunion__reunion__2DB1C7EE">
+          <AssociationSet Name="FK__Reunion__reunion__6B79F03D" Association="Self.FK__Reunion__reunion__6B79F03D">
             <End Role="caketable" EntitySet="caketable" />
             <End Role="Reunion" EntitySet="Reunion" />
           </AssociationSet>
-          <AssociationSet Name="FK__Reunion__reunion__2EA5EC27" Association="Self.FK__Reunion__reunion__2EA5EC27">
+          <AssociationSet Name="FK__Reunion__reunion__6C6E1476" Association="Self.FK__Reunion__reunion__6C6E1476">
             <End Role="locationtable" EntitySet="locationtable" />
             <End Role="Reunion" EntitySet="Reunion" />
           </AssociationSet>
@@ -1278,44 +1044,35 @@
             <End Role="Roletable" EntitySet="Roletable" />
             <End Role="Usertable" EntitySet="Usertable" />
           </AssociationSet>
-          <AssociationSet Name="FK__Wedding__wedding__0B5CAFEA" Association="Self.FK__Wedding__wedding__0B5CAFEA">
+          <AssociationSet Name="FK__Wedding__wedding__50C5FA01" Association="Self.FK__Wedding__wedding__50C5FA01">
             <End Role="Usertable" EntitySet="Usertable" />
             <End Role="Wedding" EntitySet="Wedding" />
           </AssociationSet>
-          <AssociationSet Name="FK__Wedding__wedding__0C50D423" Association="Self.FK__Wedding__wedding__0C50D423">
+          <AssociationSet Name="FK__Wedding__wedding__51BA1E3A" Association="Self.FK__Wedding__wedding__51BA1E3A">
             <End Role="EventNames" EntitySet="EventNames" />
             <End Role="Wedding" EntitySet="Wedding" />
           </AssociationSet>
-          <AssociationSet Name="FK__Wedding__wedding__0D44F85C" Association="Self.FK__Wedding__wedding__0D44F85C">
+          <AssociationSet Name="FK__Wedding__wedding__52AE4273" Association="Self.FK__Wedding__wedding__52AE4273">
             <End Role="decorationtable" EntitySet="decorationtable" />
             <End Role="Wedding" EntitySet="Wedding" />
           </AssociationSet>
-          <AssociationSet Name="FK__Wedding__wedding__0E391C95" Association="Self.FK__Wedding__wedding__0E391C95">
+          <AssociationSet Name="FK__Wedding__wedding__53A266AC" Association="Self.FK__Wedding__wedding__53A266AC">
             <End Role="themetable" EntitySet="themetable" />
             <End Role="Wedding" EntitySet="Wedding" />
           </AssociationSet>
-          <AssociationSet Name="FK__Wedding__wedding__0F2D40CE" Association="Self.FK__Wedding__wedding__0F2D40CE">
-            <End Role="datetable" EntitySet="datetable" />
-            <End Role="Wedding" EntitySet="Wedding" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Wedding__wedding__10216507" Association="Self.FK__Wedding__wedding__10216507">
-            <End Role="timetable" EntitySet="timetable" />
-            <End Role="Wedding" EntitySet="Wedding" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Wedding__wedding__11158940" Association="Self.FK__Wedding__wedding__11158940">
+          <AssociationSet Name="FK__Wedding__wedding__54968AE5" Association="Self.FK__Wedding__wedding__54968AE5">
             <End Role="caketable" EntitySet="caketable" />
             <End Role="Wedding" EntitySet="Wedding" />
           </AssociationSet>
-          <AssociationSet Name="FK__Wedding__wedding__1209AD79" Association="Self.FK__Wedding__wedding__1209AD79">
+          <AssociationSet Name="FK__Wedding__wedding__558AAF1E" Association="Self.FK__Wedding__wedding__558AAF1E">
             <End Role="locationtable" EntitySet="locationtable" />
             <End Role="Wedding" EntitySet="Wedding" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="EventManagement2Model1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="EventManagement2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="AddtoCart">
           <Key>
             <PropertyRef Name="id" />
@@ -1328,13 +1085,13 @@
           <Property Name="cartanni" Type="Int32" />
           <Property Name="cartreunion" Type="Int32" />
           <Property Name="cartcocktail" Type="Int32" />
-          <NavigationProperty Name="Anniversary" Relationship="Self.FK__AddtoCart__carta__52E34C9D" FromRole="AddtoCart" ToRole="Anniversary" />
-          <NavigationProperty Name="birthdaytable" Relationship="Self.FK__AddtoCart__cartb__4F12BBB9" FromRole="AddtoCart" ToRole="birthdaytable" />
-          <NavigationProperty Name="babyshowertable" Relationship="Self.FK__AddtoCart__cartb__5006DFF2" FromRole="AddtoCart" ToRole="babyshowertable" />
-          <NavigationProperty Name="BachelorParty" Relationship="Self.FK__AddtoCart__cartb__50FB042B" FromRole="AddtoCart" ToRole="BachelorParty" />
-          <NavigationProperty Name="CocktailParty" Relationship="Self.FK__AddtoCart__cartc__54CB950F" FromRole="AddtoCart" ToRole="CocktailParty" />
-          <NavigationProperty Name="Reunion" Relationship="Self.FK__AddtoCart__cartr__53D770D6" FromRole="AddtoCart" ToRole="Reunion" />
-          <NavigationProperty Name="Wedding" Relationship="Self.FK__AddtoCart__cartw__51EF2864" FromRole="AddtoCart" ToRole="Wedding" />
+          <NavigationProperty Name="Anniversary" Relationship="Self.FK__AddtoCart__carta__30592A6F" FromRole="AddtoCart" ToRole="Anniversary" />
+          <NavigationProperty Name="birthdaytable" Relationship="Self.FK__AddtoCart__cartb__2C88998B" FromRole="AddtoCart" ToRole="birthdaytable" />
+          <NavigationProperty Name="babyshowertable" Relationship="Self.FK__AddtoCart__cartb__2D7CBDC4" FromRole="AddtoCart" ToRole="babyshowertable" />
+          <NavigationProperty Name="BachelorParty" Relationship="Self.FK__AddtoCart__cartb__2E70E1FD" FromRole="AddtoCart" ToRole="BachelorParty" />
+          <NavigationProperty Name="CocktailParty" Relationship="Self.FK__AddtoCart__cartc__324172E1" FromRole="AddtoCart" ToRole="CocktailParty" />
+          <NavigationProperty Name="Reunion" Relationship="Self.FK__AddtoCart__cartr__314D4EA8" FromRole="AddtoCart" ToRole="Reunion" />
+          <NavigationProperty Name="Wedding" Relationship="Self.FK__AddtoCart__cartw__2F650636" FromRole="AddtoCart" ToRole="Wedding" />
         </EntityType>
         <EntityType Name="Anniversary">
           <Key>
@@ -1348,8 +1105,7 @@
           <Property Name="annichairs" Type="Int32" />
           <Property Name="annitables" Type="Int32" />
           <Property Name="annihallcapacity" Type="Int32" />
-          <Property Name="annidate" Type="Int32" />
-          <Property Name="annitime" Type="Int32" />
+          <Property Name="annidatetime" Type="DateTime" Precision="3" />
           <Property Name="annicakes" Type="Int32" />
           <Property Name="annilocation" Type="Int32" />
           <Property Name="annieventcost" Type="Int64" />
@@ -1357,15 +1113,14 @@
           <Property Name="anniPhotography" Type="Boolean" Nullable="false" />
           <Property Name="anniStyling" Type="Boolean" Nullable="false" />
           <Property Name="anniHospitality" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="AddtoCarts" Relationship="Self.FK__AddtoCart__carta__52E34C9D" FromRole="Anniversary" ToRole="AddtoCart" />
-          <NavigationProperty Name="caketable" Relationship="Self.FK__Anniversa__annic__1F63A897" FromRole="Anniversary" ToRole="caketable" />
-          <NavigationProperty Name="decorationtable" Relationship="Self.FK__Anniversa__annid__1B9317B3" FromRole="Anniversary" ToRole="decorationtable" />
-          <NavigationProperty Name="datetable" Relationship="Self.FK__Anniversa__annid__1D7B6025" FromRole="Anniversary" ToRole="datetable" />
-          <NavigationProperty Name="EventName" Relationship="Self.FK__Anniversa__annii__1A9EF37A" FromRole="Anniversary" ToRole="EventNames" />
-          <NavigationProperty Name="locationtable" Relationship="Self.FK__Anniversa__annil__2057CCD0" FromRole="Anniversary" ToRole="locationtable" />
-          <NavigationProperty Name="themetable" Relationship="Self.FK__Anniversa__annit__1C873BEC" FromRole="Anniversary" ToRole="themetable" />
-          <NavigationProperty Name="timetable" Relationship="Self.FK__Anniversa__annit__1E6F845E" FromRole="Anniversary" ToRole="timetable" />
-          <NavigationProperty Name="Usertable" Relationship="Self.FK__Anniversa__anniu__19AACF41" FromRole="Anniversary" ToRole="Usertable" />
+          <NavigationProperty Name="AddtoCarts" Relationship="Self.FK__AddtoCart__carta__30592A6F" FromRole="Anniversary" ToRole="AddtoCart" />
+          <NavigationProperty Name="caketable" Relationship="Self.FK__Anniversa__annic__10E07F16" FromRole="Anniversary" ToRole="caketable" />
+          <NavigationProperty Name="decorationtable" Relationship="Self.FK__Anniversa__annid__0EF836A4" FromRole="Anniversary" ToRole="decorationtable" />
+          <NavigationProperty Name="EventName" Relationship="Self.FK__Anniversa__annii__0E04126B" FromRole="Anniversary" ToRole="EventNames" />
+          <NavigationProperty Name="locationtable" Relationship="Self.FK__Anniversa__annil__11D4A34F" FromRole="Anniversary" ToRole="locationtable" />
+          <NavigationProperty Name="themetable" Relationship="Self.FK__Anniversa__annit__0FEC5ADD" FromRole="Anniversary" ToRole="themetable" />
+          <NavigationProperty Name="Usertable" Relationship="Self.FK__Anniversa__anniu__0D0FEE32" FromRole="Anniversary" ToRole="Usertable" />
+          <Property Name="annitime" Type="Time" Precision="7" />
         </EntityType>
         <EntityType Name="babyshowertable">
           <Key>
@@ -1379,21 +1134,19 @@
           <Property Name="babyshowerchairs" Type="Int32" />
           <Property Name="babyshowertables" Type="Int32" />
           <Property Name="babyshowerhallcapacity" Type="Int32" />
-          <Property Name="babyshowerdate" Type="Int32" />
-          <Property Name="babyshowertime" Type="Int32" />
+          <Property Name="babyshowerdatetime" Type="DateTime" Precision="3" />
           <Property Name="babyshowercakes" Type="Int32" />
           <Property Name="babyshowerlocation" Type="Int32" />
           <Property Name="babyshowereventcost" Type="Int64" />
           <Property Name="babyshowerbeverages" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="AddtoCarts" Relationship="Self.FK__AddtoCart__cartb__5006DFF2" FromRole="babyshowertable" ToRole="AddtoCart" />
-          <NavigationProperty Name="Usertable" Relationship="Self.FK__babyshowe__babys__74794A92" FromRole="babyshowertable" ToRole="Usertable" />
-          <NavigationProperty Name="EventName" Relationship="Self.FK__babyshowe__babys__756D6ECB" FromRole="babyshowertable" ToRole="EventNames" />
-          <NavigationProperty Name="decorationtable" Relationship="Self.FK__babyshowe__babys__76619304" FromRole="babyshowertable" ToRole="decorationtable" />
-          <NavigationProperty Name="themetable" Relationship="Self.FK__babyshowe__babys__7755B73D" FromRole="babyshowertable" ToRole="themetable" />
-          <NavigationProperty Name="datetable" Relationship="Self.FK__babyshowe__babys__7849DB76" FromRole="babyshowertable" ToRole="datetable" />
-          <NavigationProperty Name="timetable" Relationship="Self.FK__babyshowe__babys__793DFFAF" FromRole="babyshowertable" ToRole="timetable" />
-          <NavigationProperty Name="caketable" Relationship="Self.FK__babyshowe__babys__7A3223E8" FromRole="babyshowertable" ToRole="caketable" />
-          <NavigationProperty Name="locationtable" Relationship="Self.FK__babyshowe__babys__7B264821" FromRole="babyshowertable" ToRole="locationtable" />
+          <NavigationProperty Name="AddtoCarts" Relationship="Self.FK__AddtoCart__cartb__2D7CBDC4" FromRole="babyshowertable" ToRole="AddtoCart" />
+          <NavigationProperty Name="Usertable" Relationship="Self.FK__babyshowe__babys__7073AF84" FromRole="babyshowertable" ToRole="Usertable" />
+          <NavigationProperty Name="EventName" Relationship="Self.FK__babyshowe__babys__7167D3BD" FromRole="babyshowertable" ToRole="EventNames" />
+          <NavigationProperty Name="decorationtable" Relationship="Self.FK__babyshowe__babys__725BF7F6" FromRole="babyshowertable" ToRole="decorationtable" />
+          <NavigationProperty Name="themetable" Relationship="Self.FK__babyshowe__babys__73501C2F" FromRole="babyshowertable" ToRole="themetable" />
+          <NavigationProperty Name="caketable" Relationship="Self.FK__babyshowe__babys__74444068" FromRole="babyshowertable" ToRole="caketable" />
+          <NavigationProperty Name="locationtable" Relationship="Self.FK__babyshowe__babys__753864A1" FromRole="babyshowertable" ToRole="locationtable" />
+          <Property Name="babyshowertime" Type="Time" Precision="7" />
         </EntityType>
         <EntityType Name="BachelorParty">
           <Key>
@@ -1407,21 +1160,19 @@
           <Property Name="bachelorchairs" Type="Int32" />
           <Property Name="bachelortables" Type="Int32" />
           <Property Name="bachelorhallcapacity" Type="Int32" />
-          <Property Name="bachelordate" Type="Int32" />
-          <Property Name="bachelortime" Type="Int32" />
+          <Property Name="bachelordatetime" Type="DateTime" Precision="3" />
           <Property Name="bachelorcakes" Type="Int32" />
           <Property Name="bachelorlocation" Type="Int32" />
           <Property Name="bacheloreventcost" Type="Int64" />
           <Property Name="bachelorbeverages" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="AddtoCarts" Relationship="Self.FK__AddtoCart__cartb__50FB042B" FromRole="BachelorParty" ToRole="AddtoCart" />
-          <NavigationProperty Name="EventName" Relationship="Self.FK__BachelorP__bache__00DF2177" FromRole="BachelorParty" ToRole="EventNames" />
-          <NavigationProperty Name="decorationtable" Relationship="Self.FK__BachelorP__bache__01D345B0" FromRole="BachelorParty" ToRole="decorationtable" />
-          <NavigationProperty Name="themetable" Relationship="Self.FK__BachelorP__bache__02C769E9" FromRole="BachelorParty" ToRole="themetable" />
-          <NavigationProperty Name="datetable" Relationship="Self.FK__BachelorP__bache__03BB8E22" FromRole="BachelorParty" ToRole="datetable" />
-          <NavigationProperty Name="timetable" Relationship="Self.FK__BachelorP__bache__04AFB25B" FromRole="BachelorParty" ToRole="timetable" />
-          <NavigationProperty Name="caketable" Relationship="Self.FK__BachelorP__bache__05A3D694" FromRole="BachelorParty" ToRole="caketable" />
-          <NavigationProperty Name="locationtable" Relationship="Self.FK__BachelorP__bache__0697FACD" FromRole="BachelorParty" ToRole="locationtable" />
-          <NavigationProperty Name="Usertable" Relationship="Self.FK__BachelorP__bache__7FEAFD3E" FromRole="BachelorParty" ToRole="Usertable" />
+          <NavigationProperty Name="AddtoCarts" Relationship="Self.FK__AddtoCart__cartb__2E70E1FD" FromRole="BachelorParty" ToRole="AddtoCart" />
+          <NavigationProperty Name="Usertable" Relationship="Self.FK__BachelorP__bache__7908F585" FromRole="BachelorParty" ToRole="Usertable" />
+          <NavigationProperty Name="EventName" Relationship="Self.FK__BachelorP__bache__79FD19BE" FromRole="BachelorParty" ToRole="EventNames" />
+          <NavigationProperty Name="decorationtable" Relationship="Self.FK__BachelorP__bache__7AF13DF7" FromRole="BachelorParty" ToRole="decorationtable" />
+          <NavigationProperty Name="themetable" Relationship="Self.FK__BachelorP__bache__7BE56230" FromRole="BachelorParty" ToRole="themetable" />
+          <NavigationProperty Name="caketable" Relationship="Self.FK__BachelorP__bache__7CD98669" FromRole="BachelorParty" ToRole="caketable" />
+          <NavigationProperty Name="locationtable" Relationship="Self.FK__BachelorP__bache__7DCDAAA2" FromRole="BachelorParty" ToRole="locationtable" />
+          <Property Name="bachelortime" Type="Time" Precision="7" />
         </EntityType>
         <EntityType Name="birthdaytable">
           <Key>
@@ -1435,21 +1186,19 @@
           <Property Name="bdaychairs" Type="Int32" />
           <Property Name="bdaytables" Type="Int32" />
           <Property Name="bdayhallcapacity" Type="Int32" />
-          <Property Name="bdaydate" Type="Int32" />
-          <Property Name="bdaytime" Type="Int32" />
+          <Property Name="bdaydatetime" Type="DateTime" Precision="3" />
           <Property Name="bdaycakes" Type="Int32" />
           <Property Name="bdaylocation" Type="Int32" />
           <Property Name="bdayeventcost" Type="Int64" />
           <Property Name="bdaybeverages" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="AddtoCarts" Relationship="Self.FK__AddtoCart__cartb__4F12BBB9" FromRole="birthdaytable" ToRole="AddtoCart" />
-          <NavigationProperty Name="caketable" Relationship="Self.FK__birthdayt__bdayc__4A4E069C" FromRole="birthdaytable" ToRole="caketable" />
-          <NavigationProperty Name="decorationtable" Relationship="Self.FK__birthdayt__bdayd__467D75B8" FromRole="birthdaytable" ToRole="decorationtable" />
-          <NavigationProperty Name="datetable" Relationship="Self.FK__birthdayt__bdayd__4865BE2A" FromRole="birthdaytable" ToRole="datetable" />
-          <NavigationProperty Name="EventName" Relationship="Self.FK__birthdayt__bdayi__4589517F" FromRole="birthdaytable" ToRole="EventNames" />
-          <NavigationProperty Name="locationtable" Relationship="Self.FK__birthdayt__bdayl__4B422AD5" FromRole="birthdaytable" ToRole="locationtable" />
-          <NavigationProperty Name="themetable" Relationship="Self.FK__birthdayt__bdayt__477199F1" FromRole="birthdaytable" ToRole="themetable" />
-          <NavigationProperty Name="timetable" Relationship="Self.FK__birthdayt__bdayt__4959E263" FromRole="birthdaytable" ToRole="timetable" />
-          <NavigationProperty Name="Usertable" Relationship="Self.FK__birthdayt__bdayu__44952D46" FromRole="birthdaytable" ToRole="Usertable" />
+          <NavigationProperty Name="AddtoCarts" Relationship="Self.FK__AddtoCart__cartb__2C88998B" FromRole="birthdaytable" ToRole="AddtoCart" />
+          <NavigationProperty Name="caketable" Relationship="Self.FK__birthdayt__bdayc__6BAEFA67" FromRole="birthdaytable" ToRole="caketable" />
+          <NavigationProperty Name="decorationtable" Relationship="Self.FK__birthdayt__bdayd__69C6B1F5" FromRole="birthdaytable" ToRole="decorationtable" />
+          <NavigationProperty Name="EventName" Relationship="Self.FK__birthdayt__bdayi__68D28DBC" FromRole="birthdaytable" ToRole="EventNames" />
+          <NavigationProperty Name="locationtable" Relationship="Self.FK__birthdayt__bdayl__6CA31EA0" FromRole="birthdaytable" ToRole="locationtable" />
+          <NavigationProperty Name="themetable" Relationship="Self.FK__birthdayt__bdayt__6ABAD62E" FromRole="birthdaytable" ToRole="themetable" />
+          <NavigationProperty Name="Usertable" Relationship="Self.FK__birthdayt__bdayu__67DE6983" FromRole="birthdaytable" ToRole="Usertable" />
+          <Property Name="bdaytime" Type="Time" Precision="7" />
         </EntityType>
         <EntityType Name="caketable">
           <Key>
@@ -1459,13 +1208,13 @@
           <Property Name="cakesavailable" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
           <Property Name="caked" Type="Boolean" Nullable="false" />
           <Property Name="cakeimage" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="Anniversaries" Relationship="Self.FK__Anniversa__annic__1F63A897" FromRole="caketable" ToRole="Anniversary" />
-          <NavigationProperty Name="babyshowertables" Relationship="Self.FK__babyshowe__babys__7A3223E8" FromRole="caketable" ToRole="babyshowertable" />
-          <NavigationProperty Name="BachelorParties" Relationship="Self.FK__BachelorP__bache__05A3D694" FromRole="caketable" ToRole="BachelorParty" />
-          <NavigationProperty Name="birthdaytables" Relationship="Self.FK__birthdayt__bdayc__4A4E069C" FromRole="caketable" ToRole="birthdaytable" />
-          <NavigationProperty Name="CocktailParties" Relationship="Self.FK__CocktailP__cockc__3BFFE745" FromRole="caketable" ToRole="CocktailParty" />
-          <NavigationProperty Name="Reunions" Relationship="Self.FK__Reunion__reunion__2DB1C7EE" FromRole="caketable" ToRole="Reunion" />
-          <NavigationProperty Name="Weddings" Relationship="Self.FK__Wedding__wedding__11158940" FromRole="caketable" ToRole="Wedding" />
+          <NavigationProperty Name="Anniversaries" Relationship="Self.FK__Anniversa__annic__10E07F16" FromRole="caketable" ToRole="Anniversary" />
+          <NavigationProperty Name="babyshowertables" Relationship="Self.FK__babyshowe__babys__74444068" FromRole="caketable" ToRole="babyshowertable" />
+          <NavigationProperty Name="BachelorParties" Relationship="Self.FK__BachelorP__bache__7CD98669" FromRole="caketable" ToRole="BachelorParty" />
+          <NavigationProperty Name="birthdaytables" Relationship="Self.FK__birthdayt__bdayc__6BAEFA67" FromRole="caketable" ToRole="birthdaytable" />
+          <NavigationProperty Name="CocktailParties" Relationship="Self.FK__CocktailP__cockc__27C3E46E" FromRole="caketable" ToRole="CocktailParty" />
+          <NavigationProperty Name="Reunions" Relationship="Self.FK__Reunion__reunion__1C5231C2" FromRole="caketable" ToRole="Reunion" />
+          <NavigationProperty Name="Weddings" Relationship="Self.FK__Wedding__wedding__056ECC6A" FromRole="caketable" ToRole="Wedding" />
         </EntityType>
         <EntityType Name="CocktailParty">
           <Key>
@@ -1479,36 +1228,19 @@
           <Property Name="cockchairs" Type="Int32" />
           <Property Name="cocktables" Type="Int32" />
           <Property Name="cockhallcapacity" Type="Int32" />
-          <Property Name="cockdate" Type="Int32" />
-          <Property Name="cocktime" Type="Int32" />
+          <Property Name="cockdatetime" Type="DateTime" Precision="3" />
           <Property Name="cockcakes" Type="Int32" />
           <Property Name="cocklocation" Type="Int32" />
           <Property Name="cockeventcost" Type="Int64" />
           <Property Name="cockbeverages" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="AddtoCarts" Relationship="Self.FK__AddtoCart__cartc__54CB950F" FromRole="CocktailParty" ToRole="AddtoCart" />
-          <NavigationProperty Name="caketable" Relationship="Self.FK__CocktailP__cockc__3BFFE745" FromRole="CocktailParty" ToRole="caketable" />
-          <NavigationProperty Name="decorationtable" Relationship="Self.FK__CocktailP__cockd__382F5661" FromRole="CocktailParty" ToRole="decorationtable" />
-          <NavigationProperty Name="datetable" Relationship="Self.FK__CocktailP__cockd__3A179ED3" FromRole="CocktailParty" ToRole="datetable" />
-          <NavigationProperty Name="EventName" Relationship="Self.FK__CocktailP__cocki__373B3228" FromRole="CocktailParty" ToRole="EventNames" />
-          <NavigationProperty Name="locationtable" Relationship="Self.FK__CocktailP__cockl__3CF40B7E" FromRole="CocktailParty" ToRole="locationtable" />
-          <NavigationProperty Name="themetable" Relationship="Self.FK__CocktailP__cockt__39237A9A" FromRole="CocktailParty" ToRole="themetable" />
-          <NavigationProperty Name="timetable" Relationship="Self.FK__CocktailP__cockt__3B0BC30C" FromRole="CocktailParty" ToRole="timetable" />
-          <NavigationProperty Name="Usertable" Relationship="Self.FK__CocktailP__cocku__36470DEF" FromRole="CocktailParty" ToRole="Usertable" />
-        </EntityType>
-        <EntityType Name="datetable">
-          <Key>
-            <PropertyRef Name="dateid" />
-          </Key>
-          <Property Name="dateid" Type="Int32" Nullable="false" />
-          <Property Name="datesavailable" Type="DateTime" Precision="0" />
-          <Property Name="dated" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Anniversaries" Relationship="Self.FK__Anniversa__annid__1D7B6025" FromRole="datetable" ToRole="Anniversary" />
-          <NavigationProperty Name="babyshowertables" Relationship="Self.FK__babyshowe__babys__7849DB76" FromRole="datetable" ToRole="babyshowertable" />
-          <NavigationProperty Name="BachelorParties" Relationship="Self.FK__BachelorP__bache__03BB8E22" FromRole="datetable" ToRole="BachelorParty" />
-          <NavigationProperty Name="birthdaytables" Relationship="Self.FK__birthdayt__bdayd__4865BE2A" FromRole="datetable" ToRole="birthdaytable" />
-          <NavigationProperty Name="CocktailParties" Relationship="Self.FK__CocktailP__cockd__3A179ED3" FromRole="datetable" ToRole="CocktailParty" />
-          <NavigationProperty Name="Reunions" Relationship="Self.FK__Reunion__reunion__2BC97F7C" FromRole="datetable" ToRole="Reunion" />
-          <NavigationProperty Name="Weddings" Relationship="Self.FK__Wedding__wedding__0F2D40CE" FromRole="datetable" ToRole="Wedding" />
+          <NavigationProperty Name="AddtoCarts" Relationship="Self.FK__AddtoCart__cartc__324172E1" FromRole="CocktailParty" ToRole="AddtoCart" />
+          <NavigationProperty Name="caketable" Relationship="Self.FK__CocktailP__cockc__27C3E46E" FromRole="CocktailParty" ToRole="caketable" />
+          <NavigationProperty Name="decorationtable" Relationship="Self.FK__CocktailP__cockd__25DB9BFC" FromRole="CocktailParty" ToRole="decorationtable" />
+          <NavigationProperty Name="EventName" Relationship="Self.FK__CocktailP__cocki__24E777C3" FromRole="CocktailParty" ToRole="EventNames" />
+          <NavigationProperty Name="locationtable" Relationship="Self.FK__CocktailP__cockl__28B808A7" FromRole="CocktailParty" ToRole="locationtable" />
+          <NavigationProperty Name="themetable" Relationship="Self.FK__CocktailP__cockt__26CFC035" FromRole="CocktailParty" ToRole="themetable" />
+          <NavigationProperty Name="Usertable" Relationship="Self.FK__CocktailP__cocku__23F3538A" FromRole="CocktailParty" ToRole="Usertable" />
+          <Property Name="cocktime" Type="Time" Precision="7" />
         </EntityType>
         <EntityType Name="decorationtable">
           <Key>
@@ -1518,13 +1250,13 @@
           <Property Name="decoravailable" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
           <Property Name="decord" Type="Boolean" Nullable="false" />
           <Property Name="decorimage" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="Anniversaries" Relationship="Self.FK__Anniversa__annid__1B9317B3" FromRole="decorationtable" ToRole="Anniversary" />
-          <NavigationProperty Name="babyshowertables" Relationship="Self.FK__babyshowe__babys__76619304" FromRole="decorationtable" ToRole="babyshowertable" />
-          <NavigationProperty Name="BachelorParties" Relationship="Self.FK__BachelorP__bache__01D345B0" FromRole="decorationtable" ToRole="BachelorParty" />
-          <NavigationProperty Name="birthdaytables" Relationship="Self.FK__birthdayt__bdayd__467D75B8" FromRole="decorationtable" ToRole="birthdaytable" />
-          <NavigationProperty Name="CocktailParties" Relationship="Self.FK__CocktailP__cockd__382F5661" FromRole="decorationtable" ToRole="CocktailParty" />
-          <NavigationProperty Name="Reunions" Relationship="Self.FK__Reunion__reunion__29E1370A" FromRole="decorationtable" ToRole="Reunion" />
-          <NavigationProperty Name="Weddings" Relationship="Self.FK__Wedding__wedding__0D44F85C" FromRole="decorationtable" ToRole="Wedding" />
+          <NavigationProperty Name="Anniversaries" Relationship="Self.FK__Anniversa__annid__0EF836A4" FromRole="decorationtable" ToRole="Anniversary" />
+          <NavigationProperty Name="babyshowertables" Relationship="Self.FK__babyshowe__babys__725BF7F6" FromRole="decorationtable" ToRole="babyshowertable" />
+          <NavigationProperty Name="BachelorParties" Relationship="Self.FK__BachelorP__bache__7AF13DF7" FromRole="decorationtable" ToRole="BachelorParty" />
+          <NavigationProperty Name="birthdaytables" Relationship="Self.FK__birthdayt__bdayd__69C6B1F5" FromRole="decorationtable" ToRole="birthdaytable" />
+          <NavigationProperty Name="CocktailParties" Relationship="Self.FK__CocktailP__cockd__25DB9BFC" FromRole="decorationtable" ToRole="CocktailParty" />
+          <NavigationProperty Name="Reunions" Relationship="Self.FK__Reunion__reunion__1A69E950" FromRole="decorationtable" ToRole="Reunion" />
+          <NavigationProperty Name="Weddings" Relationship="Self.FK__Wedding__wedding__038683F8" FromRole="decorationtable" ToRole="Wedding" />
         </EntityType>
         <EntityType Name="EventName">
           <Key>
@@ -1535,14 +1267,14 @@
           <Property Name="eventimage" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="eventd" Type="Boolean" Nullable="false" />
           <Property Name="eventuserid" Type="Int32" />
-          <NavigationProperty Name="Anniversaries" Relationship="Self.FK__Anniversa__annii__1A9EF37A" FromRole="EventNames" ToRole="Anniversary" />
-          <NavigationProperty Name="babyshowertables" Relationship="Self.FK__babyshowe__babys__756D6ECB" FromRole="EventNames" ToRole="babyshowertable" />
-          <NavigationProperty Name="BachelorParties" Relationship="Self.FK__BachelorP__bache__00DF2177" FromRole="EventNames" ToRole="BachelorParty" />
-          <NavigationProperty Name="birthdaytables" Relationship="Self.FK__birthdayt__bdayi__4589517F" FromRole="EventNames" ToRole="birthdaytable" />
-          <NavigationProperty Name="CocktailParties" Relationship="Self.FK__CocktailP__cocki__373B3228" FromRole="EventNames" ToRole="CocktailParty" />
+          <NavigationProperty Name="Anniversaries" Relationship="Self.FK__Anniversa__annii__0E04126B" FromRole="EventNames" ToRole="Anniversary" />
+          <NavigationProperty Name="babyshowertables" Relationship="Self.FK__babyshowe__babys__7167D3BD" FromRole="EventNames" ToRole="babyshowertable" />
+          <NavigationProperty Name="BachelorParties" Relationship="Self.FK__BachelorP__bache__79FD19BE" FromRole="EventNames" ToRole="BachelorParty" />
+          <NavigationProperty Name="birthdaytables" Relationship="Self.FK__birthdayt__bdayi__68D28DBC" FromRole="EventNames" ToRole="birthdaytable" />
+          <NavigationProperty Name="CocktailParties" Relationship="Self.FK__CocktailP__cocki__24E777C3" FromRole="EventNames" ToRole="CocktailParty" />
           <NavigationProperty Name="Usertable" Relationship="Self.FK__EventName__event__6FB49575" FromRole="EventNames" ToRole="Usertable" />
-          <NavigationProperty Name="Reunions" Relationship="Self.FK__Reunion__reunion__28ED12D1" FromRole="EventNames" ToRole="Reunion" />
-          <NavigationProperty Name="Weddings" Relationship="Self.FK__Wedding__wedding__0C50D423" FromRole="EventNames" ToRole="Wedding" />
+          <NavigationProperty Name="Reunions" Relationship="Self.FK__Reunion__reunion__1975C517" FromRole="EventNames" ToRole="Reunion" />
+          <NavigationProperty Name="Weddings" Relationship="Self.FK__Wedding__wedding__02925FBF" FromRole="EventNames" ToRole="Wedding" />
         </EntityType>
         <EntityType Name="locationtable">
           <Key>
@@ -1553,13 +1285,13 @@
           <Property Name="pincode" Type="Int64" />
           <Property Name="locationd" Type="Boolean" Nullable="false" />
           <Property Name="locationimage" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="Anniversaries" Relationship="Self.FK__Anniversa__annil__2057CCD0" FromRole="locationtable" ToRole="Anniversary" />
-          <NavigationProperty Name="babyshowertables" Relationship="Self.FK__babyshowe__babys__7B264821" FromRole="locationtable" ToRole="babyshowertable" />
-          <NavigationProperty Name="BachelorParties" Relationship="Self.FK__BachelorP__bache__0697FACD" FromRole="locationtable" ToRole="BachelorParty" />
-          <NavigationProperty Name="birthdaytables" Relationship="Self.FK__birthdayt__bdayl__4B422AD5" FromRole="locationtable" ToRole="birthdaytable" />
-          <NavigationProperty Name="CocktailParties" Relationship="Self.FK__CocktailP__cockl__3CF40B7E" FromRole="locationtable" ToRole="CocktailParty" />
-          <NavigationProperty Name="Reunions" Relationship="Self.FK__Reunion__reunion__2EA5EC27" FromRole="locationtable" ToRole="Reunion" />
-          <NavigationProperty Name="Weddings" Relationship="Self.FK__Wedding__wedding__1209AD79" FromRole="locationtable" ToRole="Wedding" />
+          <NavigationProperty Name="Anniversaries" Relationship="Self.FK__Anniversa__annil__11D4A34F" FromRole="locationtable" ToRole="Anniversary" />
+          <NavigationProperty Name="babyshowertables" Relationship="Self.FK__babyshowe__babys__753864A1" FromRole="locationtable" ToRole="babyshowertable" />
+          <NavigationProperty Name="BachelorParties" Relationship="Self.FK__BachelorP__bache__7DCDAAA2" FromRole="locationtable" ToRole="BachelorParty" />
+          <NavigationProperty Name="birthdaytables" Relationship="Self.FK__birthdayt__bdayl__6CA31EA0" FromRole="locationtable" ToRole="birthdaytable" />
+          <NavigationProperty Name="CocktailParties" Relationship="Self.FK__CocktailP__cockl__28B808A7" FromRole="locationtable" ToRole="CocktailParty" />
+          <NavigationProperty Name="Reunions" Relationship="Self.FK__Reunion__reunion__1D4655FB" FromRole="locationtable" ToRole="Reunion" />
+          <NavigationProperty Name="Weddings" Relationship="Self.FK__Wedding__wedding__0662F0A3" FromRole="locationtable" ToRole="Wedding" />
         </EntityType>
         <EntityType Name="Reunion">
           <Key>
@@ -1573,8 +1305,7 @@
           <Property Name="reunionchairs" Type="Int32" />
           <Property Name="reuniontables" Type="Int32" />
           <Property Name="reunionhallcapacity" Type="Int32" />
-          <Property Name="reuniondate" Type="Int32" />
-          <Property Name="reuniontime" Type="Int32" />
+          <Property Name="reuniondatetime" Type="DateTime" Precision="3" />
           <Property Name="reunioncakes" Type="Int32" />
           <Property Name="reunionlocation" Type="Int32" />
           <Property Name="reunioneventcost" Type="Int64" />
@@ -1582,15 +1313,14 @@
           <Property Name="reunionPhotography" Type="Boolean" Nullable="false" />
           <Property Name="reunionStyling" Type="Boolean" Nullable="false" />
           <Property Name="reunionHospitality" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="AddtoCarts" Relationship="Self.FK__AddtoCart__cartr__53D770D6" FromRole="Reunion" ToRole="AddtoCart" />
-          <NavigationProperty Name="caketable" Relationship="Self.FK__Reunion__reunion__2DB1C7EE" FromRole="Reunion" ToRole="caketable" />
-          <NavigationProperty Name="datetable" Relationship="Self.FK__Reunion__reunion__2BC97F7C" FromRole="Reunion" ToRole="datetable" />
-          <NavigationProperty Name="decorationtable" Relationship="Self.FK__Reunion__reunion__29E1370A" FromRole="Reunion" ToRole="decorationtable" />
-          <NavigationProperty Name="EventName" Relationship="Self.FK__Reunion__reunion__28ED12D1" FromRole="Reunion" ToRole="EventNames" />
-          <NavigationProperty Name="locationtable" Relationship="Self.FK__Reunion__reunion__2EA5EC27" FromRole="Reunion" ToRole="locationtable" />
-          <NavigationProperty Name="Usertable" Relationship="Self.FK__Reunion__reunion__27F8EE98" FromRole="Reunion" ToRole="Usertable" />
-          <NavigationProperty Name="themetable" Relationship="Self.FK__Reunion__reunion__2AD55B43" FromRole="Reunion" ToRole="themetable" />
-          <NavigationProperty Name="timetable" Relationship="Self.FK__Reunion__reunion__2CBDA3B5" FromRole="Reunion" ToRole="timetable" />
+          <NavigationProperty Name="AddtoCarts" Relationship="Self.FK__AddtoCart__cartr__314D4EA8" FromRole="Reunion" ToRole="AddtoCart" />
+          <NavigationProperty Name="caketable" Relationship="Self.FK__Reunion__reunion__1C5231C2" FromRole="Reunion" ToRole="caketable" />
+          <NavigationProperty Name="decorationtable" Relationship="Self.FK__Reunion__reunion__1A69E950" FromRole="Reunion" ToRole="decorationtable" />
+          <NavigationProperty Name="EventName" Relationship="Self.FK__Reunion__reunion__1975C517" FromRole="Reunion" ToRole="EventNames" />
+          <NavigationProperty Name="locationtable" Relationship="Self.FK__Reunion__reunion__1D4655FB" FromRole="Reunion" ToRole="locationtable" />
+          <NavigationProperty Name="Usertable" Relationship="Self.FK__Reunion__reunion__1881A0DE" FromRole="Reunion" ToRole="Usertable" />
+          <NavigationProperty Name="themetable" Relationship="Self.FK__Reunion__reunion__1B5E0D89" FromRole="Reunion" ToRole="themetable" />
+          <Property Name="reuniontime" Type="Time" Precision="7" />
         </EntityType>
         <EntityType Name="Roletable">
           <Key>
@@ -1609,28 +1339,13 @@
           <Property Name="themename" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="themed" Type="Boolean" Nullable="false" />
           <Property Name="themeimage" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="Anniversaries" Relationship="Self.FK__Anniversa__annit__1C873BEC" FromRole="themetable" ToRole="Anniversary" />
-          <NavigationProperty Name="babyshowertables" Relationship="Self.FK__babyshowe__babys__7755B73D" FromRole="themetable" ToRole="babyshowertable" />
-          <NavigationProperty Name="BachelorParties" Relationship="Self.FK__BachelorP__bache__02C769E9" FromRole="themetable" ToRole="BachelorParty" />
-          <NavigationProperty Name="birthdaytables" Relationship="Self.FK__birthdayt__bdayt__477199F1" FromRole="themetable" ToRole="birthdaytable" />
-          <NavigationProperty Name="CocktailParties" Relationship="Self.FK__CocktailP__cockt__39237A9A" FromRole="themetable" ToRole="CocktailParty" />
-          <NavigationProperty Name="Reunions" Relationship="Self.FK__Reunion__reunion__2AD55B43" FromRole="themetable" ToRole="Reunion" />
-          <NavigationProperty Name="Weddings" Relationship="Self.FK__Wedding__wedding__0E391C95" FromRole="themetable" ToRole="Wedding" />
-        </EntityType>
-        <EntityType Name="timetable">
-          <Key>
-            <PropertyRef Name="timeid" />
-          </Key>
-          <Property Name="timeid" Type="Int32" Nullable="false" />
-          <Property Name="timesavailable" Type="Time" Precision="7" />
-          <Property Name="timed" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Anniversaries" Relationship="Self.FK__Anniversa__annit__1E6F845E" FromRole="timetable" ToRole="Anniversary" />
-          <NavigationProperty Name="babyshowertables" Relationship="Self.FK__babyshowe__babys__793DFFAF" FromRole="timetable" ToRole="babyshowertable" />
-          <NavigationProperty Name="BachelorParties" Relationship="Self.FK__BachelorP__bache__04AFB25B" FromRole="timetable" ToRole="BachelorParty" />
-          <NavigationProperty Name="birthdaytables" Relationship="Self.FK__birthdayt__bdayt__4959E263" FromRole="timetable" ToRole="birthdaytable" />
-          <NavigationProperty Name="CocktailParties" Relationship="Self.FK__CocktailP__cockt__3B0BC30C" FromRole="timetable" ToRole="CocktailParty" />
-          <NavigationProperty Name="Reunions" Relationship="Self.FK__Reunion__reunion__2CBDA3B5" FromRole="timetable" ToRole="Reunion" />
-          <NavigationProperty Name="Weddings" Relationship="Self.FK__Wedding__wedding__10216507" FromRole="timetable" ToRole="Wedding" />
+          <NavigationProperty Name="Anniversaries" Relationship="Self.FK__Anniversa__annit__0FEC5ADD" FromRole="themetable" ToRole="Anniversary" />
+          <NavigationProperty Name="babyshowertables" Relationship="Self.FK__babyshowe__babys__73501C2F" FromRole="themetable" ToRole="babyshowertable" />
+          <NavigationProperty Name="BachelorParties" Relationship="Self.FK__BachelorP__bache__7BE56230" FromRole="themetable" ToRole="BachelorParty" />
+          <NavigationProperty Name="birthdaytables" Relationship="Self.FK__birthdayt__bdayt__6ABAD62E" FromRole="themetable" ToRole="birthdaytable" />
+          <NavigationProperty Name="CocktailParties" Relationship="Self.FK__CocktailP__cockt__26CFC035" FromRole="themetable" ToRole="CocktailParty" />
+          <NavigationProperty Name="Reunions" Relationship="Self.FK__Reunion__reunion__1B5E0D89" FromRole="themetable" ToRole="Reunion" />
+          <NavigationProperty Name="Weddings" Relationship="Self.FK__Wedding__wedding__047AA831" FromRole="themetable" ToRole="Wedding" />
         </EntityType>
         <EntityType Name="Usertable">
           <Key>
@@ -1648,15 +1363,15 @@
           <Property Name="LastLoginDate" Type="DateTime" Precision="3" />
           <Property Name="TProfile" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="TRoleid" Type="Int32" />
-          <NavigationProperty Name="Anniversaries" Relationship="Self.FK__Anniversa__anniu__19AACF41" FromRole="Usertable" ToRole="Anniversary" />
-          <NavigationProperty Name="babyshowertables" Relationship="Self.FK__babyshowe__babys__74794A92" FromRole="Usertable" ToRole="babyshowertable" />
-          <NavigationProperty Name="BachelorParties" Relationship="Self.FK__BachelorP__bache__7FEAFD3E" FromRole="Usertable" ToRole="BachelorParty" />
-          <NavigationProperty Name="birthdaytables" Relationship="Self.FK__birthdayt__bdayu__44952D46" FromRole="Usertable" ToRole="birthdaytable" />
-          <NavigationProperty Name="CocktailParties" Relationship="Self.FK__CocktailP__cocku__36470DEF" FromRole="Usertable" ToRole="CocktailParty" />
+          <NavigationProperty Name="Anniversaries" Relationship="Self.FK__Anniversa__anniu__0D0FEE32" FromRole="Usertable" ToRole="Anniversary" />
+          <NavigationProperty Name="babyshowertables" Relationship="Self.FK__babyshowe__babys__7073AF84" FromRole="Usertable" ToRole="babyshowertable" />
+          <NavigationProperty Name="BachelorParties" Relationship="Self.FK__BachelorP__bache__7908F585" FromRole="Usertable" ToRole="BachelorParty" />
+          <NavigationProperty Name="birthdaytables" Relationship="Self.FK__birthdayt__bdayu__67DE6983" FromRole="Usertable" ToRole="birthdaytable" />
+          <NavigationProperty Name="CocktailParties" Relationship="Self.FK__CocktailP__cocku__23F3538A" FromRole="Usertable" ToRole="CocktailParty" />
           <NavigationProperty Name="EventNames" Relationship="Self.FK__EventName__event__6FB49575" FromRole="Usertable" ToRole="EventNames" />
-          <NavigationProperty Name="Reunions" Relationship="Self.FK__Reunion__reunion__27F8EE98" FromRole="Usertable" ToRole="Reunion" />
+          <NavigationProperty Name="Reunions" Relationship="Self.FK__Reunion__reunion__1881A0DE" FromRole="Usertable" ToRole="Reunion" />
           <NavigationProperty Name="Roletable" Relationship="Self.FK__Usertable__TRole__6442E2C9" FromRole="Usertable" ToRole="Roletable" />
-          <NavigationProperty Name="Weddings" Relationship="Self.FK__Wedding__wedding__0B5CAFEA" FromRole="Usertable" ToRole="Wedding" />
+          <NavigationProperty Name="Weddings" Relationship="Self.FK__Wedding__wedding__019E3B86" FromRole="Usertable" ToRole="Wedding" />
         </EntityType>
         <EntityType Name="Wedding">
           <Key>
@@ -1670,8 +1385,7 @@
           <Property Name="weddingchairs" Type="Int32" />
           <Property Name="weddingtables" Type="Int32" />
           <Property Name="weddinghallcapacity" Type="Int32" />
-          <Property Name="weddingdate" Type="Int32" />
-          <Property Name="weddingtime" Type="Int32" />
+          <Property Name="weddingdatetime" Type="DateTime" Precision="3" />
           <Property Name="weddingcakes" Type="Int32" />
           <Property Name="weddinglocation" Type="Int32" />
           <Property Name="weddingeventcost" Type="Int64" />
@@ -1679,17 +1393,16 @@
           <Property Name="weddingPhotography" Type="Boolean" Nullable="false" />
           <Property Name="weddingStyling" Type="Boolean" Nullable="false" />
           <Property Name="weddingHospitality" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="AddtoCarts" Relationship="Self.FK__AddtoCart__cartw__51EF2864" FromRole="Wedding" ToRole="AddtoCart" />
-          <NavigationProperty Name="caketable" Relationship="Self.FK__Wedding__wedding__11158940" FromRole="Wedding" ToRole="caketable" />
-          <NavigationProperty Name="datetable" Relationship="Self.FK__Wedding__wedding__0F2D40CE" FromRole="Wedding" ToRole="datetable" />
-          <NavigationProperty Name="decorationtable" Relationship="Self.FK__Wedding__wedding__0D44F85C" FromRole="Wedding" ToRole="decorationtable" />
-          <NavigationProperty Name="EventName" Relationship="Self.FK__Wedding__wedding__0C50D423" FromRole="Wedding" ToRole="EventNames" />
-          <NavigationProperty Name="locationtable" Relationship="Self.FK__Wedding__wedding__1209AD79" FromRole="Wedding" ToRole="locationtable" />
-          <NavigationProperty Name="themetable" Relationship="Self.FK__Wedding__wedding__0E391C95" FromRole="Wedding" ToRole="themetable" />
-          <NavigationProperty Name="timetable" Relationship="Self.FK__Wedding__wedding__10216507" FromRole="Wedding" ToRole="timetable" />
-          <NavigationProperty Name="Usertable" Relationship="Self.FK__Wedding__wedding__0B5CAFEA" FromRole="Wedding" ToRole="Usertable" />
+          <NavigationProperty Name="AddtoCarts" Relationship="Self.FK__AddtoCart__cartw__2F650636" FromRole="Wedding" ToRole="AddtoCart" />
+          <NavigationProperty Name="caketable" Relationship="Self.FK__Wedding__wedding__056ECC6A" FromRole="Wedding" ToRole="caketable" />
+          <NavigationProperty Name="decorationtable" Relationship="Self.FK__Wedding__wedding__038683F8" FromRole="Wedding" ToRole="decorationtable" />
+          <NavigationProperty Name="EventName" Relationship="Self.FK__Wedding__wedding__02925FBF" FromRole="Wedding" ToRole="EventNames" />
+          <NavigationProperty Name="locationtable" Relationship="Self.FK__Wedding__wedding__0662F0A3" FromRole="Wedding" ToRole="locationtable" />
+          <NavigationProperty Name="themetable" Relationship="Self.FK__Wedding__wedding__047AA831" FromRole="Wedding" ToRole="themetable" />
+          <NavigationProperty Name="Usertable" Relationship="Self.FK__Wedding__wedding__019E3B86" FromRole="Wedding" ToRole="Usertable" />
+          <Property Name="weddingtime" Type="Time" Precision="7" />
         </EntityType>
-        <Association Name="FK__AddtoCart__carta__52E34C9D">
+        <Association Name="FK__AddtoCart__carta__30592A6F">
           <End Role="Anniversary" Type="Self.Anniversary" Multiplicity="0..1" />
           <End Role="AddtoCart" Type="Self.AddtoCart" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1701,7 +1414,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__AddtoCart__cartb__4F12BBB9">
+        <Association Name="FK__AddtoCart__cartb__2C88998B">
           <End Role="birthdaytable" Type="Self.birthdaytable" Multiplicity="0..1" />
           <End Role="AddtoCart" Type="Self.AddtoCart" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1713,7 +1426,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__AddtoCart__cartb__5006DFF2">
+        <Association Name="FK__AddtoCart__cartb__2D7CBDC4">
           <End Role="babyshowertable" Type="Self.babyshowertable" Multiplicity="0..1" />
           <End Role="AddtoCart" Type="Self.AddtoCart" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1725,7 +1438,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__AddtoCart__cartb__50FB042B">
+        <Association Name="FK__AddtoCart__cartb__2E70E1FD">
           <End Role="BachelorParty" Type="Self.BachelorParty" Multiplicity="0..1" />
           <End Role="AddtoCart" Type="Self.AddtoCart" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1737,7 +1450,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__AddtoCart__cartc__54CB950F">
+        <Association Name="FK__AddtoCart__cartc__324172E1">
           <End Role="CocktailParty" Type="Self.CocktailParty" Multiplicity="0..1" />
           <End Role="AddtoCart" Type="Self.AddtoCart" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1749,7 +1462,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__AddtoCart__cartr__53D770D6">
+        <Association Name="FK__AddtoCart__cartr__314D4EA8">
           <End Role="Reunion" Type="Self.Reunion" Multiplicity="0..1" />
           <End Role="AddtoCart" Type="Self.AddtoCart" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1761,7 +1474,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__AddtoCart__cartw__51EF2864">
+        <Association Name="FK__AddtoCart__cartw__2F650636">
           <End Role="Wedding" Type="Self.Wedding" Multiplicity="0..1" />
           <End Role="AddtoCart" Type="Self.AddtoCart" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1773,7 +1486,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Anniversa__annic__1F63A897">
+        <Association Name="FK__Anniversa__annic__10E07F16">
           <End Role="caketable" Type="Self.caketable" Multiplicity="0..1" />
           <End Role="Anniversary" Type="Self.Anniversary" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1785,7 +1498,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Anniversa__annid__1B9317B3">
+        <Association Name="FK__Anniversa__annid__0EF836A4">
           <End Role="decorationtable" Type="Self.decorationtable" Multiplicity="0..1" />
           <End Role="Anniversary" Type="Self.Anniversary" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1797,19 +1510,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Anniversa__annid__1D7B6025">
-          <End Role="datetable" Type="Self.datetable" Multiplicity="0..1" />
-          <End Role="Anniversary" Type="Self.Anniversary" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="datetable">
-              <PropertyRef Name="dateid" />
-            </Principal>
-            <Dependent Role="Anniversary">
-              <PropertyRef Name="annidate" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Anniversa__annii__1A9EF37A">
+        <Association Name="FK__Anniversa__annii__0E04126B">
           <End Role="EventNames" Type="Self.EventName" Multiplicity="0..1" />
           <End Role="Anniversary" Type="Self.Anniversary" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1821,7 +1522,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Anniversa__annil__2057CCD0">
+        <Association Name="FK__Anniversa__annil__11D4A34F">
           <End Role="locationtable" Type="Self.locationtable" Multiplicity="0..1" />
           <End Role="Anniversary" Type="Self.Anniversary" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1833,7 +1534,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Anniversa__annit__1C873BEC">
+        <Association Name="FK__Anniversa__annit__0FEC5ADD">
           <End Role="themetable" Type="Self.themetable" Multiplicity="0..1" />
           <End Role="Anniversary" Type="Self.Anniversary" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1845,19 +1546,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Anniversa__annit__1E6F845E">
-          <End Role="timetable" Type="Self.timetable" Multiplicity="0..1" />
-          <End Role="Anniversary" Type="Self.Anniversary" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="timetable">
-              <PropertyRef Name="timeid" />
-            </Principal>
-            <Dependent Role="Anniversary">
-              <PropertyRef Name="annitime" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Anniversa__anniu__19AACF41">
+        <Association Name="FK__Anniversa__anniu__0D0FEE32">
           <End Role="Usertable" Type="Self.Usertable" Multiplicity="0..1" />
           <End Role="Anniversary" Type="Self.Anniversary" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1869,7 +1558,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__babyshowe__babys__74794A92">
+        <Association Name="FK__babyshowe__babys__7073AF84">
           <End Role="Usertable" Type="Self.Usertable" Multiplicity="0..1" />
           <End Role="babyshowertable" Type="Self.babyshowertable" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1881,7 +1570,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__babyshowe__babys__756D6ECB">
+        <Association Name="FK__babyshowe__babys__7167D3BD">
           <End Role="EventNames" Type="Self.EventName" Multiplicity="0..1" />
           <End Role="babyshowertable" Type="Self.babyshowertable" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1893,7 +1582,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__babyshowe__babys__76619304">
+        <Association Name="FK__babyshowe__babys__725BF7F6">
           <End Role="decorationtable" Type="Self.decorationtable" Multiplicity="0..1" />
           <End Role="babyshowertable" Type="Self.babyshowertable" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1905,7 +1594,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__babyshowe__babys__7755B73D">
+        <Association Name="FK__babyshowe__babys__73501C2F">
           <End Role="themetable" Type="Self.themetable" Multiplicity="0..1" />
           <End Role="babyshowertable" Type="Self.babyshowertable" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1917,31 +1606,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__babyshowe__babys__7849DB76">
-          <End Role="datetable" Type="Self.datetable" Multiplicity="0..1" />
-          <End Role="babyshowertable" Type="Self.babyshowertable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="datetable">
-              <PropertyRef Name="dateid" />
-            </Principal>
-            <Dependent Role="babyshowertable">
-              <PropertyRef Name="babyshowerdate" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__babyshowe__babys__793DFFAF">
-          <End Role="timetable" Type="Self.timetable" Multiplicity="0..1" />
-          <End Role="babyshowertable" Type="Self.babyshowertable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="timetable">
-              <PropertyRef Name="timeid" />
-            </Principal>
-            <Dependent Role="babyshowertable">
-              <PropertyRef Name="babyshowertime" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__babyshowe__babys__7A3223E8">
+        <Association Name="FK__babyshowe__babys__74444068">
           <End Role="caketable" Type="Self.caketable" Multiplicity="0..1" />
           <End Role="babyshowertable" Type="Self.babyshowertable" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1953,7 +1618,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__babyshowe__babys__7B264821">
+        <Association Name="FK__babyshowe__babys__753864A1">
           <End Role="locationtable" Type="Self.locationtable" Multiplicity="0..1" />
           <End Role="babyshowertable" Type="Self.babyshowertable" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1965,91 +1630,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__BachelorP__bache__00DF2177">
-          <End Role="EventNames" Type="Self.EventName" Multiplicity="0..1" />
-          <End Role="BachelorParty" Type="Self.BachelorParty" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="EventNames">
-              <PropertyRef Name="eventid" />
-            </Principal>
-            <Dependent Role="BachelorParty">
-              <PropertyRef Name="bachelorid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__BachelorP__bache__01D345B0">
-          <End Role="decorationtable" Type="Self.decorationtable" Multiplicity="0..1" />
-          <End Role="BachelorParty" Type="Self.BachelorParty" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="decorationtable">
-              <PropertyRef Name="decorid" />
-            </Principal>
-            <Dependent Role="BachelorParty">
-              <PropertyRef Name="bachelordecorations" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__BachelorP__bache__02C769E9">
-          <End Role="themetable" Type="Self.themetable" Multiplicity="0..1" />
-          <End Role="BachelorParty" Type="Self.BachelorParty" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="themetable">
-              <PropertyRef Name="themeid" />
-            </Principal>
-            <Dependent Role="BachelorParty">
-              <PropertyRef Name="bachelortheme" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__BachelorP__bache__03BB8E22">
-          <End Role="datetable" Type="Self.datetable" Multiplicity="0..1" />
-          <End Role="BachelorParty" Type="Self.BachelorParty" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="datetable">
-              <PropertyRef Name="dateid" />
-            </Principal>
-            <Dependent Role="BachelorParty">
-              <PropertyRef Name="bachelordate" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__BachelorP__bache__04AFB25B">
-          <End Role="timetable" Type="Self.timetable" Multiplicity="0..1" />
-          <End Role="BachelorParty" Type="Self.BachelorParty" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="timetable">
-              <PropertyRef Name="timeid" />
-            </Principal>
-            <Dependent Role="BachelorParty">
-              <PropertyRef Name="bachelortime" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__BachelorP__bache__05A3D694">
-          <End Role="caketable" Type="Self.caketable" Multiplicity="0..1" />
-          <End Role="BachelorParty" Type="Self.BachelorParty" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="caketable">
-              <PropertyRef Name="cakeid" />
-            </Principal>
-            <Dependent Role="BachelorParty">
-              <PropertyRef Name="bachelorcakes" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__BachelorP__bache__0697FACD">
-          <End Role="locationtable" Type="Self.locationtable" Multiplicity="0..1" />
-          <End Role="BachelorParty" Type="Self.BachelorParty" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="locationtable">
-              <PropertyRef Name="locationid" />
-            </Principal>
-            <Dependent Role="BachelorParty">
-              <PropertyRef Name="bachelorlocation" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__BachelorP__bache__7FEAFD3E">
+        <Association Name="FK__BachelorP__bache__7908F585">
           <End Role="Usertable" Type="Self.Usertable" Multiplicity="0..1" />
           <End Role="BachelorParty" Type="Self.BachelorParty" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2061,7 +1642,67 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__birthdayt__bdayc__4A4E069C">
+        <Association Name="FK__BachelorP__bache__79FD19BE">
+          <End Role="EventNames" Type="Self.EventName" Multiplicity="0..1" />
+          <End Role="BachelorParty" Type="Self.BachelorParty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventNames">
+              <PropertyRef Name="eventid" />
+            </Principal>
+            <Dependent Role="BachelorParty">
+              <PropertyRef Name="bachelorid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BachelorP__bache__7AF13DF7">
+          <End Role="decorationtable" Type="Self.decorationtable" Multiplicity="0..1" />
+          <End Role="BachelorParty" Type="Self.BachelorParty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="decorationtable">
+              <PropertyRef Name="decorid" />
+            </Principal>
+            <Dependent Role="BachelorParty">
+              <PropertyRef Name="bachelordecorations" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BachelorP__bache__7BE56230">
+          <End Role="themetable" Type="Self.themetable" Multiplicity="0..1" />
+          <End Role="BachelorParty" Type="Self.BachelorParty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="themetable">
+              <PropertyRef Name="themeid" />
+            </Principal>
+            <Dependent Role="BachelorParty">
+              <PropertyRef Name="bachelortheme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BachelorP__bache__7CD98669">
+          <End Role="caketable" Type="Self.caketable" Multiplicity="0..1" />
+          <End Role="BachelorParty" Type="Self.BachelorParty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="caketable">
+              <PropertyRef Name="cakeid" />
+            </Principal>
+            <Dependent Role="BachelorParty">
+              <PropertyRef Name="bachelorcakes" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BachelorP__bache__7DCDAAA2">
+          <End Role="locationtable" Type="Self.locationtable" Multiplicity="0..1" />
+          <End Role="BachelorParty" Type="Self.BachelorParty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="locationtable">
+              <PropertyRef Name="locationid" />
+            </Principal>
+            <Dependent Role="BachelorParty">
+              <PropertyRef Name="bachelorlocation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__birthdayt__bdayc__6BAEFA67">
           <End Role="caketable" Type="Self.caketable" Multiplicity="0..1" />
           <End Role="birthdaytable" Type="Self.birthdaytable" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2073,7 +1714,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__birthdayt__bdayd__467D75B8">
+        <Association Name="FK__birthdayt__bdayd__69C6B1F5">
           <End Role="decorationtable" Type="Self.decorationtable" Multiplicity="0..1" />
           <End Role="birthdaytable" Type="Self.birthdaytable" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2085,19 +1726,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__birthdayt__bdayd__4865BE2A">
-          <End Role="datetable" Type="Self.datetable" Multiplicity="0..1" />
-          <End Role="birthdaytable" Type="Self.birthdaytable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="datetable">
-              <PropertyRef Name="dateid" />
-            </Principal>
-            <Dependent Role="birthdaytable">
-              <PropertyRef Name="bdaydate" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__birthdayt__bdayi__4589517F">
+        <Association Name="FK__birthdayt__bdayi__68D28DBC">
           <End Role="EventNames" Type="Self.EventName" Multiplicity="0..1" />
           <End Role="birthdaytable" Type="Self.birthdaytable" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2109,7 +1738,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__birthdayt__bdayl__4B422AD5">
+        <Association Name="FK__birthdayt__bdayl__6CA31EA0">
           <End Role="locationtable" Type="Self.locationtable" Multiplicity="0..1" />
           <End Role="birthdaytable" Type="Self.birthdaytable" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2121,7 +1750,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__birthdayt__bdayt__477199F1">
+        <Association Name="FK__birthdayt__bdayt__6ABAD62E">
           <End Role="themetable" Type="Self.themetable" Multiplicity="0..1" />
           <End Role="birthdaytable" Type="Self.birthdaytable" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2133,19 +1762,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__birthdayt__bdayt__4959E263">
-          <End Role="timetable" Type="Self.timetable" Multiplicity="0..1" />
-          <End Role="birthdaytable" Type="Self.birthdaytable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="timetable">
-              <PropertyRef Name="timeid" />
-            </Principal>
-            <Dependent Role="birthdaytable">
-              <PropertyRef Name="bdaytime" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__birthdayt__bdayu__44952D46">
+        <Association Name="FK__birthdayt__bdayu__67DE6983">
           <End Role="Usertable" Type="Self.Usertable" Multiplicity="0..1" />
           <End Role="birthdaytable" Type="Self.birthdaytable" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2157,7 +1774,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CocktailP__cockc__3BFFE745">
+        <Association Name="FK__CocktailP__cockc__27C3E46E">
           <End Role="caketable" Type="Self.caketable" Multiplicity="0..1" />
           <End Role="CocktailParty" Type="Self.CocktailParty" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2169,7 +1786,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Reunion__reunion__2DB1C7EE">
+        <Association Name="FK__Reunion__reunion__1C5231C2">
           <End Role="caketable" Type="Self.caketable" Multiplicity="0..1" />
           <End Role="Reunion" Type="Self.Reunion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2181,7 +1798,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Wedding__wedding__11158940">
+        <Association Name="FK__Wedding__wedding__056ECC6A">
           <End Role="caketable" Type="Self.caketable" Multiplicity="0..1" />
           <End Role="Wedding" Type="Self.Wedding" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2193,7 +1810,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CocktailP__cockd__382F5661">
+        <Association Name="FK__CocktailP__cockd__25DB9BFC">
           <End Role="decorationtable" Type="Self.decorationtable" Multiplicity="0..1" />
           <End Role="CocktailParty" Type="Self.CocktailParty" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2205,19 +1822,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CocktailP__cockd__3A179ED3">
-          <End Role="datetable" Type="Self.datetable" Multiplicity="0..1" />
-          <End Role="CocktailParty" Type="Self.CocktailParty" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="datetable">
-              <PropertyRef Name="dateid" />
-            </Principal>
-            <Dependent Role="CocktailParty">
-              <PropertyRef Name="cockdate" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__CocktailP__cocki__373B3228">
+        <Association Name="FK__CocktailP__cocki__24E777C3">
           <End Role="EventNames" Type="Self.EventName" Multiplicity="0..1" />
           <End Role="CocktailParty" Type="Self.CocktailParty" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2229,7 +1834,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CocktailP__cockl__3CF40B7E">
+        <Association Name="FK__CocktailP__cockl__28B808A7">
           <End Role="locationtable" Type="Self.locationtable" Multiplicity="0..1" />
           <End Role="CocktailParty" Type="Self.CocktailParty" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2241,7 +1846,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CocktailP__cockt__39237A9A">
+        <Association Name="FK__CocktailP__cockt__26CFC035">
           <End Role="themetable" Type="Self.themetable" Multiplicity="0..1" />
           <End Role="CocktailParty" Type="Self.CocktailParty" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2253,19 +1858,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CocktailP__cockt__3B0BC30C">
-          <End Role="timetable" Type="Self.timetable" Multiplicity="0..1" />
-          <End Role="CocktailParty" Type="Self.CocktailParty" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="timetable">
-              <PropertyRef Name="timeid" />
-            </Principal>
-            <Dependent Role="CocktailParty">
-              <PropertyRef Name="cocktime" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__CocktailP__cocku__36470DEF">
+        <Association Name="FK__CocktailP__cocku__23F3538A">
           <End Role="Usertable" Type="Self.Usertable" Multiplicity="0..1" />
           <End Role="CocktailParty" Type="Self.CocktailParty" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2277,31 +1870,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Reunion__reunion__2BC97F7C">
-          <End Role="datetable" Type="Self.datetable" Multiplicity="0..1" />
-          <End Role="Reunion" Type="Self.Reunion" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="datetable">
-              <PropertyRef Name="dateid" />
-            </Principal>
-            <Dependent Role="Reunion">
-              <PropertyRef Name="reuniondate" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Wedding__wedding__0F2D40CE">
-          <End Role="datetable" Type="Self.datetable" Multiplicity="0..1" />
-          <End Role="Wedding" Type="Self.Wedding" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="datetable">
-              <PropertyRef Name="dateid" />
-            </Principal>
-            <Dependent Role="Wedding">
-              <PropertyRef Name="weddingdate" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Reunion__reunion__29E1370A">
+        <Association Name="FK__Reunion__reunion__1A69E950">
           <End Role="decorationtable" Type="Self.decorationtable" Multiplicity="0..1" />
           <End Role="Reunion" Type="Self.Reunion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2313,7 +1882,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Wedding__wedding__0D44F85C">
+        <Association Name="FK__Wedding__wedding__038683F8">
           <End Role="decorationtable" Type="Self.decorationtable" Multiplicity="0..1" />
           <End Role="Wedding" Type="Self.Wedding" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2337,7 +1906,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Reunion__reunion__28ED12D1">
+        <Association Name="FK__Reunion__reunion__1975C517">
           <End Role="EventNames" Type="Self.EventName" Multiplicity="0..1" />
           <End Role="Reunion" Type="Self.Reunion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2349,7 +1918,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Wedding__wedding__0C50D423">
+        <Association Name="FK__Wedding__wedding__02925FBF">
           <End Role="EventNames" Type="Self.EventName" Multiplicity="0..1" />
           <End Role="Wedding" Type="Self.Wedding" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2361,7 +1930,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Reunion__reunion__2EA5EC27">
+        <Association Name="FK__Reunion__reunion__1D4655FB">
           <End Role="locationtable" Type="Self.locationtable" Multiplicity="0..1" />
           <End Role="Reunion" Type="Self.Reunion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2373,7 +1942,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Wedding__wedding__1209AD79">
+        <Association Name="FK__Wedding__wedding__0662F0A3">
           <End Role="locationtable" Type="Self.locationtable" Multiplicity="0..1" />
           <End Role="Wedding" Type="Self.Wedding" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2385,7 +1954,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Reunion__reunion__27F8EE98">
+        <Association Name="FK__Reunion__reunion__1881A0DE">
           <End Role="Usertable" Type="Self.Usertable" Multiplicity="0..1" />
           <End Role="Reunion" Type="Self.Reunion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2397,7 +1966,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Reunion__reunion__2AD55B43">
+        <Association Name="FK__Reunion__reunion__1B5E0D89">
           <End Role="themetable" Type="Self.themetable" Multiplicity="0..1" />
           <End Role="Reunion" Type="Self.Reunion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2406,18 +1975,6 @@
             </Principal>
             <Dependent Role="Reunion">
               <PropertyRef Name="reuniontheme" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Reunion__reunion__2CBDA3B5">
-          <End Role="timetable" Type="Self.timetable" Multiplicity="0..1" />
-          <End Role="Reunion" Type="Self.Reunion" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="timetable">
-              <PropertyRef Name="timeid" />
-            </Principal>
-            <Dependent Role="Reunion">
-              <PropertyRef Name="reuniontime" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2433,7 +1990,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Wedding__wedding__0E391C95">
+        <Association Name="FK__Wedding__wedding__047AA831">
           <End Role="themetable" Type="Self.themetable" Multiplicity="0..1" />
           <End Role="Wedding" Type="Self.Wedding" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2445,19 +2002,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Wedding__wedding__10216507">
-          <End Role="timetable" Type="Self.timetable" Multiplicity="0..1" />
-          <End Role="Wedding" Type="Self.Wedding" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="timetable">
-              <PropertyRef Name="timeid" />
-            </Principal>
-            <Dependent Role="Wedding">
-              <PropertyRef Name="weddingtime" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Wedding__wedding__0B5CAFEA">
+        <Association Name="FK__Wedding__wedding__019E3B86">
           <End Role="Usertable" Type="Self.Usertable" Multiplicity="0..1" />
           <End Role="Wedding" Type="Self.Wedding" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2469,7 +2014,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="EventManagement2Entities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="EventManagement2Entities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AddtoCarts" EntityType="Self.AddtoCart" />
           <EntitySet Name="Anniversaries" EntityType="Self.Anniversary" />
           <EntitySet Name="babyshowertables" EntityType="Self.babyshowertable" />
@@ -2477,225 +2022,175 @@
           <EntitySet Name="birthdaytables" EntityType="Self.birthdaytable" />
           <EntitySet Name="caketables" EntityType="Self.caketable" />
           <EntitySet Name="CocktailParties" EntityType="Self.CocktailParty" />
-          <EntitySet Name="datetables" EntityType="Self.datetable" />
           <EntitySet Name="decorationtables" EntityType="Self.decorationtable" />
           <EntitySet Name="EventNames" EntityType="Self.EventName" />
           <EntitySet Name="locationtables" EntityType="Self.locationtable" />
           <EntitySet Name="Reunions" EntityType="Self.Reunion" />
           <EntitySet Name="Roletables" EntityType="Self.Roletable" />
           <EntitySet Name="themetables" EntityType="Self.themetable" />
-          <EntitySet Name="timetables" EntityType="Self.timetable" />
           <EntitySet Name="Usertables" EntityType="Self.Usertable" />
           <EntitySet Name="Weddings" EntityType="Self.Wedding" />
-          <AssociationSet Name="FK__AddtoCart__carta__52E34C9D" Association="Self.FK__AddtoCart__carta__52E34C9D">
+          <AssociationSet Name="FK__AddtoCart__carta__30592A6F" Association="Self.FK__AddtoCart__carta__30592A6F">
             <End Role="Anniversary" EntitySet="Anniversaries" />
             <End Role="AddtoCart" EntitySet="AddtoCarts" />
           </AssociationSet>
-          <AssociationSet Name="FK__AddtoCart__cartb__4F12BBB9" Association="Self.FK__AddtoCart__cartb__4F12BBB9">
+          <AssociationSet Name="FK__AddtoCart__cartb__2C88998B" Association="Self.FK__AddtoCart__cartb__2C88998B">
             <End Role="birthdaytable" EntitySet="birthdaytables" />
             <End Role="AddtoCart" EntitySet="AddtoCarts" />
           </AssociationSet>
-          <AssociationSet Name="FK__AddtoCart__cartb__5006DFF2" Association="Self.FK__AddtoCart__cartb__5006DFF2">
+          <AssociationSet Name="FK__AddtoCart__cartb__2D7CBDC4" Association="Self.FK__AddtoCart__cartb__2D7CBDC4">
             <End Role="babyshowertable" EntitySet="babyshowertables" />
             <End Role="AddtoCart" EntitySet="AddtoCarts" />
           </AssociationSet>
-          <AssociationSet Name="FK__AddtoCart__cartb__50FB042B" Association="Self.FK__AddtoCart__cartb__50FB042B">
+          <AssociationSet Name="FK__AddtoCart__cartb__2E70E1FD" Association="Self.FK__AddtoCart__cartb__2E70E1FD">
             <End Role="BachelorParty" EntitySet="BachelorParties" />
             <End Role="AddtoCart" EntitySet="AddtoCarts" />
           </AssociationSet>
-          <AssociationSet Name="FK__AddtoCart__cartc__54CB950F" Association="Self.FK__AddtoCart__cartc__54CB950F">
+          <AssociationSet Name="FK__AddtoCart__cartc__324172E1" Association="Self.FK__AddtoCart__cartc__324172E1">
             <End Role="CocktailParty" EntitySet="CocktailParties" />
             <End Role="AddtoCart" EntitySet="AddtoCarts" />
           </AssociationSet>
-          <AssociationSet Name="FK__AddtoCart__cartr__53D770D6" Association="Self.FK__AddtoCart__cartr__53D770D6">
+          <AssociationSet Name="FK__AddtoCart__cartr__314D4EA8" Association="Self.FK__AddtoCart__cartr__314D4EA8">
             <End Role="Reunion" EntitySet="Reunions" />
             <End Role="AddtoCart" EntitySet="AddtoCarts" />
           </AssociationSet>
-          <AssociationSet Name="FK__AddtoCart__cartw__51EF2864" Association="Self.FK__AddtoCart__cartw__51EF2864">
+          <AssociationSet Name="FK__AddtoCart__cartw__2F650636" Association="Self.FK__AddtoCart__cartw__2F650636">
             <End Role="Wedding" EntitySet="Weddings" />
             <End Role="AddtoCart" EntitySet="AddtoCarts" />
           </AssociationSet>
-          <AssociationSet Name="FK__Anniversa__annic__1F63A897" Association="Self.FK__Anniversa__annic__1F63A897">
+          <AssociationSet Name="FK__Anniversa__annic__10E07F16" Association="Self.FK__Anniversa__annic__10E07F16">
             <End Role="caketable" EntitySet="caketables" />
             <End Role="Anniversary" EntitySet="Anniversaries" />
           </AssociationSet>
-          <AssociationSet Name="FK__Anniversa__annid__1B9317B3" Association="Self.FK__Anniversa__annid__1B9317B3">
+          <AssociationSet Name="FK__Anniversa__annid__0EF836A4" Association="Self.FK__Anniversa__annid__0EF836A4">
             <End Role="decorationtable" EntitySet="decorationtables" />
             <End Role="Anniversary" EntitySet="Anniversaries" />
           </AssociationSet>
-          <AssociationSet Name="FK__Anniversa__annid__1D7B6025" Association="Self.FK__Anniversa__annid__1D7B6025">
-            <End Role="datetable" EntitySet="datetables" />
-            <End Role="Anniversary" EntitySet="Anniversaries" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Anniversa__annii__1A9EF37A" Association="Self.FK__Anniversa__annii__1A9EF37A">
+          <AssociationSet Name="FK__Anniversa__annii__0E04126B" Association="Self.FK__Anniversa__annii__0E04126B">
             <End Role="EventNames" EntitySet="EventNames" />
             <End Role="Anniversary" EntitySet="Anniversaries" />
           </AssociationSet>
-          <AssociationSet Name="FK__Anniversa__annil__2057CCD0" Association="Self.FK__Anniversa__annil__2057CCD0">
+          <AssociationSet Name="FK__Anniversa__annil__11D4A34F" Association="Self.FK__Anniversa__annil__11D4A34F">
             <End Role="locationtable" EntitySet="locationtables" />
             <End Role="Anniversary" EntitySet="Anniversaries" />
           </AssociationSet>
-          <AssociationSet Name="FK__Anniversa__annit__1C873BEC" Association="Self.FK__Anniversa__annit__1C873BEC">
+          <AssociationSet Name="FK__Anniversa__annit__0FEC5ADD" Association="Self.FK__Anniversa__annit__0FEC5ADD">
             <End Role="themetable" EntitySet="themetables" />
             <End Role="Anniversary" EntitySet="Anniversaries" />
           </AssociationSet>
-          <AssociationSet Name="FK__Anniversa__annit__1E6F845E" Association="Self.FK__Anniversa__annit__1E6F845E">
-            <End Role="timetable" EntitySet="timetables" />
-            <End Role="Anniversary" EntitySet="Anniversaries" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Anniversa__anniu__19AACF41" Association="Self.FK__Anniversa__anniu__19AACF41">
+          <AssociationSet Name="FK__Anniversa__anniu__0D0FEE32" Association="Self.FK__Anniversa__anniu__0D0FEE32">
             <End Role="Usertable" EntitySet="Usertables" />
             <End Role="Anniversary" EntitySet="Anniversaries" />
           </AssociationSet>
-          <AssociationSet Name="FK__babyshowe__babys__74794A92" Association="Self.FK__babyshowe__babys__74794A92">
+          <AssociationSet Name="FK__babyshowe__babys__7073AF84" Association="Self.FK__babyshowe__babys__7073AF84">
             <End Role="Usertable" EntitySet="Usertables" />
             <End Role="babyshowertable" EntitySet="babyshowertables" />
           </AssociationSet>
-          <AssociationSet Name="FK__babyshowe__babys__756D6ECB" Association="Self.FK__babyshowe__babys__756D6ECB">
+          <AssociationSet Name="FK__babyshowe__babys__7167D3BD" Association="Self.FK__babyshowe__babys__7167D3BD">
             <End Role="EventNames" EntitySet="EventNames" />
             <End Role="babyshowertable" EntitySet="babyshowertables" />
           </AssociationSet>
-          <AssociationSet Name="FK__babyshowe__babys__76619304" Association="Self.FK__babyshowe__babys__76619304">
+          <AssociationSet Name="FK__babyshowe__babys__725BF7F6" Association="Self.FK__babyshowe__babys__725BF7F6">
             <End Role="decorationtable" EntitySet="decorationtables" />
             <End Role="babyshowertable" EntitySet="babyshowertables" />
           </AssociationSet>
-          <AssociationSet Name="FK__babyshowe__babys__7755B73D" Association="Self.FK__babyshowe__babys__7755B73D">
+          <AssociationSet Name="FK__babyshowe__babys__73501C2F" Association="Self.FK__babyshowe__babys__73501C2F">
             <End Role="themetable" EntitySet="themetables" />
             <End Role="babyshowertable" EntitySet="babyshowertables" />
           </AssociationSet>
-          <AssociationSet Name="FK__babyshowe__babys__7849DB76" Association="Self.FK__babyshowe__babys__7849DB76">
-            <End Role="datetable" EntitySet="datetables" />
-            <End Role="babyshowertable" EntitySet="babyshowertables" />
-          </AssociationSet>
-          <AssociationSet Name="FK__babyshowe__babys__793DFFAF" Association="Self.FK__babyshowe__babys__793DFFAF">
-            <End Role="timetable" EntitySet="timetables" />
-            <End Role="babyshowertable" EntitySet="babyshowertables" />
-          </AssociationSet>
-          <AssociationSet Name="FK__babyshowe__babys__7A3223E8" Association="Self.FK__babyshowe__babys__7A3223E8">
+          <AssociationSet Name="FK__babyshowe__babys__74444068" Association="Self.FK__babyshowe__babys__74444068">
             <End Role="caketable" EntitySet="caketables" />
             <End Role="babyshowertable" EntitySet="babyshowertables" />
           </AssociationSet>
-          <AssociationSet Name="FK__babyshowe__babys__7B264821" Association="Self.FK__babyshowe__babys__7B264821">
+          <AssociationSet Name="FK__babyshowe__babys__753864A1" Association="Self.FK__babyshowe__babys__753864A1">
             <End Role="locationtable" EntitySet="locationtables" />
             <End Role="babyshowertable" EntitySet="babyshowertables" />
           </AssociationSet>
-          <AssociationSet Name="FK__BachelorP__bache__00DF2177" Association="Self.FK__BachelorP__bache__00DF2177">
-            <End Role="EventNames" EntitySet="EventNames" />
-            <End Role="BachelorParty" EntitySet="BachelorParties" />
-          </AssociationSet>
-          <AssociationSet Name="FK__BachelorP__bache__01D345B0" Association="Self.FK__BachelorP__bache__01D345B0">
-            <End Role="decorationtable" EntitySet="decorationtables" />
-            <End Role="BachelorParty" EntitySet="BachelorParties" />
-          </AssociationSet>
-          <AssociationSet Name="FK__BachelorP__bache__02C769E9" Association="Self.FK__BachelorP__bache__02C769E9">
-            <End Role="themetable" EntitySet="themetables" />
-            <End Role="BachelorParty" EntitySet="BachelorParties" />
-          </AssociationSet>
-          <AssociationSet Name="FK__BachelorP__bache__03BB8E22" Association="Self.FK__BachelorP__bache__03BB8E22">
-            <End Role="datetable" EntitySet="datetables" />
-            <End Role="BachelorParty" EntitySet="BachelorParties" />
-          </AssociationSet>
-          <AssociationSet Name="FK__BachelorP__bache__04AFB25B" Association="Self.FK__BachelorP__bache__04AFB25B">
-            <End Role="timetable" EntitySet="timetables" />
-            <End Role="BachelorParty" EntitySet="BachelorParties" />
-          </AssociationSet>
-          <AssociationSet Name="FK__BachelorP__bache__05A3D694" Association="Self.FK__BachelorP__bache__05A3D694">
-            <End Role="caketable" EntitySet="caketables" />
-            <End Role="BachelorParty" EntitySet="BachelorParties" />
-          </AssociationSet>
-          <AssociationSet Name="FK__BachelorP__bache__0697FACD" Association="Self.FK__BachelorP__bache__0697FACD">
-            <End Role="locationtable" EntitySet="locationtables" />
-            <End Role="BachelorParty" EntitySet="BachelorParties" />
-          </AssociationSet>
-          <AssociationSet Name="FK__BachelorP__bache__7FEAFD3E" Association="Self.FK__BachelorP__bache__7FEAFD3E">
+          <AssociationSet Name="FK__BachelorP__bache__7908F585" Association="Self.FK__BachelorP__bache__7908F585">
             <End Role="Usertable" EntitySet="Usertables" />
             <End Role="BachelorParty" EntitySet="BachelorParties" />
           </AssociationSet>
-          <AssociationSet Name="FK__birthdayt__bdayc__4A4E069C" Association="Self.FK__birthdayt__bdayc__4A4E069C">
+          <AssociationSet Name="FK__BachelorP__bache__79FD19BE" Association="Self.FK__BachelorP__bache__79FD19BE">
+            <End Role="EventNames" EntitySet="EventNames" />
+            <End Role="BachelorParty" EntitySet="BachelorParties" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BachelorP__bache__7AF13DF7" Association="Self.FK__BachelorP__bache__7AF13DF7">
+            <End Role="decorationtable" EntitySet="decorationtables" />
+            <End Role="BachelorParty" EntitySet="BachelorParties" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BachelorP__bache__7BE56230" Association="Self.FK__BachelorP__bache__7BE56230">
+            <End Role="themetable" EntitySet="themetables" />
+            <End Role="BachelorParty" EntitySet="BachelorParties" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BachelorP__bache__7CD98669" Association="Self.FK__BachelorP__bache__7CD98669">
+            <End Role="caketable" EntitySet="caketables" />
+            <End Role="BachelorParty" EntitySet="BachelorParties" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BachelorP__bache__7DCDAAA2" Association="Self.FK__BachelorP__bache__7DCDAAA2">
+            <End Role="locationtable" EntitySet="locationtables" />
+            <End Role="BachelorParty" EntitySet="BachelorParties" />
+          </AssociationSet>
+          <AssociationSet Name="FK__birthdayt__bdayc__6BAEFA67" Association="Self.FK__birthdayt__bdayc__6BAEFA67">
             <End Role="caketable" EntitySet="caketables" />
             <End Role="birthdaytable" EntitySet="birthdaytables" />
           </AssociationSet>
-          <AssociationSet Name="FK__birthdayt__bdayd__467D75B8" Association="Self.FK__birthdayt__bdayd__467D75B8">
+          <AssociationSet Name="FK__birthdayt__bdayd__69C6B1F5" Association="Self.FK__birthdayt__bdayd__69C6B1F5">
             <End Role="decorationtable" EntitySet="decorationtables" />
             <End Role="birthdaytable" EntitySet="birthdaytables" />
           </AssociationSet>
-          <AssociationSet Name="FK__birthdayt__bdayd__4865BE2A" Association="Self.FK__birthdayt__bdayd__4865BE2A">
-            <End Role="datetable" EntitySet="datetables" />
-            <End Role="birthdaytable" EntitySet="birthdaytables" />
-          </AssociationSet>
-          <AssociationSet Name="FK__birthdayt__bdayi__4589517F" Association="Self.FK__birthdayt__bdayi__4589517F">
+          <AssociationSet Name="FK__birthdayt__bdayi__68D28DBC" Association="Self.FK__birthdayt__bdayi__68D28DBC">
             <End Role="EventNames" EntitySet="EventNames" />
             <End Role="birthdaytable" EntitySet="birthdaytables" />
           </AssociationSet>
-          <AssociationSet Name="FK__birthdayt__bdayl__4B422AD5" Association="Self.FK__birthdayt__bdayl__4B422AD5">
+          <AssociationSet Name="FK__birthdayt__bdayl__6CA31EA0" Association="Self.FK__birthdayt__bdayl__6CA31EA0">
             <End Role="locationtable" EntitySet="locationtables" />
             <End Role="birthdaytable" EntitySet="birthdaytables" />
           </AssociationSet>
-          <AssociationSet Name="FK__birthdayt__bdayt__477199F1" Association="Self.FK__birthdayt__bdayt__477199F1">
+          <AssociationSet Name="FK__birthdayt__bdayt__6ABAD62E" Association="Self.FK__birthdayt__bdayt__6ABAD62E">
             <End Role="themetable" EntitySet="themetables" />
             <End Role="birthdaytable" EntitySet="birthdaytables" />
           </AssociationSet>
-          <AssociationSet Name="FK__birthdayt__bdayt__4959E263" Association="Self.FK__birthdayt__bdayt__4959E263">
-            <End Role="timetable" EntitySet="timetables" />
-            <End Role="birthdaytable" EntitySet="birthdaytables" />
-          </AssociationSet>
-          <AssociationSet Name="FK__birthdayt__bdayu__44952D46" Association="Self.FK__birthdayt__bdayu__44952D46">
+          <AssociationSet Name="FK__birthdayt__bdayu__67DE6983" Association="Self.FK__birthdayt__bdayu__67DE6983">
             <End Role="Usertable" EntitySet="Usertables" />
             <End Role="birthdaytable" EntitySet="birthdaytables" />
           </AssociationSet>
-          <AssociationSet Name="FK__CocktailP__cockc__3BFFE745" Association="Self.FK__CocktailP__cockc__3BFFE745">
+          <AssociationSet Name="FK__CocktailP__cockc__27C3E46E" Association="Self.FK__CocktailP__cockc__27C3E46E">
             <End Role="caketable" EntitySet="caketables" />
             <End Role="CocktailParty" EntitySet="CocktailParties" />
           </AssociationSet>
-          <AssociationSet Name="FK__Reunion__reunion__2DB1C7EE" Association="Self.FK__Reunion__reunion__2DB1C7EE">
+          <AssociationSet Name="FK__Reunion__reunion__1C5231C2" Association="Self.FK__Reunion__reunion__1C5231C2">
             <End Role="caketable" EntitySet="caketables" />
             <End Role="Reunion" EntitySet="Reunions" />
           </AssociationSet>
-          <AssociationSet Name="FK__Wedding__wedding__11158940" Association="Self.FK__Wedding__wedding__11158940">
+          <AssociationSet Name="FK__Wedding__wedding__056ECC6A" Association="Self.FK__Wedding__wedding__056ECC6A">
             <End Role="caketable" EntitySet="caketables" />
             <End Role="Wedding" EntitySet="Weddings" />
           </AssociationSet>
-          <AssociationSet Name="FK__CocktailP__cockd__382F5661" Association="Self.FK__CocktailP__cockd__382F5661">
+          <AssociationSet Name="FK__CocktailP__cockd__25DB9BFC" Association="Self.FK__CocktailP__cockd__25DB9BFC">
             <End Role="decorationtable" EntitySet="decorationtables" />
             <End Role="CocktailParty" EntitySet="CocktailParties" />
           </AssociationSet>
-          <AssociationSet Name="FK__CocktailP__cockd__3A179ED3" Association="Self.FK__CocktailP__cockd__3A179ED3">
-            <End Role="datetable" EntitySet="datetables" />
-            <End Role="CocktailParty" EntitySet="CocktailParties" />
-          </AssociationSet>
-          <AssociationSet Name="FK__CocktailP__cocki__373B3228" Association="Self.FK__CocktailP__cocki__373B3228">
+          <AssociationSet Name="FK__CocktailP__cocki__24E777C3" Association="Self.FK__CocktailP__cocki__24E777C3">
             <End Role="EventNames" EntitySet="EventNames" />
             <End Role="CocktailParty" EntitySet="CocktailParties" />
           </AssociationSet>
-          <AssociationSet Name="FK__CocktailP__cockl__3CF40B7E" Association="Self.FK__CocktailP__cockl__3CF40B7E">
+          <AssociationSet Name="FK__CocktailP__cockl__28B808A7" Association="Self.FK__CocktailP__cockl__28B808A7">
             <End Role="locationtable" EntitySet="locationtables" />
             <End Role="CocktailParty" EntitySet="CocktailParties" />
           </AssociationSet>
-          <AssociationSet Name="FK__CocktailP__cockt__39237A9A" Association="Self.FK__CocktailP__cockt__39237A9A">
+          <AssociationSet Name="FK__CocktailP__cockt__26CFC035" Association="Self.FK__CocktailP__cockt__26CFC035">
             <End Role="themetable" EntitySet="themetables" />
             <End Role="CocktailParty" EntitySet="CocktailParties" />
           </AssociationSet>
-          <AssociationSet Name="FK__CocktailP__cockt__3B0BC30C" Association="Self.FK__CocktailP__cockt__3B0BC30C">
-            <End Role="timetable" EntitySet="timetables" />
-            <End Role="CocktailParty" EntitySet="CocktailParties" />
-          </AssociationSet>
-          <AssociationSet Name="FK__CocktailP__cocku__36470DEF" Association="Self.FK__CocktailP__cocku__36470DEF">
+          <AssociationSet Name="FK__CocktailP__cocku__23F3538A" Association="Self.FK__CocktailP__cocku__23F3538A">
             <End Role="Usertable" EntitySet="Usertables" />
             <End Role="CocktailParty" EntitySet="CocktailParties" />
           </AssociationSet>
-          <AssociationSet Name="FK__Reunion__reunion__2BC97F7C" Association="Self.FK__Reunion__reunion__2BC97F7C">
-            <End Role="datetable" EntitySet="datetables" />
-            <End Role="Reunion" EntitySet="Reunions" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Wedding__wedding__0F2D40CE" Association="Self.FK__Wedding__wedding__0F2D40CE">
-            <End Role="datetable" EntitySet="datetables" />
-            <End Role="Wedding" EntitySet="Weddings" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Reunion__reunion__29E1370A" Association="Self.FK__Reunion__reunion__29E1370A">
+          <AssociationSet Name="FK__Reunion__reunion__1A69E950" Association="Self.FK__Reunion__reunion__1A69E950">
             <End Role="decorationtable" EntitySet="decorationtables" />
             <End Role="Reunion" EntitySet="Reunions" />
           </AssociationSet>
-          <AssociationSet Name="FK__Wedding__wedding__0D44F85C" Association="Self.FK__Wedding__wedding__0D44F85C">
+          <AssociationSet Name="FK__Wedding__wedding__038683F8" Association="Self.FK__Wedding__wedding__038683F8">
             <End Role="decorationtable" EntitySet="decorationtables" />
             <End Role="Wedding" EntitySet="Weddings" />
           </AssociationSet>
@@ -2703,51 +2198,43 @@
             <End Role="Usertable" EntitySet="Usertables" />
             <End Role="EventNames" EntitySet="EventNames" />
           </AssociationSet>
-          <AssociationSet Name="FK__Reunion__reunion__28ED12D1" Association="Self.FK__Reunion__reunion__28ED12D1">
+          <AssociationSet Name="FK__Reunion__reunion__1975C517" Association="Self.FK__Reunion__reunion__1975C517">
             <End Role="EventNames" EntitySet="EventNames" />
             <End Role="Reunion" EntitySet="Reunions" />
           </AssociationSet>
-          <AssociationSet Name="FK__Wedding__wedding__0C50D423" Association="Self.FK__Wedding__wedding__0C50D423">
+          <AssociationSet Name="FK__Wedding__wedding__02925FBF" Association="Self.FK__Wedding__wedding__02925FBF">
             <End Role="EventNames" EntitySet="EventNames" />
             <End Role="Wedding" EntitySet="Weddings" />
           </AssociationSet>
-          <AssociationSet Name="FK__Reunion__reunion__2EA5EC27" Association="Self.FK__Reunion__reunion__2EA5EC27">
+          <AssociationSet Name="FK__Reunion__reunion__1D4655FB" Association="Self.FK__Reunion__reunion__1D4655FB">
             <End Role="locationtable" EntitySet="locationtables" />
             <End Role="Reunion" EntitySet="Reunions" />
           </AssociationSet>
-          <AssociationSet Name="FK__Wedding__wedding__1209AD79" Association="Self.FK__Wedding__wedding__1209AD79">
+          <AssociationSet Name="FK__Wedding__wedding__0662F0A3" Association="Self.FK__Wedding__wedding__0662F0A3">
             <End Role="locationtable" EntitySet="locationtables" />
             <End Role="Wedding" EntitySet="Weddings" />
           </AssociationSet>
-          <AssociationSet Name="FK__Reunion__reunion__27F8EE98" Association="Self.FK__Reunion__reunion__27F8EE98">
+          <AssociationSet Name="FK__Reunion__reunion__1881A0DE" Association="Self.FK__Reunion__reunion__1881A0DE">
             <End Role="Usertable" EntitySet="Usertables" />
             <End Role="Reunion" EntitySet="Reunions" />
           </AssociationSet>
-          <AssociationSet Name="FK__Reunion__reunion__2AD55B43" Association="Self.FK__Reunion__reunion__2AD55B43">
+          <AssociationSet Name="FK__Reunion__reunion__1B5E0D89" Association="Self.FK__Reunion__reunion__1B5E0D89">
             <End Role="themetable" EntitySet="themetables" />
-            <End Role="Reunion" EntitySet="Reunions" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Reunion__reunion__2CBDA3B5" Association="Self.FK__Reunion__reunion__2CBDA3B5">
-            <End Role="timetable" EntitySet="timetables" />
             <End Role="Reunion" EntitySet="Reunions" />
           </AssociationSet>
           <AssociationSet Name="FK__Usertable__TRole__6442E2C9" Association="Self.FK__Usertable__TRole__6442E2C9">
             <End Role="Roletable" EntitySet="Roletables" />
             <End Role="Usertable" EntitySet="Usertables" />
           </AssociationSet>
-          <AssociationSet Name="FK__Wedding__wedding__0E391C95" Association="Self.FK__Wedding__wedding__0E391C95">
+          <AssociationSet Name="FK__Wedding__wedding__047AA831" Association="Self.FK__Wedding__wedding__047AA831">
             <End Role="themetable" EntitySet="themetables" />
             <End Role="Wedding" EntitySet="Weddings" />
           </AssociationSet>
-          <AssociationSet Name="FK__Wedding__wedding__10216507" Association="Self.FK__Wedding__wedding__10216507">
-            <End Role="timetable" EntitySet="timetables" />
-            <End Role="Wedding" EntitySet="Weddings" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Wedding__wedding__0B5CAFEA" Association="Self.FK__Wedding__wedding__0B5CAFEA">
+          <AssociationSet Name="FK__Wedding__wedding__019E3B86" Association="Self.FK__Wedding__wedding__019E3B86">
             <End Role="Usertable" EntitySet="Usertables" />
             <End Role="Wedding" EntitySet="Weddings" />
           </AssociationSet>
-          <FunctionImport Name="Validate_User" ReturnType="Collection(EventManagement2Model1.Validate_User_Result)">
+          <FunctionImport Name="Validate_User" ReturnType="Collection(EventManagement2Model.Validate_User_Result)">
             <Parameter Name="Username" Mode="In" Type="String" />
             <Parameter Name="Password" Mode="In" Type="String" />
           </FunctionImport>
@@ -2761,9 +2248,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="EventManagement2Model1StoreContainer" CdmEntityContainer="EventManagement2Entities1">
+        <EntityContainerMapping StorageEntityContainer="EventManagement2ModelStoreContainer" CdmEntityContainer="EventManagement2Entities2">
           <EntitySetMapping Name="AddtoCarts">
-            <EntityTypeMapping TypeName="EventManagement2Model1.AddtoCart">
+            <EntityTypeMapping TypeName="EventManagement2Model.AddtoCart">
               <MappingFragment StoreEntitySet="AddtoCart">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="cartbday" ColumnName="cartbday" />
@@ -2777,8 +2264,9 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Anniversaries">
-            <EntityTypeMapping TypeName="EventManagement2Model1.Anniversary">
+            <EntityTypeMapping TypeName="EventManagement2Model.Anniversary">
               <MappingFragment StoreEntitySet="Anniversary">
+                <ScalarProperty Name="annitime" ColumnName="annitime" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="anniuserid" ColumnName="anniuserid" />
                 <ScalarProperty Name="anniid" ColumnName="anniid" />
@@ -2787,8 +2275,7 @@
                 <ScalarProperty Name="annichairs" ColumnName="annichairs" />
                 <ScalarProperty Name="annitables" ColumnName="annitables" />
                 <ScalarProperty Name="annihallcapacity" ColumnName="annihallcapacity" />
-                <ScalarProperty Name="annidate" ColumnName="annidate" />
-                <ScalarProperty Name="annitime" ColumnName="annitime" />
+                <ScalarProperty Name="annidatetime" ColumnName="annidatetime" />
                 <ScalarProperty Name="annicakes" ColumnName="annicakes" />
                 <ScalarProperty Name="annilocation" ColumnName="annilocation" />
                 <ScalarProperty Name="annieventcost" ColumnName="annieventcost" />
@@ -2800,8 +2287,9 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="babyshowertables">
-            <EntityTypeMapping TypeName="EventManagement2Model1.babyshowertable">
+            <EntityTypeMapping TypeName="EventManagement2Model.babyshowertable">
               <MappingFragment StoreEntitySet="babyshowertable">
+                <ScalarProperty Name="babyshowertime" ColumnName="babyshowertime" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="babyshoweruserid" ColumnName="babyshoweruserid" />
                 <ScalarProperty Name="babyshowerid" ColumnName="babyshowerid" />
@@ -2810,8 +2298,7 @@
                 <ScalarProperty Name="babyshowerchairs" ColumnName="babyshowerchairs" />
                 <ScalarProperty Name="babyshowertables" ColumnName="babyshowertables" />
                 <ScalarProperty Name="babyshowerhallcapacity" ColumnName="babyshowerhallcapacity" />
-                <ScalarProperty Name="babyshowerdate" ColumnName="babyshowerdate" />
-                <ScalarProperty Name="babyshowertime" ColumnName="babyshowertime" />
+                <ScalarProperty Name="babyshowerdatetime" ColumnName="babyshowerdatetime" />
                 <ScalarProperty Name="babyshowercakes" ColumnName="babyshowercakes" />
                 <ScalarProperty Name="babyshowerlocation" ColumnName="babyshowerlocation" />
                 <ScalarProperty Name="babyshowereventcost" ColumnName="babyshowereventcost" />
@@ -2820,8 +2307,9 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="BachelorParties">
-            <EntityTypeMapping TypeName="EventManagement2Model1.BachelorParty">
+            <EntityTypeMapping TypeName="EventManagement2Model.BachelorParty">
               <MappingFragment StoreEntitySet="BachelorParty">
+                <ScalarProperty Name="bachelortime" ColumnName="bachelortime" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="bacheloruserid" ColumnName="bacheloruserid" />
                 <ScalarProperty Name="bachelorid" ColumnName="bachelorid" />
@@ -2830,8 +2318,7 @@
                 <ScalarProperty Name="bachelorchairs" ColumnName="bachelorchairs" />
                 <ScalarProperty Name="bachelortables" ColumnName="bachelortables" />
                 <ScalarProperty Name="bachelorhallcapacity" ColumnName="bachelorhallcapacity" />
-                <ScalarProperty Name="bachelordate" ColumnName="bachelordate" />
-                <ScalarProperty Name="bachelortime" ColumnName="bachelortime" />
+                <ScalarProperty Name="bachelordatetime" ColumnName="bachelordatetime" />
                 <ScalarProperty Name="bachelorcakes" ColumnName="bachelorcakes" />
                 <ScalarProperty Name="bachelorlocation" ColumnName="bachelorlocation" />
                 <ScalarProperty Name="bacheloreventcost" ColumnName="bacheloreventcost" />
@@ -2840,8 +2327,9 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="birthdaytables">
-            <EntityTypeMapping TypeName="EventManagement2Model1.birthdaytable">
+            <EntityTypeMapping TypeName="EventManagement2Model.birthdaytable">
               <MappingFragment StoreEntitySet="birthdaytable">
+                <ScalarProperty Name="bdaytime" ColumnName="bdaytime" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="bdayuserid" ColumnName="bdayuserid" />
                 <ScalarProperty Name="bdayid" ColumnName="bdayid" />
@@ -2850,8 +2338,7 @@
                 <ScalarProperty Name="bdaychairs" ColumnName="bdaychairs" />
                 <ScalarProperty Name="bdaytables" ColumnName="bdaytables" />
                 <ScalarProperty Name="bdayhallcapacity" ColumnName="bdayhallcapacity" />
-                <ScalarProperty Name="bdaydate" ColumnName="bdaydate" />
-                <ScalarProperty Name="bdaytime" ColumnName="bdaytime" />
+                <ScalarProperty Name="bdaydatetime" ColumnName="bdaydatetime" />
                 <ScalarProperty Name="bdaycakes" ColumnName="bdaycakes" />
                 <ScalarProperty Name="bdaylocation" ColumnName="bdaylocation" />
                 <ScalarProperty Name="bdayeventcost" ColumnName="bdayeventcost" />
@@ -2860,7 +2347,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="caketables">
-            <EntityTypeMapping TypeName="EventManagement2Model1.caketable">
+            <EntityTypeMapping TypeName="EventManagement2Model.caketable">
               <MappingFragment StoreEntitySet="caketable">
                 <ScalarProperty Name="cakeid" ColumnName="cakeid" />
                 <ScalarProperty Name="cakesavailable" ColumnName="cakesavailable" />
@@ -2870,8 +2357,9 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CocktailParties">
-            <EntityTypeMapping TypeName="EventManagement2Model1.CocktailParty">
+            <EntityTypeMapping TypeName="EventManagement2Model.CocktailParty">
               <MappingFragment StoreEntitySet="CocktailParty">
+                <ScalarProperty Name="cocktime" ColumnName="cocktime" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="cockuserid" ColumnName="cockuserid" />
                 <ScalarProperty Name="cockid" ColumnName="cockid" />
@@ -2880,8 +2368,7 @@
                 <ScalarProperty Name="cockchairs" ColumnName="cockchairs" />
                 <ScalarProperty Name="cocktables" ColumnName="cocktables" />
                 <ScalarProperty Name="cockhallcapacity" ColumnName="cockhallcapacity" />
-                <ScalarProperty Name="cockdate" ColumnName="cockdate" />
-                <ScalarProperty Name="cocktime" ColumnName="cocktime" />
+                <ScalarProperty Name="cockdatetime" ColumnName="cockdatetime" />
                 <ScalarProperty Name="cockcakes" ColumnName="cockcakes" />
                 <ScalarProperty Name="cocklocation" ColumnName="cocklocation" />
                 <ScalarProperty Name="cockeventcost" ColumnName="cockeventcost" />
@@ -2889,17 +2376,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="datetables">
-            <EntityTypeMapping TypeName="EventManagement2Model1.datetable">
-              <MappingFragment StoreEntitySet="datetable">
-                <ScalarProperty Name="dateid" ColumnName="dateid" />
-                <ScalarProperty Name="datesavailable" ColumnName="datesavailable" />
-                <ScalarProperty Name="dated" ColumnName="dated" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="decorationtables">
-            <EntityTypeMapping TypeName="EventManagement2Model1.decorationtable">
+            <EntityTypeMapping TypeName="EventManagement2Model.decorationtable">
               <MappingFragment StoreEntitySet="decorationtable">
                 <ScalarProperty Name="decorid" ColumnName="decorid" />
                 <ScalarProperty Name="decoravailable" ColumnName="decoravailable" />
@@ -2909,7 +2387,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="EventNames">
-            <EntityTypeMapping TypeName="EventManagement2Model1.EventName">
+            <EntityTypeMapping TypeName="EventManagement2Model.EventName">
               <MappingFragment StoreEntitySet="EventNames">
                 <ScalarProperty Name="eventid" ColumnName="eventid" />
                 <ScalarProperty Name="eventname1" ColumnName="eventname" />
@@ -2920,7 +2398,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="locationtables">
-            <EntityTypeMapping TypeName="EventManagement2Model1.locationtable">
+            <EntityTypeMapping TypeName="EventManagement2Model.locationtable">
               <MappingFragment StoreEntitySet="locationtable">
                 <ScalarProperty Name="locationid" ColumnName="locationid" />
                 <ScalarProperty Name="locationname" ColumnName="locationname" />
@@ -2931,8 +2409,9 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Reunions">
-            <EntityTypeMapping TypeName="EventManagement2Model1.Reunion">
+            <EntityTypeMapping TypeName="EventManagement2Model.Reunion">
               <MappingFragment StoreEntitySet="Reunion">
+                <ScalarProperty Name="reuniontime" ColumnName="reuniontime" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="reunionuserid" ColumnName="reunionuserid" />
                 <ScalarProperty Name="reunionid" ColumnName="reunionid" />
@@ -2941,8 +2420,7 @@
                 <ScalarProperty Name="reunionchairs" ColumnName="reunionchairs" />
                 <ScalarProperty Name="reuniontables" ColumnName="reuniontables" />
                 <ScalarProperty Name="reunionhallcapacity" ColumnName="reunionhallcapacity" />
-                <ScalarProperty Name="reuniondate" ColumnName="reuniondate" />
-                <ScalarProperty Name="reuniontime" ColumnName="reuniontime" />
+                <ScalarProperty Name="reuniondatetime" ColumnName="reuniondatetime" />
                 <ScalarProperty Name="reunioncakes" ColumnName="reunioncakes" />
                 <ScalarProperty Name="reunionlocation" ColumnName="reunionlocation" />
                 <ScalarProperty Name="reunioneventcost" ColumnName="reunioneventcost" />
@@ -2954,7 +2432,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Roletables">
-            <EntityTypeMapping TypeName="EventManagement2Model1.Roletable">
+            <EntityTypeMapping TypeName="EventManagement2Model.Roletable">
               <MappingFragment StoreEntitySet="Roletable">
                 <ScalarProperty Name="TRoleid" ColumnName="TRoleid" />
                 <ScalarProperty Name="TRolename" ColumnName="TRolename" />
@@ -2963,7 +2441,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="themetables">
-            <EntityTypeMapping TypeName="EventManagement2Model1.themetable">
+            <EntityTypeMapping TypeName="EventManagement2Model.themetable">
               <MappingFragment StoreEntitySet="themetable">
                 <ScalarProperty Name="themeid" ColumnName="themeid" />
                 <ScalarProperty Name="themename" ColumnName="themename" />
@@ -2972,17 +2450,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="timetables">
-            <EntityTypeMapping TypeName="EventManagement2Model1.timetable">
-              <MappingFragment StoreEntitySet="timetable">
-                <ScalarProperty Name="timeid" ColumnName="timeid" />
-                <ScalarProperty Name="timesavailable" ColumnName="timesavailable" />
-                <ScalarProperty Name="timed" ColumnName="timed" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Usertables">
-            <EntityTypeMapping TypeName="EventManagement2Model1.Usertable">
+            <EntityTypeMapping TypeName="EventManagement2Model.Usertable">
               <MappingFragment StoreEntitySet="Usertable">
                 <ScalarProperty Name="TUserid" ColumnName="TUserid" />
                 <ScalarProperty Name="TUsername" ColumnName="TUsername" />
@@ -3000,8 +2469,9 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Weddings">
-            <EntityTypeMapping TypeName="EventManagement2Model1.Wedding">
+            <EntityTypeMapping TypeName="EventManagement2Model.Wedding">
               <MappingFragment StoreEntitySet="Wedding">
+                <ScalarProperty Name="weddingtime" ColumnName="weddingtime" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="weddinguserid" ColumnName="weddinguserid" />
                 <ScalarProperty Name="weddingid" ColumnName="weddingid" />
@@ -3010,8 +2480,7 @@
                 <ScalarProperty Name="weddingchairs" ColumnName="weddingchairs" />
                 <ScalarProperty Name="weddingtables" ColumnName="weddingtables" />
                 <ScalarProperty Name="weddinghallcapacity" ColumnName="weddinghallcapacity" />
-                <ScalarProperty Name="weddingdate" ColumnName="weddingdate" />
-                <ScalarProperty Name="weddingtime" ColumnName="weddingtime" />
+                <ScalarProperty Name="weddingdatetime" ColumnName="weddingdatetime" />
                 <ScalarProperty Name="weddingcakes" ColumnName="weddingcakes" />
                 <ScalarProperty Name="weddinglocation" ColumnName="weddinglocation" />
                 <ScalarProperty Name="weddingeventcost" ColumnName="weddingeventcost" />
@@ -3022,9 +2491,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="Validate_User" FunctionName="EventManagement2Model1.Store.Validate_User">
+          <FunctionImportMapping FunctionImportName="Validate_User" FunctionName="EventManagement2Model.Store.Validate_User">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="EventManagement2Model1.Validate_User_Result">
+              <ComplexTypeMapping TypeName="EventManagement2Model.Validate_User_Result">
                 <ScalarProperty Name="TUserid" ColumnName="TUserid" />
                 <ScalarProperty Name="Roles" ColumnName="Roles" />
               </ComplexTypeMapping>

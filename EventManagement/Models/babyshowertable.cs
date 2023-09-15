@@ -28,12 +28,12 @@ namespace EventManagement.Models
         public Nullable<int> babyshowerchairs { get; set; }
         public Nullable<int> babyshowertables { get; set; }
         public Nullable<int> babyshowerhallcapacity { get; set; }
-        public Nullable<int> babyshowerdate { get; set; }
-        public Nullable<int> babyshowertime { get; set; }
+        public Nullable<System.DateTime> babyshowerdatetime { get; set; }
         public Nullable<int> babyshowercakes { get; set; }
         public Nullable<int> babyshowerlocation { get; set; }
         public Nullable<long> babyshowereventcost { get; set; }
         public bool babyshowerbeverages { get; set; }
+        public Nullable<System.TimeSpan> babyshowertime { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AddtoCart> AddtoCarts { get; set; }
@@ -41,8 +41,6 @@ namespace EventManagement.Models
         public virtual EventName EventName { get; set; }
         public virtual decorationtable decorationtable { get; set; }
         public virtual themetable themetable { get; set; }
-        public virtual datetable datetable { get; set; }
-        public virtual timetable timetable { get; set; }
         public virtual caketable caketable { get; set; }
         public virtual locationtable locationtable { get; set; }
     }

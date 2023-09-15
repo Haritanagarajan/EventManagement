@@ -12,7 +12,7 @@ namespace EventManagement.Controllers
     public class CocktailController : Controller
     {
         // GET: Cocktail
-        EventManagement2Entities1 EventManagementEntities = new EventManagement2Entities1();
+        EventManagement2Entities2 EventManagementEntities = new EventManagement2Entities2();
 
 
         // GET: Booking
@@ -21,11 +21,6 @@ namespace EventManagement.Controllers
         public ActionResult CocktailCreate()
         {
 
-            List<datetable> date = EventManagementEntities.datetables.ToList();
-            ViewBag.Date = new SelectList(date, "dateid", "datesavailable");
-
-            List<timetable> time = EventManagementEntities.timetables.ToList();
-            ViewBag.Time = new SelectList(time, "timeid", "timesavailable");
 
             List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
             ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");
@@ -45,7 +40,7 @@ namespace EventManagement.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult CocktailCreate([Bind(Include = "cockdecorations,cocktheme,cockchairs,cocktables,cockhallcapacity,cockdate,cocktime,cockcakes,cocklocation,cockeventcost,cockbeverages")] CocktailParty cock)
+        public ActionResult CocktailCreate([Bind(Include = "cockdatetime,cockdecorations,cocktheme,cockchairs,cocktables,cockhallcapacity,cockcakes,cocklocation,cockeventcost,cockbeverages")] CocktailParty cock)
         {
             if (ModelState.IsValid)
             {
@@ -54,7 +49,7 @@ namespace EventManagement.Controllers
 
                 int? userId = Session["UserId"] as int?;
 
-                int? cockeventId = TempData["eventid"] as int?;
+                int? cockeventId = Session["eventid"] as int?;
                 if (userId.HasValue && cockeventId.HasValue)
                 {
                     cock.cockuserid = userId.Value;
@@ -81,11 +76,7 @@ namespace EventManagement.Controllers
         {
             CocktailParty baby = EventManagementEntities.CocktailParties.Find(id);
 
-            List<datetable> date = EventManagementEntities.datetables.ToList();
-            ViewBag.Date = new SelectList(date, "dateid", "datesavailable");
-
-            List<timetable> time = EventManagementEntities.timetables.ToList();
-            ViewBag.Time = new SelectList(time, "timeid", "timesavailable");
+            
 
             List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
             ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");
@@ -107,16 +98,16 @@ namespace EventManagement.Controllers
 
 
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "id,cockuserid,cockid,cockdecorations,cocktheme,cockchairs,cocktables,cockhallcapacity,cockdate,cocktime,cockcakes,cocklocation,cockeventcost,cockbeverages")] CocktailParty cock)
+        public ActionResult Edit([Bind(Include = "cockdatetime,id,cockuserid,cockid,cockdecorations,cocktheme,cockchairs,cocktables,cockhallcapacity,cockcakes,cocklocation,cockeventcost,cockbeverages")] CocktailParty cock)
         {
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    int? userId = TempData["UserId"] as int?;
+                    int? userId = Session["UserId"] as int?;
 
-                    int? cockventId = TempData["eventid"] as int?;
+                    int? cockventId = Session["eventid"] as int?;
                     if (userId.HasValue && cockventId.HasValue)
                     {
                         cock.cockuserid = userId.Value;
@@ -158,5 +149,12 @@ namespace EventManagement.Controllers
             }
 
         }
+
+
+
+    
+
+
+     
     }
 }

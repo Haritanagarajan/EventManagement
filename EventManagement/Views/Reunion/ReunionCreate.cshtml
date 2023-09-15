@@ -7,133 +7,157 @@
 
 <h2>ReunionCreate</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-    <h4>Reunion</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.reuniondecorations, "reuniondecorations", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("reuniondecorations", ViewBag.Decor as SelectList, "Decor", new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.reuniondecorations, "", new { @class = "text-danger" })
+
+    <div class="form-horizontal">
+        <h4>Reunion</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.reuniondecorations, "reuniondecorations", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("reuniondecorations", ViewBag.Decor as SelectList, "Decor", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.reuniondecorations, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.reuniontheme, "reuniontheme", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("reuniontheme", ViewBag.Theme as SelectList, "Themes", new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.reuniontheme, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.reuniontheme, "reuniontheme", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("reuniontheme", ViewBag.Theme as SelectList, "Themes", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.reuniontheme, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.reunionchairs, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.reunionchairs, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.reunionchairs, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.reunionchairs, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.reunionchairs, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.reunionchairs, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.reuniontables, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.reuniontables, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.reuniontables, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.reuniontables, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.reuniontables, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.reuniontables, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
 
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.reuniondate, "reuniondate", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("reuniondate", ViewBag.Date as SelectList, "Date", new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.reuniondate, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.reuniondatetime, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.reuniondatetime, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                @Html.ValidationMessageFor(model => model.reuniondatetime, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.reuniontime, "reuniontime", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("reuniontime", ViewBag.Time as SelectList, "Time", new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.reuniontime, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.reunioncakes, "reunioncakes", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("reunioncakes", ViewBag.Cake as SelectList, "Cakes ", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.reunioncakes, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.reunioncakes, "reunioncakes", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("reunioncakes", ViewBag.Cake as SelectList, "Cakes ", new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.reunioncakes, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.reunionlocation, "reunionlocation", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("reunionlocation", ViewBag.Location as SelectList, "Locations", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.reunionlocation, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.reunionlocation, "reunionlocation", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("reunionlocation", ViewBag.Location as SelectList, "Locations", new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.reunionlocation, "", new { @class = "text-danger" })
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.reunionbeverages, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.reunionbeverages)
+                    @Html.ValidationMessageFor(model => model.reunionbeverages, "", new { @class = "text-danger" })
+                </div>
+            </div>
         </div>
-    </div>
 
 
+        <div class="form-group">
+            @Html.LabelFor(model => model.reunionPhotography, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.reunionPhotography)
+                    @Html.ValidationMessageFor(model => model.reunionPhotography, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.reunionbeverages, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <div class="checkbox">
-                @Html.EditorFor(model => model.reunionbeverages)
-                @Html.ValidationMessageFor(model => model.reunionbeverages, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.reunionStyling, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.reunionStyling)
+                    @Html.ValidationMessageFor(model => model.reunionStyling, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.reunionHospitality, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.reunionHospitality)
+                    @Html.ValidationMessageFor(model => model.reunionHospitality, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
     </div>
-
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.reunionPhotography, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <div class="checkbox">
-                @Html.EditorFor(model => model.reunionPhotography)
-                @Html.ValidationMessageFor(model => model.reunionPhotography, "", new { @class = "text-danger" })
-            </div>
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.reunionStyling, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <div class="checkbox">
-                @Html.EditorFor(model => model.reunionStyling)
-                @Html.ValidationMessageFor(model => model.reunionStyling, "", new { @class = "text-danger" })
-            </div>
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.reunionHospitality, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <div class="checkbox">
-                @Html.EditorFor(model => model.reunionHospitality)
-                @Html.ValidationMessageFor(model => model.reunionHospitality, "", new { @class = "text-danger" })
-            </div>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
-        </div>
-    </div>
-</div>
 }
 
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryui")
+    @Styles.Render("~/Content/cssjqryUi")
+
+    <!-- Include jQuery Timepicker scripts and stylesheets -->
+    <link rel="stylesheet" href="path-to-your-jquery-timepicker.css">
+    <script src="path-to-your-jquery-timepicker.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $(".datepicker").datepicker({
+                minDate: new Date(),
+                beforeShowDay: function (date) {
+                    var blockDates = [new Date(new Date().getFullYear(), 8, 19), new Date(new Date().getFullYear(), 8, 20)];
+                    var dateString = (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear();
+                    return [blockDates.indexOf(dateString) === -1];
+                }
+            });
+
+            var timerVal = moment().format('hh:mm A');
+
+            $('.timepicker').timepicker(
+                {
+                    template: 'dropdown',
+                    minuteStep: 1,
+                    secondStep: 1,
+                    showMeridian: true,
+                    defaultTime: timerVal
+                });
+        });
+    </script>
+}
