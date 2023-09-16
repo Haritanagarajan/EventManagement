@@ -36,7 +36,6 @@ namespace EventManagement.Models
         public bool anniPhotography { get; set; }
         public bool anniStyling { get; set; }
         public bool anniHospitality { get; set; }
-        public Nullable<System.TimeSpan> annitime { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AddtoCart> AddtoCarts { get; set; }

@@ -22,8 +22,7 @@ namespace EventManagement.Controllers
         public ActionResult BabyshowerCreate()
         {
 
-          
-
+ 
             List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
             ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");
 
@@ -42,10 +41,54 @@ namespace EventManagement.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult BabyshowerCreate([Bind(Include = "babyshowerdatetime,babyshowerdecorations,babyshowertheme,babyshowerchairs,babyshowertables,babyshowerhallcapacity,babyshowercakes,babyshowerlocation,babyshowereventcost,babyshowerbeverages")] babyshowertable baby)
+        public ActionResult BabyshowerCreate([Bind(Include = "babyshowerdatetime,babyshowerdecorations,babyshowertheme,babyshowerchairs,babyshowertables,babyshowerhallcapacity,babyshowercakes,babyshowerlocation,babyshowereventcost,babyshowerbeverages")] babyshowertable baby,DateTime babyshowerdatetime)
         {
             if (ModelState.IsValid)
             {
+                List<babyshowertable> bookedbaby = EventManagementEntities.babyshowertables.ToList();
+                bool isInvalid = false;
+
+                foreach (var item in bookedbaby)
+                {
+
+                    DateTime foundTime = Convert.ToDateTime(item.babyshowerdatetime);
+                    DateTime enteredTime = babyshowerdatetime;
+
+                    TimeSpan timeDifference = foundTime - enteredTime;
+
+                    if (Math.Abs(timeDifference.TotalHours) < 5)
+                    {
+                        isInvalid = true;
+                        break;
+                    }
+
+                }
+
+                if (isInvalid)
+                {
+                    ModelState.AddModelError("babyshowerdatetime", "The selected datetime is too close to an existing baby shower.");
+
+                    List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
+                    ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");
+
+                    List<locationtable> location = EventManagementEntities.locationtables.ToList();
+                    ViewBag.Location = new SelectList(location, "locationid", "locationname");
+
+                    List<themetable> theme = EventManagementEntities.themetables.ToList();
+                    ViewBag.Theme = new SelectList(theme, "themeid", "themename");
+
+                    List<decorationtable> decor = EventManagementEntities.decorationtables.ToList();
+                    ViewBag.Decor = new SelectList(decor, "decorid", "decoravailable");
+
+                    List<caketable> cake = EventManagementEntities.caketables.ToList();
+                    ViewBag.Cake = new SelectList(cake, "cakeid", "cakesavailable");
+
+                    return View();
+                }
+
+                else
+                {
+
                 int lastUserId = EventManagementEntities.babyshowertables.Any() ? EventManagementEntities.babyshowertables.Max(u => u.id) : 0;
                 int? userId = Session["UserId"] as int?;
                 int? babyeventId = Session["eventid"] as int?;
@@ -63,6 +106,8 @@ namespace EventManagement.Controllers
                 EventManagementEntities.babyshowertables.Add(baby);
                 EventManagementEntities.SaveChanges();
                 return RedirectToAction("BabyshowerDetails", new { id = baby.id });
+
+                }
             }
             return View();
         }
@@ -74,8 +119,7 @@ namespace EventManagement.Controllers
         {
             babyshowertable baby = EventManagementEntities.babyshowertables.Find(id);
 
-           
-
+          
             List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
             ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");
 
@@ -95,37 +139,110 @@ namespace EventManagement.Controllers
         }
 
 
-        [HttpPost]
-        public ActionResult Edit([Bind(Include = "babyshowerdatetime,id,babyshoweruserid,babyshowerid,babyshowerdecorations,babyshowertheme,babyshowerchairs,babyshowertables,babyshowerhallcapacity,babyshowercakes,babyshowerlocation,babyshowereventcost,babyshowerbeverages")] babyshowertable baby)
-        {
+        //[HttpPost]
+        //public ActionResult Edit([Bind(Include = "babyshowerdatetime,id,babyshoweruserid,babyshowerid,babyshowerdecorations,babyshowertheme,babyshowerchairs,babyshowertables,babyshowerhallcapacity,babyshowercakes,babyshowerlocation,babyshowereventcost,babyshowerbeverages")] babyshowertable baby)
+        //{
 
+        //    if (ModelState.IsValid)
+        //    {
+        //        try
+        //        {
+        //            int? userId = Session["UserId"] as int?;
+
+        //            int? babyventId = Session["eventid"] as int?;
+        //            if (userId.HasValue && babyventId.HasValue)
+        //            {
+        //                baby.babyshoweruserid = userId.Value;
+        //                baby.babyshowerid = babyventId.Value;
+
+        //            }
+        //            EventManagementEntities.Entry(baby).State = EntityState.Modified;
+        //            EventManagementEntities.SaveChanges();
+        //            return Content("Successfully edited");
+        //        }
+        //        catch (DbUpdateConcurrencyException ex)
+        //        {
+        //            // Handle concurrency conflicts here
+        //            ModelState.AddModelError(string.Empty, "Concurrency error occurred.");
+        //        }
+
+        //    }
+
+        //    return View();
+        //}
+
+        [HttpPost]
+        public ActionResult Edit([Bind(Include = "babyshowerdatetime,id,babyshoweruserid,babyshowerid,babyshowerdecorations,babyshowertheme,babyshowerchairs,babyshowertables,babyshowerhallcapacity,babyshowercakes,babyshowerlocation,babyshowereventcost,babyshowerbeverages")] babyshowertable baby, DateTime babyshowerdatetime)
+        {
             if (ModelState.IsValid)
             {
-                try
-                {
-                    int? userId = Session["UserId"] as int?;
+                List<babyshowertable> bookedBabyShowers = EventManagementEntities.babyshowertables.Where(b => b.id != baby.id).ToList(); 
+                bool isInvalid = false;
 
-                    int? babyventId = Session["eventid"] as int?;
-                    if (userId.HasValue && babyventId.HasValue)
+                foreach (var item in bookedBabyShowers)
+                {
+                    DateTime foundTime = Convert.ToDateTime(item.babyshowerdatetime);
+                    DateTime enteredTime = babyshowerdatetime;
+
+                    TimeSpan timeDifference = foundTime - enteredTime;
+
+                    if (Math.Abs(timeDifference.TotalHours) < 5)
                     {
-                        baby.babyshoweruserid = userId.Value;
-                        baby.babyshowerid = babyventId.Value;
-
+                        isInvalid = true;
+                        break;
                     }
-                    EventManagementEntities.Entry(baby).State = EntityState.Modified;
-                    EventManagementEntities.SaveChanges();
-                    return Content("Successfully edited");
-                }
-                catch (DbUpdateConcurrencyException ex)
-                {
-                    // Handle concurrency conflicts here
-                    ModelState.AddModelError(string.Empty, "Concurrency error occurred.");
                 }
 
+                if (isInvalid)
+                {
+                    ModelState.AddModelError("babyshowerdatetime", "The selected datetime is too close to an existing baby shower.");
+
+
+                    List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
+                    ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");
+
+                    List<locationtable> location = EventManagementEntities.locationtables.ToList();
+                    ViewBag.Location = new SelectList(location, "locationid", "locationname");
+
+                    List<themetable> theme = EventManagementEntities.themetables.ToList();
+                    ViewBag.Theme = new SelectList(theme, "themeid", "themename");
+
+                    List<decorationtable> decor = EventManagementEntities.decorationtables.ToList();
+                    ViewBag.Decor = new SelectList(decor, "decorid", "decoravailable");
+
+                    List<caketable> cake = EventManagementEntities.caketables.ToList();
+                    ViewBag.Cake = new SelectList(cake, "cakeid", "cakesavailable");
+
+                    return View(baby);
+                }
+                else
+                {
+                    try
+                    {
+                        int? userId = Session["UserId"] as int?;
+                        int? babyventId = Session["eventid"] as int?;
+
+                        if (userId.HasValue && babyventId.HasValue)
+                        {
+                            baby.babyshoweruserid = userId.Value;
+                            baby.babyshowerid = babyventId.Value;
+                        }
+
+                        EventManagementEntities.Entry(baby).State = EntityState.Modified;
+                        EventManagementEntities.SaveChanges();
+                        return Content("Successfully edited");
+                    }
+                    catch (DbUpdateConcurrencyException ex)
+                    {
+                        ModelState.AddModelError(string.Empty, "Concurrency error occurred.");
+                    }
+                }
             }
 
-            return View();
+    
+            return View(baby);
         }
+
 
 
 

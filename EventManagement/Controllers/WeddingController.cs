@@ -39,14 +39,37 @@ namespace EventManagement.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult WeddingCreate([Bind(Include = "weddingdatetime,weddingdecorations,weddingtheme,weddingchairs,weddingtables,weddinghallcapacity,weddingcakes,weddinglocation,weddingeventcost,weddingbeverages,weddingPhotography,weddingStyling,weddingHospitality")] Wedding wed,DateTime weddingtime)
+        public ActionResult WeddingCreate([Bind(Include = "weddingdatetime,weddingdecorations,weddingtheme,weddingchairs,weddingtables,weddinghallcapacity,weddingcakes,weddinglocation,weddingeventcost,weddingbeverages,weddingPhotography,weddingStyling,weddingHospitality")] Wedding wed,DateTime weddingdatetime)
         {
             if (ModelState.IsValid)
             {
-                List<Wedding> bookedweddings = EventManagementEntities.Weddings.Where(w => w.weddingtime.ToString() == weddingtime.TimeOfDay.ToString()).ToList();
-                if (bookedweddings.Count > 0)
+                List<Wedding> bookedwedding = EventManagementEntities.Weddings.ToList();
+                bool isInvalid=false;
+                
+                foreach (var item in bookedwedding)
                 {
-                    Response.Write("That time slot is unavailable");
+                    
+                    DateTime foundTime = Convert.ToDateTime(item.weddingdatetime);
+                    DateTime enteredTime = weddingdatetime;
+
+                    TimeSpan timeDifference = foundTime - enteredTime;
+
+                    if (Math.Abs(timeDifference.TotalHours) < 5)
+                    {
+                        isInvalid = true;
+                        break; 
+                    }
+
+
+                }
+
+            
+
+
+                if (isInvalid)
+                {
+                    ModelState.AddModelError("weddingdatetime", "The selected datetime is too close to an existing wedding.");
+
                     List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
                     ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");
 
@@ -81,7 +104,6 @@ namespace EventManagement.Controllers
                     wed.id = lastUserId + 1;
                     wed.weddinghallcapacity = 500;
                     wed.weddingeventcost = 1000;
-                    wed.weddingtime = weddingtime.TimeOfDay;
 
 
 
@@ -125,37 +147,74 @@ namespace EventManagement.Controllers
 
 
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "weddingdatetime,weddingtime,id,weddingid,weddinguserid,weddingdecorations,weddingtheme,weddingchairs,weddingtables,weddinghallcapacity,weddingcakes,weddinglocation,weddingeventcost,weddingbeverages,weddingPhotography,weddingStyling,weddingHospitality")] Wedding wed)
+        public ActionResult Edit([Bind(Include = "weddingdatetime,weddingtime,id,weddingid,weddinguserid,weddingdecorations,weddingtheme,weddingchairs,weddingtables,weddinghallcapacity,weddingcakes,weddinglocation,weddingeventcost,weddingbeverages,weddingPhotography,weddingStyling,weddingHospitality")] Wedding wed, DateTime weddingdatetime)
         {
-
             if (ModelState.IsValid)
             {
-                try
-                {
-                    int? userId = Session["UserId"] as int?;
+                List<Wedding> bookedWeddings = EventManagementEntities.Weddings.Where(w => w.id != wed.id).ToList(); // Exclude the current wedding being edited from the check
+                bool isInvalid = false;
 
-                    int? wedventId = Session["eventid"] as int?;
-                    if (userId.HasValue && wedventId.HasValue)
+                foreach (var item in bookedWeddings)
+                {
+                    DateTime foundTime = Convert.ToDateTime(item.weddingdatetime);
+                    DateTime enteredTime = weddingdatetime;
+
+                    TimeSpan timeDifference = foundTime - enteredTime;
+
+                    if (Math.Abs(timeDifference.TotalHours) < 5)
                     {
-                        wed.weddinguserid = userId.Value;
-                        wed.weddingid = wedventId.Value;
-
+                        isInvalid = true;
+                        break;
                     }
-                    EventManagementEntities.Entry(wed).State = EntityState.Modified;
-                    EventManagementEntities.SaveChanges();
-                    return Content("Successfully edited");
-                }
-                catch (DbUpdateConcurrencyException ex)
-                {
-                    
-                    ModelState.AddModelError(string.Empty, "Concurrency error occurred.");
                 }
 
+                if (isInvalid)
+                {
+                    ModelState.AddModelError("weddingdatetime", "The selected datetime is too close to an existing wedding.");
+
+                    List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
+                    ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");
+
+                    List<locationtable> location = EventManagementEntities.locationtables.ToList();
+                    ViewBag.Location = new SelectList(location, "locationid", "locationname");
+
+                    List<themetable> theme = EventManagementEntities.themetables.ToList();
+                    ViewBag.Theme = new SelectList(theme, "themeid", "themename");
+
+                    List<decorationtable> decor = EventManagementEntities.decorationtables.ToList();
+                    ViewBag.Decor = new SelectList(decor, "decorid", "decoravailable");
+
+                    List<caketable> cake = EventManagementEntities.caketables.ToList();
+                    ViewBag.Cake = new SelectList(cake, "cakeid", "cakesavailable");
+
+                    return View(wed);
+                }
+                else
+                {
+                    try
+                    {
+                        int? userId = Session["UserId"] as int?;
+                        int? wedventId = Session["eventid"] as int?;
+
+                        if (userId.HasValue && wedventId.HasValue)
+                        {
+                            wed.weddinguserid = userId.Value;
+                            wed.weddingid = wedventId.Value;
+                        }
+
+                        EventManagementEntities.Entry(wed).State = EntityState.Modified;
+                        EventManagementEntities.SaveChanges();
+                        return Content("Successfully edited");
+                    }
+                    catch (DbUpdateConcurrencyException ex)
+                    {
+                        ModelState.AddModelError(string.Empty, "Concurrency error occurred.");
+                    }
+                }
             }
 
-            return View();
+            return View(wed);
         }
-
 
 
         [HttpGet]

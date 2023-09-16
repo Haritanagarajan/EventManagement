@@ -20,7 +20,6 @@ namespace EventManagement.Controllers
         public ActionResult BirthdayCreate()
         {
 
-           
 
             List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
             ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");
@@ -40,11 +39,56 @@ namespace EventManagement.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult BirthdayCreate([Bind(Include = "bdaydatetime,bdaydecorations,bdaytheme,bdaychairs,bdaytables,bdayhallcapacity,bdaycakes,bdaylocation,bdayeventcost,bdaybeverages")] birthdaytable bday)
+        public ActionResult BirthdayCreate([Bind(Include = "bdaydatetime,bdaydecorations,bdaytheme,bdaychairs,bdaytables,bdayhallcapacity,bdaycakes,bdaylocation,bdayeventcost,bdaybeverages")] birthdaytable bday,DateTime bdaydatetime)
         {
             if (ModelState.IsValid)
             {
-                
+                List<birthdaytable> bookedbday = EventManagementEntities.birthdaytables.ToList();
+                bool isInvalid = false;
+
+                foreach (var item in bookedbday)
+                {
+
+                    DateTime foundTime = Convert.ToDateTime(item.bdaydatetime);
+                    DateTime enteredTime = bdaydatetime;
+
+                    TimeSpan timeDifference = foundTime - enteredTime;
+
+                    if (Math.Abs(timeDifference.TotalHours) < 5)
+                    {
+                        isInvalid = true;
+                        break;
+                    }
+
+
+                }
+
+                if (isInvalid)
+                {
+
+                    ModelState.AddModelError("bdaydatetime", "The selected datetime is too close to an existing birthday event.");
+
+                    List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
+                    ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");
+
+                    List<locationtable> location = EventManagementEntities.locationtables.ToList();
+                    ViewBag.Location = new SelectList(location, "locationid", "locationname");
+
+                    List<themetable> theme = EventManagementEntities.themetables.ToList();
+                    ViewBag.Theme = new SelectList(theme, "themeid", "themename");
+
+                    List<decorationtable> decor = EventManagementEntities.decorationtables.ToList();
+                    ViewBag.Decor = new SelectList(decor, "decorid", "decoravailable");
+
+                    List<caketable> cake = EventManagementEntities.caketables.ToList();
+                    ViewBag.Cake = new SelectList(cake, "cakeid", "cakesavailable");
+
+                    return View();
+                }
+
+                else
+                {
+
                 int lastUserId = EventManagementEntities.birthdaytables.Any() ? EventManagementEntities.birthdaytables.Max(u => u.id) : 0;
                 
                 int? userId = Session["UserId"] as int?;
@@ -64,6 +108,8 @@ namespace EventManagement.Controllers
                 EventManagementEntities.birthdaytables.Add(bday);
                 EventManagementEntities.SaveChanges();
                 return RedirectToAction("BirthdayDetails", new { id = bday.id });
+
+                }
             }
             return View();
         }
@@ -98,36 +144,109 @@ namespace EventManagement.Controllers
         }
 
 
-        [HttpPost]
-        public ActionResult Edit([Bind(Include = "bdaydatetime,id,bdayid,bdayuserid,bdaydecorations,bdaytheme,bdaychairs,bdaytables,bdayhallcapacity,bdaycakes,bdaylocation,bdayeventcost,bdaybeverages")] birthdaytable bday)
-        {
+        //[HttpPost]
+        //public ActionResult Edit([Bind(Include = "bdaydatetime,id,bdayid,bdayuserid,bdaydecorations,bdaytheme,bdaychairs,bdaytables,bdayhallcapacity,bdaycakes,bdaylocation,bdayeventcost,bdaybeverages")] birthdaytable bday)
+        //{
 
+        //    if (ModelState.IsValid)
+        //    {
+        //        try
+        //        {
+        //            int? userId = Session["UserId"] as int?;
+
+        //            int? bdayventId = Session["eventid"] as int?;
+        //            if (userId.HasValue && bdayventId.HasValue)
+        //            {
+        //                bday.bdayuserid = userId.Value;
+        //                bday.bdayid = bdayventId.Value;
+
+        //            }
+        //            EventManagementEntities.Entry(bday).State = EntityState.Modified;
+        //            EventManagementEntities.SaveChanges();
+        //            return Content("Successfully edited");
+        //        }
+        //        catch (DbUpdateConcurrencyException ex)
+        //        {
+        //            // Handle concurrency conflicts here
+        //            ModelState.AddModelError(string.Empty, "Concurrency error occurred.");
+        //        }
+
+        //    }
+
+        //    return View();
+        //}
+
+        [HttpPost]
+        public ActionResult Edit([Bind(Include = "bdaydatetime,id,bdayid,bdayuserid,bdaydecorations,bdaytheme,bdaychairs,bdaytables,bdayhallcapacity,bdaycakes,bdaylocation,bdayeventcost,bdaybeverages")] birthdaytable bday, DateTime bdaydatetime)
+        {
             if (ModelState.IsValid)
             {
-                try
-                {
-                    int? userId = Session["UserId"] as int?;
+                List<birthdaytable> bookedBirthdays = EventManagementEntities.birthdaytables.Where(b => b.id != bday.id).ToList(); 
+                bool isInvalid = false;
 
-                    int? bdayventId = Session["eventid"] as int?;
-                    if (userId.HasValue && bdayventId.HasValue)
+                foreach (var item in bookedBirthdays)
+                {
+                    DateTime foundTime = Convert.ToDateTime(item.bdaydatetime);
+                    DateTime enteredTime = bdaydatetime;
+
+                    TimeSpan timeDifference = foundTime - enteredTime;
+
+                    if (Math.Abs(timeDifference.TotalHours) < 5)
                     {
-                        bday.bdayuserid = userId.Value;
-                        bday.bdayid = bdayventId.Value;
-
+                        isInvalid = true;
+                        break;
                     }
-                    EventManagementEntities.Entry(bday).State = EntityState.Modified;
-                    EventManagementEntities.SaveChanges();
-                    return Content("Successfully edited");
-                }
-                catch (DbUpdateConcurrencyException ex)
-                {
-                    // Handle concurrency conflicts here
-                    ModelState.AddModelError(string.Empty, "Concurrency error occurred.");
                 }
 
+                if (isInvalid)
+                {
+                    ModelState.AddModelError("bdaydatetime", "The selected datetime is too close to an existing birthday event.");
+
+
+                    List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
+                    ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");
+
+                    List<locationtable> location = EventManagementEntities.locationtables.ToList();
+                    ViewBag.Location = new SelectList(location, "locationid", "locationname");
+
+                    List<themetable> theme = EventManagementEntities.themetables.ToList();
+                    ViewBag.Theme = new SelectList(theme, "themeid", "themename");
+
+                    List<decorationtable> decor = EventManagementEntities.decorationtables.ToList();
+                    ViewBag.Decor = new SelectList(decor, "decorid", "decoravailable");
+
+                    List<caketable> cake = EventManagementEntities.caketables.ToList();
+                    ViewBag.Cake = new SelectList(cake, "cakeid", "cakesavailable");
+
+                    return View(bday);
+                }
+                else
+                {
+                    try
+                    {
+                        int? userId = Session["UserId"] as int?;
+                        int? bdayventId = Session["eventid"] as int?;
+
+                        if (userId.HasValue && bdayventId.HasValue)
+                        {
+                            bday.bdayuserid = userId.Value;
+                            bday.bdayid = bdayventId.Value;
+                        }
+
+                        EventManagementEntities.Entry(bday).State = EntityState.Modified;
+                        EventManagementEntities.SaveChanges();
+                        return Content("Successfully edited");
+                    }
+                    catch (DbUpdateConcurrencyException ex)
+                    {
+                        ModelState.AddModelError(string.Empty, "Concurrency error occurred.");
+                    }
+                }
             }
 
-            return View();
+         
+
+            return View(bday);
         }
 
 

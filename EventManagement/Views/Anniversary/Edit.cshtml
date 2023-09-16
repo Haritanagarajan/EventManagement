@@ -58,7 +58,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.annidatetime, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.annidatetime, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.EditorFor(model => model.annidatetime, new { htmlAttributes = new { @class = "form-control" } })*@
+                <input type="datetime-local" class="" name="annidatetime" />
                 @Html.ValidationMessageFor(model => model.annidatetime, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -131,36 +132,4 @@
 }
 
 
-@section scripts{
-    @Scripts.Render("~/bundles/jqueryui")
-    @Styles.Render("~/Content/cssjqryUi")
-
-    <!-- Include jQuery Timepicker scripts and stylesheets -->
-    <link rel="stylesheet" href="path-to-your-jquery-timepicker.css">
-    <script src="path-to-your-jquery-timepicker.js"></script>
-
-    <script>
-        $(document).ready(function () {
-            $(".datepicker").datepicker({
-                minDate: new Date(),
-                beforeShowDay: function (date) {
-                    var blockDates = [new Date(new Date().getFullYear(), 8, 19), new Date(new Date().getFullYear(), 8, 20)];
-                    var dateString = (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear();
-                    return [blockDates.indexOf(dateString) === -1];
-                }
-            });
-
-            var timerVal = moment().format('hh:mm A');
-
-            $('.timepicker').timepicker(
-                {
-                    template: 'dropdown',
-                    minuteStep: 1,
-                    secondStep: 1,
-                    showMeridian: true,
-                    defaultTime: timerVal
-                });
-        });
-    </script>
-}
 

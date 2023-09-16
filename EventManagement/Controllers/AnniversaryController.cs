@@ -25,7 +25,6 @@ namespace EventManagement.Controllers
         public ActionResult AnniCreate()
         {
       
-
             List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
             ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");
 
@@ -45,30 +44,75 @@ namespace EventManagement.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult AnniCreate([Bind(Include = "annidatetime,annidecorations,annitheme,annichairs,annitables,annihallcapacity,annicakes,annilocation,annieventcost,annibeverages,anniPhotography,anniStyling,anniHospitality")] Anniversary anni)
+        public ActionResult AnniCreate([Bind(Include = "annidatetime,annidecorations,annitheme,annichairs,annitables,annihallcapacity,annicakes,annilocation,annieventcost,annibeverages,anniPhotography,anniStyling,anniHospitality")] Anniversary anni,DateTime annidatetime)
         {
             if (ModelState.IsValid)
             {
+                List<Anniversary> bookedanni = EventManagementEntities.Anniversaries.ToList();
+                bool isInvalid = false;
 
-                int lastUserId = EventManagementEntities.Anniversaries.Any() ? EventManagementEntities.Anniversaries.Max(u => u.id) : 0;
-
-                int? userId = Session["UserId"] as int?;
-
-                int? annieventId = Session["eventid"] as int?;
-                if (userId.HasValue && annieventId.HasValue)
+                foreach (var item in bookedanni)
                 {
-                    anni.anniuserid = userId.Value;
-                    anni.anniid = annieventId.Value;
+
+                    DateTime foundTime = Convert.ToDateTime(item.annidatetime);
+                    DateTime enteredTime = annidatetime;
+
+                    TimeSpan timeDifference = foundTime - enteredTime;
+
+                    if (Math.Abs(timeDifference.TotalHours) < 5)
+                    {
+                        isInvalid = true;
+                        break;
+                    }
+
 
                 }
 
-                anni.id = lastUserId + 1;
-                anni.annihallcapacity = 500;
-                anni.annieventcost = 1000;
+                if (isInvalid)
+                {
+                    ModelState.AddModelError("annidatetime", "The selected datetime is too close to an existing anniversary.");
 
-                EventManagementEntities.Anniversaries.Add(anni);
-                EventManagementEntities.SaveChanges();
-                return RedirectToAction("AnniDetails", new { id = anni.id });
+                    List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
+                    ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");
+
+                    List<locationtable> location = EventManagementEntities.locationtables.ToList();
+                    ViewBag.Location = new SelectList(location, "locationid", "locationname");
+
+                    List<themetable> theme = EventManagementEntities.themetables.ToList();
+                    ViewBag.Theme = new SelectList(theme, "themeid", "themename");
+
+                    List<decorationtable> decor = EventManagementEntities.decorationtables.ToList();
+                    ViewBag.Decor = new SelectList(decor, "decorid", "decoravailable");
+
+
+                    List<caketable> cake = EventManagementEntities.caketables.ToList();
+                    ViewBag.Cake = new SelectList(cake, "cakeid", "cakesavailable");
+
+                    return View();
+                }
+                else
+                {
+
+                    int lastUserId = EventManagementEntities.Anniversaries.Any() ? EventManagementEntities.Anniversaries.Max(u => u.id) : 0;
+
+                    int? userId = Session["UserId"] as int?;
+
+                    int? annieventId = Session["eventid"] as int?;
+                    if (userId.HasValue && annieventId.HasValue)
+                    {
+                        anni.anniuserid = userId.Value;
+                        anni.anniid = annieventId.Value;
+
+                    }
+
+                    anni.id = lastUserId + 1;
+                    anni.annihallcapacity = 500;
+                    anni.annieventcost = 1000;
+
+                    EventManagementEntities.Anniversaries.Add(anni);
+                    EventManagementEntities.SaveChanges();
+                    return RedirectToAction("AnniDetails", new { id = anni.id });
+                }
             }
             return View();
         }
@@ -79,8 +123,6 @@ namespace EventManagement.Controllers
         public ActionResult Edit(int? id)
         {
             Anniversary anni = EventManagementEntities.Anniversaries.Find(id);
-
-          
 
             List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
             ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");
@@ -101,38 +143,109 @@ namespace EventManagement.Controllers
         }
 
 
-        [HttpPost]
-        public ActionResult Edit([Bind(Include = "id,annidatetime,anniid,anniuserid,annieventcost,annihallcapacity,annidecorations,annitheme,annichairs,annitables,annihallcapacity,annicakes,annilocation,annieventcost,annibeverages,anniPhotography,anniStyling,anniHospitality")] Anniversary updatedAnni)
-        {
+        //[HttpPost]
+        //public ActionResult Edit([Bind(Include = "id,annidatetime,anniid,anniuserid,annieventcost,annihallcapacity,annidecorations,annitheme,annichairs,annitables,annihallcapacity,annicakes,annilocation,annieventcost,annibeverages,anniPhotography,anniStyling,anniHospitality")] Anniversary updatedAnni)
+        //{
 
+        //    if (ModelState.IsValid)
+        //    {
+        //        try
+        //        {
+        //            int? userId = Session["UserId"] as int?;
+
+        //            int? annieventId = Session["eventid"] as int?;
+        //            if (userId.HasValue && annieventId.HasValue)
+        //            {
+        //                updatedAnni.anniuserid = userId.Value;
+        //                updatedAnni.anniid = annieventId.Value;
+
+        //            }
+        //            EventManagementEntities.Entry(updatedAnni).State = EntityState.Modified;
+        //            EventManagementEntities.SaveChanges();
+        //            return Content("Successfully edited");
+        //        }
+        //        catch (DbUpdateConcurrencyException ex)
+        //        {
+        //            // Handle concurrency conflicts here
+        //            ModelState.AddModelError(string.Empty, "Concurrency error occurred.");
+        //        }
+
+        //    }
+
+        //    return View();
+        //}
+
+        [HttpPost]
+        public ActionResult Edit([Bind(Include = "id,annidatetime,anniid,anniuserid,annieventcost,annihallcapacity,annidecorations,annitheme,annichairs,annitables,annihallcapacity,annicakes,annilocation,annieventcost,annibeverages,anniPhotography,anniStyling,anniHospitality")] Anniversary updatedAnni, DateTime annidatetime)
+        {
             if (ModelState.IsValid)
             {
-                try
-                {
-                    int? userId = Session["UserId"] as int?;
+                List<Anniversary> bookedAnniversaries = EventManagementEntities.Anniversaries.Where(a => a.id != updatedAnni.id).ToList(); 
+                bool isInvalid = false;
 
-                    int? annieventId = Session["eventid"] as int?;
-                    if (userId.HasValue && annieventId.HasValue)
+                foreach (var item in bookedAnniversaries)
+                {
+                    DateTime foundTime = Convert.ToDateTime(item.annidatetime);
+                    DateTime enteredTime = annidatetime;
+
+                    TimeSpan timeDifference = foundTime - enteredTime;
+
+                    if (Math.Abs(timeDifference.TotalHours) < 5)
                     {
-                        updatedAnni.anniuserid = userId.Value;
-                        updatedAnni.anniid = annieventId.Value;
-
+                        isInvalid = true;
+                        break;
                     }
-                    EventManagementEntities.Entry(updatedAnni).State = EntityState.Modified;
-                    EventManagementEntities.SaveChanges();
-                    return Content("Successfully edited");
-                }
-                catch (DbUpdateConcurrencyException ex)
-                {
-                    // Handle concurrency conflicts here
-                    ModelState.AddModelError(string.Empty, "Concurrency error occurred.");
                 }
 
+                if (isInvalid)
+                {
+                    ModelState.AddModelError("annidatetime", "The selected datetime is too close to an existing anniversary.");
+
+                    List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
+                    ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");
+
+                    List<locationtable> location = EventManagementEntities.locationtables.ToList();
+                    ViewBag.Location = new SelectList(location, "locationid", "locationname");
+
+                    List<themetable> theme = EventManagementEntities.themetables.ToList();
+                    ViewBag.Theme = new SelectList(theme, "themeid", "themename");
+
+                    List<decorationtable> decor = EventManagementEntities.decorationtables.ToList();
+                    ViewBag.Decor = new SelectList(decor, "decorid", "decoravailable");
+
+                    List<caketable> cake = EventManagementEntities.caketables.ToList();
+                    ViewBag.Cake = new SelectList(cake, "cakeid", "cakesavailable");
+
+
+                    return View(updatedAnni);
+                }
+                else
+                {
+                    try
+                    {
+                        int? userId = Session["UserId"] as int?;
+                        int? annieventId = Session["eventid"] as int?;
+
+                        if (userId.HasValue && annieventId.HasValue)
+                        {
+                            updatedAnni.anniuserid = userId.Value;
+                            updatedAnni.anniid = annieventId.Value;
+                        }
+
+                        EventManagementEntities.Entry(updatedAnni).State = EntityState.Modified;
+                        EventManagementEntities.SaveChanges();
+                        return Content("Successfully edited");
+                    }
+                    catch (DbUpdateConcurrencyException ex)
+                    {
+                        ModelState.AddModelError(string.Empty, "Concurrency error occurred.");
+                    }
+                }
             }
 
-            return View();
-        }
 
+            return View(updatedAnni);
+        }
 
 
 

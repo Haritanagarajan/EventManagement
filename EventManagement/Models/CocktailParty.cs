@@ -33,7 +33,6 @@ namespace EventManagement.Models
         public Nullable<int> cocklocation { get; set; }
         public Nullable<long> cockeventcost { get; set; }
         public bool cockbeverages { get; set; }
-        public Nullable<System.TimeSpan> cocktime { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AddtoCart> AddtoCarts { get; set; }

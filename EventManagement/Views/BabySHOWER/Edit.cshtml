@@ -60,7 +60,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.babyshowerdatetime, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.babyshowerdatetime, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                @*@Html.EditorFor(model => model.babyshowerdatetime, new { htmlAttributes = new { @class = "form-control datepicker" } })*@
+                <input type="datetime-local" class="" name="babyshowerdatetime" />
                 @Html.ValidationMessageFor(model => model.babyshowerdatetime, "", new { @class = "text-danger" })
             </div>
         </div>

@@ -40,30 +40,76 @@ namespace EventManagement.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult CocktailCreate([Bind(Include = "cockdatetime,cockdecorations,cocktheme,cockchairs,cocktables,cockhallcapacity,cockcakes,cocklocation,cockeventcost,cockbeverages")] CocktailParty cock)
+        public ActionResult CocktailCreate([Bind(Include = "cockdatetime,cockdecorations,cocktheme,cockchairs,cocktables,cockhallcapacity,cockcakes,cocklocation,cockeventcost,cockbeverages")] CocktailParty cock, DateTime cockdatetime)
         {
             if (ModelState.IsValid)
             {
+                List<CocktailParty> bookedcocktail = EventManagementEntities.CocktailParties.ToList();
+                bool isInvalid = false;
 
-                int lastUserId = EventManagementEntities.CocktailParties.Any() ? EventManagementEntities.CocktailParties.Max(u => u.id) : 0;
-
-                int? userId = Session["UserId"] as int?;
-
-                int? cockeventId = Session["eventid"] as int?;
-                if (userId.HasValue && cockeventId.HasValue)
+                foreach (var item in bookedcocktail)
                 {
-                    cock.cockuserid = userId.Value;
-                    cock.cockid = cockeventId.Value;
+
+                    DateTime foundTime = Convert.ToDateTime(item.cockdatetime);
+                    DateTime enteredTime = cockdatetime;
+
+                    TimeSpan timeDifference = foundTime - enteredTime;
+
+                    if (Math.Abs(timeDifference.TotalHours) < 5)
+                    {
+                        isInvalid = true;
+                        break;
+                    }
+
 
                 }
 
-                cock.id = lastUserId + 1;
-                cock.cockhallcapacity = 500;
-                cock.cockeventcost = 1000;
+                if (isInvalid)
+                {
+                    ModelState.AddModelError("cockdatetime", "The selected datetime is too close to an existing cocktail party.");
 
-                EventManagementEntities.CocktailParties.Add(cock);
-                EventManagementEntities.SaveChanges();
-                return RedirectToAction("CocktailDetails", new { id = cock.id });
+                    List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
+                    ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");
+
+                    List<locationtable> location = EventManagementEntities.locationtables.ToList();
+                    ViewBag.Location = new SelectList(location, "locationid", "locationname");
+
+                    List<themetable> theme = EventManagementEntities.themetables.ToList();
+                    ViewBag.Theme = new SelectList(theme, "themeid", "themename");
+
+                    List<decorationtable> decor = EventManagementEntities.decorationtables.ToList();
+                    ViewBag.Decor = new SelectList(decor, "decorid", "decoravailable");
+
+                    List<caketable> cake = EventManagementEntities.caketables.ToList();
+                    ViewBag.Cake = new SelectList(cake, "cakeid", "cakesavailable");
+
+                    return View();
+                }
+
+                else
+                {
+
+                    int lastUserId = EventManagementEntities.CocktailParties.Any() ? EventManagementEntities.CocktailParties.Max(u => u.id) : 0;
+
+                    int? userId = Session["UserId"] as int?;
+
+                    int? cockeventId = Session["eventid"] as int?;
+                    if (userId.HasValue && cockeventId.HasValue)
+                    {
+                        cock.cockuserid = userId.Value;
+                        cock.cockid = cockeventId.Value;
+
+                    }
+
+                    cock.id = lastUserId + 1;
+                    cock.cockhallcapacity = 500;
+                    cock.cockeventcost = 1000;
+
+                    EventManagementEntities.CocktailParties.Add(cock);
+                    EventManagementEntities.SaveChanges();
+                    return RedirectToAction("CocktailDetails", new { id = cock.id });
+
+                }
             }
             return View();
         }
@@ -76,7 +122,7 @@ namespace EventManagement.Controllers
         {
             CocktailParty baby = EventManagementEntities.CocktailParties.Find(id);
 
-            
+
 
             List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
             ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");
@@ -97,38 +143,108 @@ namespace EventManagement.Controllers
         }
 
 
-        [HttpPost]
-        public ActionResult Edit([Bind(Include = "cockdatetime,id,cockuserid,cockid,cockdecorations,cocktheme,cockchairs,cocktables,cockhallcapacity,cockcakes,cocklocation,cockeventcost,cockbeverages")] CocktailParty cock)
-        {
+        //[HttpPost]
+        //public ActionResult Edit([Bind(Include = "cockdatetime,id,cockuserid,cockid,cockdecorations,cocktheme,cockchairs,cocktables,cockhallcapacity,cockcakes,cocklocation,cockeventcost,cockbeverages")] CocktailParty cock)
+        //{
 
+        //    if (ModelState.IsValid)
+        //    {
+        //        try
+        //        {
+        //            int? userId = Session["UserId"] as int?;
+
+        //            int? cockventId = Session["eventid"] as int?;
+        //            if (userId.HasValue && cockventId.HasValue)
+        //            {
+        //                cock.cockuserid = userId.Value;
+        //                cock.cockid = cockventId.Value;
+
+        //            }
+        //            EventManagementEntities.Entry(cock).State = EntityState.Modified;
+        //            EventManagementEntities.SaveChanges();
+        //            return Content("Successfully edited");
+        //        }
+        //        catch (DbUpdateConcurrencyException ex)
+        //        {
+        //            // Handle concurrency conflicts here
+        //            ModelState.AddModelError(string.Empty, "Concurrency error occurred.");
+        //        }
+
+        //    }
+
+        //    return View();
+        //}
+
+        [HttpPost]
+        public ActionResult Edit([Bind(Include = "cockdatetime,id,cockuserid,cockid,cockdecorations,cocktheme,cockchairs,cocktables,cockhallcapacity,cockcakes,cocklocation,cockeventcost,cockbeverages")] CocktailParty cock, DateTime cockdatetime)
+        {
             if (ModelState.IsValid)
             {
-                try
-                {
-                    int? userId = Session["UserId"] as int?;
+                List<CocktailParty> bookedCocktailParties = EventManagementEntities.CocktailParties.Where(c => c.id != cock.id).ToList(); // Exclude the current cocktail party being edited from the check
+                bool isInvalid = false;
 
-                    int? cockventId = Session["eventid"] as int?;
-                    if (userId.HasValue && cockventId.HasValue)
+                foreach (var item in bookedCocktailParties)
+                {
+                    DateTime foundTime = Convert.ToDateTime(item.cockdatetime);
+                    DateTime enteredTime = cockdatetime;
+
+                    TimeSpan timeDifference = foundTime - enteredTime;
+
+                    if (Math.Abs(timeDifference.TotalHours) < 5)
                     {
-                        cock.cockuserid = userId.Value;
-                        cock.cockid = cockventId.Value;
-
+                        isInvalid = true;
+                        break;
                     }
-                    EventManagementEntities.Entry(cock).State = EntityState.Modified;
-                    EventManagementEntities.SaveChanges();
-                    return Content("Successfully edited");
-                }
-                catch (DbUpdateConcurrencyException ex)
-                {
-                    // Handle concurrency conflicts here
-                    ModelState.AddModelError(string.Empty, "Concurrency error occurred.");
                 }
 
+                if (isInvalid)
+                {
+                    ModelState.AddModelError("cockdatetime", "The selected datetime is too close to an existing cocktail party.");
+
+                    List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
+                    ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");
+
+                    List<locationtable> location = EventManagementEntities.locationtables.ToList();
+                    ViewBag.Location = new SelectList(location, "locationid", "locationname");
+
+                    List<themetable> theme = EventManagementEntities.themetables.ToList();
+                    ViewBag.Theme = new SelectList(theme, "themeid", "themename");
+
+                    List<decorationtable> decor = EventManagementEntities.decorationtables.ToList();
+                    ViewBag.Decor = new SelectList(decor, "decorid", "decoravailable");
+
+                    List<caketable> cake = EventManagementEntities.caketables.ToList();
+                    ViewBag.Cake = new SelectList(cake, "cakeid", "cakesavailable");
+
+                    return View(cock);
+                }
+                else
+                {
+                    try
+                    {
+                        int? userId = Session["UserId"] as int?;
+                        int? cockventId = Session["eventid"] as int?;
+
+                        if (userId.HasValue && cockventId.HasValue)
+                        {
+                            cock.cockuserid = userId.Value;
+                            cock.cockid = cockventId.Value;
+                        }
+
+                        EventManagementEntities.Entry(cock).State = EntityState.Modified;
+                        EventManagementEntities.SaveChanges();
+                        return Content("Successfully edited");
+                    }
+                    catch (DbUpdateConcurrencyException ex)
+                    {
+                        ModelState.AddModelError(string.Empty, "Concurrency error occurred.");
+                    }
+                }
             }
 
-            return View();
+         
+            return View(cock);
         }
-
 
 
 
@@ -151,10 +267,5 @@ namespace EventManagement.Controllers
         }
 
 
-
-    
-
-
-     
     }
 }

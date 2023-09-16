@@ -36,7 +36,6 @@ namespace EventManagement.Models
         public bool weddingPhotography { get; set; }
         public bool weddingStyling { get; set; }
         public bool weddingHospitality { get; set; }
-        public Nullable<System.TimeSpan> weddingtime { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AddtoCart> AddtoCarts { get; set; }

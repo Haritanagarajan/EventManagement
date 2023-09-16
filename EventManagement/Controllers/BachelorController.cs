@@ -40,10 +40,54 @@ namespace EventManagement.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult BachelorCreate([Bind(Include = "bachelordatetime,bachelordecorations,bachelortheme,bachelorchairs,bachelortables,bachelorhallcapacity,bachelorcakes,bachelorlocation,bacheloreventcost,bachelorbeverages")] BachelorParty bat)
+        public ActionResult BachelorCreate([Bind(Include = "bachelordatetime,bachelordecorations,bachelortheme,bachelorchairs,bachelortables,bachelorhallcapacity,bachelorcakes,bachelorlocation,bacheloreventcost,bachelorbeverages")] BachelorParty bat,DateTime bachelordatetime)
         {
             if (ModelState.IsValid)
             {
+                List<BachelorParty> bookedbachelor = EventManagementEntities.BachelorParties.ToList();
+                bool isInvalid = false;
+
+                foreach (var item in bookedbachelor)
+                {
+
+                    DateTime foundTime = Convert.ToDateTime(item.bachelordatetime);
+                    DateTime enteredTime = bachelordatetime;
+
+                    TimeSpan timeDifference = foundTime - enteredTime;
+
+                    if (Math.Abs(timeDifference.TotalHours) < 5)
+                    {
+                        isInvalid = true;
+                        break;
+                    }
+
+
+                }
+
+                if (isInvalid)
+                {
+                    ModelState.AddModelError("bachelordatetime", "The selected datetime is too close to an existing bachelor party.");
+
+                    List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
+                    ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");
+
+                    List<locationtable> location = EventManagementEntities.locationtables.ToList();
+                    ViewBag.Location = new SelectList(location, "locationid", "locationname");
+
+                    List<themetable> theme = EventManagementEntities.themetables.ToList();
+                    ViewBag.Theme = new SelectList(theme, "themeid", "themename");
+
+                    List<decorationtable> decor = EventManagementEntities.decorationtables.ToList();
+                    ViewBag.Decor = new SelectList(decor, "decorid", "decoravailable");
+
+                    List<caketable> cake = EventManagementEntities.caketables.ToList();
+                    ViewBag.Cake = new SelectList(cake, "cakeid", "cakesavailable");
+
+                    return View();
+                }
+
+                else
+                {
 
                 int lastUserId = EventManagementEntities.BachelorParties.Any() ? EventManagementEntities.BachelorParties.Max(u => u.id) : 0;
 
@@ -64,6 +108,8 @@ namespace EventManagement.Controllers
                 EventManagementEntities.BachelorParties.Add(bat);
                 EventManagementEntities.SaveChanges();
                 return RedirectToAction("BachelorDetails", new { id = bat.id });
+
+                }
             }
             return View();
         }
@@ -97,36 +143,110 @@ namespace EventManagement.Controllers
         }
 
 
-        [HttpPost]
-        public ActionResult Edit([Bind(Include = "bachelordatetime,id,bacheloruserid,bachelorid,bachelordecorations,bachelortheme,bachelorchairs,bachelortables,bachelorhallcapacity,bachelorcakes,bachelorlocation,bacheloreventcost,bachelorbeverages")] BachelorParty bat)
-        {
+        //[HttpPost]
+        //public ActionResult Edit([Bind(Include = "bachelordatetime,id,bacheloruserid,bachelorid,bachelordecorations,bachelortheme,bachelorchairs,bachelortables,bachelorhallcapacity,bachelorcakes,bachelorlocation,bacheloreventcost,bachelorbeverages")] BachelorParty bat)
+        //{
 
+        //    if (ModelState.IsValid)
+        //    {
+        //        try
+        //        {
+        //            int? userId = Session["UserId"] as int?;
+
+        //            int? batventId = Session["eventid"] as int?;
+        //            if (userId.HasValue && batventId.HasValue)
+        //            {
+        //                bat.bacheloruserid = userId.Value;
+        //                bat.bachelorid = batventId.Value;
+
+        //            }
+        //            EventManagementEntities.Entry(bat).State = EntityState.Modified;
+        //            EventManagementEntities.SaveChanges();
+        //            return Content("Successfully edited");
+        //        }
+        //        catch (DbUpdateConcurrencyException ex)
+        //        {
+        //            // Handle concurrency conflicts here
+        //            ModelState.AddModelError(string.Empty, "Concurrency error occurred.");
+        //        }
+
+        //    }
+
+        //    return View();
+        //}
+
+
+        [HttpPost]
+        public ActionResult Edit([Bind(Include = "bachelordatetime,id,bacheloruserid,bachelorid,bachelordecorations,bachelortheme,bachelorchairs,bachelortables,bachelorhallcapacity,bachelorcakes,bachelorlocation,bacheloreventcost,bachelorbeverages")] BachelorParty bat, DateTime bachelordatetime)
+        {
             if (ModelState.IsValid)
             {
-                try
-                {
-                    int? userId = Session["UserId"] as int?;
+                List<BachelorParty> bookedBachelorParties = EventManagementEntities.BachelorParties.Where(b => b.id != bat.id).ToList(); 
+                bool isInvalid = false;
 
-                    int? batventId = Session["eventid"] as int?;
-                    if (userId.HasValue && batventId.HasValue)
+                foreach (var item in bookedBachelorParties)
+                {
+                    DateTime foundTime = Convert.ToDateTime(item.bachelordatetime);
+                    DateTime enteredTime = bachelordatetime;
+
+                    TimeSpan timeDifference = foundTime - enteredTime;
+
+                    if (Math.Abs(timeDifference.TotalHours) < 5)
                     {
-                        bat.bacheloruserid = userId.Value;
-                        bat.bachelorid = batventId.Value;
-
+                        isInvalid = true;
+                        break;
                     }
-                    EventManagementEntities.Entry(bat).State = EntityState.Modified;
-                    EventManagementEntities.SaveChanges();
-                    return Content("Successfully edited");
-                }
-                catch (DbUpdateConcurrencyException ex)
-                {
-                    // Handle concurrency conflicts here
-                    ModelState.AddModelError(string.Empty, "Concurrency error occurred.");
                 }
 
+                if (isInvalid)
+                {
+                    ModelState.AddModelError("bachelordatetime", "The selected datetime is too close to an existing bachelor party.");
+
+
+                    List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
+                    ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");
+
+                    List<locationtable> location = EventManagementEntities.locationtables.ToList();
+                    ViewBag.Location = new SelectList(location, "locationid", "locationname");
+
+                    List<themetable> theme = EventManagementEntities.themetables.ToList();
+                    ViewBag.Theme = new SelectList(theme, "themeid", "themename");
+
+                    List<decorationtable> decor = EventManagementEntities.decorationtables.ToList();
+                    ViewBag.Decor = new SelectList(decor, "decorid", "decoravailable");
+
+                    List<caketable> cake = EventManagementEntities.caketables.ToList();
+                    ViewBag.Cake = new SelectList(cake, "cakeid", "cakesavailable");
+
+
+                    return View(bat);
+                }
+                else
+                {
+                    try
+                    {
+                        int? userId = Session["UserId"] as int?;
+                        int? batventId = Session["eventid"] as int?;
+
+                        if (userId.HasValue && batventId.HasValue)
+                        {
+                            bat.bacheloruserid = userId.Value;
+                            bat.bachelorid = batventId.Value;
+                        }
+
+                        EventManagementEntities.Entry(bat).State = EntityState.Modified;
+                        EventManagementEntities.SaveChanges();
+                        return Content("Successfully edited");
+                    }
+                    catch (DbUpdateConcurrencyException ex)
+                    {
+                        ModelState.AddModelError(string.Empty, "Concurrency error occurred.");
+                    }
+                }
             }
 
-            return View();
+  
+            return View(bat);
         }
 
 

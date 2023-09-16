@@ -23,12 +23,12 @@ namespace EventManagement.Models
         public Nullable<int> cartreunion { get; set; }
         public Nullable<int> cartcocktail { get; set; }
     
-        public virtual Anniversary Anniversary { get; set; }
         public virtual birthdaytable birthdaytable { get; set; }
+        public virtual Reunion Reunion { get; set; }
+        public virtual Anniversary Anniversary { get; set; }
         public virtual babyshowertable babyshowertable { get; set; }
         public virtual BachelorParty BachelorParty { get; set; }
         public virtual CocktailParty CocktailParty { get; set; }
-        public virtual Reunion Reunion { get; set; }
         public virtual Wedding Wedding { get; set; }
     }
 }

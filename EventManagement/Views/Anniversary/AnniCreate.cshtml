@@ -16,13 +16,7 @@
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.annidatetime, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.annidatetime, new { htmlAttributes = new { @class = "form-control " } })
-            @Html.ValidationMessageFor(model => model.annidatetime, "", new { @class = "text-danger" })
-        </div>
-    </div>
+
 
     <div class="form-group">
         @Html.LabelFor(model => model.annidecorations, "annidecorations", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -58,7 +52,14 @@
 
 
 
-
+    <div class="form-group">
+        @Html.LabelFor(model => model.annidatetime, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @*@Html.EditorFor(model => model.annidatetime, new { htmlAttributes = new { @class = "form-control " } })*@
+            <input type="datetime-local" class="" name="annidatetime" />
+            @Html.ValidationMessageFor(model => model.annidatetime, "", new { @class = "text-danger" })
+        </div>
+    </div>
 
 
 
