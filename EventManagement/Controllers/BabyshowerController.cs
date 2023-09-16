@@ -264,6 +264,25 @@ namespace EventManagement.Controllers
             }
 
         }
+
+        [HttpGet]
+        [Authorize(Roles = "User")]
+        public ActionResult Delete(int? id)
+        {
+            babyshowertable baby = EventManagementEntities.babyshowertables.Find(id);
+            return View(baby);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult UserDeleteConfirmed(int? id)
+        {
+            babyshowertable baby = EventManagementEntities.babyshowertables.Find(id);
+            EventManagementEntities.babyshowertables.Remove(baby);
+            EventManagementEntities.SaveChanges();
+            return RedirectToAction("Index1", "Cart");
+        }
+
     }
 }
 

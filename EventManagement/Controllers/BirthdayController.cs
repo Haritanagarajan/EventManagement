@@ -267,6 +267,24 @@ namespace EventManagement.Controllers
             }
 
         }
+
+        [HttpGet]
+        [Authorize(Roles = "User")]
+        public ActionResult Delete(int? id)
+        {
+            birthdaytable bday = EventManagementEntities.birthdaytables.Find(id);
+            return View(bday);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult UserDeleteConfirmed(int? id)
+        {
+            birthdaytable bday = EventManagementEntities.birthdaytables.Find(id);
+            EventManagementEntities.birthdaytables.Remove(bday);
+            EventManagementEntities.SaveChanges();
+            return RedirectToAction("Index1", "Cart");
+        }
     }
 
 }

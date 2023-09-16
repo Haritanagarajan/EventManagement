@@ -266,6 +266,24 @@ namespace EventManagement.Controllers
 
         }
 
+        [HttpGet]
+        [Authorize(Roles = "User")]
+        public ActionResult Delete(int? id)
+        {
+            CocktailParty cock = EventManagementEntities.CocktailParties.Find(id);
+            return View(cock);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult UserDeleteConfirmed(int? id)
+        {
+            CocktailParty cock = EventManagementEntities.CocktailParties.Find(id);
+            EventManagementEntities.CocktailParties.Remove(cock);
+            EventManagementEntities.SaveChanges();
+            return RedirectToAction("Index1", "Cart");
+        }
+
 
     }
 }

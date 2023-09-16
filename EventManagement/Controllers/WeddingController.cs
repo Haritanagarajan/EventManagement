@@ -233,5 +233,23 @@ namespace EventManagement.Controllers
             }
 
         }
+
+        [HttpGet]
+        [Authorize(Roles = "User")]
+        public ActionResult Delete(int? id)
+        {
+            Wedding wed = EventManagementEntities.Weddings.Find(id);
+            return View(wed);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult UserDeleteConfirmed(int? id)
+        {
+            Wedding wed = EventManagementEntities.Weddings.Find(id);
+            EventManagementEntities.Weddings.Remove(wed);
+            EventManagementEntities.SaveChanges();
+            return RedirectToAction("Index1", "Cart");
+        }
     }
 }

@@ -269,5 +269,23 @@ namespace EventManagement.Controllers
             }
 
         }
+
+        [HttpGet]
+        [Authorize(Roles = "User")]
+        public ActionResult Delete(int? id)
+        {
+            BachelorParty batch = EventManagementEntities.BachelorParties.Find(id);
+            return View(batch);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult UserDeleteConfirmed(int? id)
+        {
+            BachelorParty batch = EventManagementEntities.BachelorParties.Find(id);
+            EventManagementEntities.BachelorParties.Remove(batch);
+            EventManagementEntities.SaveChanges();
+            return RedirectToAction("Index1", "Cart");
+        }
     }
 }

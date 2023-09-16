@@ -1,29 +1,27 @@
-﻿
-@model EventManagement.ViewModel.CartViewModel
+﻿@model EventManagement.ViewModel.CartViewModel
 
 @{
     ViewBag.Title = "Cart";
 }
 
-<p>welcome to .....EventPulse @User.Identity.Name</p>
-<p>welcome to .....EventPulse @User.Identity.IsAuthenticated</p>
+<p>Welcome to EventPulse, @User.Identity.Name</p>
+<p>Welcome to EventPulse, @User.Identity.IsAuthenticated</p>
 
-
-@if (Model.birthdaytable.Any())
+@if (Model.birthdaytable.Any() || Model.babyshowertable.Any() || Model.Anniversary.Any() || Model.BachelorParty.Any() || Model.CocktailParty.Any() || Model.Wedding.Any() || Model.Reunion.Any())
 {
-    <h5 class="text-uppercase p-2 text-center">Birthday</h5>
+    <h5 class="text-uppercase p-2 text-center">All Events</h5>
     <table class="table table-bordered table-striped">
         <thead class="thead-dark text-black">
             <tr>
-                <th>@Html.DisplayNameFor(m => Model.birthdaytable.FirstOrDefault().bdaydatetime)</th>
-                <th>@Html.DisplayNameFor(m => Model.birthdaytable.FirstOrDefault().bdaylocation)</th>
-                <th>@Html.DisplayNameFor(m => Model.birthdaytable.FirstOrDefault().bdaycakes)</th>
-                <th>@Html.DisplayNameFor(m => Model.birthdaytable.FirstOrDefault().bdaytheme)</th>
-                <th>@Html.DisplayNameFor(m => Model.birthdaytable.FirstOrDefault().bdaydecorations)</th>
-                <th>@Html.DisplayNameFor(m => Model.birthdaytable.FirstOrDefault().bdayeventcost)</th>
-                <th>@Html.DisplayNameFor(m => Model.birthdaytable.FirstOrDefault().bdayid)</th>
-                <th>@Html.DisplayNameFor(m => Model.birthdaytable.FirstOrDefault().bdayuserid)</th>
-                <th>Action</th>
+                <th>Event Type</th>
+                <th>Event Date</th>
+                <th>Location</th>
+                <th>Cakes</th>
+                <th>Theme</th>
+                <th>Decorations</th>
+                <th>Event Cost</th>
+                <th>User ID</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -34,53 +32,23 @@
                 if (Session["UserId"] != null && Session["UserId"].ToString() == bday.bdayuserid.ToString())
                 {
                     <tr>
+                        <td>Birthday</td>
                         <td>@bday.bdaydatetime</td>
                         <td>@bday.bdaylocation</td>
+                        <td>@bday.bdaycakes</td>
+                        <td>@bday.bdaytheme</td>
+                        <td>@bday.bdaydecorations</td>
                         <td>@bday.bdayeventcost</td>
                         <td>@bday.bdayuserid</td>
-                        <td>@bday.bdaytheme</td>
-                        <td>@bday.bdaycakes</td>
-                        <td>@bday.bdaydecorations</td>
-                        <td>@bday.bdayid</td>
+                        
                         <td>
-                            @if (bday.bdayeventcost.HasValue)
-                            {
-                                decimal halfAmount = bday.bdayeventcost.Value / 2;
-                                <span>Total: @bday.bdayeventcost.Value</span><br />
-                                <span>Half Amount: @halfAmount</span>
-                                <button class="btn btn-primary" onclick="confirmBooking(@bday.bdayid)">Confirm Booking</button>
-                            }
-                            else
-                            {
-                                <span>Cost not available</span>
-                            }
+                            @Html.ActionLink("Delete", "Delete", "Birthday", new { id = bday.id }, null)
                         </td>
+
                     </tr>
                 }
             }
-        </tbody>
-    </table>
-}
 
-
-@if (Model.babyshowertable.Any())
-{
-    <h5 class="text-uppercase p-2 text-center">babyshowertable</h5>
-    <table class="table table-bordered table-striped">
-        <thead class="thead-dark text-black">
-            <tr>
-                <th>@Html.DisplayNameFor(m => Model.babyshowertable.FirstOrDefault().babyshowerdatetime)</th>
-                <th>@Html.DisplayNameFor(m => Model.babyshowertable.FirstOrDefault().babyshowerlocation)</th>
-                <th>@Html.DisplayNameFor(m => Model.babyshowertable.FirstOrDefault().babyshowercakes)</th>
-                <th>@Html.DisplayNameFor(m => Model.babyshowertable.FirstOrDefault().babyshowertheme)</th>
-                <th>@Html.DisplayNameFor(m => Model.babyshowertable.FirstOrDefault().babyshowerdecorations)</th>
-                <th>@Html.DisplayNameFor(m => Model.babyshowertable.FirstOrDefault().babyshowereventcost)</th>
-                <th>@Html.DisplayNameFor(m => Model.babyshowertable.FirstOrDefault().babyshowerid)</th>
-                <th>@Html.DisplayNameFor(m => Model.babyshowertable.FirstOrDefault().babyshoweruserid)</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
             @foreach (var baby in Model.babyshowertable)
             {
                 int? userId = Session["UserId"] as int?;
@@ -88,53 +56,21 @@
                 if (Session["UserId"] != null && Session["UserId"].ToString() == baby.babyshoweruserid.ToString())
                 {
                     <tr>
+                        <td>Baby Shower</td>
                         <td>@baby.babyshowerdatetime</td>
                         <td>@baby.babyshowerlocation</td>
+                        <td>@baby.babyshowercakes</td>
+                        <td>@baby.babyshowertheme</td>
+                        <td>@baby.babyshowerdecorations</td>
                         <td>@baby.babyshowereventcost</td>
                         <td>@baby.babyshoweruserid</td>
-                        <td>@baby.babyshowertheme</td>
-                        <td>@baby.babyshowercakes</td>
-                        <td>@baby.babyshowerdecorations</td>
-                        <td>@baby.babyshowerid</td>
                         <td>
-                            @if (baby.babyshowereventcost.HasValue)
-                            {
-                                decimal halfAmount = baby.babyshowereventcost.Value / 2;
-                                <span>Total: @baby.babyshowereventcost.Value</span><br />
-                                <span>Half Amount: @halfAmount</span>
-                                <button class="btn btn-primary" onclick="confirmBooking(@baby.babyshowerid)">Confirm Booking</button>
-                            }
-                            else
-                            {
-                                <span>Cost not available</span>
-                            }
+                            @Html.ActionLink("Delete", "Delete", "Babyshower", new { id = baby.id },null)
                         </td>
                     </tr>
                 }
             }
-        </tbody>
-    </table>
-}
 
-@if (Model.Anniversary.Any())
-
-{
-    <h5 class="text-uppercase p-2 text-center">Anniversary</h5>
-    <table class="table table-bordered table-striped">
-        <thead class="thead-dark text-black">
-            <tr>
-                <th>@Html.DisplayNameFor(m => Model.Anniversary.FirstOrDefault().annidatetime)</th>
-                <th>@Html.DisplayNameFor(m => Model.Anniversary.FirstOrDefault().annilocation)</th>
-                <th>@Html.DisplayNameFor(m => Model.Anniversary.FirstOrDefault().annicakes)</th>
-                <th>@Html.DisplayNameFor(m => Model.Anniversary.FirstOrDefault().annitheme)</th>
-                <th>@Html.DisplayNameFor(m => Model.Anniversary.FirstOrDefault().annidecorations)</th>
-                <th>@Html.DisplayNameFor(m => Model.Anniversary.FirstOrDefault().annieventcost)</th>
-                <th>@Html.DisplayNameFor(m => Model.Anniversary.FirstOrDefault().anniid)</th>
-                <th>@Html.DisplayNameFor(m => Model.Anniversary.FirstOrDefault().anniuserid)</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
             @foreach (var anni in Model.Anniversary)
             {
                 int? userId = Session["UserId"] as int?;
@@ -142,52 +78,21 @@
                 if (Session["UserId"] != null && Session["UserId"].ToString() == anni.anniuserid.ToString())
                 {
                     <tr>
+                        <td>Anniversary</td>
                         <td>@anni.annidatetime</td>
                         <td>@anni.annilocation</td>
+                        <td>@anni.annicakes</td>
+                        <td>@anni.annitheme</td>
+                        <td>@anni.annidecorations</td>
                         <td>@anni.annieventcost</td>
                         <td>@anni.anniuserid</td>
-                        <td>@anni.annitheme</td>
-                        <td>@anni.annicakes</td>
-                        <td>@anni.annidecorations</td>
-                        <td>@anni.anniid</td>
                         <td>
-                            @if (anni.annieventcost.HasValue)
-                            {
-                                decimal halfAmount = anni.annieventcost.Value / 2;
-                                <span>Total: @anni.annieventcost.Value</span><br />
-                                <span>Half Amount: @halfAmount</span>
-                                <button class="btn btn-primary" onclick="confirmBooking(@anni.anniid)">Confirm Booking</button>
-                            }
-                            else
-                            {
-                                <span>Cost not available</span>
-                            }
+                            @Html.ActionLink("Delete", "Delete", "Anniversary" ,new { id = anni.id },null)
                         </td>
                     </tr>
                 }
             }
-        </tbody>
-    </table>
-}
 
-@if (Model.BachelorParty.Any())
-{
-    <h5 class="text-uppercase p-2 text-center">BachelorParty</h5>
-    <table class="table table-bordered table-striped">
-        <thead class="thead-dark text-black">
-            <tr>
-                <th>@Html.DisplayNameFor(m => Model.BachelorParty.FirstOrDefault().bachelordatetime)</th>
-                <th>@Html.DisplayNameFor(m => Model.BachelorParty.FirstOrDefault().bachelorlocation)</th>
-                <th>@Html.DisplayNameFor(m => Model.BachelorParty.FirstOrDefault().bachelorcakes)</th>
-                <th>@Html.DisplayNameFor(m => Model.BachelorParty.FirstOrDefault().bachelortheme)</th>
-                <th>@Html.DisplayNameFor(m => Model.BachelorParty.FirstOrDefault().bachelordecorations)</th>
-                <th>@Html.DisplayNameFor(m => Model.BachelorParty.FirstOrDefault().bacheloreventcost)</th>
-                <th>@Html.DisplayNameFor(m => Model.BachelorParty.FirstOrDefault().bachelorid)</th>
-                <th>@Html.DisplayNameFor(m => Model.BachelorParty.FirstOrDefault().bacheloruserid)</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
             @foreach (var bachelor in Model.BachelorParty)
             {
                 int? userId = Session["UserId"] as int?;
@@ -195,53 +100,21 @@
                 if (Session["UserId"] != null && Session["UserId"].ToString() == bachelor.bacheloruserid.ToString())
                 {
                     <tr>
+                        <td>Bachelor Party</td>
                         <td>@bachelor.bachelordatetime</td>
                         <td>@bachelor.bachelorlocation</td>
                         <td>@bachelor.bachelorcakes</td>
                         <td>@bachelor.bachelortheme</td>
                         <td>@bachelor.bachelordecorations</td>
                         <td>@bachelor.bacheloreventcost</td>
-                        <td>@bachelor.bachelorid</td>
                         <td>@bachelor.bacheloruserid</td>
                         <td>
-                            @if (bachelor.bacheloreventcost.HasValue)
-                            {
-                                decimal halfAmount = bachelor.bacheloreventcost.Value / 2;
-                                <span>Total: @bachelor.bacheloreventcost.Value</span><br />
-                                <span>Half Amount: @halfAmount</span>
-                                <button class="btn btn-primary" onclick="confirmBooking(@bachelor.bachelorid)">Confirm Booking</button>
-                            }
-                            else
-                            {
-                                <span>Cost not available</span>
-                            }
+                            @Html.ActionLink("Delete", "Delete", "Bachelor", new { id = bachelor.id },null)
                         </td>
                     </tr>
                 }
             }
-        </tbody>
-    </table>
-}
 
-
-@if (Model.CocktailParty.Any())
-{
-    <h5 class="text-uppercase p-2 text-center">CocktailParty</h5>
-    <table class="table table-bordered table-striped">
-        <thead class="thead-dark text-black">
-            <tr>
-                <th>@Html.DisplayNameFor(m => Model.CocktailParty.FirstOrDefault().cockdatetime)</th>
-                <th>@Html.DisplayNameFor(m => Model.CocktailParty.FirstOrDefault().cocklocation)</th>
-                <th>@Html.DisplayNameFor(m => Model.CocktailParty.FirstOrDefault().cockcakes)</th>
-                <th>@Html.DisplayNameFor(m => Model.CocktailParty.FirstOrDefault().cocktheme)</th>
-                <th>@Html.DisplayNameFor(m => Model.CocktailParty.FirstOrDefault().cockdecorations)</th>
-                <th>@Html.DisplayNameFor(m => Model.CocktailParty.FirstOrDefault().cockeventcost)</th>
-                <th>@Html.DisplayNameFor(m => Model.CocktailParty.FirstOrDefault().cockid)</th>
-                <th>@Html.DisplayNameFor(m => Model.CocktailParty.FirstOrDefault().cockuserid)</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
             @foreach (var cock in Model.CocktailParty)
             {
                 int? userId = Session["UserId"] as int?;
@@ -249,54 +122,21 @@
                 if (Session["UserId"] != null && Session["UserId"].ToString() == cock.cockuserid.ToString())
                 {
                     <tr>
+                        <td>Cocktail Party</td>
                         <td>@cock.cockdatetime</td>
                         <td>@cock.cocklocation</td>
                         <td>@cock.cockcakes</td>
                         <td>@cock.cocktheme</td>
                         <td>@cock.cockdecorations</td>
                         <td>@cock.cockeventcost</td>
-                        <td>@cock.cockid</td>
                         <td>@cock.cockuserid</td>
                         <td>
-                            @if (cock.cockeventcost.HasValue)
-                            {
-                                decimal halfAmount = cock.cockeventcost.Value / 2;
-                                <span>Total: @cock.cockeventcost.Value</span><br />
-                                <span>Half Amount: @halfAmount</span>
-                                <button class="btn btn-primary" onclick="confirmBooking(@cock.cockid)">Confirm Booking</button>
-                            }
-                            else
-                            {
-                                <span>Cost not available</span>
-                            }
+                            @Html.ActionLink("Delete", "Delete", "Cocktail", new { id = cock.id },null)
                         </td>
                     </tr>
                 }
             }
-        </tbody>
-    </table>
 
-}
-
-
-@if (Model.Wedding.Any())
-{
-    <h5 class="text-uppercase p-2 text-center">Wedding</h5>
-    <table class="table table-bordered table-striped">
-        <thead class="thead-dark text-black">
-            <tr>
-                <th>@Html.DisplayNameFor(m => Model.Wedding.FirstOrDefault().weddingdatetime)</th>
-                <th>@Html.DisplayNameFor(m => Model.Wedding.FirstOrDefault().weddinglocation)</th>
-                <th>@Html.DisplayNameFor(m => Model.Wedding.FirstOrDefault().weddingcakes)</th>
-                <th>@Html.DisplayNameFor(m => Model.Wedding.FirstOrDefault().weddingtheme)</th>
-                <th>@Html.DisplayNameFor(m => Model.Wedding.FirstOrDefault().weddingdecorations)</th>
-                <th>@Html.DisplayNameFor(m => Model.Wedding.FirstOrDefault().weddingeventcost)</th>
-                <th>@Html.DisplayNameFor(m => Model.Wedding.FirstOrDefault().weddingid)</th>
-                <th>@Html.DisplayNameFor(m => Model.Wedding.FirstOrDefault().weddinguserid)</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
             @foreach (var wedding in Model.Wedding)
             {
                 int? userId = Session["UserId"] as int?;
@@ -304,93 +144,80 @@
                 if (Session["UserId"] != null && Session["UserId"].ToString() == wedding.weddinguserid.ToString() && User.Identity.IsAuthenticated)
                 {
                     <tr>
+                        <td>Wedding</td>
                         <td>@wedding.weddingdatetime</td>
                         <td>@wedding.weddinglocation</td>
                         <td>@wedding.weddingcakes</td>
                         <td>@wedding.weddingtheme</td>
                         <td>@wedding.weddingdecorations</td>
                         <td>@wedding.weddingeventcost</td>
-                        <td>@wedding.weddingid</td>
                         <td>@wedding.weddinguserid</td>
                         <td>
-                            @if (wedding.weddingeventcost.HasValue)
-                            {
-                                decimal halfAmount = wedding.weddingeventcost.Value / 2;
-                                <span>Total: @wedding.weddingeventcost.Value</span><br />
-                                <span>Half Amount: @halfAmount</span>
-                                <button class="btn btn-primary" onclick="confirmBooking(@wedding.weddingid)">Confirm Booking</button>
-                            }
-                            else
-                            {
-                                <span>Cost not available</span>
-                            }
+                            @Html.ActionLink("Delete", "Delete","Wedding", new { id = wedding.id },null)
                         </td>
                     </tr>
                 }
             }
-        </tbody>
-    </table>
-}
 
-
-@if (Model.Reunion.Any())
-{
-    <h5 class="text-uppercase p-2 text-center">Reunion</h5>
-    <table class="table table-bordered table-striped">
-        <thead class="thead-dark text-black">
-            <tr>
-                <th>@Html.DisplayNameFor(m => Model.Reunion.FirstOrDefault().reuniondatetime)</th>
-                <th>@Html.DisplayNameFor(m => Model.Reunion.FirstOrDefault().reunionlocation)</th>
-                <th>@Html.DisplayNameFor(m => Model.Reunion.FirstOrDefault().reunioncakes)</th>
-                <th>@Html.DisplayNameFor(m => Model.Reunion.FirstOrDefault().reuniontheme)</th>
-                <th>@Html.DisplayNameFor(m => Model.Reunion.FirstOrDefault().reuniondecorations)</th>
-                <th>@Html.DisplayNameFor(m => Model.Reunion.FirstOrDefault().reunioneventcost)</th>
-                <th>@Html.DisplayNameFor(m => Model.Reunion.FirstOrDefault().reunionid)</th>
-                <th>@Html.DisplayNameFor(m => Model.Reunion.FirstOrDefault().reunionuserid)</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
             @foreach (var reunion in Model.Reunion)
             {
                 int? userId = Session["UserId"] as int?;
 
                 <tr>
+                    <td>Reunion</td>
                     <td>@reunion.reuniondatetime</td>
                     <td>@reunion.reunionlocation</td>
                     <td>@reunion.reunioncakes</td>
                     <td>@reunion.reuniontheme</td>
                     <td>@reunion.reuniondecorations</td>
                     <td>@reunion.reunioneventcost</td>
-                    <td>@reunion.reunionid</td>
                     <td>@reunion.reunionuserid</td>
                     <td>
-                        @if (reunion.reunioneventcost.HasValue)
-                        {
-                            decimal halfAmount = reunion.reunioneventcost.Value / 2;
-                            <span>Total: @reunion.reunioneventcost.Value</span><br />
-                            <span>Half Amount: @halfAmount</span>
-                            <button class="btn btn-primary" onclick="confirmBooking(@reunion.reunionid)">Confirm Booking</button>
-                        }
-                        else
-                        {
-                            <span>Cost not available</span>
-                        }
+                        @Html.ActionLink("Delete", "Delete", "Reunion",new { id = reunion.id },null)
                     </td>
                 </tr>
             }
         </tbody>
+        <tfoot>
+            <tr>
+                <th colspan="6">Total Cost:</th>
+                <td>
+                    @{
+                        var totalCost = Model.birthdaytable.Sum(b => b.bdayeventcost) +
+                                        Model.babyshowertable.Sum(b => b.babyshowereventcost) +
+                                        Model.Anniversary.Sum(a => a.annieventcost) +
+                                        Model.BachelorParty.Sum(b => b.bacheloreventcost) +
+                                        Model.CocktailParty.Sum(c => c.cockeventcost) +
+                                        Model.Wedding.Sum(w => w.weddingeventcost) +
+                                        Model.Reunion.Sum(r => r.reunioneventcost);
+                    }
+                    ₹@totalCost
+                </td>
+
+            </tr>
+
+            <tr>
+                <th colspan="6">Prebooking:</th>
+                <td>
+                    @{
+                        var halfamnt = totalCost / 2;
+                    }
+                    ₹@halfamnt
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                <td>
+                    @Html.ActionLink("Paynow", "CreateOrder", "Payment", new { totalCost = totalCost }, new { @class = "btn" })
+                </td>
+                </td>
+            </tr>
+
+        </tfoot>
     </table>
-
 }
-
-
-
-<script>
-    function confirmBooking(eventId) {
-        alert("Booking confirmed!");
-    }
-</script>
-
-
-
+else
+{
+    <p>No events found in the cart.</p>
+}

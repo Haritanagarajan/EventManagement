@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 
 namespace EventManagement.Controllers
 {
@@ -23,6 +24,9 @@ namespace EventManagement.Controllers
             List<decorationtable> decorationtable = EventManagementEntities.decorationtables.ToList();
             return View(decorationtable);
         }
+
+
+
         // GET: Location
         [Authorize(Roles = "Admin")]
 

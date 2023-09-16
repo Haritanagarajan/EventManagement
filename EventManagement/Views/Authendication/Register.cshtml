@@ -33,31 +33,41 @@
 
                     <div class="form-group">
                         <div class="col-md-10">
-                            <i class="fa-solid fa-lock"></i>@Html.EditorFor(model => model.TPassword, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your Password" } })
+                            <i class="fa-solid fa-lock"></i>@Html.EditorFor(model => model.TPassword, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your Password", @type = "password" } })
                             @Html.ValidationMessageFor(model => model.TPassword, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-md-10">
-                            <i class="fa-solid fa-check-double"></i>@Html.EditorFor(model => model.TConfirmPassword, new { htmlAttributes = new { @class = "form-control", @placeholder = "Confirm your password" } })
+                            <i class="fa-solid fa-check-double"></i>@Html.EditorFor(model => model.TConfirmPassword, new { htmlAttributes = new { @class = "form-control", @placeholder = "Confirm your password", @type = "password" } })
                             @Html.ValidationMessageFor(model => model.TConfirmPassword, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-md-10">
-                            <i class="fa-solid fa-mobile"></i>@Html.EditorFor(model => model.TMobile, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your Mobile no " } })
+                            <i class="fa-solid fa-mobile"></i>@Html.EditorFor(model => model.TMobile, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your Mobile no ", @type = "text" } })
                             @Html.ValidationMessageFor(model => model.TMobile, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
+
                     <div class="form-group">
                         <div class="col-md-10">
-                            <i class="fa-solid fa-person-half-dress"></i>@Html.EditorFor(model => model.TGender, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your Gender" } })
+                            <label class="radio-inline">
+                                @Html.RadioButtonFor(model => model.TGender, "Female") Female
+                            </label>
+                            <label class="radio-inline">
+                                @Html.RadioButtonFor(model => model.TGender, "Male") Male
+                            </label>
+                            <label class="radio-inline">
+                                @Html.RadioButtonFor(model => model.TGender, "Other") Other
+                            </label>
                             @Html.ValidationMessageFor(model => model.TGender, "", new { @class = "text-danger" })
                         </div>
                     </div>
+
 
                     <div class="form-group">
                         <div class="col-md-10">
@@ -77,7 +87,7 @@
                             @Html.ValidationMessageFor(model => model.TProfile, "", new { @class = "text-danger" })
                         </div>
                     </div>
-
+                    @Html.ActionLink("Have an Account ? Login", "Login", "Authendication", new { @style = "color:black;text-decoration:none;font-size:13px" })
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10" id="buttons">
                             <button type="submit" value="Create" class="custom-btn btn-2">Connect</button>

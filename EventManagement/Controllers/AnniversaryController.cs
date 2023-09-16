@@ -267,6 +267,25 @@ namespace EventManagement.Controllers
 
         }
 
+        [HttpGet]
+        [Authorize(Roles = "User")]
+        public ActionResult Delete(int? id)
+        {
+            Anniversary anni = EventManagementEntities.Anniversaries.Find(id);
+            return View(anni);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult UserDeleteConfirmed(int? id)
+        {
+            Anniversary anni = EventManagementEntities.Anniversaries.Find(id);
+            EventManagementEntities.Anniversaries.Remove(anni);
+            EventManagementEntities.SaveChanges();
+            return RedirectToAction("Index1","Cart");
+        }
+
+
 
     }
 }

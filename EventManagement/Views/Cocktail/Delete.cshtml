@@ -1,0 +1,120 @@
+﻿@model EventManagement.Models.CocktailParty
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>CocktailParty</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cockchairs)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cockchairs)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cocktables)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cocktables)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cockhallcapacity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cockhallcapacity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cockdatetime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cockdatetime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cockeventcost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cockeventcost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cockbeverages)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cockbeverages)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.caketable.cakesavailable)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.caketable.cakesavailable)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.decorationtable.decoravailable)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.decorationtable.decoravailable)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EventName.eventname1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventName.eventname1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.locationtable.locationname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.locationtable.locationname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.themetable.themename)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.themetable.themename)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usertable.TUsername)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usertable.TUsername)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

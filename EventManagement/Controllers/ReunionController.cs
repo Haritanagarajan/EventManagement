@@ -262,5 +262,23 @@ namespace EventManagement.Controllers
             }
 
         }
+
+        [HttpGet]
+        [Authorize(Roles = "User")]
+        public ActionResult Delete(int? id)
+        {
+            Reunion re = EventManagementEntities.Reunions.Find(id);
+            return View(re);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult UserDeleteConfirmed(int? id)
+        {
+            Reunion re = EventManagementEntities.Reunions.Find(id);
+            EventManagementEntities.Reunions.Remove(re);
+            EventManagementEntities.SaveChanges();
+            return RedirectToAction("Index1", "Cart");
+        }
     }
 }
