@@ -5,132 +5,147 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>AnniCreate</h2>
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-<div class="form-horizontal">
-    <h4>Anniversary</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
 
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.annidecorations, "annidecorations", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("annidecorations", ViewBag.Decor as SelectList, "Decor", new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.annidecorations, "", new { @class = "text-danger" })
-        </div>
-    </div>
+<div class="container mt-5 pt-5  ps-5 pe-5" style="background-color: #4d004d;color:white">
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.annitheme, "annitheme", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("annitheme", ViewBag.Theme as SelectList, "Themes", new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.annitheme, "", new { @class = "text-danger" })
-        </div>
-    </div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.annichairs, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.annichairs, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.annichairs, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.annitables, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.annitables, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.annitables, "", new { @class = "text-danger" })
-        </div>
-    </div>
+        <div class="form-horizontal">
+            <h4 style="font-style:italic">Reserve an Anniversary Celebration</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
 
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.annidatetime, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @*@Html.EditorFor(model => model.annidatetime, new { htmlAttributes = new { @class = "form-control " } })*@
-            <input type="datetime-local" class="" name="annidatetime" />
-            @Html.ValidationMessageFor(model => model.annidatetime, "", new { @class = "text-danger" })
-        </div>
-    </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.annidecorations, "Find Your Decor Style", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("annidecorations", ViewBag.Decor as SelectList, "Decor", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.annidecorations, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.annitheme, "Decide on Your  Theme", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("annitheme", ViewBag.Theme as SelectList, "Themes", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.annitheme, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.annichairs, "Select the chairs ", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.annichairs, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.annichairs, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.annitables, "Select the tables " ,htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.annitables, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.annitables, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
 
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.annicakes, "annicakes", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("annicakes", ViewBag.Cake as SelectList, "Cakes ", new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.annicakes, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.annilocation, "annilocation", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("annilocation", ViewBag.Location as SelectList, "Locations", new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.annilocation, "", new { @class = "text-danger" })
-        </div>
-    </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.annidatetime, "Pick your date and time " ,htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @*@Html.EditorFor(model => model.annidatetime, new { htmlAttributes = new { @class = "form-control " } })*@
+                    <input type="datetime-local" class="" name="annidatetime" />
+                    @Html.ValidationMessageFor(model => model.annidatetime, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
 
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.annibeverages, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <div class="checkbox">
-                @Html.EditorFor(model => model.annibeverages)
-                @Html.ValidationMessageFor(model => model.annibeverages, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.annicakes, "Pick Your Dessert Delight", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("annicakes", ViewBag.Cake as SelectList, "Cakes ", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.annicakes, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.annilocation, "Select your favv location", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("annilocation", ViewBag.Location as SelectList, "Locations", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.annilocation, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.annibeverages, "Do you require food selection?", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.annibeverages)
+                        @Html.ValidationMessageFor(model => model.annibeverages, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.anniPhotography, "Do you require Photography selection?", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.anniPhotography)
+                        @Html.ValidationMessageFor(model => model.anniPhotography, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.anniStyling, "Do you require styling selection?", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.anniStyling)
+                        @Html.ValidationMessageFor(model => model.anniStyling, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.anniHospitality, "Do you require hospitality selection?", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.anniHospitality)
+                        @Html.ValidationMessageFor(model => model.anniHospitality, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10 text-white pb-5">
+                    <input type="submit" value="Curate your anniversary event" class="btn btn-default"  style="color:white;background-color:black;width:250px;font-style:italic"/>
+                </div>
             </div>
         </div>
-    </div>
+    }
 
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.anniPhotography, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <div class="checkbox">
-                @Html.EditorFor(model => model.anniPhotography)
-                @Html.ValidationMessageFor(model => model.anniPhotography, "", new { @class = "text-danger" })
-            </div>
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.anniStyling, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <div class="checkbox">
-                @Html.EditorFor(model => model.anniStyling)
-                @Html.ValidationMessageFor(model => model.anniStyling, "", new { @class = "text-danger" })
-            </div>
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.anniHospitality, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <div class="checkbox">
-                @Html.EditorFor(model => model.anniHospitality)
-                @Html.ValidationMessageFor(model => model.anniHospitality, "", new { @class = "text-danger" })
-            </div>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
-        </div>
-    </div>
+    @*<div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@
 </div>
-}
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
+<style>
+    .control-label{
+        font-style:italic;
+        margin-top:10px;
+    }
+    .form-group{
+        margin-top:30px;
+        color:white;
+    }
+</style>

@@ -12,16 +12,16 @@
           rel="stylesheet">
     <link rel="stylesheet" href="path-to-your-jquery-timepicker.css">
     <script src="path-to-your-jquery-timepicker.js"></script>
-
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-
-
 </head>
 <body>
     <div class="container-fluid" style=" background-color: #4d004e;">
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark container">
             <div class="section-2 navbar-brand">
-                <img src="~/Assets/eventpulse.png" width="50%">
+                <a href="@Url.Action("EventsName", "Events")" class="nav-link text-center">
+                    <img src="~/Assets/eventpulse.png" width="50%" alt="EventPulse">
+                </a>
+
             </div>
             <div class="container">
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
@@ -40,11 +40,11 @@
                             <li class="navv">
                                 @if (User.Identity.IsAuthenticated)
                                 {
-                                    <p>@Html.ActionLink("Greetings, " + User.Identity.Name + "! Explore EventPulse", "ActionName", "ControllerName", new { @class = "nav-link text-center text-white" })</p>
+                                    <p>@Html.ActionLink("Greetings, " + User.Identity.Name + "! Explore EventPulse", "EventName", "Events", new { @class = "nav-link text-center text-white" })</p>
                                 }
                                 else
                                 {
-                                    <p>@Html.ActionLink("Greetings, Visitor! Explore EventPulse", "ActionName", "ControllerName", new { @class = "nav-link text-center text-white" })</p>
+                                    <p>@Html.ActionLink("Greetings, Visitor! Explore EventPulse", "EventName", "Events", new { @class = "nav-link text-center text-white" })</p>
                                 }
                             </li>
                             @Html.ActionLink("Logout", "Logout", "Authendication", null, new { @class = "nav-link text-center text-white" })
@@ -56,7 +56,6 @@
                 {
                     <div class="collapse navbar-collapse d-sm-inline-flex navv">
                         <ul class="navbar-nav flex-grow-1 text-white">
-                            @Html.ActionLink("User", "EventsName", "Events", null, new { @class = "nav-link text-center", @style = "float:right" })
                             @Html.ActionLink("Cart", "Index1", "Cart", null, new { @class = "nav-link text-center", @style = "float:right" })
                             @Html.ActionLink("Cakes", "Index1", "Cake", null, new { @class = "nav-link text-center", @style = "float:right" })
                             @Html.ActionLink("Themes", "Index1", "Theme", null, new { @class = "nav-link text-center", @style = "float:right" })
@@ -65,11 +64,13 @@
                             <li class="navv">
                                 @if (User.Identity.IsAuthenticated)
                                 {
-                                    <p>@Html.ActionLink("Greetings, " + User.Identity.Name + "! Explore EventPulse", "ActionName", "ControllerName", new { @class = "nav-link text-center text-white" })</p>
+                                    <p>@Html.ActionLink("Greetings, " + User.Identity.Name + "! Explore EventPulse", "EventName", "Events", new { @class = "nav-link text-center text-white" })</p>
                                 }
                                 else
                                 {
-                                    <p>@Html.ActionLink("Greetings, Visitor! Explore EventPulse", "ActionName", "ControllerName", new { @class = "nav-link text-center text-white" })</p>
+                                    <p>@Html.ActionLink("Greetings, Visitor! Explore EventPulse", "EventName", "Events", new { @class = "nav-link text-center text-white" })</p>
+
+
                                 }
                             </li>
                             @Html.ActionLink("Logout", "Logout", "Authendication", null, new { @class = "nav-link text-center text-white" })
@@ -78,7 +79,6 @@
                     </div>
                 }
 
-                @*@Html.ActionLink("Logiin to Book the Events", "Login", "Authendication", null, new { @class = "nav-link text-center text-white" })*@
 
             </div>
         </nav>
@@ -134,11 +134,14 @@
             .navbar {
                 background-color: #4d004e;
             }
-            .navv{
-                font-style:italic;
-                color:white;
+
+            .navv {
+                font-style: italic;
+                color: white;
             }
         </style>
+
+        
 
 
     </div>

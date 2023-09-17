@@ -37,7 +37,10 @@
 
                             @if (item.eventimage != null)
                             {
-                                <img src="data:image;base64,@Convert.ToBase64String(item.eventimage)" alt="Employee Image" id="main-img" />
+
+                                <a href="@Url.Action("EventDirect",new { @eventid = item.eventid  } )" class="nav-link text-center">
+                                    <img src="data:image;base64,@Convert.ToBase64String(item.eventimage)" alt="Employee Image" id="main-img" />
+                                </a>
 
                             }
                         </div>
