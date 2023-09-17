@@ -1,50 +1,161 @@
-﻿@model IEnumerable<EventManagement.Models.EventName>
+﻿
+
+@model IEnumerable<EventManagement.Models.EventName>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "EventsName";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create", "EventsCreate")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.eventname1)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.eventimage)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.eventd)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.eventname1)
-        </td>
-        <td>
-            @if (item.eventimage != null)
-            {
-                <img src="data:image;base64,@Convert.ToBase64String(item.eventimage)" alt="Employee Image" width="70" />
+
+<div class="container-fluid text-center mb-n5">
+    <div class="row">
+        <div class="col-12">
+            <img src="~/Assets/P.gif" width="20%" />
+            <p style="font-style:italic;font-size:20px;">Welcome to the beating heart of our event, Pulse! Let the rhythm of excitement guide you through this incredible journey</p>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5 main">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-4">
+                <div class="card mt-5 mb-3">
+                    <div class="card-img-top">
+                        <div class="hover10 column">
+
+                            @if (item.eventimage != null)
+                            {
+                                <img src="data:image;base64,@Convert.ToBase64String(item.eventimage)" alt="Employee Image" id="main-img" />
+
+                            }
+                        </div>
+                        <div class="card-img-overlay">
+                            <div class="card-title">
+                                @Html.DisplayFor(modelItem => item.eventname1)
+                                <a class="ms-3" href="@Url.Action("Edit", new { id = item.eventid })">
+                                    <i class="fa-solid fa-pen-to-square" style="color: #4d004d"></i></a> |
+                                <a href="@Url.Action("Details", new { id = item.eventid })">
+                                    <i class="fa-solid fa-circle-info" style="color: #4d004d"></i></a> |
+                                <a href="@Url.Action("Delete", new { id = item.eventid })">
+                                    <i class="fa-solid fa-trash" style="color: #4d004d;"></i></a>
+                            </div>
+                            <div class="card-text">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+
+
+<style>
+    .card-img-overlay {
+        margin-top: 7.5em;
+    }
+
+    .card-title {
+        font-style: italic;
+        padding: 5em 2em 0 .5em;
+        margin-left: .4em;
+    }
+
+    #home-bg-video {
+        object-fit: cover;
+    }
+
+    #main-img {
+        width: 100%;
+        height: 15vw;
+        object-fit: cover;
+    }
+
+    .custom-btn {
+        width: 130px;
+        height: 40px;
+        color: #fff;
+        border-radius: 5px;
+        padding: 10px 25px;
+        font-family: 'Lato', sans-serif;
+        font-weight: 500;
+        background: transparent;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        display: inline-block;
+        box-shadow: inset 2px 2px 2px 0px rgba(255,255,255,.5), 7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1);
+        outline: none;
+    }
+    /* 12 */
+    .btn-12 {
+        position: relative;
+        right: 20px;
+        bottom: 20px;
+        border: none;
+        box-shadow: none;
+        width: 130px;
+        height: 40px;
+        line-height: 42px;
+        -webkit-perspective: 230px;
+        perspective: 230px;
+    }
+
+        .btn-12 span {
+            background: rgb(0,172,238);
+            background: linear-gradient(0deg, rgba(0,172,238,1) 0%, rgba(2,126,251,1) 100%);
+            display: block;
+            position: absolute;
+            width: 130px;
+            height: 40px;
+            box-shadow: inset 2px 2px 2px 0px rgba(255,255,255,.5), 7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1);
+            border-radius: 5px;
+            margin: 0;
+            text-align: center;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            -webkit-transition: all .3s;
+            transition: all .3s;
+        }
+
+            .btn-12 span:nth-child(1) {
+                box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9, 7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001;
+                -webkit-transform: rotateX(90deg);
+                -moz-transform: rotateX(90deg);
+                transform: rotateX(90deg);
+                -webkit-transform-origin: 50% 50% -20px;
+                -moz-transform-origin: 50% 50% -20px;
+                transform-origin: 50% 50% -20px;
             }
-        </td>
-       
-        <td>
-            @Html.DisplayFor(modelItem => item.eventd)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.eventid }) |
-            @Html.ActionLink("Details", "Details", new { id = item.eventid }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.eventid })
-        </td>
-    </tr>
-}
 
-</table>
+            .btn-12 span:nth-child(2) {
+                -webkit-transform: rotateX(0deg);
+                -moz-transform: rotateX(0deg);
+                transform: rotateX(0deg);
+                -webkit-transform-origin: 50% 50% -20px;
+                -moz-transform-origin: 50% 50% -20px;
+                transform-origin: 50% 50% -20px;
+            }
+
+        .btn-12:hover span:nth-child(1) {
+            box-shadow: inset 2px 2px 2px 0px rgba(255,255,255,.5), 7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1);
+            -webkit-transform: rotateX(0deg);
+            -moz-transform: rotateX(0deg);
+            transform: rotateX(0deg);
+        }
+
+        .btn-12:hover span:nth-child(2) {
+            box-shadow: inset 2px 2px 2px 0px rgba(255,255,255,.5), 7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1);
+            color: transparent;
+            -webkit-transform: rotateX(-90deg);
+            -moz-transform: rotateX(-90deg);
+            transform: rotateX(-90deg);
+        }
+</style>

@@ -15,7 +15,6 @@ namespace EventManagement.Controllers
     public class DecorationController : Controller
     {
         // GET: Decoration
-        // GET: location
         EventManagement2Entities2 EventManagementEntities = new EventManagement2Entities2();
 
         [Authorize(Roles = "Admin")]
@@ -25,9 +24,14 @@ namespace EventManagement.Controllers
             return View(decorationtable);
         }
 
+        [Authorize(Roles = "User")]
+        public ActionResult Index1()
+        {
+            List<decorationtable> decorationtable = EventManagementEntities.decorationtables.ToList();
+            return View(decorationtable);
+        }
 
 
-        // GET: Location
         [Authorize(Roles = "Admin")]
 
         [HttpGet]

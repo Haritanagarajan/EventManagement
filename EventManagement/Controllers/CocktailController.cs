@@ -15,7 +15,6 @@ namespace EventManagement.Controllers
         EventManagement2Entities2 EventManagementEntities = new EventManagement2Entities2();
 
 
-        // GET: Booking
         [HttpGet]
         [Authorize(Roles = "User")]
         public ActionResult CocktailCreate()
@@ -143,37 +142,7 @@ namespace EventManagement.Controllers
         }
 
 
-        //[HttpPost]
-        //public ActionResult Edit([Bind(Include = "cockdatetime,id,cockuserid,cockid,cockdecorations,cocktheme,cockchairs,cocktables,cockhallcapacity,cockcakes,cocklocation,cockeventcost,cockbeverages")] CocktailParty cock)
-        //{
-
-        //    if (ModelState.IsValid)
-        //    {
-        //        try
-        //        {
-        //            int? userId = Session["UserId"] as int?;
-
-        //            int? cockventId = Session["eventid"] as int?;
-        //            if (userId.HasValue && cockventId.HasValue)
-        //            {
-        //                cock.cockuserid = userId.Value;
-        //                cock.cockid = cockventId.Value;
-
-        //            }
-        //            EventManagementEntities.Entry(cock).State = EntityState.Modified;
-        //            EventManagementEntities.SaveChanges();
-        //            return Content("Successfully edited");
-        //        }
-        //        catch (DbUpdateConcurrencyException ex)
-        //        {
-        //            // Handle concurrency conflicts here
-        //            ModelState.AddModelError(string.Empty, "Concurrency error occurred.");
-        //        }
-
-        //    }
-
-        //    return View();
-        //}
+        
 
         [HttpPost]
         public ActionResult Edit([Bind(Include = "cockdatetime,id,cockuserid,cockid,cockdecorations,cocktheme,cockchairs,cocktables,cockhallcapacity,cockcakes,cocklocation,cockeventcost,cockbeverages")] CocktailParty cock, DateTime cockdatetime)

@@ -26,9 +26,17 @@ namespace EventManagement.Controllers
             return View(themes);
         }
 
+
+        [Authorize(Roles = "User")]
+
+        public ActionResult Index1()
+        {
+            List<themetable> themes = EventManagementEntities.themetables.ToList();
+            return View(themes);
+        }
+
         [Authorize(Roles = "Admin")]
 
-        // GET: Date
         [HttpGet]
         public ActionResult ThemeCreate(int? id)
         {

@@ -224,7 +224,11 @@
     <Compile Include="ViewModel\CartViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\avatar %282%29.png" />
+    <Content Include="Assets\avatar.png" />
+    <Content Include="Assets\boy-814_256.gif" />
     <Content Include="Assets\cake-new.jpg" />
+    <Content Include="Assets\DKke.gif" />
     <Content Include="Assets\eventpulse-removebg-preview.png" />
     <Content Include="Assets\EventPulse.gif" />
     <Content Include="Assets\EventPulse.mp4" />
@@ -320,6 +324,7 @@
     <Content Include="Models\EventManagement.edmx.diagram">
       <DependentUpon>EventManagement.edmx</DependentUpon>
     </Content>
+    <Content Include="Assets\avatar-removebg-preview.rar" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -354,11 +359,6 @@
     <Content Include="Views\Authendication\Delete.cshtml" />
     <Content Include="Views\Authendication\Details.cshtml" />
     <Content Include="Views\Authendication\Edit.cshtml" />
-    <Content Include="Views\Time\Index.cshtml" />
-    <Content Include="Views\Time\TimeCreate.cshtml" />
-    <Content Include="Views\Time\Delete.cshtml" />
-    <Content Include="Views\Time\Details.cshtml" />
-    <Content Include="Views\Time\Edit.cshtml" />
     <Content Include="Views\Theme\Index.cshtml" />
     <Content Include="Views\Theme\ThemeCreate.cshtml" />
     <Content Include="Views\Theme\Delete.cshtml" />
@@ -419,6 +419,10 @@
     <Content Include="Views\Payment\Success.cshtml" />
     <Content Include="Views\Payment\Index.cshtml" />
     <Content Include="Views\Payment\Complete.cshtml" />
+    <Content Include="Views\Cake\Index1.cshtml" />
+    <Content Include="Views\Theme\Index1.cshtml" />
+    <Content Include="Views\Location\Index1.cshtml" />
+    <Content Include="Views\Decoration\Index1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

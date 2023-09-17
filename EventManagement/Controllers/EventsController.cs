@@ -12,6 +12,7 @@ using System.IO;
 namespace EventManagement.Controllers
 {
     [Authorize]
+
     public class EventsController : Controller
     {
         EventManagement2Entities2 EventManagementEntities = new EventManagement2Entities2();
@@ -28,6 +29,7 @@ namespace EventManagement.Controllers
            
         }
 
+       
 
 
         [Authorize(Roles = "Admin")]

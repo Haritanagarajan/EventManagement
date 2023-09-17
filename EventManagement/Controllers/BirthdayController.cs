@@ -14,7 +14,6 @@ namespace EventManagement.Controllers
         EventManagement2Entities2 EventManagementEntities = new EventManagement2Entities2();
 
        
-        // GET: Booking
         [HttpGet]
         [Authorize(Roles = "User")]
         public ActionResult BirthdayCreate()
@@ -142,39 +141,6 @@ namespace EventManagement.Controllers
 
             return View(bday);
         }
-
-
-        //[HttpPost]
-        //public ActionResult Edit([Bind(Include = "bdaydatetime,id,bdayid,bdayuserid,bdaydecorations,bdaytheme,bdaychairs,bdaytables,bdayhallcapacity,bdaycakes,bdaylocation,bdayeventcost,bdaybeverages")] birthdaytable bday)
-        //{
-
-        //    if (ModelState.IsValid)
-        //    {
-        //        try
-        //        {
-        //            int? userId = Session["UserId"] as int?;
-
-        //            int? bdayventId = Session["eventid"] as int?;
-        //            if (userId.HasValue && bdayventId.HasValue)
-        //            {
-        //                bday.bdayuserid = userId.Value;
-        //                bday.bdayid = bdayventId.Value;
-
-        //            }
-        //            EventManagementEntities.Entry(bday).State = EntityState.Modified;
-        //            EventManagementEntities.SaveChanges();
-        //            return Content("Successfully edited");
-        //        }
-        //        catch (DbUpdateConcurrencyException ex)
-        //        {
-        //            // Handle concurrency conflicts here
-        //            ModelState.AddModelError(string.Empty, "Concurrency error occurred.");
-        //        }
-
-        //    }
-
-        //    return View();
-        //}
 
         [HttpPost]
         public ActionResult Edit([Bind(Include = "bdaydatetime,id,bdayid,bdayuserid,bdaydecorations,bdaytheme,bdaychairs,bdaytables,bdayhallcapacity,bdaycakes,bdaylocation,bdayeventcost,bdaybeverages")] birthdaytable bday, DateTime bdaydatetime)

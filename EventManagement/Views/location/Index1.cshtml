@@ -1,9 +1,9 @@
-﻿@model IEnumerable<EventManagement.Models.EventName>
+﻿@model IEnumerable<EventManagement.Models.locationtable>
 
 @{
-    ViewBag.Title = "EventsName";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index1";
 }
+
 
 
 
@@ -35,16 +35,16 @@
                     <div class="card-img-top">
                         <div class="hover10 column">
 
-                            @if (item.eventimage != null)
+                            @if (item.locationimage != null)
                             {
-                                <img src="data:image;base64,@Convert.ToBase64String(item.eventimage)" alt="Employee Image" id="main-img" />
+                                <img src="data:image;base64,@Convert.ToBase64String(item.locationimage)" alt="Employee Image" id="main-img" />
 
                             }
                         </div>
                         <div class="card-img-overlay">
                             <div class="card-title">
-                                @Html.DisplayFor(modelItem => item.eventname1)
-                                @Html.ActionLink("BookNow", "EventDirect", new { @eventid = item.eventid  }, new { @style = "color:#4d004e;text-decoration:none;font-weight:bold;" })
+                                @Html.DisplayFor(modelItem => item.locationname)
+                                @*@Html.ActionLink("BookNow", "EventDirect", new { @eventid = item.eventid }, new { @style = "color:#4d004e;text-decoration:none;font-weight:bold;" })*@
                             </div>
                             <div class="card-text">
                             </div>

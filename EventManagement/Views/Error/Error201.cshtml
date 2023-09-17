@@ -1,4 +1,6 @@
 ﻿
+
+
 @{
     ViewBag.Title = "Error201";
 }
@@ -13,14 +15,16 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="success-container">
-        <h1>201 - Created</h1>
+    <div class="error-container">
+        <h1 class="mt-5 pt-5">201 Created</h1>
         <p>Your request was successfully created.</p>
-        <a href="/">Go back to the homepage</a>
+        <a href="/" style="color: violet; font-style: italic; font-size: 12px; margin-left: 70px;">Back to Home</a>
+        <div class="section-2 navbar-brand">
+            <img src="~/Assets/boy-814_256.gif" width="30%">
+        </div>
     </div>
 </body>
 </html>
-
 
 <style>
     body {
@@ -29,33 +33,18 @@
         background-color: #f0f0f0;
         margin: 0;
         padding: 0;
-    }
-
-    .error-container, .success-container {
-        margin: 10% auto;
-        max-width: 400px;
-        padding: 20px;
-        background-color: #fff;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        background-color: black;
     }
 
     h1 {
-        font-size: 2rem;
-        color: #ff0000;
+        color: white;
+        font-style: italic;
+        font-size: 19px;
     }
 
     p {
-        font-size: 1.2rem;
-        margin-top: 10px;
+        color: white;
+        font-style: italic;
+        font-size: 19px;
     }
-
-    a {
-        text-decoration: none;
-        color: #0073e6;
-    }
-
-        a:hover {
-            text-decoration: underline;
-        }
 </style>

@@ -8,7 +8,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-//[assembly: CLSCompliant(true)]
 
 namespace EventManagement.Controllers
 {
@@ -18,7 +17,6 @@ namespace EventManagement.Controllers
         EventManagement2Entities2 EventManagementEntities = new EventManagement2Entities2();
 
 
-        // GET: Booking
         [HttpGet]
         [Authorize(Roles = "User")]
         public ActionResult ReunionCreate()
@@ -139,37 +137,7 @@ namespace EventManagement.Controllers
         }
 
 
-        //[HttpPost]
-        //public ActionResult Edit([Bind(Include = "reuniondatetime,id,reunionid,reunionuserid,reuniondecorations,reuniontheme,reunionchairs,reuniontables,reunionhallcapacity,reunioncakes,reunionlocation,reunioneventcost,reunionbeverages,reunionPhotography,reunionStyling,reunionHospitality")] Reunion re)
-        //{
-
-        //    if (ModelState.IsValid)
-        //    {
-        //        try
-        //        {
-        //            int? userId = Session["UserId"] as int?;
-
-        //            int? reventId = Session["eventid"] as int?;
-        //            if (userId.HasValue && reventId.HasValue)
-        //            {
-        //                re.reunionuserid = userId.Value;
-        //                re.reunionid = reventId.Value;
-
-        //            }
-        //            EventManagementEntities.Entry(re).State = EntityState.Modified;
-        //            EventManagementEntities.SaveChanges();
-        //            return Content("Successfully edited");
-        //        }
-        //        catch (DbUpdateConcurrencyException ex)
-        //        {
-        //            // Handle concurrency conflicts here
-        //            ModelState.AddModelError(string.Empty, "Concurrency error occurred.");
-        //        }
-
-        //    }
-
-        //    return View();
-        //}
+        
 
 
         [HttpPost]

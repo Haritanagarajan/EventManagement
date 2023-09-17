@@ -15,7 +15,6 @@ namespace EventManagement.Controllers
         EventManagement2Entities2 EventManagementEntities = new EventManagement2Entities2();
 
 
-       //GET: Booking
        [HttpGet]
        [Authorize(Roles = "User")]
         public ActionResult WeddingCreate()

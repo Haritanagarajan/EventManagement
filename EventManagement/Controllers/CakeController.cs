@@ -14,7 +14,7 @@ namespace EventManagement.Controllers
     public class CakeController : Controller
     {
 
-        // GET: location
+        // GET: Cakes
         EventManagement2Entities2 EventManagementEntities = new EventManagement2Entities2();
 
         [Authorize(Roles = "Admin")]
@@ -23,7 +23,15 @@ namespace EventManagement.Controllers
             List<caketable> caketable = EventManagementEntities.caketables.ToList();
             return View(caketable);
         }
-        // GET: Location
+
+        [Authorize(Roles = "User")]
+        public ActionResult Index1()
+        {
+            List<caketable> caketable = EventManagementEntities.caketables.ToList();
+            return View(caketable);
+        }
+
+
         [Authorize(Roles = "Admin")]
 
         [HttpGet]

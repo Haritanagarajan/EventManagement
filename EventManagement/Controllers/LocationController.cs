@@ -25,6 +25,13 @@ namespace EventManagement.Controllers
             List<locationtable> locations = EventManagementEntities.locationtables.ToList();
             return View(locations);
         }
+
+        [Authorize(Roles = "User")]
+        public ActionResult Index1()
+        {
+            List<locationtable> locations = EventManagementEntities.locationtables.ToList();
+            return View(locations);
+        }
         // GET: Location
         [Authorize(Roles = "Admin")]
 

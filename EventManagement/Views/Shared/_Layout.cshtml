@@ -31,29 +31,55 @@
                 @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                 {
                     <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                        <ul class="navbar-nav flex-grow-1">
-                            @Html.ActionLink("Date", "Index", "Date", null, new { @class = "nav-link text-center" })
-                            @Html.ActionLink("Time", "Index", "Time", null, new { @class = "nav-link text-center" })
+                        <ul class="navbar-nav flex-grow-1 navv">
                             @Html.ActionLink("Theme", "Index", "Theme", null, new { @class = "nav-link text-center" })
                             @Html.ActionLink("Location", "Index", "Location", null, new { @class = "nav-link text-center" })
                             @Html.ActionLink("Decoration", "Index", "Decoration", null, new { @class = "nav-link text-center" })
                             @Html.ActionLink("EventDetails", "Index", "Events", null, new { @class = "nav-link text-center" })
                             @Html.ActionLink("Cake", "Index", "Cake", null, new { @class = "nav-link text-center" })
+                            <li class="navv">
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <p>@Html.ActionLink("Greetings, " + User.Identity.Name + "! Explore EventPulse", "ActionName", "ControllerName", new { @class = "nav-link text-center text-white" })</p>
+                                }
+                                else
+                                {
+                                    <p>@Html.ActionLink("Greetings, Visitor! Explore EventPulse", "ActionName", "ControllerName", new { @class = "nav-link text-center text-white" })</p>
+                                }
+                            </li>
+                            @Html.ActionLink("Logout", "Logout", "Authendication", null, new { @class = "nav-link text-center text-white" })
+
                         </ul>
                     </div>
                 }
                 @if (User.Identity.IsAuthenticated && User.IsInRole("User"))
                 {
-                    <div class="collapse navbar-collapse d-sm-inline-flex ">
+                    <div class="collapse navbar-collapse d-sm-inline-flex navv">
                         <ul class="navbar-nav flex-grow-1 text-white">
                             @Html.ActionLink("User", "EventsName", "Events", null, new { @class = "nav-link text-center", @style = "float:right" })
                             @Html.ActionLink("Cart", "Index1", "Cart", null, new { @class = "nav-link text-center", @style = "float:right" })
+                            @Html.ActionLink("Cakes", "Index1", "Cake", null, new { @class = "nav-link text-center", @style = "float:right" })
+                            @Html.ActionLink("Themes", "Index1", "Theme", null, new { @class = "nav-link text-center", @style = "float:right" })
+                            @Html.ActionLink("Locations", "Index1", "Location", null, new { @class = "nav-link text-center", @style = "float:right" })
+                            @Html.ActionLink("Decorations", "Index1", "Decoration", null, new { @class = "nav-link text-center", @style = "float:right" })
+                            <li class="navv">
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <p>@Html.ActionLink("Greetings, " + User.Identity.Name + "! Explore EventPulse", "ActionName", "ControllerName", new { @class = "nav-link text-center text-white" })</p>
+                                }
+                                else
+                                {
+                                    <p>@Html.ActionLink("Greetings, Visitor! Explore EventPulse", "ActionName", "ControllerName", new { @class = "nav-link text-center text-white" })</p>
+                                }
+                            </li>
+                            @Html.ActionLink("Logout", "Logout", "Authendication", null, new { @class = "nav-link text-center text-white" })
 
                         </ul>
                     </div>
                 }
 
-                @Html.ActionLink("Logout", "Logout", "Authendication", null, new { @class = "nav-link text-center text-white" })
+                @*@Html.ActionLink("Logiin to Book the Events", "Login", "Authendication", null, new { @class = "nav-link text-center text-white" })*@
+
             </div>
         </nav>
     </div>
@@ -107,6 +133,10 @@
 
             .navbar {
                 background-color: #4d004e;
+            }
+            .navv{
+                font-style:italic;
+                color:white;
             }
         </style>
 

@@ -143,38 +143,7 @@ namespace EventManagement.Controllers
         }
 
 
-        //[HttpPost]
-        //public ActionResult Edit([Bind(Include = "id,annidatetime,anniid,anniuserid,annieventcost,annihallcapacity,annidecorations,annitheme,annichairs,annitables,annihallcapacity,annicakes,annilocation,annieventcost,annibeverages,anniPhotography,anniStyling,anniHospitality")] Anniversary updatedAnni)
-        //{
-
-        //    if (ModelState.IsValid)
-        //    {
-        //        try
-        //        {
-        //            int? userId = Session["UserId"] as int?;
-
-        //            int? annieventId = Session["eventid"] as int?;
-        //            if (userId.HasValue && annieventId.HasValue)
-        //            {
-        //                updatedAnni.anniuserid = userId.Value;
-        //                updatedAnni.anniid = annieventId.Value;
-
-        //            }
-        //            EventManagementEntities.Entry(updatedAnni).State = EntityState.Modified;
-        //            EventManagementEntities.SaveChanges();
-        //            return Content("Successfully edited");
-        //        }
-        //        catch (DbUpdateConcurrencyException ex)
-        //        {
-        //            // Handle concurrency conflicts here
-        //            ModelState.AddModelError(string.Empty, "Concurrency error occurred.");
-        //        }
-
-        //    }
-
-        //    return View();
-        //}
-
+       
         [HttpPost]
         public ActionResult Edit([Bind(Include = "id,annidatetime,anniid,anniuserid,annieventcost,annihallcapacity,annidecorations,annitheme,annichairs,annitables,annihallcapacity,annicakes,annilocation,annieventcost,annibeverages,anniPhotography,anniStyling,anniHospitality")] Anniversary updatedAnni, DateTime annidatetime)
         {

@@ -15,7 +15,6 @@ namespace EventManagement.Controllers
         EventManagement2Entities2 EventManagementEntities = new EventManagement2Entities2();
 
 
-        // GET: Booking
         [HttpGet]
         [Authorize(Roles = "User")]
         public ActionResult BachelorCreate()
@@ -143,38 +142,7 @@ namespace EventManagement.Controllers
         }
 
 
-        //[HttpPost]
-        //public ActionResult Edit([Bind(Include = "bachelordatetime,id,bacheloruserid,bachelorid,bachelordecorations,bachelortheme,bachelorchairs,bachelortables,bachelorhallcapacity,bachelorcakes,bachelorlocation,bacheloreventcost,bachelorbeverages")] BachelorParty bat)
-        //{
-
-        //    if (ModelState.IsValid)
-        //    {
-        //        try
-        //        {
-        //            int? userId = Session["UserId"] as int?;
-
-        //            int? batventId = Session["eventid"] as int?;
-        //            if (userId.HasValue && batventId.HasValue)
-        //            {
-        //                bat.bacheloruserid = userId.Value;
-        //                bat.bachelorid = batventId.Value;
-
-        //            }
-        //            EventManagementEntities.Entry(bat).State = EntityState.Modified;
-        //            EventManagementEntities.SaveChanges();
-        //            return Content("Successfully edited");
-        //        }
-        //        catch (DbUpdateConcurrencyException ex)
-        //        {
-        //            // Handle concurrency conflicts here
-        //            ModelState.AddModelError(string.Empty, "Concurrency error occurred.");
-        //        }
-
-        //    }
-
-        //    return View();
-        //}
-
+      
 
         [HttpPost]
         public ActionResult Edit([Bind(Include = "bachelordatetime,id,bacheloruserid,bachelorid,bachelordecorations,bachelortheme,bachelorchairs,bachelortables,bachelorhallcapacity,bachelorcakes,bachelorlocation,bacheloreventcost,bachelorbeverages")] BachelorParty bat, DateTime bachelordatetime)

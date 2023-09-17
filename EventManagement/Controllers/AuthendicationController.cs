@@ -10,10 +10,11 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 
+
+
 namespace EventManagement.Controllers
 {
     //database EventManagement1Entities1
-
 
     [Authorize]
     [AllowAnonymous]
@@ -23,6 +24,7 @@ namespace EventManagement.Controllers
 
         EventManagement2Entities2 EventManagementEntities = new EventManagement2Entities2();
         // GET: Authendication
+
         [AllowAnonymous]
         public ActionResult Login()
         {
