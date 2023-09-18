@@ -21,13 +21,17 @@
                 <a href="@Url.Action("EventsName", "Events")" class="nav-link text-center">
                     <img src="~/Assets/eventpulse.png" width="50%" alt="EventPulse">
                 </a>
-
             </div>
+
+           
+
             <div class="container">
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
+                
                 @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                 {
                     <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
@@ -48,8 +52,9 @@
                                 }
                             </li>
                             @Html.ActionLink("Logout", "Logout", "Authendication", null, new { @class = "nav-link text-center text-white" })
-
                         </ul>
+
+
                     </div>
                 }
                 @if (User.Identity.IsAuthenticated && User.IsInRole("User"))

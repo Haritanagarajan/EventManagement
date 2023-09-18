@@ -6,23 +6,12 @@
 //     Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public enum Gender
-{
-    Female,
-    Male,
-    Other
-}
-
-
-
-
 
 namespace EventManagement.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Usertable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -38,48 +27,17 @@ namespace EventManagement.Models
             this.Weddings = new HashSet<Wedding>();
         }
     
-
         public int TUserid { get; set; }
-
-        [Required(ErrorMessage ="UserName  is required")]
         public string TUsername { get; set; }
-
-
-        [Required(ErrorMessage = "Emailid  is required")]
         public string TEmail { get; set; }
-
-
-        [Required(ErrorMessage = "Password is required")]
-        [RegularExpression(@"^(?=.*[A-Z])(?=.*\d)(?=.*[@]).{8,}$", ErrorMessage = "Password must contain an uppercase letter as the first character, at least one digit, and the '@' symbol.")]
         public string TPassword { get; set; }
-
-
-
-        [Required(ErrorMessage = "Confirm Password is required")]
-        [Compare("TPassword", ErrorMessage = "The password and confirmation password do not match.")]
         public string TConfirmPassword { get; set; }
-
-
-        [RegularExpression(@"^\d{10}$", ErrorMessage = "Mobile number must be exactly 10 digits.")]
         public Nullable<long> TMobile { get; set; }
-
-
-        [EnumDataType(typeof(Gender), ErrorMessage = "Invalid gender value.")]
         public string TGender { get; set; }
-
-
-        [RegularExpression("^[0-9]+$", ErrorMessage = "Age must be a number.")]
         public Nullable<int> TAge { get; set; }
-
-        [Required(ErrorMessage = "Date of Birth is required ")]
         public Nullable<System.DateTime> TDob { get; set; }
-
-
         public Nullable<System.DateTime> LastLoginDate { get; set; }
-
-
         public byte[] TProfile { get; set; }
-
         public Nullable<int> TRoleid { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

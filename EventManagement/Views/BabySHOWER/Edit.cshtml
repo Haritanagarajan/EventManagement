@@ -106,35 +106,7 @@
 </div>
 
 
-@section scripts{
-    @Scripts.Render("~/bundles/jqueryui")
-    @Styles.Render("~/Content/cssjqryUi")
-
-    <!-- Include jQuery Timepicker scripts and stylesheets -->
-    <link rel="stylesheet" href="path-to-your-jquery-timepicker.css">
-    <script src="path-to-your-jquery-timepicker.js"></script>
-
-    <script>
-        $(document).ready(function () {
-            $(".datepicker").datepicker({
-                minDate: new Date(),
-                beforeShowDay: function (date) {
-                    var blockDates = [new Date(new Date().getFullYear(), 8, 19), new Date(new Date().getFullYear(), 8, 20)];
-                    var dateString = (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear();
-                    return [blockDates.indexOf(dateString) === -1];
-                }
-            });
-
-            var timerVal = moment().format('hh:mm A');
-
-            $('.timepicker').timepicker(
-                {
-                    template: 'dropdown',
-                    minuteStep: 1,
-                    secondStep: 1,
-                    showMeridian: true,
-                    defaultTime: timerVal
-                });
-        });
-    </script>
-}
+<script>
+    var today = new Date().toISOString().slice(0, 16);
+    document.getElementsByName("babyshowerdatetime")[0].min = today;
+</script>

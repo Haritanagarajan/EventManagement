@@ -26,6 +26,14 @@
     </div>
 </div>
 
+<div class="search-container">
+    <form action="@Url.Action("Index", "EventName")" method="GET">
+        <input type="text" placeholder="Search.." name="search" value="">
+        <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+</div>
+
+
 <div class="container mt-5 main">
     <div class="row">
         @foreach (var item in Model)
@@ -47,7 +55,7 @@
                         <div class="card-img-overlay">
                             <div class="card-title">
                                 @Html.DisplayFor(modelItem => item.eventname1)
-                                @Html.ActionLink("BookNow", "EventDirect", new { @eventid = item.eventid  }, new { @style = "color:#4d004e;text-decoration:none;font-weight:bold;" })
+                                @Html.ActionLink("BookNow", "EventDirect", new { @eventid = item.eventid }, new { @style = "color:#4d004e;text-decoration:none;font-weight:bold;" })
                             </div>
                             <div class="card-text">
                             </div>

@@ -25,10 +25,11 @@
                 {
                     @Html.AntiForgeryToken()
 
-                    <div class="row">
-                        <label for="name">Customer Name</label>
-                        @Html.TextBoxFor(x => x.name, new { @class = "form-control" })
-                    </div>
+                <div class="row">
+                    <a href="~/Views/Payment/Index.cshtml">~/Views/Payment/Index.cshtml</a>
+                    <label for="name">Customer Name</label>
+                    @Html.TextBoxFor(x => x.name, new { @class = "form-control" })
+                </div>
                     <div class="row">
                         <label for="email">Email ID</label>
                         @Html.TextBoxFor(x => x.email, new { @class = "form-control" })

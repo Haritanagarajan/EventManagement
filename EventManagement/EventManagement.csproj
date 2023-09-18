@@ -149,6 +149,7 @@
     <Compile Include="Controllers\DecorationController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
+    <Compile Include="Controllers\FeedbackController.cs" />
     <Compile Include="Controllers\LocationController.cs" />
     <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\ReunionController.cs" />
@@ -180,6 +181,8 @@
     <Compile Include="Models\CocktailParty.cs">
       <DependentUpon>EventManagement.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DAL\FeedBackRepo.cs" />
+    <Compile Include="Models\DAL\IFeedBackRepocs.cs" />
     <Compile Include="Models\decorationtable.cs">
       <DependentUpon>EventManagement.tt</DependentUpon>
     </Compile>
@@ -199,6 +202,9 @@
       <DependentUpon>EventManagement.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\EventName.cs">
+      <DependentUpon>EventManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\feedbacktable.cs">
       <DependentUpon>EventManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\locationtable.cs">
@@ -435,10 +441,15 @@
     <Content Include="Views\Location\Index1.cshtml" />
     <Content Include="Views\Decoration\Index1.cshtml" />
     <Content Include="Views\Sweet\Alert.cshtml" />
+    <Content Include="Views\Feedback\Index.cshtml" />
+    <Content Include="Views\Feedback\Index1.cshtml" />
+    <Content Include="Views\Feedback\Details.cshtml" />
+    <Content Include="Views\Feedback\Create.cshtml" />
+    <Content Include="Views\Feedback\Update.cshtml" />
+    <Content Include="Views\Feedback\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\DAL\" />
     <Folder Include="Views\Userprofile\" />
   </ItemGroup>
   <ItemGroup>

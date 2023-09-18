@@ -103,4 +103,8 @@
     @Html.ActionLink("Back to List", "Index")
 </div>
 
+<script>
+    var today = new Date().toISOString().slice(0, 16);
+    document.getElementsByName("bachelordatetime")[0].min = today;
+</script>
 

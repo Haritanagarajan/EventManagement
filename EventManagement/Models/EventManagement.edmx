@@ -139,6 +139,17 @@
           <Property Name="eventd" Type="bit" Nullable="false" />
           <Property Name="eventuserid" Type="int" />
         </EntityType>
+        <EntityType Name="feedbacktable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="Experiencetype" Type="varchar" MaxLength="40" />
+          <Property Name="Comments" Type="varchar" MaxLength="800" />
+          <Property Name="UserName" Type="varchar" MaxLength="40" />
+          <Property Name="Useremail" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="locationtable">
           <Key>
             <PropertyRef Name="locationid" />
@@ -851,6 +862,7 @@
           <EntitySet Name="CocktailParty" EntityType="Self.CocktailParty" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="decorationtable" EntityType="Self.decorationtable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EventNames" EntityType="Self.EventNames" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="feedbacktable" EntityType="Self.feedbacktable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="locationtable" EntityType="Self.locationtable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Reunion" EntityType="Self.Reunion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roletable" EntityType="Self.Roletable" Schema="dbo" store:Type="Tables" />
@@ -1452,6 +1464,7 @@
             <End Role="Usertable" EntitySet="Usertables" />
             <End Role="Wedding" EntitySet="Weddings" />
           </AssociationSet>
+          <EntitySet Name="feedbacktables" EntityType="EventManagement2Model.feedbacktable" />
         </EntityContainer>
         <ComplexType Name="Validate_User_Result">
           <Property Type="Int32" Name="TUserid" Nullable="true" />
@@ -2229,6 +2242,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="feedbacktable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="Experiencetype" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Useremail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2474,6 +2498,18 @@
                 <ScalarProperty Name="weddingdecorations" ColumnName="weddingdecorations" />
                 <ScalarProperty Name="weddingid" ColumnName="weddingid" />
                 <ScalarProperty Name="weddinguserid" ColumnName="weddinguserid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="feedbacktables">
+            <EntityTypeMapping TypeName="EventManagement2Model.feedbacktable">
+              <MappingFragment StoreEntitySet="feedbacktable">
+                <ScalarProperty Name="Useremail" ColumnName="Useremail" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="Experiencetype" ColumnName="Experiencetype" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

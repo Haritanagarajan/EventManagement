@@ -11,8 +11,7 @@ namespace EventManagement.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Wedding
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -26,13 +25,8 @@ namespace EventManagement.Models
         public Nullable<int> weddingid { get; set; }
         public Nullable<int> weddingdecorations { get; set; }
         public Nullable<int> weddingtheme { get; set; }
-
         public Nullable<int> weddingchairs { get; set; }
-
-
         public Nullable<int> weddingtables { get; set; }
-
-
         public Nullable<int> weddinghallcapacity { get; set; }
         public Nullable<System.DateTime> weddingdatetime { get; set; }
         public Nullable<int> weddingcakes { get; set; }

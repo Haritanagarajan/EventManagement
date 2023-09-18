@@ -71,6 +71,7 @@
         <AssociationConnector Association="EventManagement2Model.FK__Wedding__wedding__558AAF1E" />
         <AssociationConnector Association="EventManagement2Model.FK__Wedding__wedding__53A266AC" />
         <AssociationConnector Association="EventManagement2Model.FK__Wedding__wedding__50C5FA01" />
+        <EntityTypeShape EntityType="EventManagement2Model.feedbacktable" Width="1.5" PointX="0.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

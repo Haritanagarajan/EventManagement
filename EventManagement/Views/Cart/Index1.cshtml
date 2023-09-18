@@ -40,7 +40,7 @@
                         <td>@bday.bdaydecorations</td>
                         <td>@bday.bdayeventcost</td>
                         <td>@bday.bdayuserid</td>
-                        
+
                         <td>
                             @Html.ActionLink("Delete", "Delete", "Birthday", new { id = bday.id }, null)
                         </td>
@@ -65,7 +65,7 @@
                         <td>@baby.babyshowereventcost</td>
                         <td>@baby.babyshoweruserid</td>
                         <td>
-                            @Html.ActionLink("Delete", "Delete", "Babyshower", new { id = baby.id },null)
+                            @Html.ActionLink("Delete", "Delete", "Babyshower", new { id = baby.id }, null)
                         </td>
                     </tr>
                 }
@@ -87,7 +87,7 @@
                         <td>@anni.annieventcost</td>
                         <td>@anni.anniuserid</td>
                         <td>
-                            @Html.ActionLink("Delete", "Delete", "Anniversary" ,new { id = anni.id },null)
+                            @Html.ActionLink("Delete", "Delete", "Anniversary", new { id = anni.id }, null)
                         </td>
                     </tr>
                 }
@@ -109,7 +109,7 @@
                         <td>@bachelor.bacheloreventcost</td>
                         <td>@bachelor.bacheloruserid</td>
                         <td>
-                            @Html.ActionLink("Delete", "Delete", "Bachelor", new { id = bachelor.id },null)
+                            @Html.ActionLink("Delete", "Delete", "Bachelor", new { id = bachelor.id }, null)
                         </td>
                     </tr>
                 }
@@ -131,7 +131,7 @@
                         <td>@cock.cockeventcost</td>
                         <td>@cock.cockuserid</td>
                         <td>
-                            @Html.ActionLink("Delete", "Delete", "Cocktail", new { id = cock.id },null)
+                            @Html.ActionLink("Delete", "Delete", "Cocktail", new { id = cock.id }, null)
                         </td>
                     </tr>
                 }
@@ -153,7 +153,7 @@
                         <td>@wedding.weddingeventcost</td>
                         <td>@wedding.weddinguserid</td>
                         <td>
-                            @Html.ActionLink("Delete", "Delete","Wedding", new { id = wedding.id },null)
+                            @Html.ActionLink("Delete", "Delete", "Wedding", new { id = wedding.id }, null)
                         </td>
                     </tr>
                 }
@@ -173,7 +173,7 @@
                     <td>@reunion.reunioneventcost</td>
                     <td>@reunion.reunionuserid</td>
                     <td>
-                        @Html.ActionLink("Delete", "Delete", "Reunion",new { id = reunion.id },null)
+                        @Html.ActionLink("Delete", "Delete", "Reunion", new { id = reunion.id }, null)
                     </td>
                 </tr>
             }
@@ -197,6 +197,7 @@
             </tr>
 
             <tr>
+
                 <th colspan="6">Prebooking:</th>
                 <td>
                     @{
@@ -208,10 +209,7 @@
 
             <tr>
                 <td>
-                <td>
                     @Html.ActionLink("Paynow", "CreateOrder", "Payment", new { totalCost = totalCost }, new { @class = "btn" })
-                </td>
-                </td>
             </tr>
 
         </tfoot>

@@ -56,9 +56,9 @@
         </div>
     </div>
 
-    
 
-   
+
+    weddingdatetime
     <div class="form-group">
         @Html.LabelFor(model => model.weddingcakes, "weddingcakes", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -132,4 +132,7 @@
 
 
 
-
+<script>
+    var today = new Date().toISOString().slice(0, 16);
+    document.getElementsByName("weddingdatetime")[0].min = today;
+</script>
