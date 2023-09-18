@@ -23,18 +23,9 @@ namespace EventManagement.Controllers
         [AllowAnonymous]
         public ActionResult EventsName(string search)
         {
-            //var query = EventManagementEntities.EventNames.AsQueryable();
-
-            //if (!string.IsNullOrEmpty(search))
-            //{
-            //    query = query.Where(e => e.eventname1.Contains(search));
-            //}
-
-            //var events1 = query.ToList();
-
+            
             List<EventName> events = EventManagementEntities.EventNames.ToList();
                 return View(events);
-           
         }
 
        

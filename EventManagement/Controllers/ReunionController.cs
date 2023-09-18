@@ -21,6 +21,17 @@ namespace EventManagement.Controllers
         [Authorize(Roles = "User")]
         public ActionResult ReunionCreate()
         {
+            List<decorationtable> decorationOptions = EventManagementEntities.decorationtables.ToList();
+            ViewBag.DecorationOptions = decorationOptions;
+
+            List<themetable> themeOptions = EventManagementEntities.themetables.ToList();
+            ViewBag.ThemeOptions = themeOptions;
+
+            List<locationtable> locationOptions = EventManagementEntities.locationtables.ToList();
+            ViewBag.LocationOptions = locationOptions;
+
+            List<caketable> cakeOptions = EventManagementEntities.caketables.ToList();
+            ViewBag.CakeOptions = cakeOptions;
 
             List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
             ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");
@@ -66,6 +77,19 @@ namespace EventManagement.Controllers
                 if (isInvalid)
                 {
                     ModelState.AddModelError("reuniondatetime", "The selected datetime is too close to an existing reunion.");
+
+
+                    List<decorationtable> decorationOptions = EventManagementEntities.decorationtables.ToList();
+                    ViewBag.DecorationOptions = decorationOptions;
+
+                    List<themetable> themeOptions = EventManagementEntities.themetables.ToList();
+                    ViewBag.ThemeOptions = themeOptions;
+
+                    List<locationtable> locationOptions = EventManagementEntities.locationtables.ToList();
+                    ViewBag.LocationOptions = locationOptions;
+
+                    List<caketable> cakeOptions = EventManagementEntities.caketables.ToList();
+                    ViewBag.CakeOptions = cakeOptions;
 
                     List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
                     ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");
@@ -118,6 +142,18 @@ namespace EventManagement.Controllers
         {
             Reunion re = EventManagementEntities.Reunions.Find(id);
 
+            List<decorationtable> decorationOptions = EventManagementEntities.decorationtables.ToList();
+            ViewBag.DecorationOptions = decorationOptions;
+
+            List<themetable> themeOptions = EventManagementEntities.themetables.ToList();
+            ViewBag.ThemeOptions = themeOptions;
+
+            List<locationtable> locationOptions = EventManagementEntities.locationtables.ToList();
+            ViewBag.LocationOptions = locationOptions;
+
+            List<caketable> cakeOptions = EventManagementEntities.caketables.ToList();
+            ViewBag.CakeOptions = cakeOptions;
+
             List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
             ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");
 
@@ -165,6 +201,18 @@ namespace EventManagement.Controllers
                 if (isInvalid)
                 {
                     ModelState.AddModelError("reuniondatetime", "The selected datetime is too close to an existing reunion.");
+
+                    List<decorationtable> decorationOptions = EventManagementEntities.decorationtables.ToList();
+                    ViewBag.DecorationOptions = decorationOptions;
+
+                    List<themetable> themeOptions = EventManagementEntities.themetables.ToList();
+                    ViewBag.ThemeOptions = themeOptions;
+
+                    List<locationtable> locationOptions = EventManagementEntities.locationtables.ToList();
+                    ViewBag.LocationOptions = locationOptions;
+
+                    List<caketable> cakeOptions = EventManagementEntities.caketables.ToList();
+                    ViewBag.CakeOptions = cakeOptions;
 
                     List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
                     ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");

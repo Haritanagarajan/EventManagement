@@ -18,7 +18,17 @@ namespace EventManagement.Controllers
         [Authorize(Roles = "User")]
         public ActionResult BirthdayCreate()
         {
+            List<decorationtable> decorationOptions = EventManagementEntities.decorationtables.ToList();
+            ViewBag.DecorationOptions = decorationOptions;
 
+            List<themetable> themeOptions = EventManagementEntities.themetables.ToList();
+            ViewBag.ThemeOptions = themeOptions;
+
+            List<locationtable> locationOptions = EventManagementEntities.locationtables.ToList();
+            ViewBag.LocationOptions = locationOptions;
+
+            List<caketable> cakeOptions = EventManagementEntities.caketables.ToList();
+            ViewBag.CakeOptions = cakeOptions;
 
             List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
             ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");
@@ -66,6 +76,18 @@ namespace EventManagement.Controllers
                 {
 
                     ModelState.AddModelError("bdaydatetime", "The selected datetime is too close to an existing birthday event.");
+
+                    List<decorationtable> decorationOptions = EventManagementEntities.decorationtables.ToList();
+                    ViewBag.DecorationOptions = decorationOptions;
+
+                    List<themetable> themeOptions = EventManagementEntities.themetables.ToList();
+                    ViewBag.ThemeOptions = themeOptions;
+
+                    List<locationtable> locationOptions = EventManagementEntities.locationtables.ToList();
+                    ViewBag.LocationOptions = locationOptions;
+
+                    List<caketable> cakeOptions = EventManagementEntities.caketables.ToList();
+                    ViewBag.CakeOptions = cakeOptions;
 
                     List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
                     ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");
@@ -123,7 +145,18 @@ namespace EventManagement.Controllers
         {
             birthdaytable bday = EventManagementEntities.birthdaytables.Find(id);
 
-           
+            List<decorationtable> decorationOptions = EventManagementEntities.decorationtables.ToList();
+            ViewBag.DecorationOptions = decorationOptions;
+
+            List<themetable> themeOptions = EventManagementEntities.themetables.ToList();
+            ViewBag.ThemeOptions = themeOptions;
+
+            List<locationtable> locationOptions = EventManagementEntities.locationtables.ToList();
+            ViewBag.LocationOptions = locationOptions;
+
+            List<caketable> cakeOptions = EventManagementEntities.caketables.ToList();
+            ViewBag.CakeOptions = cakeOptions;
+
             List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
             ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");
 
@@ -168,6 +201,17 @@ namespace EventManagement.Controllers
                 {
                     ModelState.AddModelError("bdaydatetime", "The selected datetime is too close to an existing birthday event.");
 
+                    List<decorationtable> decorationOptions = EventManagementEntities.decorationtables.ToList();
+                    ViewBag.DecorationOptions = decorationOptions;
+
+                    List<themetable> themeOptions = EventManagementEntities.themetables.ToList();
+                    ViewBag.ThemeOptions = themeOptions;
+
+                    List<locationtable> locationOptions = EventManagementEntities.locationtables.ToList();
+                    ViewBag.LocationOptions = locationOptions;
+
+                    List<caketable> cakeOptions = EventManagementEntities.caketables.ToList();
+                    ViewBag.CakeOptions = cakeOptions;
 
                     List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
                     ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");

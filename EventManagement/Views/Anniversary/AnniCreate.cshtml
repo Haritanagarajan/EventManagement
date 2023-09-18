@@ -26,17 +26,15 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.annidecorations, "Find Your Decor Style", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownList("annidecorations", ViewBag.Decor as SelectList, "Decor", new { @class = "form-control myselection" })
+                    @Html.DropDownList("annidecorations", ViewBag.Decor as SelectList, "Decor", new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.annidecorations, "", new { @class = "text-danger" })
                 </div>
             </div>
 
 
-            <div id="selectedValueDiv" style="font-style:italic">
-                @Html.DisplayNameFor(model => model.decorationtable.decorimage)
-            </div>
+         
 
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" style="color:white;background-color:black;width:250px;font-style:italic" >
                 View decorations
             </button>
 
@@ -49,7 +47,7 @@
                 </div>
             </div>
 
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal1" style="color:white;background-color:black;width:250px;font-style:italic" >
                 View Themes
             </button>
 
@@ -93,7 +91,7 @@
             </div>
 
 
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal2" style="color:white;background-color:black;width:250px;font-style:italic" >
                 View Cakes
             </button>
 
@@ -105,7 +103,7 @@
                 </div>
             </div>
 
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal3">
+            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal3" style="color:white;background-color:black;width:250px;font-style:italic" >
                 View Locations
             </button>
 
@@ -170,18 +168,7 @@
     document.getElementsByName("annidatetime")[0].min = today;
 </script>
 
-<script>
-    $(document).ready(function () {
-        var dropdown = $(".myselection");
-        var selectedValueDiv = $("#selectedValueDiv");
-        selectedValueDiv.text("Selected Decoration: Decor");
-        dropdown.change(function () {
-            var selectedOption = dropdown.find("option:selected");
-            var selectedText = selectedOption.text();
-            selectedValueDiv.text("Selected Decoration: " + selectedText);
-        });
-    });
-</script>
+
 
 
 <style>
@@ -208,7 +195,7 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    @foreach (var item in ViewBag.DecorationOptions)
+                    @foreach (var item in ViewBag.DecorationOptions )
                     {
                         <div class="col-lg-4">
                             <div class="hover10 column">

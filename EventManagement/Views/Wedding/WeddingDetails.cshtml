@@ -7,135 +7,111 @@
 
 <h2>WeddingDetails</h2>
 
-<div>
-    <h4>Wedding</h4>
+<div style="background-color: #4d004d; color: white; font-style: italic;" class="container mt-5 pt-5">
+    <h4 style="font-weight: bold;">Wedding</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.weddingchairs)
+            <span style="font-weight: bold;">Chairs</span>
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.weddingchairs)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.weddingtables)
+            <span style="font-weight: bold;">Tables</span>
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.weddingtables)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.weddinghallcapacity)
+            <span style="font-weight: bold;">Hall Capacity</span>
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.weddinghallcapacity)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.weddingeventcost)
+            <span style="font-weight: bold;">Event Cost</span>
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.weddingeventcost)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.weddingbeverages)
+            <span style="font-weight: bold;">Beverages</span>
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.weddingbeverages)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.weddingPhotography)
+            <span style="font-weight: bold;">Photography</span>
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.weddingPhotography)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.weddingStyling)
+            <span style="font-weight: bold;">Styling</span>
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.weddingStyling)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.weddingHospitality)
+            <span style="font-weight: bold;">Hospitality</span>
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.weddingHospitality)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.caketable.cakesavailable)
+            <span style="font-weight: bold;">Cakes</span>
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.caketable.cakesavailable)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.weddingdatetime)
+            <span style="font-weight: bold;">Date and Time</span>
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.weddingdatetime)
         </dd>
-       
-        <dt>
-            @Html.DisplayNameFor(model => model.decorationtable.decoravailable)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.decorationtable.decoravailable)
-        </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.EventName.eventname1)
+            <span style="font-weight: bold;">Event Name</span>
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.EventName.eventname1)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.locationtable.locationname)
+            <span style="font-weight: bold;">Location</span>
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.locationtable.locationname)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.themetable.themename)
+            <span style="font-weight: bold;">Theme</span>
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.themetable.themename)
         </dd>
 
-
-
         <dt>
-            @Html.DisplayNameFor(model => model.Usertable.TUsername)
+            <span style="font-weight: bold;">Username</span>
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Usertable.TUsername)
         </dd>
-
     </dl>
 </div>
+
 <p>
-    @Html.ActionLink("if u want to Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

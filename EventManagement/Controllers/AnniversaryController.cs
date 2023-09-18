@@ -24,7 +24,7 @@ namespace EventManagement.Controllers
         [Authorize(Roles = "User")]
         public ActionResult AnniCreate()
         {
-            List<decorationtable> decorationOptions = EventManagementEntities.decorationtables.ToList(); 
+            List<decorationtable> decorationOptions = EventManagementEntities.decorationtables.ToList();
             ViewBag.DecorationOptions = decorationOptions;
 
             List<themetable> themeOptions = EventManagementEntities.themetables.ToList();
@@ -46,7 +46,7 @@ namespace EventManagement.Controllers
             ViewBag.Theme = new SelectList(theme, "themeid", "themename");
 
             List<decorationtable> decor = EventManagementEntities.decorationtables.ToList();
-            ViewBag.Decor = new SelectList(decor, "decorid", "decorid");
+            ViewBag.Decor = new SelectList(decor, "decorid", "decoravailable");
 
 
             List<caketable> cake = EventManagementEntities.caketables.ToList();
@@ -82,6 +82,17 @@ namespace EventManagement.Controllers
                 if (isInvalid)
                 {
                     ModelState.AddModelError("annidatetime", "The selected datetime is too close to an existing anniversary.");
+                    List<decorationtable> decorationOptions = EventManagementEntities.decorationtables.ToList();
+                    ViewBag.DecorationOptions = decorationOptions;
+
+                    List<themetable> themeOptions = EventManagementEntities.themetables.ToList();
+                    ViewBag.ThemeOptions = themeOptions;
+
+                    List<locationtable> locationOptions = EventManagementEntities.locationtables.ToList();
+                    ViewBag.LocationOptions = locationOptions;
+
+                    List<caketable> cakeOptions = EventManagementEntities.caketables.ToList();
+                    ViewBag.CakeOptions = cakeOptions;
 
                     List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
                     ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");
@@ -134,6 +145,17 @@ namespace EventManagement.Controllers
         public ActionResult Edit(int? id)
         {
             Anniversary anni = EventManagementEntities.Anniversaries.Find(id);
+            List<decorationtable> decorationOptions = EventManagementEntities.decorationtables.ToList();
+            ViewBag.DecorationOptions = decorationOptions;
+
+            List<themetable> themeOptions = EventManagementEntities.themetables.ToList();
+            ViewBag.ThemeOptions = themeOptions;
+
+            List<locationtable> locationOptions = EventManagementEntities.locationtables.ToList();
+            ViewBag.LocationOptions = locationOptions;
+
+            List<caketable> cakeOptions = EventManagementEntities.caketables.ToList();
+            ViewBag.CakeOptions = cakeOptions;
 
             List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
             ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");
@@ -180,6 +202,17 @@ namespace EventManagement.Controllers
                 if (isInvalid)
                 {
                     ModelState.AddModelError("annidatetime", "The selected datetime is too close to an existing anniversary.");
+                    List<decorationtable> decorationOptions = EventManagementEntities.decorationtables.ToList();
+                    ViewBag.DecorationOptions = decorationOptions;
+
+                    List<themetable> themeOptions = EventManagementEntities.themetables.ToList();
+                    ViewBag.ThemeOptions = themeOptions;
+
+                    List<locationtable> locationOptions = EventManagementEntities.locationtables.ToList();
+                    ViewBag.LocationOptions = locationOptions;
+
+                    List<caketable> cakeOptions = EventManagementEntities.caketables.ToList();
+                    ViewBag.CakeOptions = cakeOptions;
 
                     List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
                     ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");

@@ -19,7 +19,17 @@ namespace EventManagement.Controllers
         [Authorize(Roles = "User")]
         public ActionResult CocktailCreate()
         {
+            List<decorationtable> decorationOptions = EventManagementEntities.decorationtables.ToList();
+            ViewBag.DecorationOptions = decorationOptions;
 
+            List<themetable> themeOptions = EventManagementEntities.themetables.ToList();
+            ViewBag.ThemeOptions = themeOptions;
+
+            List<locationtable> locationOptions = EventManagementEntities.locationtables.ToList();
+            ViewBag.LocationOptions = locationOptions;
+
+            List<caketable> cakeOptions = EventManagementEntities.caketables.ToList();
+            ViewBag.CakeOptions = cakeOptions;
 
             List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
             ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");
@@ -66,6 +76,18 @@ namespace EventManagement.Controllers
                 if (isInvalid)
                 {
                     ModelState.AddModelError("cockdatetime", "The selected datetime is too close to an existing cocktail party.");
+
+                    List<decorationtable> decorationOptions = EventManagementEntities.decorationtables.ToList();
+                    ViewBag.DecorationOptions = decorationOptions;
+
+                    List<themetable> themeOptions = EventManagementEntities.themetables.ToList();
+                    ViewBag.ThemeOptions = themeOptions;
+
+                    List<locationtable> locationOptions = EventManagementEntities.locationtables.ToList();
+                    ViewBag.LocationOptions = locationOptions;
+
+                    List<caketable> cakeOptions = EventManagementEntities.caketables.ToList();
+                    ViewBag.CakeOptions = cakeOptions;
 
                     List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
                     ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");
@@ -121,6 +143,17 @@ namespace EventManagement.Controllers
         {
             CocktailParty baby = EventManagementEntities.CocktailParties.Find(id);
 
+            List<decorationtable> decorationOptions = EventManagementEntities.decorationtables.ToList();
+            ViewBag.DecorationOptions = decorationOptions;
+
+            List<themetable> themeOptions = EventManagementEntities.themetables.ToList();
+            ViewBag.ThemeOptions = themeOptions;
+
+            List<locationtable> locationOptions = EventManagementEntities.locationtables.ToList();
+            ViewBag.LocationOptions = locationOptions;
+
+            List<caketable> cakeOptions = EventManagementEntities.caketables.ToList();
+            ViewBag.CakeOptions = cakeOptions;
 
 
             List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
@@ -169,6 +202,18 @@ namespace EventManagement.Controllers
                 if (isInvalid)
                 {
                     ModelState.AddModelError("cockdatetime", "The selected datetime is too close to an existing cocktail party.");
+
+                    List<decorationtable> decorationOptions = EventManagementEntities.decorationtables.ToList();
+                    ViewBag.DecorationOptions = decorationOptions;
+
+                    List<themetable> themeOptions = EventManagementEntities.themetables.ToList();
+                    ViewBag.ThemeOptions = themeOptions;
+
+                    List<locationtable> locationOptions = EventManagementEntities.locationtables.ToList();
+                    ViewBag.LocationOptions = locationOptions;
+
+                    List<caketable> cakeOptions = EventManagementEntities.caketables.ToList();
+                    ViewBag.CakeOptions = cakeOptions;
 
                     List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
                     ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");

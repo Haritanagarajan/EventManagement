@@ -7,110 +7,97 @@
 
 <h2>CocktailDetails</h2>
 
-<div>
-    <h4>CocktailParty</h4>
+<div style="background-color: #4d004d; color: white; font-style: italic;" class="container mt-5 pt-5">
+    <h4 style="font-weight: bold;">CocktailParty</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.cockchairs)
+            <span style="font-weight: bold;">Chairs</span>
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.cockchairs)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.cocktables)
+            <span style="font-weight: bold;">Tables</span>
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.cocktables)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.cockhallcapacity)
+            <span style="font-weight: bold;">Hall Capacity</span>
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.cockhallcapacity)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.cockeventcost)
+            <span style="font-weight: bold;">Event Cost</span>
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.cockeventcost)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.cockbeverages)
+            <span style="font-weight: bold;">Beverages</span>
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.cockbeverages)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.caketable.cakesavailable)
+            <span style="font-weight: bold;">Cakes</span>
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.caketable.cakesavailable)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.decorationtable.decoravailable)
+            <span style="font-weight: bold;">Decorations</span>
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.decorationtable.decoravailable)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.cockdatetime)
+            <span style="font-weight: bold;">Date and Time</span>
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.cockdatetime)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.EventName.eventname1)
+            <span style="font-weight: bold;">Event Name</span>
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.EventName.eventname1)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.locationtable.locationname)
+            <span style="font-weight: bold;">Location</span>
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.locationtable.locationname)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.themetable.themename)
+            <span style="font-weight: bold;">Theme</span>
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.themetable.themename)
         </dd>
 
-      
         <dt>
-            @Html.DisplayNameFor(model => model.Usertable.TUsername)
+            <span style="font-weight: bold;">Username</span>
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Usertable.TUsername)
         </dd>
-
     </dl>
 </div>
+
 <p>
-    @Html.ActionLink("if u want to Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

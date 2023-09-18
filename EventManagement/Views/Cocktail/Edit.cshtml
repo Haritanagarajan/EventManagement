@@ -5,108 +5,285 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
+<div class="container mt-5 pt-5  ps-5 pe-5" style="background-color: #4d004d;color:white">
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <h4>CocktailParty</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.id)
-        @Html.HiddenFor(model => model.cockid)
-        @Html.HiddenFor(model => model.cockuserid)
-        @Html.HiddenFor(model => model.cockeventcost)
-        @Html.HiddenFor(model => model.cockhallcapacity)
+        <div class="form-horizontal">
+            <h4 style="font-style:italic">Edit an Cocktail Celebration</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.id)
+            @Html.HiddenFor(model => model.cockid)
+            @Html.HiddenFor(model => model.cockuserid)
+            @Html.HiddenFor(model => model.cockeventcost)
+            @Html.HiddenFor(model => model.cockhallcapacity)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.cockdecorations, "cockdecorations", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("cockdecorations", ViewBag.Decor as SelectList, "Decor", new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.cockdecorations, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.cockdecorations, "Find Your Decor Style", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("cockdecorations", ViewBag.Decor as SelectList, "Decor", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.cockdecorations, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.cocktheme, "cocktheme", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("cocktheme", ViewBag.Theme as SelectList, "Themes", new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.cocktheme, "", new { @class = "text-danger" })
+            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" style="color:white;background-color:black;width:250px;font-style:italic">
+                View decorations
+            </button>
+            <div class="form-group">
+                @Html.LabelFor(model => model.cocktheme, "Decide on Your  Theme", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("cocktheme", ViewBag.Theme as SelectList, "Themes", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.cocktheme, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.cockchairs, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.cockchairs, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.cockchairs, "", new { @class = "text-danger" })
+            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal1" style="color:white;background-color:black;width:250px;font-style:italic">
+                View Themes
+            </button>
+            <div class="form-group">
+                @Html.LabelFor(model => model.cockchairs, "Select the chairs", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.cockchairs, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.cockchairs, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.cocktables, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.cocktables, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.cocktables, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.cocktables, "Select the tables", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.cocktables, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.cocktables, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
 
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.cockdatetime, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @*@Html.EditorFor(model => model.cockdatetime, new { htmlAttributes = new { @class = "form-control datepicker" } })*@
-                <input type="datetime-local" class="" name="cockdatetime" />
+            <div class="form-group">
+                @Html.LabelFor(model => model.cockdatetime, "Pick your date and time", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @*@Html.EditorFor(model => model.cockdatetime, new { htmlAttributes = new { @class = "form-control datepicker" } })*@
+                    <input type="datetime-local" class="" name="cockdatetime" />
 
-                @Html.ValidationMessageFor(model => model.cockdatetime, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(model => model.cockdatetime, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.cockcakes, "cockcakes", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("cockcakes", ViewBag.Cake as SelectList, "Cakes ", new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.cockcakes, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.cockcakes, "Pick Your Dessert Delight", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("cockcakes", ViewBag.Cake as SelectList, "Cakes ", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.cockcakes, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.cocklocation, "cocklocation", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("cocklocation", ViewBag.Location as SelectList, "Locations", new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.cocklocation, "", new { @class = "text-danger" })
+            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal2" style="color:white;background-color:black;width:250px;font-style:italic">
+                View Cakes
+            </button>
+            <div class="form-group">
+                @Html.LabelFor(model => model.cocklocation, "Select your favv location", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("cocklocation", ViewBag.Location as SelectList, "Locations", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.cocklocation, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
+
+            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal3" style="color:white;background-color:black;width:250px;font-style:italic">
+                View Locations
+            </button>
 
 
+            <div class="form-group">
+                @Html.LabelFor(model => model.cockbeverages, "Do you require food selection?", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.cockbeverages)
+                        @Html.ValidationMessageFor(model => model.cockbeverages, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.cockbeverages, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.cockbeverages)
-                    @Html.ValidationMessageFor(model => model.cockbeverages, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10 pb-5">
+                    <input type="submit" value="Curate your cocktail event" class="btn btn-default" style="color:white;background-color:black;width:250px;font-style:italic" />
                 </div>
             </div>
         </div>
+    }
+</div>
+  
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+
+    <script>
+        var today = new Date().toISOString().slice(0, 16);
+        document.getElementsByName("cockdatetime")[0].min = today;
+    </script>
+
+
+
+    <style>
+        .control-label {
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        .form-group {
+            margin-top: 30px;
+            color: white;
+        }
+    </style>
+
+
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="font-style:italic">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Available Decorations</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        @foreach (var item in ViewBag.DecorationOptions)
+                        {
+                            <div class="col-lg-4">
+                                <div class="hover10 column">
+
+                                    @if (item.decorimage != null)
+                                    {
+                                        <img src="data:image;base64,@Convert.ToBase64String(item.decorimage)" alt="Decoration Image" id="main-img" width="330%" />
+                                    }
+                                </div>
+                            </div>
+                            <div class="card-title">
+                                <p style="font-style:italic">@item.decoravailable</p>
+                            </div>
+
+                        }
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 
-<script>
-    var today = new Date().toISOString().slice(0, 16);
-    document.getElementsByName("cockdatetime")[0].min = today;
-</script>
+
+
+    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="font-style:italic">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Available Decorations</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        @foreach (var item in ViewBag.ThemeOptions)
+                        {
+                            <div class="col-lg-4">
+                                <div class="hover10 column">
+
+                                    @if (item.themeimage != null)
+                                    {
+                                        <img src="data:image;base64,@Convert.ToBase64String(item.themeimage)" alt="Decoration Image" id="main-img" width="330%" />
+                                    }
+                                </div>
+                            </div>
+                            <div class="card-title">
+                                <p style="font-style:italic">@item.themename</p>
+                            </div>
+
+                        }
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="font-style:italic">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Available Decorations</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        @foreach (var item in ViewBag.CakeOptions)
+                        {
+                            <div class="col-lg-4">
+                                <div class="hover10 column">
+
+                                    @if (item.cakeimage != null)
+                                    {
+                                        <img src="data:image;base64,@Convert.ToBase64String(item.cakeimage)" alt="Decoration Image" id="main-img" width="330%" />
+                                    }
+                                </div>
+                            </div>
+                            <div class="card-title">
+                                <p style="font-style:italic">@item.cakesavailable</p>
+                            </div>
+
+                        }
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="font-style:italic">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Available Decorations</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        @foreach (var item in ViewBag.LocationOptions)
+                        {
+                            <div class="col-lg-4">
+                                <div class="hover10 column">
+
+                                    @if (item.locationimage != null)
+                                    {
+                                        <img src="data:image;base64,@Convert.ToBase64String(item.locationimage)" alt="Decoration Image" id="main-img" width="330%" />
+                                    }
+                                </div>
+                            </div>
+                            <div class="card-title">
+                                <p style="font-style:italic">@item.locationname</p>
+                            </div>
+
+                        }
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>

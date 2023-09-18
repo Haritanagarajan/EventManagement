@@ -23,8 +23,19 @@ namespace EventManagement.Controllers
 
         public ActionResult BabyshowerCreate()
         {
+            List<decorationtable> decorationOptions = EventManagementEntities.decorationtables.ToList();
+            ViewBag.DecorationOptions = decorationOptions;
 
- 
+            List<themetable> themeOptions = EventManagementEntities.themetables.ToList();
+            ViewBag.ThemeOptions = themeOptions;
+
+            List<locationtable> locationOptions = EventManagementEntities.locationtables.ToList();
+            ViewBag.LocationOptions = locationOptions;
+
+            List<caketable> cakeOptions = EventManagementEntities.caketables.ToList();
+            ViewBag.CakeOptions = cakeOptions;
+
+
             List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
             ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");
 
@@ -69,6 +80,18 @@ namespace EventManagement.Controllers
                 if (isInvalid)
                 {
                     ModelState.AddModelError("babyshowerdatetime", "The selected datetime is too close to an existing baby shower.");
+
+                    List<decorationtable> decorationOptions = EventManagementEntities.decorationtables.ToList();
+                    ViewBag.DecorationOptions = decorationOptions;
+
+                    List<themetable> themeOptions = EventManagementEntities.themetables.ToList();
+                    ViewBag.ThemeOptions = themeOptions;
+
+                    List<locationtable> locationOptions = EventManagementEntities.locationtables.ToList();
+                    ViewBag.LocationOptions = locationOptions;
+
+                    List<caketable> cakeOptions = EventManagementEntities.caketables.ToList();
+                    ViewBag.CakeOptions = cakeOptions;
 
                     List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
                     ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");
@@ -121,7 +144,18 @@ namespace EventManagement.Controllers
         {
             babyshowertable baby = EventManagementEntities.babyshowertables.Find(id);
 
-          
+            List<decorationtable> decorationOptions = EventManagementEntities.decorationtables.ToList();
+            ViewBag.DecorationOptions = decorationOptions;
+
+            List<themetable> themeOptions = EventManagementEntities.themetables.ToList();
+            ViewBag.ThemeOptions = themeOptions;
+
+            List<locationtable> locationOptions = EventManagementEntities.locationtables.ToList();
+            ViewBag.LocationOptions = locationOptions;
+
+            List<caketable> cakeOptions = EventManagementEntities.caketables.ToList();
+            ViewBag.CakeOptions = cakeOptions;
+
             List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
             ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");
 
@@ -168,6 +202,17 @@ namespace EventManagement.Controllers
                 {
                     ModelState.AddModelError("babyshowerdatetime", "The selected datetime is too close to an existing baby shower.");
 
+                    List<decorationtable> decorationOptions = EventManagementEntities.decorationtables.ToList();
+                    ViewBag.DecorationOptions = decorationOptions;
+
+                    List<themetable> themeOptions = EventManagementEntities.themetables.ToList();
+                    ViewBag.ThemeOptions = themeOptions;
+
+                    List<locationtable> locationOptions = EventManagementEntities.locationtables.ToList();
+                    ViewBag.LocationOptions = locationOptions;
+
+                    List<caketable> cakeOptions = EventManagementEntities.caketables.ToList();
+                    ViewBag.CakeOptions = cakeOptions;
 
                     List<EventName> eventsname = EventManagementEntities.EventNames.ToList();
                     ViewBag.Events = new SelectList(eventsname, "eventid", "eventname");

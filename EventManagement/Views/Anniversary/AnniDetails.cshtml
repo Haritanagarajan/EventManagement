@@ -5,136 +5,119 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>AnniDetails</h2>
-
-<div>
-    <h4>Anniversary</h4>
+<div style="background-color: #4d004d; color: white; font-style: italic;" class="container mt-5 pt-5">
+    <h4 style="font-weight: bold;">Anniversary</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.annichairs)
+            <span style="font-weight: bold;">Username</span>
         </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.annichairs)
+            @Html.DisplayFor(model => model.Usertable.TUsername)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.annitables)
+            <span style="font-weight: bold;">Event Name</span>
         </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.annitables)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.annihallcapacity)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.annihallcapacity)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.annieventcost)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.annieventcost)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.annibeverages)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.annibeverages)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.anniPhotography)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.anniPhotography)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.anniStyling)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.anniStyling)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.anniHospitality)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.anniHospitality)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.caketable.cakesavailable)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.caketable.cakesavailable)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.decorationtable.decoravailable)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.decorationtable.decoravailable)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.annidatetime)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.annidatetime)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.EventName.eventname1)
-        </dt>
-
         <dd>
             @Html.DisplayFor(model => model.EventName.eventname1)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.locationtable.locationname)
+            <span style="font-weight: bold;">Chairs</span>
         </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.locationtable.locationname)
+            @Html.DisplayFor(model => model.annichairs)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.themetable.themename)
+            <span style="font-weight: bold;">Tables</span>
         </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.themetable.themename)
+            @Html.DisplayFor(model => model.annitables)
         </dd>
 
-       
         <dt>
-            @Html.DisplayNameFor(model => model.Usertable.TUsername)
+            <span style="font-weight: bold;">Hall Capacity</span>
         </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.Usertable.TUsername)
+            @Html.DisplayFor(model => model.annihallcapacity)
         </dd>
 
+        <dt>
+            <span style="font-weight: bold;">Event Cost</span>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.annieventcost)
+        </dd>
+
+        <dt>
+            <span style="font-weight: bold;">Beverages</span>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.annibeverages)
+        </dd>
+
+        <dt>
+            <span style="font-weight: bold;">Photography</span>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.anniPhotography)
+        </dd>
+
+        <dt>
+            <span style="font-weight: bold;">Styling</span>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.anniStyling)
+        </dd>
+
+        <dt>
+            <span style="font-weight: bold;">Hospitality</span>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.anniHospitality)
+        </dd>
+
+        <dt>
+            <span style="font-weight: bold;">Cakes</span>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.caketable.cakesavailable)
+        </dd>
+
+        <dt>
+            <span style="font-weight: bold;">Decorations</span>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.decorationtable.decorimage)
+        </dd>
+
+        <dt>
+            <span style="font-weight: bold;">Booked Date and Time</span>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.annidatetime)
+        </dd>
+
+        <dt>
+            <span style="font-weight: bold;">Location</span>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.locationtable.locationimage)
+        </dd>
+
+        <dt>
+            <span style="font-weight: bold;">Theme</span>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.themetable.themeimage)
+        </dd>
     </dl>
 </div>
+
 <p>
-    @Html.ActionLink("if u want to Edit", "Edit", new {id = Model.id }) |
     @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+
 </p>

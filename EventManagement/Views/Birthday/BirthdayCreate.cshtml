@@ -5,104 +5,279 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>BirthdayCreate</h2>
+<div class="container mt-5 pt-5  ps-5 pe-5" style="background-color: #4d004d;color:white">
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <h4>birthdaytable</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-horizontal">
+            <h4 style="font-style:italic">Reserve an Birthday Celebration</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.bdaydecorations, "bdaydecorations", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("bdaydecorations", ViewBag.Decor as SelectList, "Decor", new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.bdaydecorations, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.bdaydecorations, "Find Your Decor Style", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("bdaydecorations", ViewBag.Decor as SelectList, "Decor", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.bdaydecorations, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.bdaytheme, "bdaytheme", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("bdaytheme", ViewBag.Theme as SelectList, "Themes", new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.bdaytheme, "", new { @class = "text-danger" })
+            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" style="color:white;background-color:black;width:250px;font-style:italic">
+                View decorations
+            </button>
+            <div class="form-group">
+                @Html.LabelFor(model => model.bdaytheme, "Decide on Your  Theme", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("bdaytheme", ViewBag.Theme as SelectList, "Themes", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.bdaytheme, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.bdaychairs, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.bdaychairs, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.bdaychairs, "", new { @class = "text-danger" })
+            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal1" style="color:white;background-color:black;width:250px;font-style:italic">
+                View Themes
+            </button>
+            <div class="form-group">
+                @Html.LabelFor(model => model.bdaychairs, "Select the chairs", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.bdaychairs, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.bdaychairs, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.bdaytables, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.bdaytables, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.bdaytables, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.bdaytables, "Select the tables", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.bdaytables, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.bdaytables, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
 
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.bdaydatetime, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @*@Html.EditorFor(model => model.bdaydatetime, new { htmlAttributes = new { @class = "form-control datepicker" } })*@
-                <input type="datetime-local" class="" name="bdaydatetime" />
+            <div class="form-group">
+                @Html.LabelFor(model => model.bdaydatetime, "Pick your date and time", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @*@Html.EditorFor(model => model.bdaydatetime, new { htmlAttributes = new { @class = "form-control datepicker" } })*@
+                    <input type="datetime-local" class="" name="bdaydatetime" />
 
-                @Html.ValidationMessageFor(model => model.bdaydatetime, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(model => model.bdaydatetime, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.bdaycakes, "bdaycakes", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("bdaycakes", ViewBag.Cake as SelectList, "Cakes ", new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.bdaycakes, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.bdaycakes, "Pick Your Dessert Delight", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("bdaycakes", ViewBag.Cake as SelectList, "Cakes ", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.bdaycakes, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.bdaylocation, "bdaylocation", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("bdaylocation", ViewBag.Location as SelectList, "Locations", new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.bdaylocation, "", new { @class = "text-danger" })
+            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal2" style="color:white;background-color:black;width:250px;font-style:italic">
+                View Cakes
+            </button>
+            <div class="form-group">
+                @Html.LabelFor(model => model.bdaylocation, "Select your favv location", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("bdaylocation", ViewBag.Location as SelectList, "Locations", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.bdaylocation, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
+            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal3" style="color:white;background-color:black;width:250px;font-style:italic">
+                View Locations
+            </button>
 
+            <div class="form-group">
+                @Html.LabelFor(model => model.bdaybeverages, "Do you require food selection?", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.bdaybeverages)
+                        @Html.ValidationMessageFor(model => model.bdaybeverages, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.bdaybeverages, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.bdaybeverages)
-                    @Html.ValidationMessageFor(model => model.bdaybeverages, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10 pb-5" >
+                    <input type="submit" value="Curate your anniversary event" class="btn btn-default" style="color:white;background-color:black;width:250px;font-style:italic" />
                 </div>
             </div>
         </div>
+    }
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
+
 
 <script>
     var today = new Date().toISOString().slice(0, 16);
     document.getElementsByName("bdaydatetime")[0].min = today;
 </script>
 
+
+<style>
+    .control-label {
+        font-style: italic;
+        margin-top: 10px;
+    }
+
+    .form-group {
+        margin-top: 30px;
+        color: white;
+    }
+</style>
+
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="font-style:italic">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Available Decorations</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    @foreach (var item in ViewBag.DecorationOptions)
+                    {
+                        <div class="col-lg-4">
+                            <div class="hover10 column">
+
+                                @if (item.decorimage != null)
+                                {
+                                    <img src="data:image;base64,@Convert.ToBase64String(item.decorimage)" alt="Decoration Image" id="main-img" width="330%" />
+                                }
+                            </div>
+                        </div>
+                        <div class="card-title">
+                            <p style="font-style:italic">@item.decoravailable</p>
+                        </div>
+
+                    }
+                </div>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="font-style:italic">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Available Decorations</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    @foreach (var item in ViewBag.ThemeOptions)
+                    {
+                        <div class="col-lg-4">
+                            <div class="hover10 column">
+
+                                @if (item.themeimage != null)
+                                {
+                                    <img src="data:image;base64,@Convert.ToBase64String(item.themeimage)" alt="Decoration Image" id="main-img" width="330%" />
+                                }
+                            </div>
+                        </div>
+                        <div class="card-title">
+                            <p style="font-style:italic">@item.themename</p>
+                        </div>
+
+                    }
+                </div>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="font-style:italic">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Available Decorations</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    @foreach (var item in ViewBag.CakeOptions)
+                    {
+                        <div class="col-lg-4">
+                            <div class="hover10 column">
+
+                                @if (item.cakeimage != null)
+                                {
+                                    <img src="data:image;base64,@Convert.ToBase64String(item.cakeimage)" alt="Decoration Image" id="main-img" width="330%" />
+                                }
+                            </div>
+                        </div>
+                        <div class="card-title">
+                            <p style="font-style:italic">@item.cakesavailable</p>
+                        </div>
+
+                    }
+                </div>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="font-style:italic">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Available Decorations</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    @foreach (var item in ViewBag.LocationOptions)
+                    {
+                        <div class="col-lg-4">
+                            <div class="hover10 column">
+
+                                @if (item.locationimage != null)
+                                {
+                                    <img src="data:image;base64,@Convert.ToBase64String(item.locationimage)" alt="Decoration Image" id="main-img" width="330%" />
+                                }
+                            </div>
+                        </div>
+                        <div class="card-title">
+                            <p style="font-style:italic">@item.locationname</p>
+                        </div>
+
+                    }
+                </div>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+    </div>
+</div>
