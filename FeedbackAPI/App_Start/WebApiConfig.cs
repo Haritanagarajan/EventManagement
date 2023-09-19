@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
-using Microsoft.AspNetCore.Cors;
+using System.Web.Http.Cors; //Microsoft.AspNet.Webapi.cors ---install to enable the cors
 namespace FeedbackAPI
 {
     public static class WebApiConfig
@@ -10,8 +10,8 @@ namespace FeedbackAPI
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
-            //var cors = new EnableCorsAttribute("http://localhost:44367", "*", "*");
-            //config.EnableCors(cors);
+            var cors = new EnableCorsAttribute("http://localhost:44367", "*", "*"); //use mvc project port 
+            config.EnableCors(cors);
 
             // Web API routes
             config.MapHttpAttributeRoutes();

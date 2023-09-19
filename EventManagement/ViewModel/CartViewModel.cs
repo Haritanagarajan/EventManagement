@@ -16,6 +16,11 @@ namespace EventManagement.ViewModel
         public IEnumerable<CocktailParty> CocktailParty { get; set; }
         public IEnumerable<BachelorParty> BachelorParty { get; set; }
         public IEnumerable<Wedding> Wedding { get; set; }
+        public IEnumerable<FinalPaymentReceived> Final { get; set; }
+
+        public IEnumerable<Usertable> user { get; set; }
+
+        public int HalfAmount { get; set; }
 
     }
 }

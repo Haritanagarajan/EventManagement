@@ -73,8 +73,6 @@ namespace EventManagement.Controllers
 
                 }
 
-            
-
 
                 if (isInvalid)
                 {

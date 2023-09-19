@@ -43,6 +43,7 @@ namespace EventManagement.Models
         public virtual DbSet<CocktailParty> CocktailParties { get; set; }
         public virtual DbSet<Wedding> Weddings { get; set; }
         public virtual DbSet<feedbacktable> feedbacktables { get; set; }
+        public virtual DbSet<FinalPaymentReceived> FinalPaymentReceiveds { get; set; }
     
         public virtual ObjectResult<Validate_User_Result> Validate_User(string username, string password)
         {

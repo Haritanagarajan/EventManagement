@@ -25,6 +25,7 @@ namespace EventManagement.Models
             this.BachelorParties = new HashSet<BachelorParty>();
             this.CocktailParties = new HashSet<CocktailParty>();
             this.Weddings = new HashSet<Wedding>();
+            this.FinalPaymentReceiveds = new HashSet<FinalPaymentReceived>();
         }
     
         public int TUserid { get; set; }
@@ -57,5 +58,7 @@ namespace EventManagement.Models
         public virtual ICollection<CocktailParty> CocktailParties { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Wedding> Weddings { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FinalPaymentReceived> FinalPaymentReceiveds { get; set; }
     }
 }

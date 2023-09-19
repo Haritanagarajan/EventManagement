@@ -22,7 +22,7 @@ namespace EventManagement.Controllers
 
         EventManagement2Entities2 EventManagementEntities = new EventManagement2Entities2();
 
-        string Baseurl = "https://localhost:44367/";
+        string Baseurl = "https://localhost:44341/"; //use webapi port
         // GET: Feedback
         public async Task<ActionResult> Index()
         {
@@ -49,11 +49,7 @@ namespace EventManagement.Controllers
         {
             this._employeeRepository = new FeedBackRepo(new EventManagement2Entities2());
         }
-        public ActionResult Index1()
-        {
-            return View(_employeeRepository.GetEmployees());
-        }
-
+       
         public ActionResult Details(int id)
         {
             return View(_employeeRepository.GetEmployeeById(id));

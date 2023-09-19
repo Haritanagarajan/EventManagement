@@ -207,6 +207,9 @@
     <Compile Include="Models\feedbacktable.cs">
       <DependentUpon>EventManagement.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\FinalPaymentReceived.cs">
+      <DependentUpon>EventManagement.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\locationtable.cs">
       <DependentUpon>EventManagement.tt</DependentUpon>
     </Compile>
@@ -447,6 +450,8 @@
     <Content Include="Views\Feedback\Create.cshtml" />
     <Content Include="Views\Feedback\Update.cshtml" />
     <Content Include="Views\Feedback\Delete.cshtml" />
+    <Content Include="Views\Payment\PlaceOrder.cshtml" />
+    <Content Include="Views\Cart\PlaceOrder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

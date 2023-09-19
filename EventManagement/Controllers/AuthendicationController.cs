@@ -74,6 +74,10 @@ namespace EventManagement.Controllers
 
                 user.TRoleid = roleid;
 
+                Session["UserMobile"] = user.TMobile.Value;
+                Session["UserEmail"] = user.TEmail;
+
+
                 EventManagementEntities.Usertables.Add(user);
                 EventManagementEntities.SaveChanges();
                 return RedirectToAction("Login");

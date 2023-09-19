@@ -7,10 +7,57 @@
 <p>Welcome to EventPulse, @User.Identity.Name</p>
 <p>Welcome to EventPulse, @User.Identity.IsAuthenticated</p>
 
+<script>
+    $(document).ready(function () {
+        console.log("hi");
+        document.getElementById("halfAmount").value =@(  Model.birthdaytable.Sum(b => b.bdayeventcost) +
+                                      Model.babyshowertable.Sum(b => b.babyshowereventcost) +
+                                      Model.Anniversary.Sum(a => a.annieventcost) +
+                                      Model.BachelorParty.Sum(b => b.bacheloreventcost) +
+                                      Model.CocktailParty.Sum(c => c.cockeventcost) +
+                                      Model.Wedding.Sum(w => w.weddingeventcost) +
+                                      Model.Reunion.Sum(r => r.reunioneventcost));
+    });
+</script>
+
+
+
+
+
+
+
+<script>
+    $(document).ready(function () {
+        console.log("hi");
+        var dateValue =
+            '@(Model.birthdaytable.Select(b => b.bdaydatetime).FirstOrDefault())' +
+            ',' +
+            '@(Model.babyshowertable.Select(b => b.babyshowerdatetime).FirstOrDefault())' +
+            ',' +
+            '@(Model.Anniversary.Select(a => a.annidatetime).FirstOrDefault())' +
+            ',' +
+            '@(Model.BachelorParty.Select(b => b.bachelordatetime).FirstOrDefault())' +
+            ',' +
+            '@(Model.CocktailParty.Select(c => c.cockdatetime).FirstOrDefault())' +
+            ',' +
+            '@(Model.Wedding.Select(w => w.weddingdatetime).FirstOrDefault())' +
+            ',' +
+            '@(Model.Reunion.Select(r => r.reuniondatetime).FirstOrDefault())';
+
+        document.getElementById("bookingdatetime").value = dateValue;
+    });
+</script>
+
+
+
+
+
+
 <div class="container" style="background-color: #949e99; padding: 20px; color: white;">
 
     @if (Model.birthdaytable.Any() || Model.babyshowertable.Any() || Model.Anniversary.Any() || Model.BachelorParty.Any() || Model.CocktailParty.Any() || Model.Wedding.Any() || Model.Reunion.Any())
     {
+
         <h5 class="text-uppercase p-2 text-center">All Events</h5>
         <table class="table table-bordered table-striped">
             <thead class="thead-dark text-black">
@@ -186,14 +233,16 @@
                     <td>
                         @{
                             var totalCost = Model.birthdaytable.Sum(b => b.bdayeventcost) +
-                                            Model.babyshowertable.Sum(b => b.babyshowereventcost) +
-                                            Model.Anniversary.Sum(a => a.annieventcost) +
-                                            Model.BachelorParty.Sum(b => b.bacheloreventcost) +
-                                            Model.CocktailParty.Sum(c => c.cockeventcost) +
-                                            Model.Wedding.Sum(w => w.weddingeventcost) +
-                                            Model.Reunion.Sum(r => r.reunioneventcost);
+                                             Model.babyshowertable.Sum(b => b.babyshowereventcost) +
+                                             Model.Anniversary.Sum(a => a.annieventcost) +
+                                             Model.BachelorParty.Sum(b => b.bacheloreventcost) +
+                                             Model.CocktailParty.Sum(c => c.cockeventcost) +
+                                             Model.Wedding.Sum(w => w.weddingeventcost) +
+                                             Model.Reunion.Sum(r => r.reunioneventcost);
                         }
                         ₹@totalCost
+
+
                     </td>
 
                 </tr>
@@ -203,19 +252,24 @@
                     <th colspan="6">Prebooking:</th>
                     <td>
                         @{
-                            var halfamnt = totalCost / 2;
+                            int halfamnt = (int)totalCost / 2;
                         }
+
                         ₹@halfamnt
                     </td>
                 </tr>
 
                 <tr>
                     <td>
-                        @Html.ActionLink("Paynow", "CreateOrder", "Payment", new { totalCost = totalCost }, new { @class = "btn" })
+                        @*@Html.ActionLink("Paynow", "CreateOrder", "Payment", new { totalCost = totalCost }, new { @class = "btn" })*@
+                        <button id="proceedToPayment" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#razorpayModal">>Proceed to Payment</button>
                 </tr>
 
             </tfoot>
         </table>
+
+
+
     }
     else
     {
@@ -225,3 +279,73 @@
 </div>
 
 
+
+
+
+
+<div id="razorpayModal" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Payment</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-dark">
+                <h2>Enter Your Details</h2>
+
+                <!-- Payment form -->
+                <form id="paymentForm" method="post" action="@Url.Action("PlaceOrder")">
+                    @Html.AntiForgeryToken()
+                    @*@Html.Hidden("HalfAmount", totalAmount)*@
+
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="contactNumber" class="form-label">Contact Number</label>
+                        <input type="text" class="form-control" id="contactNumber" name="contactNumber" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="address" class="form-label">Address</label>
+                        <input type="text" class="form-control" id="address" name="address" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="amount" class="form-label">Amount</label>
+                        <input type="number" class="form-control" id="halfAmount" name="halfAmount" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="amount" class="form-label">PartialAmount</label>
+                        <input type="number" class="form-control" id="PartialAmount" name="PartialAmount" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="amount" class="form-label">Booked Date and Time</label>
+                        <input type="datetime" class="form-control" id="bookingdatetime" name="bookingdatetime" readonly>
+                    </div>
+                    <button type="submit" class="btn btn-dark" id="payButton">Pay Now</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="paymentResult"></div>
+
+
+<script>
+      $(document).ready(function () {
+      console.log("hi partial");
+          document.getElementById("PartialAmount").value =@(  Model.birthdaytable.Sum(b => b.bdayeventcost) +
+                                    Model.babyshowertable.Sum(b => b.babyshowereventcost) +
+                                    Model.Anniversary.Sum(a => a.annieventcost) +
+                                    Model.BachelorParty.Sum(b => b.bacheloreventcost) +
+                                    Model.CocktailParty.Sum(c => c.cockeventcost) +
+                                    Model.Wedding.Sum(w => w.weddingeventcost) +
+                                    Model.Reunion.Sum(r => r.reunioneventcost)) /2;
+  });
+</script>
