@@ -452,6 +452,7 @@
     <Content Include="Views\Feedback\Delete.cshtml" />
     <Content Include="Views\Payment\PlaceOrder.cshtml" />
     <Content Include="Views\Cart\PlaceOrder.cshtml" />
+    <Content Include="Views\Cart\Recipt.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -8,6 +8,9 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.IO;
+using PagedList;
+using PagedList.Mvc;
+
 
 namespace EventManagement.Controllers
 {
@@ -21,14 +24,12 @@ namespace EventManagement.Controllers
         // GET: Events
         [Authorize(Roles = "User")]
         [AllowAnonymous]
-        public ActionResult EventsName(string search)
+        public ActionResult EventsName(int? page, string search)
         {
-            
             List<EventName> events = EventManagementEntities.EventNames.ToList();
-                return View(events);
+              return View(EventManagementEntities.EventNames.Where(x=>x.eventname1.StartsWith(search) || search==null).ToList() .ToPagedList(page ?? 1, 3));
+           
         }
-
-       
 
 
         [Authorize(Roles = "Admin")]
@@ -68,14 +69,14 @@ namespace EventManagement.Controllers
 
                 eventnames.eventid = lastUserId + 1;
 
-               
+
 
                 EventManagementEntities.EventNames.Add(eventnames);
 
                 EventManagementEntities.SaveChanges();
 
 
-               return  RedirectToAction("Index");
+                return RedirectToAction("Index");
             }
             return View();
         }
@@ -86,7 +87,7 @@ namespace EventManagement.Controllers
         [Authorize(Roles = "User")]
         public ActionResult EventDirect(int? eventid)
         {
-           if(eventid == 1)
+            if (eventid == 1)
             {
                 Session["eventid"] = eventid;
 
@@ -182,7 +183,7 @@ namespace EventManagement.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(int? id, HttpPostedFileBase eventimage,[Bind(Include = "eventname1,eventd")] EventName updateevent)
+        public ActionResult Edit(int? id, HttpPostedFileBase eventimage, [Bind(Include = "eventname1,eventd")] EventName updateevent)
         {
             if (id == null)
             {

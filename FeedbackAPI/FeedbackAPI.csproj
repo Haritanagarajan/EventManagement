@@ -302,6 +302,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="libman.json" />
     <EntityDeploy Include="Models\FeedbackModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>FeedbackModel.Designer.cs</LastGenOutput>
@@ -309,7 +310,6 @@
     <Content Include="Models\FeedbackModel.edmx.diagram">
       <DependentUpon>FeedbackModel.edmx</DependentUpon>
     </Content>
-    <Content Include="libman.json" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

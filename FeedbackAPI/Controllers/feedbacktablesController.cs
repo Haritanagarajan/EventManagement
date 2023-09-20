@@ -14,7 +14,7 @@ namespace FeedbackAPI.Controllers
 {
     public class feedbacktablesController : ApiController
     {
-        private EventManagement2Entities1 db = new EventManagement2Entities1();
+        private EventManagement2Entities4 db = new EventManagement2Entities4();
 
         // GET: api/feedbacktables
         public IQueryable<feedbacktable> Getfeedbacktables()
@@ -80,22 +80,7 @@ namespace FeedbackAPI.Controllers
             }
 
             db.feedbacktables.Add(feedbacktable);
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateException)
-            {
-                if (feedbacktableExists(feedbacktable.id))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = feedbacktable.id }, feedbacktable);
         }

@@ -143,7 +143,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="int" />
           <Property Name="Experiencetype" Type="varchar" MaxLength="40" />
           <Property Name="Comments" Type="varchar" MaxLength="800" />
@@ -1499,12 +1499,12 @@
             <End Role="Usertable" EntitySet="Usertables" />
             <End Role="Wedding" EntitySet="Weddings" />
           </AssociationSet>
-          <EntitySet Name="feedbacktables" EntityType="EventManagement2Model.feedbacktable" />
           <EntitySet Name="FinalPaymentReceiveds" EntityType="EventManagement2Model.FinalPaymentReceived" />
           <AssociationSet Name="FK__FinalPaym__useri__3C89F72A" Association="EventManagement2Model.FK__FinalPaym__useri__3C89F72A">
             <End Role="Usertable" EntitySet="Usertables" />
             <End Role="FinalPaymentReceived" EntitySet="FinalPaymentReceiveds" />
           </AssociationSet>
+          <EntitySet Name="feedbacktables" EntityType="EventManagement2Model.feedbacktable" />
           </EntityContainer>
         <ComplexType Name="Validate_User_Result">
           <Property Type="Int32" Name="TUserid" Nullable="true" />
@@ -2282,17 +2282,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="feedbacktable">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="UserId" Type="Int32" />
-          <Property Name="Experiencetype" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-          <Property Name="Comments" Type="String" MaxLength="800" FixedLength="false" Unicode="false" />
-          <Property Name="UserName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-          <Property Name="Useremail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="FinalPaymentReceived">
           <Key>
             <PropertyRef Name="id" />
@@ -2323,6 +2312,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="feedbacktable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="Experiencetype" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Useremail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2572,18 +2572,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="feedbacktables">
-            <EntityTypeMapping TypeName="EventManagement2Model.feedbacktable">
-              <MappingFragment StoreEntitySet="feedbacktable">
-                <ScalarProperty Name="Useremail" ColumnName="Useremail" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="Comments" ColumnName="Comments" />
-                <ScalarProperty Name="Experiencetype" ColumnName="Experiencetype" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="FinalPaymentReceiveds">
             <EntityTypeMapping TypeName="EventManagement2Model.FinalPaymentReceived">
               <MappingFragment StoreEntitySet="FinalPaymentReceived">
@@ -2598,6 +2586,18 @@
                 <ScalarProperty Name="usercontact" ColumnName="usercontact" />
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="feedbacktables">
+            <EntityTypeMapping TypeName="EventManagement2Model.feedbacktable">
+              <MappingFragment StoreEntitySet="feedbacktable">
+                <ScalarProperty Name="Useremail" ColumnName="Useremail" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="Experiencetype" ColumnName="Experiencetype" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

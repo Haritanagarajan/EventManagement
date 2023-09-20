@@ -13,10 +13,10 @@ namespace FeedbackAPI.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class EventManagement2Entities1 : DbContext
+    public partial class EventManagement2Entities4 : DbContext
     {
-        public EventManagement2Entities1()
-            : base("name=EventManagement2Entities1")
+        public EventManagement2Entities4()
+            : base("name=EventManagement2Entities4")
         {
         }
     

@@ -8,6 +8,11 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Razorpay.Api;
+using System.Web.UI;
+using PagedList;
+using PagedList.Mvc;
+
 
 namespace EventManagement.Controllers
 {
@@ -18,10 +23,12 @@ namespace EventManagement.Controllers
         EventManagement2Entities2 EventManagementEntities = new EventManagement2Entities2();
 
         [Authorize(Roles = "Admin")]
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             List<caketable> caketable = EventManagementEntities.caketables.ToList();
-            return View(caketable);
+            //int pageSize = 10;
+            //int pageNumber = (page ?? 1);
+            return View(caketable.ToPagedList(page ?? 1,3));
         }
 
         [Authorize(Roles = "User")]

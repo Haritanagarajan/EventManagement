@@ -96,11 +96,10 @@ namespace EventManagement.Controllers
 
         public ActionResult Recipt()
         {
-            FinalPaymentReceived model = new FinalPaymentReceived();
-
-
-            return View(model);
+            List<FinalPaymentReceived> final = EventManagementEntities.FinalPaymentReceiveds.ToList();
+            return View(final);
         }
+
 
     }
 }
