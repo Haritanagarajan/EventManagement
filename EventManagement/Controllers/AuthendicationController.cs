@@ -204,7 +204,6 @@ namespace EventManagement.Controllers
                 }
                 catch (DbUpdateConcurrencyException ex)
                 {
-                   
                     ModelState.AddModelError(string.Empty, "Concurrency error occurred.");
                 }
             }

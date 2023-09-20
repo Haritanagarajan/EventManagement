@@ -59,10 +59,17 @@ namespace EventManagement.Controllers
         {
             return View(new feedbacktable());
         }
+
         [HttpPost]
         public ActionResult Create(feedbacktable employee)
         {
+
+            int? userId = Session["UserId"] as int?;
+
+            employee.UserId = userId;
+
             _employeeRepository.InsertEmployee(employee);
+
             _employeeRepository.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -73,6 +80,10 @@ namespace EventManagement.Controllers
         [HttpPost]
         public ActionResult Update(feedbacktable employee)
         {
+            int? userId = Session["UserId"] as int?;
+
+            employee.UserId = userId;
+
             _employeeRepository.UpdateEmployee(employee);
             _employeeRepository.SaveChanges();
             return RedirectToAction("Index");

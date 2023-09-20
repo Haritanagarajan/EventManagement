@@ -42,7 +42,7 @@ document.getElementById('rzp-button1').onclick = function(e){
 </script>
 
 <!-- This form is hidden, and submit when payment successfully made -->
-@using (Html.BeginForm("Recipt", "Cart", new { id = Model.razorpayid }))
+@using (Html.BeginForm("Recipt", "Cart", new { id = Model.id }))
 {
     @Html.AntiForgeryToken()
 
