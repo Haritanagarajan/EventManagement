@@ -14,12 +14,6 @@ namespace EventManagement.Models
     
     public partial class BachelorParty
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public BachelorParty()
-        {
-            this.AddtoCarts = new HashSet<AddtoCart>();
-        }
-    
         public int id { get; set; }
         public Nullable<int> bacheloruserid { get; set; }
         public Nullable<int> bachelorid { get; set; }
@@ -34,8 +28,6 @@ namespace EventManagement.Models
         public Nullable<long> bacheloreventcost { get; set; }
         public bool bachelorbeverages { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AddtoCart> AddtoCarts { get; set; }
         public virtual Usertable Usertable { get; set; }
         public virtual EventName EventName { get; set; }
         public virtual decorationtable decorationtable { get; set; }

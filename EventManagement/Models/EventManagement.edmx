@@ -5,19 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="EventManagement2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="AddtoCart">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="cartbday" Type="int" />
-          <Property Name="cartbaby" Type="int" />
-          <Property Name="cartbachelor" Type="int" />
-          <Property Name="cartwedding" Type="int" />
-          <Property Name="cartanni" Type="int" />
-          <Property Name="cartreunion" Type="int" />
-          <Property Name="cartcocktail" Type="int" />
-        </EntityType>
         <EntityType Name="Anniversary">
           <Key>
             <PropertyRef Name="id" />
@@ -222,7 +209,7 @@
           <Property Name="TUserid" Type="int" Nullable="false" />
           <Property Name="TUsername" Type="varchar" MaxLength="40" />
           <Property Name="TEmail" Type="varchar" MaxLength="40" />
-          <Property Name="TPassword" Type="varchar" MaxLength="40" />
+          <Property Name="TPassword" Type="varchar" MaxLength="200" />
           <Property Name="TConfirmPassword" Type="varchar" MaxLength="40" />
           <Property Name="TMobile" Type="bigint" />
           <Property Name="TGender" Type="nvarchar" MaxLength="20" />
@@ -253,90 +240,6 @@
           <Property Name="weddingStyling" Type="bit" Nullable="false" />
           <Property Name="weddingHospitality" Type="bit" Nullable="false" />
         </EntityType>
-        <Association Name="FK__AddtoCart__carta__7F80E8EA">
-          <End Role="Anniversary" Type="Self.Anniversary" Multiplicity="0..1" />
-          <End Role="AddtoCart" Type="Self.AddtoCart" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Anniversary">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="AddtoCart">
-              <PropertyRef Name="cartanni" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__AddtoCart__cartb__7BB05806">
-          <End Role="birthdaytable" Type="Self.birthdaytable" Multiplicity="0..1" />
-          <End Role="AddtoCart" Type="Self.AddtoCart" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="birthdaytable">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="AddtoCart">
-              <PropertyRef Name="cartbday" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__AddtoCart__cartb__7CA47C3F">
-          <End Role="babyshowertable" Type="Self.babyshowertable" Multiplicity="0..1" />
-          <End Role="AddtoCart" Type="Self.AddtoCart" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="babyshowertable">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="AddtoCart">
-              <PropertyRef Name="cartbaby" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__AddtoCart__cartb__7D98A078">
-          <End Role="BachelorParty" Type="Self.BachelorParty" Multiplicity="0..1" />
-          <End Role="AddtoCart" Type="Self.AddtoCart" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="BachelorParty">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="AddtoCart">
-              <PropertyRef Name="cartbachelor" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__AddtoCart__cartc__0169315C">
-          <End Role="CocktailParty" Type="Self.CocktailParty" Multiplicity="0..1" />
-          <End Role="AddtoCart" Type="Self.AddtoCart" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CocktailParty">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="AddtoCart">
-              <PropertyRef Name="cartcocktail" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__AddtoCart__cartr__00750D23">
-          <End Role="Reunion" Type="Self.Reunion" Multiplicity="0..1" />
-          <End Role="AddtoCart" Type="Self.AddtoCart" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Reunion">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="AddtoCart">
-              <PropertyRef Name="cartreunion" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__AddtoCart__cartw__7E8CC4B1">
-          <End Role="Wedding" Type="Self.Wedding" Multiplicity="0..1" />
-          <End Role="AddtoCart" Type="Self.AddtoCart" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Wedding">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="AddtoCart">
-              <PropertyRef Name="cartwedding" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Anniversa__annic__60083D91">
           <End Role="caketable" Type="Self.caketable" Multiplicity="0..1" />
           <End Role="Anniversary" Type="Self.Anniversary" Multiplicity="*" />
@@ -882,7 +785,6 @@
           <Parameter Name="Password" Type="nvarchar" Mode="In" />
         </Function>
         <EntityContainer Name="EventManagement2ModelStoreContainer">
-          <EntitySet Name="AddtoCart" EntityType="Self.AddtoCart" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Anniversary" EntityType="Self.Anniversary" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="babyshowertable" EntityType="Self.babyshowertable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BachelorParty" EntityType="Self.BachelorParty" Schema="dbo" store:Type="Tables" />
@@ -899,34 +801,6 @@
           <EntitySet Name="themetable" EntityType="Self.themetable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usertable" EntityType="Self.Usertable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Wedding" EntityType="Self.Wedding" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__AddtoCart__carta__7F80E8EA" Association="Self.FK__AddtoCart__carta__7F80E8EA">
-            <End Role="Anniversary" EntitySet="Anniversary" />
-            <End Role="AddtoCart" EntitySet="AddtoCart" />
-          </AssociationSet>
-          <AssociationSet Name="FK__AddtoCart__cartb__7BB05806" Association="Self.FK__AddtoCart__cartb__7BB05806">
-            <End Role="birthdaytable" EntitySet="birthdaytable" />
-            <End Role="AddtoCart" EntitySet="AddtoCart" />
-          </AssociationSet>
-          <AssociationSet Name="FK__AddtoCart__cartb__7CA47C3F" Association="Self.FK__AddtoCart__cartb__7CA47C3F">
-            <End Role="babyshowertable" EntitySet="babyshowertable" />
-            <End Role="AddtoCart" EntitySet="AddtoCart" />
-          </AssociationSet>
-          <AssociationSet Name="FK__AddtoCart__cartb__7D98A078" Association="Self.FK__AddtoCart__cartb__7D98A078">
-            <End Role="BachelorParty" EntitySet="BachelorParty" />
-            <End Role="AddtoCart" EntitySet="AddtoCart" />
-          </AssociationSet>
-          <AssociationSet Name="FK__AddtoCart__cartc__0169315C" Association="Self.FK__AddtoCart__cartc__0169315C">
-            <End Role="CocktailParty" EntitySet="CocktailParty" />
-            <End Role="AddtoCart" EntitySet="AddtoCart" />
-          </AssociationSet>
-          <AssociationSet Name="FK__AddtoCart__cartr__00750D23" Association="Self.FK__AddtoCart__cartr__00750D23">
-            <End Role="Reunion" EntitySet="Reunion" />
-            <End Role="AddtoCart" EntitySet="AddtoCart" />
-          </AssociationSet>
-          <AssociationSet Name="FK__AddtoCart__cartw__7E8CC4B1" Association="Self.FK__AddtoCart__cartw__7E8CC4B1">
-            <End Role="Wedding" EntitySet="Wedding" />
-            <End Role="AddtoCart" EntitySet="AddtoCart" />
-          </AssociationSet>
           <AssociationSet Name="FK__Anniversa__annic__60083D91" Association="Self.FK__Anniversa__annic__60083D91">
             <End Role="caketable" EntitySet="caketable" />
             <End Role="Anniversary" EntitySet="Anniversary" />
@@ -1112,26 +986,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="EventManagement2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="AddtoCart">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="cartbday" Type="Int32" />
-          <Property Name="cartbaby" Type="Int32" />
-          <Property Name="cartbachelor" Type="Int32" />
-          <Property Name="cartwedding" Type="Int32" />
-          <Property Name="cartanni" Type="Int32" />
-          <Property Name="cartreunion" Type="Int32" />
-          <Property Name="cartcocktail" Type="Int32" />
-          <NavigationProperty Name="birthdaytable" Relationship="EventManagement2Model.FK__AddtoCart__cartb__7BB05806" FromRole="AddtoCart" ToRole="birthdaytable" />
-          <NavigationProperty Name="Reunion" Relationship="EventManagement2Model.FK__AddtoCart__cartr__00750D23" FromRole="AddtoCart" ToRole="Reunion" />
-          <NavigationProperty Name="Anniversary" Relationship="EventManagement2Model.FK__AddtoCart__carta__7F80E8EA" FromRole="AddtoCart" ToRole="Anniversary" />
-          <NavigationProperty Name="babyshowertable" Relationship="EventManagement2Model.FK__AddtoCart__cartb__7CA47C3F" FromRole="AddtoCart" ToRole="babyshowertable" />
-          <NavigationProperty Name="BachelorParty" Relationship="EventManagement2Model.FK__AddtoCart__cartb__7D98A078" FromRole="AddtoCart" ToRole="BachelorParty" />
-          <NavigationProperty Name="CocktailParty" Relationship="EventManagement2Model.FK__AddtoCart__cartc__0169315C" FromRole="AddtoCart" ToRole="CocktailParty" />
-          <NavigationProperty Name="Wedding" Relationship="EventManagement2Model.FK__AddtoCart__cartw__7E8CC4B1" FromRole="AddtoCart" ToRole="Wedding" />
-        </EntityType>
         <EntityType Name="caketable">
           <Key>
             <PropertyRef Name="cakeid" />
@@ -1231,7 +1085,7 @@
           <Property Name="TUserid" Type="Int32" Nullable="false" />
           <Property Name="TUsername" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
           <Property Name="TEmail" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-          <Property Name="TPassword" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="TPassword" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="TConfirmPassword" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
           <Property Name="TMobile" Type="Int64" />
           <Property Name="TGender" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
@@ -1276,7 +1130,6 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="EventManagement2Entities2" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="AddtoCarts" EntityType="Self.AddtoCart" />
           <EntitySet Name="caketables" EntityType="Self.caketable" />
           <EntitySet Name="decorationtables" EntityType="Self.decorationtable" />
           <EntitySet Name="EventNames" EntityType="Self.EventName" />
@@ -1297,10 +1150,6 @@
             <Parameter Name="Password" Mode="In" Type="String" />
           </FunctionImport>
           <EntitySet Name="birthdaytables" EntityType="EventManagement2Model.birthdaytable" />
-          <AssociationSet Name="FK__AddtoCart__cartb__7BB05806" Association="EventManagement2Model.FK__AddtoCart__cartb__7BB05806">
-            <End Role="birthdaytable" EntitySet="birthdaytables" />
-            <End Role="AddtoCart" EntitySet="AddtoCarts" />
-          </AssociationSet>
           <AssociationSet Name="FK__birthdayt__bdayc__39E294A9" Association="EventManagement2Model.FK__birthdayt__bdayc__39E294A9">
             <End Role="caketable" EntitySet="caketables" />
             <End Role="birthdaytable" EntitySet="birthdaytables" />
@@ -1326,10 +1175,6 @@
             <End Role="birthdaytable" EntitySet="birthdaytables" />
           </AssociationSet>
           <EntitySet Name="Reunions" EntityType="EventManagement2Model.Reunion" />
-          <AssociationSet Name="FK__AddtoCart__cartr__00750D23" Association="EventManagement2Model.FK__AddtoCart__cartr__00750D23">
-            <End Role="Reunion" EntitySet="Reunions" />
-            <End Role="AddtoCart" EntitySet="AddtoCarts" />
-          </AssociationSet>
           <AssociationSet Name="FK__Reunion__reunion__6B79F03D" Association="EventManagement2Model.FK__Reunion__reunion__6B79F03D">
             <End Role="caketable" EntitySet="caketables" />
             <End Role="Reunion" EntitySet="Reunions" />
@@ -1355,10 +1200,6 @@
             <End Role="Reunion" EntitySet="Reunions" />
           </AssociationSet>
           <EntitySet Name="Anniversaries" EntityType="EventManagement2Model.Anniversary" />
-          <AssociationSet Name="FK__AddtoCart__carta__7F80E8EA" Association="EventManagement2Model.FK__AddtoCart__carta__7F80E8EA">
-            <End Role="Anniversary" EntitySet="Anniversaries" />
-            <End Role="AddtoCart" EntitySet="AddtoCarts" />
-          </AssociationSet>
           <AssociationSet Name="FK__Anniversa__annic__60083D91" Association="EventManagement2Model.FK__Anniversa__annic__60083D91">
             <End Role="caketable" EntitySet="caketables" />
             <End Role="Anniversary" EntitySet="Anniversaries" />
@@ -1384,10 +1225,6 @@
             <End Role="Anniversary" EntitySet="Anniversaries" />
           </AssociationSet>
           <EntitySet Name="babyshowertables" EntityType="EventManagement2Model.babyshowertable" />
-          <AssociationSet Name="FK__AddtoCart__cartb__7CA47C3F" Association="EventManagement2Model.FK__AddtoCart__cartb__7CA47C3F">
-            <End Role="babyshowertable" EntitySet="babyshowertables" />
-            <End Role="AddtoCart" EntitySet="AddtoCarts" />
-          </AssociationSet>
           <AssociationSet Name="FK__babyshowe__babys__3F9B6DFF" Association="EventManagement2Model.FK__babyshowe__babys__3F9B6DFF">
             <End Role="Usertable" EntitySet="Usertables" />
             <End Role="babyshowertable" EntitySet="babyshowertables" />
@@ -1413,10 +1250,6 @@
             <End Role="babyshowertable" EntitySet="babyshowertables" />
           </AssociationSet>
           <EntitySet Name="BachelorParties" EntityType="EventManagement2Model.BachelorParty" />
-          <AssociationSet Name="FK__AddtoCart__cartb__7D98A078" Association="EventManagement2Model.FK__AddtoCart__cartb__7D98A078">
-            <End Role="BachelorParty" EntitySet="BachelorParties" />
-            <End Role="AddtoCart" EntitySet="AddtoCarts" />
-          </AssociationSet>
           <AssociationSet Name="FK__BachelorP__bache__4830B400" Association="EventManagement2Model.FK__BachelorP__bache__4830B400">
             <End Role="Usertable" EntitySet="Usertables" />
             <End Role="BachelorParty" EntitySet="BachelorParties" />
@@ -1442,10 +1275,6 @@
             <End Role="BachelorParty" EntitySet="BachelorParties" />
           </AssociationSet>
           <EntitySet Name="CocktailParties" EntityType="EventManagement2Model.CocktailParty" />
-          <AssociationSet Name="FK__AddtoCart__cartc__0169315C" Association="EventManagement2Model.FK__AddtoCart__cartc__0169315C">
-            <End Role="CocktailParty" EntitySet="CocktailParties" />
-            <End Role="AddtoCart" EntitySet="AddtoCarts" />
-          </AssociationSet>
           <AssociationSet Name="FK__CocktailP__cockc__76EBA2E9" Association="EventManagement2Model.FK__CocktailP__cockc__76EBA2E9">
             <End Role="caketable" EntitySet="caketables" />
             <End Role="CocktailParty" EntitySet="CocktailParties" />
@@ -1471,10 +1300,6 @@
             <End Role="CocktailParty" EntitySet="CocktailParties" />
           </AssociationSet>
           <EntitySet Name="Weddings" EntityType="EventManagement2Model.Wedding" />
-          <AssociationSet Name="FK__AddtoCart__cartw__7E8CC4B1" Association="EventManagement2Model.FK__AddtoCart__cartw__7E8CC4B1">
-            <End Role="Wedding" EntitySet="Weddings" />
-            <End Role="AddtoCart" EntitySet="AddtoCarts" />
-          </AssociationSet>
           <AssociationSet Name="FK__Wedding__wedding__54968AE5" Association="EventManagement2Model.FK__Wedding__wedding__54968AE5">
             <End Role="caketable" EntitySet="caketables" />
             <End Role="Wedding" EntitySet="Weddings" />
@@ -1527,7 +1352,6 @@
           <Property Name="bdaylocation" Type="Int32" />
           <Property Name="bdayeventcost" Type="Int64" />
           <Property Name="bdaybeverages" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="AddtoCarts" Relationship="EventManagement2Model.FK__AddtoCart__cartb__7BB05806" FromRole="birthdaytable" ToRole="AddtoCart" />
           <NavigationProperty Name="caketable" Relationship="EventManagement2Model.FK__birthdayt__bdayc__39E294A9" FromRole="birthdaytable" ToRole="caketable" />
           <NavigationProperty Name="decorationtable" Relationship="EventManagement2Model.FK__birthdayt__bdayd__37FA4C37" FromRole="birthdaytable" ToRole="decorationtable" />
           <NavigationProperty Name="EventName" Relationship="EventManagement2Model.FK__birthdayt__bdayi__370627FE" FromRole="birthdaytable" ToRole="EventName" />
@@ -1535,18 +1359,6 @@
           <NavigationProperty Name="themetable" Relationship="EventManagement2Model.FK__birthdayt__bdayt__38EE7070" FromRole="birthdaytable" ToRole="themetable" />
           <NavigationProperty Name="Usertable" Relationship="EventManagement2Model.FK__birthdayt__bdayu__361203C5" FromRole="birthdaytable" ToRole="Usertable" />
         </EntityType>
-        <Association Name="FK__AddtoCart__cartb__7BB05806">
-          <End Type="EventManagement2Model.birthdaytable" Role="birthdaytable" Multiplicity="0..1" />
-          <End Type="EventManagement2Model.AddtoCart" Role="AddtoCart" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="birthdaytable">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="AddtoCart">
-              <PropertyRef Name="cartbday" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__birthdayt__bdayc__39E294A9">
           <End Type="EventManagement2Model.caketable" Role="caketable" Multiplicity="0..1" />
           <End Type="EventManagement2Model.birthdaytable" Role="birthdaytable" Multiplicity="*" />
@@ -1639,7 +1451,6 @@
           <Property Name="reunionPhotography" Type="Boolean" Nullable="false" />
           <Property Name="reunionStyling" Type="Boolean" Nullable="false" />
           <Property Name="reunionHospitality" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="AddtoCarts" Relationship="EventManagement2Model.FK__AddtoCart__cartr__00750D23" FromRole="Reunion" ToRole="AddtoCart" />
           <NavigationProperty Name="caketable" Relationship="EventManagement2Model.FK__Reunion__reunion__6B79F03D" FromRole="Reunion" ToRole="caketable" />
           <NavigationProperty Name="decorationtable" Relationship="EventManagement2Model.FK__Reunion__reunion__6991A7CB" FromRole="Reunion" ToRole="decorationtable" />
           <NavigationProperty Name="EventName" Relationship="EventManagement2Model.FK__Reunion__reunion__689D8392" FromRole="Reunion" ToRole="EventName" />
@@ -1647,18 +1458,6 @@
           <NavigationProperty Name="Usertable" Relationship="EventManagement2Model.FK__Reunion__reunion__67A95F59" FromRole="Reunion" ToRole="Usertable" />
           <NavigationProperty Name="themetable" Relationship="EventManagement2Model.FK__Reunion__reunion__6A85CC04" FromRole="Reunion" ToRole="themetable" />
         </EntityType>
-        <Association Name="FK__AddtoCart__cartr__00750D23">
-          <End Type="EventManagement2Model.Reunion" Role="Reunion" Multiplicity="0..1" />
-          <End Type="EventManagement2Model.AddtoCart" Role="AddtoCart" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Reunion">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="AddtoCart">
-              <PropertyRef Name="cartreunion" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Reunion__reunion__6B79F03D">
           <End Type="EventManagement2Model.caketable" Role="caketable" Multiplicity="0..1" />
           <End Type="EventManagement2Model.Reunion" Role="Reunion" Multiplicity="*" />
@@ -1751,7 +1550,6 @@
           <Property Name="anniPhotography" Type="Boolean" Nullable="false" />
           <Property Name="anniStyling" Type="Boolean" Nullable="false" />
           <Property Name="anniHospitality" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="AddtoCarts" Relationship="EventManagement2Model.FK__AddtoCart__carta__7F80E8EA" FromRole="Anniversary" ToRole="AddtoCart" />
           <NavigationProperty Name="caketable" Relationship="EventManagement2Model.FK__Anniversa__annic__60083D91" FromRole="Anniversary" ToRole="caketable" />
           <NavigationProperty Name="decorationtable" Relationship="EventManagement2Model.FK__Anniversa__annid__5E1FF51F" FromRole="Anniversary" ToRole="decorationtable" />
           <NavigationProperty Name="EventName" Relationship="EventManagement2Model.FK__Anniversa__annii__5D2BD0E6" FromRole="Anniversary" ToRole="EventName" />
@@ -1759,18 +1557,6 @@
           <NavigationProperty Name="themetable" Relationship="EventManagement2Model.FK__Anniversa__annit__5F141958" FromRole="Anniversary" ToRole="themetable" />
           <NavigationProperty Name="Usertable" Relationship="EventManagement2Model.FK__Anniversa__anniu__5C37ACAD" FromRole="Anniversary" ToRole="Usertable" />
         </EntityType>
-        <Association Name="FK__AddtoCart__carta__7F80E8EA">
-          <End Type="EventManagement2Model.Anniversary" Role="Anniversary" Multiplicity="0..1" />
-          <End Type="EventManagement2Model.AddtoCart" Role="AddtoCart" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Anniversary">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="AddtoCart">
-              <PropertyRef Name="cartanni" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Anniversa__annic__60083D91">
           <End Type="EventManagement2Model.caketable" Role="caketable" Multiplicity="0..1" />
           <End Type="EventManagement2Model.Anniversary" Role="Anniversary" Multiplicity="*" />
@@ -1860,7 +1646,6 @@
           <Property Name="babyshowerlocation" Type="Int32" />
           <Property Name="babyshowereventcost" Type="Int64" />
           <Property Name="babyshowerbeverages" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="AddtoCarts" Relationship="EventManagement2Model.FK__AddtoCart__cartb__7CA47C3F" FromRole="babyshowertable" ToRole="AddtoCart" />
           <NavigationProperty Name="Usertable" Relationship="EventManagement2Model.FK__babyshowe__babys__3F9B6DFF" FromRole="babyshowertable" ToRole="Usertable" />
           <NavigationProperty Name="EventName" Relationship="EventManagement2Model.FK__babyshowe__babys__408F9238" FromRole="babyshowertable" ToRole="EventName" />
           <NavigationProperty Name="decorationtable" Relationship="EventManagement2Model.FK__babyshowe__babys__4183B671" FromRole="babyshowertable" ToRole="decorationtable" />
@@ -1868,18 +1653,6 @@
           <NavigationProperty Name="caketable" Relationship="EventManagement2Model.FK__babyshowe__babys__436BFEE3" FromRole="babyshowertable" ToRole="caketable" />
           <NavigationProperty Name="locationtable" Relationship="EventManagement2Model.FK__babyshowe__babys__4460231C" FromRole="babyshowertable" ToRole="locationtable" />
         </EntityType>
-        <Association Name="FK__AddtoCart__cartb__7CA47C3F">
-          <End Type="EventManagement2Model.babyshowertable" Role="babyshowertable" Multiplicity="0..1" />
-          <End Type="EventManagement2Model.AddtoCart" Role="AddtoCart" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="babyshowertable">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="AddtoCart">
-              <PropertyRef Name="cartbaby" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__babyshowe__babys__3F9B6DFF">
           <End Type="EventManagement2Model.Usertable" Role="Usertable" Multiplicity="0..1" />
           <End Type="EventManagement2Model.babyshowertable" Role="babyshowertable" Multiplicity="*" />
@@ -1969,7 +1742,6 @@
           <Property Name="bachelorlocation" Type="Int32" />
           <Property Name="bacheloreventcost" Type="Int64" />
           <Property Name="bachelorbeverages" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="AddtoCarts" Relationship="EventManagement2Model.FK__AddtoCart__cartb__7D98A078" FromRole="BachelorParty" ToRole="AddtoCart" />
           <NavigationProperty Name="Usertable" Relationship="EventManagement2Model.FK__BachelorP__bache__4830B400" FromRole="BachelorParty" ToRole="Usertable" />
           <NavigationProperty Name="EventName" Relationship="EventManagement2Model.FK__BachelorP__bache__4924D839" FromRole="BachelorParty" ToRole="EventName" />
           <NavigationProperty Name="decorationtable" Relationship="EventManagement2Model.FK__BachelorP__bache__4A18FC72" FromRole="BachelorParty" ToRole="decorationtable" />
@@ -1977,18 +1749,6 @@
           <NavigationProperty Name="caketable" Relationship="EventManagement2Model.FK__BachelorP__bache__4C0144E4" FromRole="BachelorParty" ToRole="caketable" />
           <NavigationProperty Name="locationtable" Relationship="EventManagement2Model.FK__BachelorP__bache__4CF5691D" FromRole="BachelorParty" ToRole="locationtable" />
         </EntityType>
-        <Association Name="FK__AddtoCart__cartb__7D98A078">
-          <End Type="EventManagement2Model.BachelorParty" Role="BachelorParty" Multiplicity="0..1" />
-          <End Type="EventManagement2Model.AddtoCart" Role="AddtoCart" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="BachelorParty">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="AddtoCart">
-              <PropertyRef Name="cartbachelor" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__BachelorP__bache__4830B400">
           <End Type="EventManagement2Model.Usertable" Role="Usertable" Multiplicity="0..1" />
           <End Type="EventManagement2Model.BachelorParty" Role="BachelorParty" Multiplicity="*" />
@@ -2078,7 +1838,6 @@
           <Property Name="cocklocation" Type="Int32" />
           <Property Name="cockeventcost" Type="Int64" />
           <Property Name="cockbeverages" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="AddtoCarts" Relationship="EventManagement2Model.FK__AddtoCart__cartc__0169315C" FromRole="CocktailParty" ToRole="AddtoCart" />
           <NavigationProperty Name="caketable" Relationship="EventManagement2Model.FK__CocktailP__cockc__76EBA2E9" FromRole="CocktailParty" ToRole="caketable" />
           <NavigationProperty Name="decorationtable" Relationship="EventManagement2Model.FK__CocktailP__cockd__75035A77" FromRole="CocktailParty" ToRole="decorationtable" />
           <NavigationProperty Name="EventName" Relationship="EventManagement2Model.FK__CocktailP__cocki__740F363E" FromRole="CocktailParty" ToRole="EventName" />
@@ -2086,18 +1845,6 @@
           <NavigationProperty Name="themetable" Relationship="EventManagement2Model.FK__CocktailP__cockt__75F77EB0" FromRole="CocktailParty" ToRole="themetable" />
           <NavigationProperty Name="Usertable" Relationship="EventManagement2Model.FK__CocktailP__cocku__731B1205" FromRole="CocktailParty" ToRole="Usertable" />
         </EntityType>
-        <Association Name="FK__AddtoCart__cartc__0169315C">
-          <End Type="EventManagement2Model.CocktailParty" Role="CocktailParty" Multiplicity="0..1" />
-          <End Type="EventManagement2Model.AddtoCart" Role="AddtoCart" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CocktailParty">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="AddtoCart">
-              <PropertyRef Name="cartcocktail" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__CocktailP__cockc__76EBA2E9">
           <End Type="EventManagement2Model.caketable" Role="caketable" Multiplicity="0..1" />
           <End Type="EventManagement2Model.CocktailParty" Role="CocktailParty" Multiplicity="*" />
@@ -2190,7 +1937,6 @@
           <Property Name="weddingPhotography" Type="Boolean" Nullable="false" />
           <Property Name="weddingStyling" Type="Boolean" Nullable="false" />
           <Property Name="weddingHospitality" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="AddtoCarts" Relationship="EventManagement2Model.FK__AddtoCart__cartw__7E8CC4B1" FromRole="Wedding" ToRole="AddtoCart" />
           <NavigationProperty Name="caketable" Relationship="EventManagement2Model.FK__Wedding__wedding__54968AE5" FromRole="Wedding" ToRole="caketable" />
           <NavigationProperty Name="decorationtable" Relationship="EventManagement2Model.FK__Wedding__wedding__52AE4273" FromRole="Wedding" ToRole="decorationtable" />
           <NavigationProperty Name="EventName" Relationship="EventManagement2Model.FK__Wedding__wedding__51BA1E3A" FromRole="Wedding" ToRole="EventName" />
@@ -2198,18 +1944,6 @@
           <NavigationProperty Name="themetable" Relationship="EventManagement2Model.FK__Wedding__wedding__53A266AC" FromRole="Wedding" ToRole="themetable" />
           <NavigationProperty Name="Usertable" Relationship="EventManagement2Model.FK__Wedding__wedding__50C5FA01" FromRole="Wedding" ToRole="Usertable" />
         </EntityType>
-        <Association Name="FK__AddtoCart__cartw__7E8CC4B1">
-          <End Type="EventManagement2Model.Wedding" Role="Wedding" Multiplicity="0..1" />
-          <End Type="EventManagement2Model.AddtoCart" Role="AddtoCart" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Wedding">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="AddtoCart">
-              <PropertyRef Name="cartwedding" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Wedding__wedding__54968AE5">
           <End Type="EventManagement2Model.caketable" Role="caketable" Multiplicity="0..1" />
           <End Type="EventManagement2Model.Wedding" Role="Wedding" Multiplicity="*" />
@@ -2329,20 +2063,6 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="EventManagement2ModelStoreContainer" CdmEntityContainer="EventManagement2Entities2">
-          <EntitySetMapping Name="AddtoCarts">
-            <EntityTypeMapping TypeName="EventManagement2Model.AddtoCart">
-              <MappingFragment StoreEntitySet="AddtoCart">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="cartbday" ColumnName="cartbday" />
-                <ScalarProperty Name="cartbaby" ColumnName="cartbaby" />
-                <ScalarProperty Name="cartbachelor" ColumnName="cartbachelor" />
-                <ScalarProperty Name="cartwedding" ColumnName="cartwedding" />
-                <ScalarProperty Name="cartanni" ColumnName="cartanni" />
-                <ScalarProperty Name="cartreunion" ColumnName="cartreunion" />
-                <ScalarProperty Name="cartcocktail" ColumnName="cartcocktail" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="caketables">
             <EntityTypeMapping TypeName="EventManagement2Model.caketable">
               <MappingFragment StoreEntitySet="caketable">

@@ -24,12 +24,13 @@ namespace EventManagement.Controllers
         // GET: Events
         [Authorize(Roles = "User")]
         [AllowAnonymous]
-        public ActionResult EventsName(int? page, string search)
+        public ActionResult EventsName(string search)
         {
             List<EventName> events = EventManagementEntities.EventNames.ToList();
-              return View(EventManagementEntities.EventNames.Where(x=>x.eventname1.StartsWith(search) || search==null).ToList() .ToPagedList(page ?? 1, 3));
-           
+            return View(EventManagementEntities.EventNames.Where(x => x.eventname1.StartsWith(search) || search == null).ToList());
         }
+
+
 
 
         [Authorize(Roles = "Admin")]

@@ -96,15 +96,10 @@
 
 
 
-@*<form method="post" action="@Url.Action("Mailer","Cart")">
-        <h5>
-            <input type="hidden" id="hid" name="razorpayid" />
-            <button type="submit" class="btn btn-dark" id="buttons" name="buttons">Do You want a mail for this Order</button>
-        </h5>
-    </form>*@
 
 @using (Html.BeginForm("Mailer", "Cart", new { razorpayOrderId = Model.razorpayid }, FormMethod.Post, new { id = "sendEmailForm" }))
 {
+    @Html.AntiForgeryToken()
 @Html.Hidden("razorpayOrderId", Model.razorpayid)
 
 <h5>
@@ -114,13 +109,6 @@
 
 
 
-@*<script>
-    $("#buttons").ready(function () {
-        console.log("hi");
-        document.getElementById("hid").value =@(Model.razorpayid);
-      );
-    });
-</script>*@
 
 
 <style>

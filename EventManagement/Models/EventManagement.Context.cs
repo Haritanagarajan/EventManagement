@@ -27,7 +27,6 @@ namespace EventManagement.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<AddtoCart> AddtoCarts { get; set; }
         public virtual DbSet<caketable> caketables { get; set; }
         public virtual DbSet<decorationtable> decorationtables { get; set; }
         public virtual DbSet<EventName> EventNames { get; set; }

@@ -32,10 +32,13 @@ namespace EventManagement.Controllers
         }
 
         [Authorize(Roles = "User")]
-        public ActionResult Index1()
+        public ActionResult Index1(string search)
         {
+           
+
             List<caketable> caketable = EventManagementEntities.caketables.ToList();
-            return View(caketable);
+
+            return View(EventManagementEntities.caketables.Where(x=>x.cakesavailable.StartsWith(search)|| search == null).ToList());
         }
 
 

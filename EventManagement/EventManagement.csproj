@@ -191,9 +191,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AddtoCart.cs">
-      <DependentUpon>EventManagement.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Anniversary.cs">
       <DependentUpon>EventManagement.tt</DependentUpon>
     </Compile>
@@ -217,6 +214,7 @@
     <Compile Include="Models\decorationtable.cs">
       <DependentUpon>EventManagement.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\EmailModel.cs" />
     <Compile Include="Models\EventManagement.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -482,8 +480,8 @@
     <Content Include="Views\Feedback\Update.cshtml" />
     <Content Include="Views\Feedback\Delete.cshtml" />
     <Content Include="Views\Payment\PlaceOrder.cshtml" />
-    <Content Include="Views\Cart\PlaceOrder.cshtml" />
     <Content Include="Views\Cart\Recipt.cshtml" />
+    <Content Include="Views\Cart\MiddlePayment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -14,12 +14,6 @@ namespace EventManagement.Models
     
     public partial class babyshowertable
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public babyshowertable()
-        {
-            this.AddtoCarts = new HashSet<AddtoCart>();
-        }
-    
         public int id { get; set; }
         public Nullable<int> babyshoweruserid { get; set; }
         public Nullable<int> babyshowerid { get; set; }
@@ -34,8 +28,6 @@ namespace EventManagement.Models
         public Nullable<long> babyshowereventcost { get; set; }
         public bool babyshowerbeverages { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AddtoCart> AddtoCarts { get; set; }
         public virtual Usertable Usertable { get; set; }
         public virtual EventName EventName { get; set; }
         public virtual decorationtable decorationtable { get; set; }

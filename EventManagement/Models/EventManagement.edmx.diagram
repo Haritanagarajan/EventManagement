@@ -5,7 +5,6 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="ee6c785d75ea4e20a462979b28d536e0" Name="Diagram1" ZoomLevel="72">
-        <EntityTypeShape EntityType="EventManagement2Model.AddtoCart" Width="1.5" PointX="15.75" PointY="34.875" IsExpanded="true" />
         <EntityTypeShape EntityType="EventManagement2Model.caketable" Width="1.5" PointX="5.25" PointY="23.375" IsExpanded="true" />
         <EntityTypeShape EntityType="EventManagement2Model.decorationtable" Width="1.5" PointX="5.25" PointY="27.375" IsExpanded="true" />
         <EntityTypeShape EntityType="EventManagement2Model.EventName" Width="1.5" PointX="5.25" PointY="49.875" IsExpanded="true" />
@@ -16,7 +15,6 @@
         <AssociationConnector Association="EventManagement2Model.FK__EventName__event__6FB49575" ManuallyRouted="false" />
         <AssociationConnector Association="EventManagement2Model.FK__Usertable__TRole__6442E2C9" ManuallyRouted="false" />
         <EntityTypeShape EntityType="EventManagement2Model.birthdaytable" Width="1.5" PointX="7.5" PointY="28.5" />
-        <AssociationConnector Association="EventManagement2Model.FK__AddtoCart__cartb__7BB05806" />
         <AssociationConnector Association="EventManagement2Model.FK__birthdayt__bdayc__39E294A9" />
         <AssociationConnector Association="EventManagement2Model.FK__birthdayt__bdayd__37FA4C37" />
         <AssociationConnector Association="EventManagement2Model.FK__birthdayt__bdayi__370627FE" />
@@ -24,7 +22,6 @@
         <AssociationConnector Association="EventManagement2Model.FK__birthdayt__bdayt__38EE7070" />
         <AssociationConnector Association="EventManagement2Model.FK__birthdayt__bdayu__361203C5" />
         <EntityTypeShape EntityType="EventManagement2Model.Reunion" Width="1.5" PointX="10.5" PointY="28.25" />
-        <AssociationConnector Association="EventManagement2Model.FK__AddtoCart__cartr__00750D23" />
         <AssociationConnector Association="EventManagement2Model.FK__Reunion__reunion__6B79F03D" />
         <AssociationConnector Association="EventManagement2Model.FK__Reunion__reunion__6991A7CB" />
         <AssociationConnector Association="EventManagement2Model.FK__Reunion__reunion__689D8392" />
@@ -32,7 +29,6 @@
         <AssociationConnector Association="EventManagement2Model.FK__Reunion__reunion__67A95F59" />
         <AssociationConnector Association="EventManagement2Model.FK__Reunion__reunion__6A85CC04" />
         <EntityTypeShape EntityType="EventManagement2Model.Anniversary" Width="1.5" PointX="7.5" PointY="34.25" />
-        <AssociationConnector Association="EventManagement2Model.FK__AddtoCart__carta__7F80E8EA" />
         <AssociationConnector Association="EventManagement2Model.FK__Anniversa__annic__60083D91" />
         <AssociationConnector Association="EventManagement2Model.FK__Anniversa__annid__5E1FF51F" />
         <AssociationConnector Association="EventManagement2Model.FK__Anniversa__annii__5D2BD0E6" />
@@ -40,7 +36,6 @@
         <AssociationConnector Association="EventManagement2Model.FK__Anniversa__annit__5F141958" />
         <AssociationConnector Association="EventManagement2Model.FK__Anniversa__anniu__5C37ACAD" />
         <EntityTypeShape EntityType="EventManagement2Model.babyshowertable" Width="1.5" PointX="10.5" PointY="34.5" />
-        <AssociationConnector Association="EventManagement2Model.FK__AddtoCart__cartb__7CA47C3F" />
         <AssociationConnector Association="EventManagement2Model.FK__babyshowe__babys__3F9B6DFF" />
         <AssociationConnector Association="EventManagement2Model.FK__babyshowe__babys__408F9238" />
         <AssociationConnector Association="EventManagement2Model.FK__babyshowe__babys__4183B671" />
@@ -48,7 +43,6 @@
         <AssociationConnector Association="EventManagement2Model.FK__babyshowe__babys__436BFEE3" />
         <AssociationConnector Association="EventManagement2Model.FK__babyshowe__babys__4460231C" />
         <EntityTypeShape EntityType="EventManagement2Model.BachelorParty" Width="1.5" PointX="13.5" PointY="28.5" />
-        <AssociationConnector Association="EventManagement2Model.FK__AddtoCart__cartb__7D98A078" />
         <AssociationConnector Association="EventManagement2Model.FK__BachelorP__bache__4830B400" />
         <AssociationConnector Association="EventManagement2Model.FK__BachelorP__bache__4924D839" />
         <AssociationConnector Association="EventManagement2Model.FK__BachelorP__bache__4A18FC72" />
@@ -56,7 +50,6 @@
         <AssociationConnector Association="EventManagement2Model.FK__BachelorP__bache__4C0144E4" />
         <AssociationConnector Association="EventManagement2Model.FK__BachelorP__bache__4CF5691D" />
         <EntityTypeShape EntityType="EventManagement2Model.CocktailParty" Width="1.5" PointX="7.5" PointY="40.5" />
-        <AssociationConnector Association="EventManagement2Model.FK__AddtoCart__cartc__0169315C" />
         <AssociationConnector Association="EventManagement2Model.FK__CocktailP__cockc__76EBA2E9" />
         <AssociationConnector Association="EventManagement2Model.FK__CocktailP__cockd__75035A77" />
         <AssociationConnector Association="EventManagement2Model.FK__CocktailP__cocki__740F363E" />
@@ -64,7 +57,6 @@
         <AssociationConnector Association="EventManagement2Model.FK__CocktailP__cockt__75F77EB0" />
         <AssociationConnector Association="EventManagement2Model.FK__CocktailP__cocku__731B1205" />
         <EntityTypeShape EntityType="EventManagement2Model.Wedding" Width="1.5" PointX="13.5" PointY="34.25" />
-        <AssociationConnector Association="EventManagement2Model.FK__AddtoCart__cartw__7E8CC4B1" />
         <AssociationConnector Association="EventManagement2Model.FK__Wedding__wedding__54968AE5" />
         <AssociationConnector Association="EventManagement2Model.FK__Wedding__wedding__52AE4273" />
         <AssociationConnector Association="EventManagement2Model.FK__Wedding__wedding__51BA1E3A" />

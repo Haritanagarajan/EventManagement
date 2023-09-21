@@ -14,12 +14,6 @@ namespace EventManagement.Models
     
     public partial class CocktailParty
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CocktailParty()
-        {
-            this.AddtoCarts = new HashSet<AddtoCart>();
-        }
-    
         public int id { get; set; }
         public Nullable<int> cockuserid { get; set; }
         public Nullable<int> cockid { get; set; }
@@ -34,8 +28,6 @@ namespace EventManagement.Models
         public Nullable<long> cockeventcost { get; set; }
         public bool cockbeverages { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AddtoCart> AddtoCarts { get; set; }
         public virtual caketable caketable { get; set; }
         public virtual decorationtable decorationtable { get; set; }
         public virtual EventName EventName { get; set; }

@@ -24,6 +24,20 @@
 
 
 
+@*<script>
+    $(document).ready(function () {
+        console.log("hi");
+        document.getElementById("eventid").value =@( Model.birthdaytable.Select(x=>x.bdayid.)+
+                                      Model.babyshowertable.Sum(b => b.babyshowereventcost) +
+                                      Model.Anniversary.Sum(a => a.annieventcost) +
+                                      Model.BachelorParty.Sum(b => b.bacheloreventcost) +
+                                      Model.CocktailParty.Sum(c => c.cockeventcost) +
+                                      Model.Wedding.Sum(w => w.weddingeventcost) +
+                                      Model.Reunion.Sum(r => r.reunioneventcost));
+    });
+</script>*@
+
+
 
 
 <script>
@@ -325,6 +339,10 @@
                     <div class="mb-3">
                         <label for="amount" class="form-label">Booked Date and Time</label>
                         <input type="datetime" class="form-control" id="bookingdatetime" name="bookingdatetime" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="amount" class="form-label">Booked event id</label>
+                        <input type="text" class="form-control" id="eventid" name="eventid" readonly>
                     </div>
                     <button type="submit" class="btn btn-dark" id="payButton">Pay Now</button>
                 </form>

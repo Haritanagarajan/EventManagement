@@ -14,12 +14,6 @@ namespace EventManagement.Models
     
     public partial class Reunion
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Reunion()
-        {
-            this.AddtoCarts = new HashSet<AddtoCart>();
-        }
-    
         public int id { get; set; }
         public Nullable<int> reunionuserid { get; set; }
         public Nullable<int> reunionid { get; set; }
@@ -37,8 +31,6 @@ namespace EventManagement.Models
         public bool reunionStyling { get; set; }
         public bool reunionHospitality { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AddtoCart> AddtoCarts { get; set; }
         public virtual caketable caketable { get; set; }
         public virtual decorationtable decorationtable { get; set; }
         public virtual EventName EventName { get; set; }

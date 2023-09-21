@@ -14,12 +14,6 @@ namespace EventManagement.Models
     
     public partial class birthdaytable
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public birthdaytable()
-        {
-            this.AddtoCarts = new HashSet<AddtoCart>();
-        }
-    
         public int id { get; set; }
         public Nullable<int> bdayuserid { get; set; }
         public Nullable<int> bdayid { get; set; }
@@ -34,8 +28,6 @@ namespace EventManagement.Models
         public Nullable<long> bdayeventcost { get; set; }
         public bool bdaybeverages { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AddtoCart> AddtoCarts { get; set; }
         public virtual caketable caketable { get; set; }
         public virtual decorationtable decorationtable { get; set; }
         public virtual EventName EventName { get; set; }

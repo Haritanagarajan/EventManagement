@@ -112,6 +112,8 @@ namespace EventManagement.Controllers
                     }
                     Response.Cookies.Add(cookie);
                     Session["UserId"] = roleUser.TUserid.Value;
+                    Usertable userDetails = EventManagementEntities.Usertables.Where(u=>u.TUserid==roleUser.TUserid.Value).FirstOrDefault();
+                    Session["UserEmail"] = userDetails.TEmail;
                     return RedirectToAction("EventsName","Events");
             }
 

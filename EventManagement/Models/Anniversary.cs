@@ -14,12 +14,6 @@ namespace EventManagement.Models
     
     public partial class Anniversary
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Anniversary()
-        {
-            this.AddtoCarts = new HashSet<AddtoCart>();
-        }
-    
         public int id { get; set; }
         public Nullable<int> anniuserid { get; set; }
         public Nullable<int> anniid { get; set; }
@@ -37,8 +31,6 @@ namespace EventManagement.Models
         public bool anniStyling { get; set; }
         public bool anniHospitality { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AddtoCart> AddtoCarts { get; set; }
         public virtual caketable caketable { get; set; }
         public virtual decorationtable decorationtable { get; set; }
         public virtual EventName EventName { get; set; }
