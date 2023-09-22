@@ -31,6 +31,14 @@ namespace EventManagement
             //css  
             bundles.Add(new StyleBundle("~/Content/cssjqryUi").Include(
                    "~/Content/jquery-ui.css"));
+
+
+
+            bundles.Add(new ScriptBundle("~/bundles/Gridmvc").Include("~/Scripts/gridmvc*"));
+
+            bundles.Add(new StyleBundle("~/Content/Gridmvc").Include("~/Content/Gridmvc.css"));
+
+
         }
     }
 }

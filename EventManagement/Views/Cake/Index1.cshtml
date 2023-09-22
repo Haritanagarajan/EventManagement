@@ -1,19 +1,25 @@
 ﻿@model IEnumerable<EventManagement.Models.caketable>
-
+@using GridMvc.Html
 @{
     ViewBag.Title = "Index1";
 }
 
 
+
+
+
+
+
 @*<div class="container-fluid">
-    <div class="row">
-        <div class="section-2 p-0">
-            <video playsinline autoplay muted loop poster="" id="home-bg-video" width="100%" height="600vh">
-                <source src="~/Assets/pexels-vlada-karpovich-7150167 (2160p).mp4" type="video/mp4">
-            </video>
+        <div class="row">
+            <div class="section-2 p-0">
+                <video playsinline autoplay muted loop poster="" id="home-bg-video" width="100%" height="600vh">
+                    <source src="~/Assets/pexels-vlada-karpovich-7150167 (2160p).mp4" type="video/mp4">
+                </video>
+            </div>
         </div>
-    </div>
-</div>*@
+    </div>*@
+
 
 <div class="container-fluid text-center mb-n5">
     <div class="row">
@@ -23,6 +29,20 @@
         </div>
     </div>
 </div>
+
+<div class="row">
+    <div class="col md-12">
+        @Html.Grid(Model).Named("CakeGrid").Columns(c =>
+   {
+       c.Add(x => x.cakeid).Titled("Cake id").Filterable(true).Sortable(true);
+       c.Add(x => x.cakesavailable).Titled("Cake name").Filterable(true).Sortable(true);
+       c.Add(x => x.cakeimage).Titled("Cake image").Filterable(true).Sortable(true);
+
+
+   }).WithPaging(3).EmptyText("No data found")
+    </div>
+</div>
+
 
 <div class="container mt-5 main">
     <div class="row">

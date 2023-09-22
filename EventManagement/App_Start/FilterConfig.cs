@@ -1,5 +1,8 @@
-﻿using System.Web;
+﻿using EventManagement.Utility;
+using System.Web;
 using System.Web.Mvc;
+using static EventManagement.MvcApplication;
+using static EventManagement.Utility.CustomException;
 
 namespace EventManagement
 {
@@ -8,6 +11,9 @@ namespace EventManagement
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+
+            //filters.Add(new MyFilter());
+
         }
     }
 }

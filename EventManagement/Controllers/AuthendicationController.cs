@@ -9,7 +9,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-
+using CaptchaMvc.HtmlHelpers;
 
 
 namespace EventManagement.Controllers
@@ -54,6 +54,13 @@ namespace EventManagement.Controllers
             if (ModelState.IsValid)
             {
 
+
+                if (!this.IsCaptchaValid("Captcha is not valid"))
+                {
+                    ViewBag.ErrorMessage = "Error : Captcha code is not Valid";
+                    return View("Register");
+                }
+
                 byte[] profile;
 
                 using (var reader = new BinaryReader(TProfile.InputStream))
@@ -82,6 +89,10 @@ namespace EventManagement.Controllers
                 EventManagementEntities.SaveChanges();
                 return RedirectToAction("Login");
             }
+
+
+            
+
             return View(user);
         }
 
@@ -114,6 +125,7 @@ namespace EventManagement.Controllers
                     Session["UserId"] = roleUser.TUserid.Value;
                     Usertable userDetails = EventManagementEntities.Usertables.Where(u=>u.TUserid==roleUser.TUserid.Value).FirstOrDefault();
                     Session["UserEmail"] = userDetails.TEmail;
+                    Session["UserContact"] = userDetails.TMobile;
                     return RedirectToAction("EventsName","Events");
             }
 

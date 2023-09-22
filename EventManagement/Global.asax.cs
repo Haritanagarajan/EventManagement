@@ -40,6 +40,19 @@ namespace EventManagement
         }
 
 
+        public class MyFilter : HandleErrorAttribute
+        {
+            public override void OnException(ExceptionContext filterContext)
+            {
+                Exception e = filterContext.Exception;
+                filterContext.ExceptionHandled = true;
+                filterContext.Result = new ViewResult()
+                {
+                    ViewName = "FilterView"
+                };
+            }
+        }
+
 
     }
 }

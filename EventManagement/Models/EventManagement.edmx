@@ -144,7 +144,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="userid" Type="int" />
           <Property Name="username" Type="varchar" MaxLength="60" />
-          <Property Name="usercontact" Type="varchar" MaxLength="30" />
+          <Property Name="usercontact" Type="bigint" />
           <Property Name="usermail" Type="varchar" MaxLength="30" />
           <Property Name="razorpayid" Type="varchar" MaxLength="60" />
           <Property Name="bookingdatetime" Type="datetime" />
@@ -210,7 +210,7 @@
           <Property Name="TUsername" Type="varchar" MaxLength="40" />
           <Property Name="TEmail" Type="varchar" MaxLength="40" />
           <Property Name="TPassword" Type="varchar" MaxLength="200" />
-          <Property Name="TConfirmPassword" Type="varchar" MaxLength="40" />
+          <Property Name="TConfirmPassword" Type="varchar" MaxLength="200" />
           <Property Name="TMobile" Type="bigint" />
           <Property Name="TGender" Type="nvarchar" MaxLength="20" />
           <Property Name="TAge" Type="int" />
@@ -612,7 +612,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__FinalPaym__useri__3C89F72A">
+        <Association Name="FK__FinalPaym__useri__73DA2C14">
           <End Role="Usertable" Type="Self.Usertable" Multiplicity="0..1" />
           <End Role="FinalPaymentReceived" Type="Self.FinalPaymentReceived" Multiplicity="*" />
           <ReferentialConstraint>
@@ -925,7 +925,7 @@
             <End Role="Usertable" EntitySet="Usertable" />
             <End Role="EventNames" EntitySet="EventNames" />
           </AssociationSet>
-          <AssociationSet Name="FK__FinalPaym__useri__3C89F72A" Association="Self.FK__FinalPaym__useri__3C89F72A">
+          <AssociationSet Name="FK__FinalPaym__useri__73DA2C14" Association="Self.FK__FinalPaym__useri__73DA2C14">
             <End Role="Usertable" EntitySet="Usertable" />
             <End Role="FinalPaymentReceived" EntitySet="FinalPaymentReceived" />
           </AssociationSet>
@@ -1086,7 +1086,7 @@
           <Property Name="TUsername" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
           <Property Name="TEmail" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
           <Property Name="TPassword" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="TConfirmPassword" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="TConfirmPassword" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="TMobile" Type="Int64" />
           <Property Name="TGender" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="TAge" Type="Int32" />
@@ -1103,7 +1103,7 @@
           <NavigationProperty Name="BachelorParties" Relationship="EventManagement2Model.FK__BachelorP__bache__4830B400" FromRole="Usertable" ToRole="BachelorParty" />
           <NavigationProperty Name="CocktailParties" Relationship="EventManagement2Model.FK__CocktailP__cocku__731B1205" FromRole="Usertable" ToRole="CocktailParty" />
           <NavigationProperty Name="Weddings" Relationship="EventManagement2Model.FK__Wedding__wedding__50C5FA01" FromRole="Usertable" ToRole="Wedding" />
-          <NavigationProperty Name="FinalPaymentReceiveds" Relationship="EventManagement2Model.FK__FinalPaym__useri__3C89F72A" FromRole="Usertable" ToRole="FinalPaymentReceived" />
+          <NavigationProperty Name="FinalPaymentReceiveds" Relationship="EventManagement2Model.FK__FinalPaym__useri__73DA2C14" FromRole="Usertable" ToRole="FinalPaymentReceived" />
         </EntityType>
         <Association Name="FK__EventName__event__6FB49575">
           <End Role="Usertable" Type="Self.Usertable" Multiplicity="0..1" />
@@ -1324,12 +1324,12 @@
             <End Role="Usertable" EntitySet="Usertables" />
             <End Role="Wedding" EntitySet="Weddings" />
           </AssociationSet>
+          <EntitySet Name="feedbacktables" EntityType="EventManagement2Model.feedbacktable" />
           <EntitySet Name="FinalPaymentReceiveds" EntityType="EventManagement2Model.FinalPaymentReceived" />
-          <AssociationSet Name="FK__FinalPaym__useri__3C89F72A" Association="EventManagement2Model.FK__FinalPaym__useri__3C89F72A">
+          <AssociationSet Name="FK__FinalPaym__useri__73DA2C14" Association="EventManagement2Model.FK__FinalPaym__useri__73DA2C14">
             <End Role="Usertable" EntitySet="Usertables" />
             <End Role="FinalPaymentReceived" EntitySet="FinalPaymentReceiveds" />
           </AssociationSet>
-          <EntitySet Name="feedbacktables" EntityType="EventManagement2Model.feedbacktable" />
           </EntityContainer>
         <ComplexType Name="Validate_User_Result">
           <Property Type="Int32" Name="TUserid" Nullable="true" />
@@ -2016,36 +2016,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="FinalPaymentReceived">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="userid" Type="Int32" />
-          <Property Name="username" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
-          <Property Name="usercontact" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="usermail" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="razorpayid" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
-          <Property Name="bookingdatetime" Type="DateTime" Precision="3" />
-          <Property Name="paymentdatetime" Type="DateTime" Precision="3" />
-          <Property Name="totalcost" Type="Int32" />
-          <Property Name="partialamount" Type="Int32" />
-          <Property Name="eventid" Type="Int32" />
-          <Property Name="ispaid" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Usertable" Relationship="EventManagement2Model.FK__FinalPaym__useri__3C89F72A" FromRole="FinalPaymentReceived" ToRole="Usertable" />
-        </EntityType>
-        <Association Name="FK__FinalPaym__useri__3C89F72A">
-          <End Type="EventManagement2Model.Usertable" Role="Usertable" Multiplicity="0..1" />
-          <End Type="EventManagement2Model.FinalPaymentReceived" Role="FinalPaymentReceived" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usertable">
-              <PropertyRef Name="TUserid" />
-            </Principal>
-            <Dependent Role="FinalPaymentReceived">
-              <PropertyRef Name="userid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="feedbacktable">
           <Key>
             <PropertyRef Name="id" />
@@ -2057,6 +2027,36 @@
           <Property Name="UserName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
           <Property Name="Useremail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="FinalPaymentReceived">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userid" Type="Int32" />
+          <Property Name="username" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="usercontact" Type="Int64" />
+          <Property Name="usermail" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="razorpayid" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="bookingdatetime" Type="DateTime" Precision="3" />
+          <Property Name="paymentdatetime" Type="DateTime" Precision="3" />
+          <Property Name="totalcost" Type="Int32" />
+          <Property Name="partialamount" Type="Int32" />
+          <Property Name="eventid" Type="Int32" />
+          <Property Name="ispaid" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Usertable" Relationship="EventManagement2Model.FK__FinalPaym__useri__73DA2C14" FromRole="FinalPaymentReceived" ToRole="Usertable" />
+        </EntityType>
+        <Association Name="FK__FinalPaym__useri__73DA2C14">
+          <End Type="EventManagement2Model.Usertable" Role="Usertable" Multiplicity="0..1" />
+          <End Type="EventManagement2Model.FinalPaymentReceived" Role="FinalPaymentReceived" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usertable">
+              <PropertyRef Name="TUserid" />
+            </Principal>
+            <Dependent Role="FinalPaymentReceived">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2292,6 +2292,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="feedbacktables">
+            <EntityTypeMapping TypeName="EventManagement2Model.feedbacktable">
+              <MappingFragment StoreEntitySet="feedbacktable">
+                <ScalarProperty Name="Useremail" ColumnName="Useremail" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="Experiencetype" ColumnName="Experiencetype" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="FinalPaymentReceiveds">
             <EntityTypeMapping TypeName="EventManagement2Model.FinalPaymentReceived">
               <MappingFragment StoreEntitySet="FinalPaymentReceived">
@@ -2306,18 +2318,6 @@
                 <ScalarProperty Name="usercontact" ColumnName="usercontact" />
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="userid" ColumnName="userid" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="feedbacktables">
-            <EntityTypeMapping TypeName="EventManagement2Model.feedbacktable">
-              <MappingFragment StoreEntitySet="feedbacktable">
-                <ScalarProperty Name="Useremail" ColumnName="Useremail" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="Comments" ColumnName="Comments" />
-                <ScalarProperty Name="Experiencetype" ColumnName="Experiencetype" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

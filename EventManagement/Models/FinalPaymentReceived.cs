@@ -17,7 +17,7 @@ namespace EventManagement.Models
         public int id { get; set; }
         public Nullable<int> userid { get; set; }
         public string username { get; set; }
-        public string usercontact { get; set; }
+        public Nullable<long> usercontact { get; set; }
         public string usermail { get; set; }
         public string razorpayid { get; set; }
         public Nullable<System.DateTime> bookingdatetime { get; set; }

@@ -13,6 +13,11 @@ using Newtonsoft.Json;
 using System.Reflection;
 using EventManagement.Models;
 using EventManagement.Models.DAL;
+using System.IO;
+using static EventManagement.MvcApplication;
+
+
+using EventManagement.Utility;
 
 namespace EventManagement.Controllers
 {
@@ -49,7 +54,9 @@ namespace EventManagement.Controllers
         {
             this._employeeRepository = new FeedBackRepo(new EventManagement2Entities2());
         }
-       
+
+
+        [MyFilter]
         public ActionResult Details(int id)
         {
             return View(_employeeRepository.GetEmployeeById(id));
@@ -75,6 +82,7 @@ namespace EventManagement.Controllers
         }
         public ActionResult Update(int Id)
         {
+
             return View(_employeeRepository.GetEmployeeById(Id));
         }
         [HttpPost]
@@ -94,6 +102,33 @@ namespace EventManagement.Controllers
             _employeeRepository.SaveChanges();
             return RedirectToAction("Index");
         }
-    }
 
+
+
+        public ActionResult Sample(int? num)
+        {
+            try
+            {
+                if (num < 0)
+                {
+                    return Content("num value is:" + num);
+                }
+                else
+                {
+                    throw new CustomException();
+                }
+            }
+            catch (CustomException ex)
+            {
+                return Content("Custom Exception: " + ex.Message);
+            }
+        }
+
+
+    }
 }
+
+
+
+
+

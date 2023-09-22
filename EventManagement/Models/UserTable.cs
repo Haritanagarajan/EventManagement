@@ -11,7 +11,8 @@ namespace EventManagement.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Usertable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -36,6 +37,8 @@ namespace EventManagement.Models
         public Nullable<long> TMobile { get; set; }
         public string TGender { get; set; }
         public Nullable<int> TAge { get; set; }
+
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> TDob { get; set; }
         public Nullable<System.DateTime> LastLoginDate { get; set; }
         public byte[] TProfile { get; set; }

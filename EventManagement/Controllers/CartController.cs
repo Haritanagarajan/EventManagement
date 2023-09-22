@@ -48,11 +48,11 @@ namespace EventManagement.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult PlaceOrder(int halfAmount, int PartialAmount, DateTime bookingdatetime,int eventid)
+        public ActionResult PlaceOrder(int halfAmount, int PartialAmount, DateTime bookingdatetime)
         {
             int? userId = Session["UserId"] as int?;
-            //int? eventId = Session["eventid"] as int?;
-            string usermobile = Session["UserMobile"] as string;
+            int? eventId = Session["eventid"] as int?;
+            long? usermobile = Session["UserContact"] as long?;
             string useremail = Session["UserEmail"] as string;
 
             //Console.WriteLine(useremail);
@@ -83,7 +83,7 @@ namespace EventManagement.Controllers
                 bookingdatetime = bookingdatetime,
                 partialamount = PartialAmount,
                 totalcost = halfAmount,
-                eventid = eventid,
+                eventid = eventId,
                 username = User.Identity.Name,
                 usercontact = usermobile,
                 usermail = useremail
@@ -93,7 +93,7 @@ namespace EventManagement.Controllers
             TempData["razorpayid"] = razorpayOrderId;
             TempData["totalcost"] = halfAmount;
             TempData["partialamount"] = PartialAmount;
-            TempData["eventid"] = eventid;
+            TempData["eventid"] = eventId;
             TempData["bookdatetime"] = bookingdatetime;
 
 
@@ -115,7 +115,7 @@ namespace EventManagement.Controllers
             DateTime? bookingdatetime = TempData["bookdatetime"] as DateTime?;
 
             int? eventId = Session["eventid"] as int?;
-            string usermobile = Session["UserMobile"] as string;
+            long? usermobile = Session["UserContact"] as long?;
             string useremail = Session["UserEmail"] as string;
 
 
@@ -154,7 +154,6 @@ namespace EventManagement.Controllers
                 order.usermail = useremail;
                 order.ispaid = true;
 
-                RemoveCartDetails(order.userid);
                 EventManagementEntities.FinalPaymentReceiveds.Add(order);
                 EventManagementEntities.SaveChanges();
             }
@@ -177,33 +176,7 @@ namespace EventManagement.Controllers
         }
 
 
-        public ActionResult RemoveCartDetails(int? id)
-        {
-            var baby = EventManagementEntities.babyshowertables.Where(x=>x.babyshoweruserid == id).FirstOrDefault();
-            var bday = EventManagementEntities.birthdaytables.Where(x => x.bdayuserid == id).FirstOrDefault();
-            var reunion = EventManagementEntities.Reunions.Where(x => x.reunionuserid == id).FirstOrDefault();
-            var bachelor = EventManagementEntities.BachelorParties.Where(x => x.bacheloruserid == id).FirstOrDefault();
-            var wedding = EventManagementEntities.Weddings.Where(x => x.weddinguserid == id).FirstOrDefault();
-            var anni = EventManagementEntities.Anniversaries.Where(x => x.anniuserid == id).FirstOrDefault();
-            var cock = EventManagementEntities.CocktailParties.Where(x => x.cockuserid == id).FirstOrDefault();
-
-
-            if (baby != null || bday != null || reunion != null || bachelor != null || wedding != null || anni != null || cock != null)
-            {
-                EventManagementEntities.babyshowertables.Remove(baby);
-                EventManagementEntities.birthdaytables.Remove(bday);
-                EventManagementEntities.Reunions.Remove(reunion);
-                EventManagementEntities.BachelorParties.Remove(bachelor);
-                EventManagementEntities.Weddings.Remove(wedding);
-                EventManagementEntities.Anniversaries.Remove(anni);
-                EventManagementEntities.CocktailParties.Remove(cock);
-                EventManagementEntities.SaveChanges();
-
-            }
-
-
-            return View();
-        }
+       
 
 
         [HttpPost]
