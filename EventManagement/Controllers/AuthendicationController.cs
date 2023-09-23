@@ -61,32 +61,40 @@ namespace EventManagement.Controllers
                     return View("Register");
                 }
 
-                byte[] profile;
-
-                using (var reader = new BinaryReader(TProfile.InputStream))
+                if(TProfile != null)
                 {
-                    profile = reader.ReadBytes(TProfile.ContentLength);
+
+                    ViewBag.ErrorMessage = "Error : Profile is required";
+
+                    byte[] profile;
+
+
+                    using (var reader = new BinaryReader(TProfile.InputStream))
+                    {
+                        profile = reader.ReadBytes(TProfile.ContentLength);
+                    }
+                    user.TProfile = profile;
+
+                    int lastUserId = EventManagementEntities.Usertables.Max(u => u.TUserid);
+
+                    user.TUserid = lastUserId + 1;
+
+                    DateTime actuallogindate = DateTime.Now;
+
+                    user.LastLoginDate = actuallogindate;
+
+                    int roleid = 2;
+
+                    user.TRoleid = roleid;
+
+                    Session["UserMobile"] = user.TMobile.Value;
+                    Session["UserEmail"] = user.TEmail;
+
+
+                    EventManagementEntities.Usertables.Add(user);
+                    EventManagementEntities.SaveChanges();
                 }
-                user.TProfile = profile;
-
-                int lastUserId = EventManagementEntities.Usertables.Max(u => u.TUserid);
-
-                user.TUserid = lastUserId + 1;
-
-                DateTime actuallogindate = DateTime.Now;
-
-                user.LastLoginDate = actuallogindate;
-
-                int roleid = 2;
-
-                user.TRoleid = roleid;
-
-                Session["UserMobile"] = user.TMobile.Value;
-                Session["UserEmail"] = user.TEmail;
-
-
-                EventManagementEntities.Usertables.Add(user);
-                EventManagementEntities.SaveChanges();
+               
                 return RedirectToAction("Login");
             }
 

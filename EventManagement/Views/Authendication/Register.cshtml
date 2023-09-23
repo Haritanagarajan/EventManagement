@@ -12,7 +12,7 @@
 <script src="https://kit.fontawesome.com/91232b44e6.js" crossorigin="anonymous"></script>
 
 <div class="row" id="main-row">
-    <div class="col-4">
+    <div class="col-md-4">
         <div class="main-w3l maindiv">
             <div class="w3layouts-main text-center">
                 <h2>Register Now</h2>
@@ -23,42 +23,42 @@
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <div class="form-group">
                         <div class="col-md-10">
-                            <i class="fa-solid fa-user-secret"></i> @Html.EditorFor(model => model.TUsername, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your Username" } })
+                            @Html.EditorFor(model => model.TUsername, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your Username" } })
                             @Html.ValidationMessageFor(model => model.TUsername, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-md-10">
-                            <i class="fa-solid fa-envelope"></i>@Html.EditorFor(model => model.TEmail, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your Email" } })
+                            @Html.EditorFor(model => model.TEmail, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your Email" } })
                             @Html.ValidationMessageFor(model => model.TEmail, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-md-10">
-                            <i class="fa-solid fa-lock"></i>@Html.EditorFor(model => model.TPassword, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your Password", @type = "password" } })
+                            @Html.EditorFor(model => model.TPassword, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your Password", @type = "password" } })
                             @Html.ValidationMessageFor(model => model.TPassword, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-md-10">
-                            <i class="fa-solid fa-check-double"></i>@Html.EditorFor(model => model.TConfirmPassword, new { htmlAttributes = new { @class = "form-control", @placeholder = "Confirm your password", @type = "password" } })
+                            @Html.EditorFor(model => model.TConfirmPassword, new { htmlAttributes = new { @class = "form-control", @placeholder = "Confirm your password", @type = "password" } })
                             @Html.ValidationMessageFor(model => model.TConfirmPassword, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group ">
                         <div class="col-md-10">
-                            <i class="fa-solid fa-mobile"></i>@Html.EditorFor(model => model.TMobile, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your Mobile no ", @type = "text" } })
+                            @Html.EditorFor(model => model.TMobile, new { htmlAttributes = new { @class = "form-control ", @placeholder = "Enter your Mobile no ", @type = "text" } })
                             @Html.ValidationMessageFor(model => model.TMobile, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
 
-                    <div class="form-group">
-                        <div class="col-md-10">
+                    <div class="form-group pt-5">
+                        <div class="col-md-10 ">
                             <label class="radio-inline">
                                 @Html.RadioButtonFor(model => model.TGender, "Female") Female
                             </label>
@@ -75,28 +75,28 @@
 
                     <div class="form-group">
                         <div class="col-md-10">
-                            <i class="fa-solid fa-arrow-up-9-1"></i> @Html.EditorFor(model => model.TAge, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your Age" } })
+                            @Html.EditorFor(model => model.TAge, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your Age" } })
                             @Html.ValidationMessageFor(model => model.TAge, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-10">
-                            <i class="fa-solid fa-person-half-dress"></i>@Html.EditorFor(model => model.TDob, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your Birthdate" } })
+                            @Html.EditorFor(model => model.TDob, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your Birthdate" } })
                             @Html.ValidationMessageFor(model => model.TDob, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-10" id="TProfile">
-                            <i class="fa-solid fa-image"></i><input type="file" name="TProfile" id="image" class="form-control" />
+                            <input type="file" name="TProfile" id="image" class="form-control" />
                             @Html.ValidationMessageFor(model => model.TProfile, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
 
                     <div class="form-group">
-                        @Html.Label("Security Code:", new { @class = "col md-2 control label" })
+                        @Html.Label("Security Code:", new { @class = "col md-2 control label security" })
                         <div class="col-md-10">
-                            @Html.Captcha("Refresh", "Enter the code you see above", 5, "Is required field")
+                            @Html.Captcha("Refresh", "Enter the code you see above", 9, "Is required field")
                             <br />
                             <p class="text-danger">@ViewBag.ErrorMessage</p>
                         </div>
@@ -104,10 +104,7 @@
 
 
 
-
-
-
-                    @Html.ActionLink("Have an Account ? Login", "Login", "Authendication", new { @style = "color:black;text-decoration:none;font-size:13px" })
+                    @Html.ActionLink("Have an Account ? Login", "Login", "Authendication", new { @style = "color:black;text-decoration:none;font-size:15px" })
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10" id="buttons">
                             <button type="submit" value="Create" class="custom-btn btn-2">Connect</button>
@@ -132,19 +129,26 @@
 
 <style>
     body {
-        background-image: url(/Assets/login.jpg);
+        background-image: url(/Assets/roses.jpg);
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
     }
+    .field-validation-error {
+        color: red;
+    }
+    .security {
+        font-weight: bold;
+    }
 
     .maindiv {
-        backdrop-filter: blur(6px);
         width: fit-content;
+        -webkit-backdrop-filter: blur(8px);
+        backdrop-filter: blur(8px);
+        box-shadow: inset 0 0 0 200px rgba(255,255,255,0.08);
         margin-left: auto;
         margin-right: auto;
-        padding: 2em 3em;
-        text-align: center;
+       text-align: center;
     }
 
     #buttons {
@@ -156,17 +160,18 @@
     }
 
     .form-control::placeholder {
-        color: #d9d9d9;
+        color: deeppink;
     }
 
     .form-control {
-        padding: 1em 0;
+        padding: 1.5em 0;
         background-color: transparent;
         border-top: none;
         border-right: none;
         border-left: none;
         border-bottom-color: black;
         outline: none;
+        width: 130%;
     }
 
     .custom-btn {
@@ -201,7 +206,6 @@
         }
 
     #TProfife {
-        color: black;
         margin-top: 20px;
         height: 45px;
         justify-content: center;
@@ -210,6 +214,6 @@
 
     #image {
         padding-left: 10px;
-        color: white;
+        color: deeppink;
     }
 </style>

@@ -1,70 +1,273 @@
 ﻿@model EventManagement.Models.feedbacktable
 
-@using (Html.BeginForm()) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-    <h4>feedbacktable</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-    @Html.HiddenFor(model => model.id)
+    @*<div class="form-horizontal">
+        <h4>feedbacktable</h4>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
- 
+        @Html.HiddenFor(model => model.id)
 
 
-
-    @*<div class="form-group">
-            @Html.LabelFor(model => model.UserId, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Experiencetype, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.UserId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.UserId, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Experiencetype, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Experiencetype, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Comments, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Comments, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Useremail, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Useremail, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Useremail, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        @*<div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>*@
 
 
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Experiencetype, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Experiencetype, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Experiencetype, "", new { @class = "text-danger" })
-        </div>
+    <div>
+        @Html.ActionLink("Back to List", "Index")
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Comments, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Comments, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "text-danger" })
-        </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
-        </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Useremail, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Useremail, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Useremail, "", new { @class = "text-danger" })
-        </div>
-    </div>
+    <div class="content">
+        <div class="container feedcontainer">
+            <div class="head">
+                <div class="heading">
+                    <h1>Share your experience</h1>
+                </div>
+                <div class="close">
+                    <div class="s s1"></div>
+                    <div class="s s2"></div>
+                </div>
+            </div>
+            <div class="mid">
+                <div class="media"><img src="https://cdn-icons-png.flaticon.com/128/3260/3260838.png" alt="angry" id="images"></div>
+                <div class="media"><img src="https://cdn-icons-png.flaticon.com/128/42/42901.png" alt="moderate" id="images"></div>
+                <div class="media"><img src="https://cdn-icons-png.flaticon.com/128/3260/3260877.png" alt="neutral" id="images" /></div>
+                <div class="media"><img src="https://cdn-icons-png.flaticon.com/128/569/569501.png" alt="smile" class="active" id="images"></div>
+                <div class="media"><img src="https://cdn-icons-png.flaticon.com/128/1356/1356639.png" alt="happy" id="images"></div>
+            </div>
+            <div class="textarea">
+                <p>Share your experience</p>
+                <textarea name="Comments" id="exp" placeholder="Let we know..."></textarea>
+            </div>
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
+            <div class="forms">
+                <p>Your Good name please..</p>
+                <input name="UserName" id="exp" placeholder="Let we know..." type="text" />
+            </div>
+
+          
+
+
+            <div class="forms">
+                <p class="">Experience Type</p>
+                <input class="" name="Experiencetype" placeholder="Good/Bad/Excellent" />
+            </div>
+
+            <div class="forms">
+                <p class="">email id</p>
+                <input class="" name="Useremail" placeholder="your email id" />
+            </div>
+
             <input type="submit" value="Create" class="btn btn-default" />
+
+
         </div>
     </div>
-</div>
+
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+<style>
+
+    .content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: gold;
+        width: 100%;
+        min-height: 100vh;
+    }
+
+    .feedcontainer {
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        width: 350px;
+        height: 90vh;
+        justify-content: space-evenly;
+        border-radius: 10px;
+        box-shadow: 0 0 10px 10px rgba(0,0,0,0.2);
+    }
+   
+    .mid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+
+    .head, .mid, .textarea, .end {
+        padding: 15px;
+    }
+
+    #images {
+        height: 50px;
+        width: 50px;
+        cursor: pointer;
+        background-color: rgba(233, 212, 97, 0.507);
+        border-radius: 50%;
+        transition: 0.1s linear;
+    }
+
+        #images:hover {
+            background-color: gold;
+            transform: scale(1.2);
+        }
+
+    .active {
+        background-color: gold;
+        transform: scale(1.2);
+    }
+
+    .head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .heading {
+        width: 70%;
+    }
+
+        .heading h1 {
+            font-size: 25px;
+            border-bottom: 8px solid gold;
+            font-weight: bolder;
+        }
+
+    .close {
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+        transition: 0.1s linear;
+        padding: 0 10px;
+    }
+
+        .close:hover {
+            transform: scale(1.2);
+        }
+
+    .s {
+        width: 1.5px;
+        height: 20px;
+        background-color: black;
+        border-radius: 100px;
+    }
+
+    .s1 {
+        transform: translateX(1.5px) rotate(45deg);
+    }
+
+    .s2 {
+        transform: rotate(-45deg);
+    }
+
+    .textarea {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+        .textarea p {
+            font-size: 18px;
+        }
+
+    textarea {
+        outline: none;
+        resize: none;
+        height: 100px;
+        border: 1.5px solid black;
+        border-radius: 10px;
+        padding: 5px;
+    }
+
+    .end {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .buttons {
+        width: 150px;
+        height: 35px;
+        border: 1px solid black;
+        cursor: pointer;
+        background-color: transparent;
+        font-size: 15px;
+    }
+
+    .sub {
+        background: gold;
+        border: 1px solid transparent;
+        transition: 0.1s linear;
+    }
+
+    .skp {
+        transition: 0.1s linear;
+        border: 1px solid black;
+    }
+
+        .skp:hover {
+            background-color: black;
+            color: white;
+        }
+
+    .sub:hover {
+        background-color: black;
+        border: 1px solid black;
+        color: white;
+    }
+
+    
+</style>

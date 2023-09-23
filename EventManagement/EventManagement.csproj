@@ -271,16 +271,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\CustomException.cs" />
     <Compile Include="ViewModel\CartViewModel.cs" />
-    <Content Include="Content\Gridmvc.css" />
-    <Content Include="Grid.mvc.readme" />
-    <None Include="Views\Shared\FilterView.cshtml" />
-    <Content Include="Scripts\gridmvc.js" />
-    <Content Include="Scripts\gridmvc.lang.ru.js" />
-    <Content Include="Scripts\gridmvc.min.js" />
-    <Content Include="Views\Shared\_GridPager.cshtml" />
-    <Content Include="Views\Shared\_Grid.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Assets\1cM.gif" />
     <Content Include="Assets\avatar %282%29.png" />
     <Content Include="Assets\avatar-removebg-preview.rar" />
@@ -295,10 +285,26 @@
     <Content Include="Assets\ezgif.com-crop.gif" />
     <Content Include="Assets\lo.jpg" />
     <Content Include="Assets\log.webp" />
-    <Content Include="Assets\login.jpg" />
     <Content Include="Assets\logo-eventpulse-removebg-preview %281%29.png" />
     <Content Include="Assets\P.gif" />
     <Content Include="Assets\pexels-vlada-karpovich-7150167 %282160p%29.mp4" />
+    <Content Include="Assets\roses.jpg" />
+    <Content Include="Content\Gridmvc.css" />
+    <Content Include="Content\toastr.css" />
+    <Content Include="Content\toastr.min.css" />
+    <Content Include="Grid.mvc.readme" />
+    <Content Include="Content\toastr.scss" />
+    <Content Include="Content\toastr.less" />
+    <None Include="Views\Shared\FilterView.cshtml" />
+    <Content Include="Scripts\gridmvc.js" />
+    <Content Include="Scripts\gridmvc.lang.ru.js" />
+    <Content Include="Scripts\gridmvc.min.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
+    <Content Include="Views\Shared\_GridPager.cshtml" />
+    <Content Include="Views\Shared\_Grid.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />

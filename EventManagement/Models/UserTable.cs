@@ -28,22 +28,60 @@ namespace EventManagement.Models
             this.Weddings = new HashSet<Wedding>();
             this.FinalPaymentReceiveds = new HashSet<FinalPaymentReceived>();
         }
-    
+
         public int TUserid { get; set; }
+
+        [Required(ErrorMessage = "UserName is required")]
         public string TUsername { get; set; }
+
+        [Required(ErrorMessage = "Email is required")]
         public string TEmail { get; set; }
+
+
+
+
+        [Required(ErrorMessage = "Password is required")]
+        [RegularExpression(@"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$",
+        ErrorMessage = "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one digit, and one special character.")]
         public string TPassword { get; set; }
+
+
+
+
+        [Required(ErrorMessage = "Password confirmation is required")]
+        [Compare("TPassword", ErrorMessage = "Passwords do not match")]
         public string TConfirmPassword { get; set; }
+
+        [Required(ErrorMessage = "Mobile number is required")]
+        [RegularExpression(@"^\d{10}$", ErrorMessage = "Mobile number must be 10 digits.")]
         public Nullable<long> TMobile { get; set; }
+
+
+
+        [Required(ErrorMessage = "choose your Gender")]
         public string TGender { get; set; }
-        public Nullable<int> TAge { get; set; }
+
+
+
+        [Required(ErrorMessage = "Age is required")]
+        [RegularExpression(@"^\d+$", ErrorMessage = "Age must be a number.")]
+        public int? TAge { get; set; }
+
 
         [DataType(DataType.Date)]
         public Nullable<System.DateTime> TDob { get; set; }
+
+
         public Nullable<System.DateTime> LastLoginDate { get; set; }
+
+
+
         public byte[] TProfile { get; set; }
+
+
+
         public Nullable<int> TRoleid { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EventName> EventNames { get; set; }
         public virtual Roletable Roletable { get; set; }

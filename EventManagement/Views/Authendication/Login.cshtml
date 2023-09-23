@@ -1,111 +1,130 @@
 ﻿﻿﻿﻿@model EventManagement.Models.Usertable
 
-    @{
-        Layout = null;
-    }
+@{
+    Layout = null;
+}
 
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <title>Login To Continue..... :)</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="keywords" content="Smart Login Form Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements" />
-        <script type="application/x-javascript">
-             addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
-            function hideURLbar(){ window.scrollTo(0,1); } </script>
-        <script src="https://kit.fontawesome.com/91232b44e6.js" crossorigin="anonymous"></script>
-    </head>
-    <body>
 
-        <div class="row" id="main-row">
-            <div class="col-4">
-                <div class="main-w3l maindiv">
-                    <div class="w3layouts-main text-center">
-                        <h2>Login Now</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login To Continue..... :)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Smart Login Form Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements" />
+    <script type="application/x-javascript">
+         addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+        function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <script src="https://kit.fontawesome.com/91232b44e6.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row justify-content-center" id="main-row">
+            <div class="col-4 ">
+                <div class="main-w3l maindiv ">
+                   
+                        <h2 class="login">Login Now</h2>
                         @using (Html.BeginForm("Login", "Authendication", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 
                         {
                             @Html.AntiForgeryToken()
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                             <div class="form-group">
-                                <i class="fa-solid fa-user-secret" style="color:black"></i> @Html.TextBoxFor(m => m.TUsername, new { @class = "form-control mt-3", @placeholder = "Enter your UserName", @type = "text" })
+                                @Html.TextBoxFor(m => m.TUsername, new { @class = "form-control mt-3", @placeholder = "Enter your UserName", @type = "text" })
                                 @Html.ValidationMessageFor(m => m.TUsername, "", new { @class = "error" })
                             </div>
                             <div class="form-group">
-                                <i class="fa-solid fa-lock" style="color:black"></i> @Html.PasswordFor(m => m.TPassword, new { @class = "form-control mt-3", @placeholder = "Password" })
+                                @Html.PasswordFor(m => m.TPassword, new { @class = "form-control mt-3", @placeholder = "Password" })
                                 @Html.ValidationMessageFor(m => m.TPassword, "", new { @class = "text-danger" })
                             </div>
 
                             <div class="" id="register">
-                                @Html.ActionLink("Don't Have an Account ? Register", "Register", "Authendication", new { @style = "color:black;text-decoration:none;font-size:13px" })
+                                @Html.ActionLink("Don't Have an Account ? Register", "Register", "Authendication", new { @style = "color:black;text-decoration:none;font-size:15px" })
 
                             </div>
                             <div class="clear" id="buttons"></div>
-                           <button type="submit" value="Submit" class="custom-btn btn-2">Connect</button>
+                            <button type="submit" value="Submit" class="custom-btn btn-2" id="">Connect</button>
                         }
                     </div>
                 </div>
             </div>
-            </div>
         </div>
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/jqueryval")
-        @if (@ViewBag.Message != null)
-        {
-            <script type="text/javascript">
+    </div>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @if (@ViewBag.Message != null)
+    {
+        <script type="text/javascript">
                 $(function () {
                     alert("@ViewBag.Message")
                 });
-            </script>
-        }
-    </body>
-    </html>
+        </script>
+    }
+
+
+
+</body>
+</html>
+
+
+
 
 <style>
-    body{
-        background-image:url(/Assets/login.jpg);
-        background-repeat:no-repeat;
-        background-size:cover;
-        background-position:center;
+    body {
+        background-image: url(/Assets/roses.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .login {
+        font-size: 30px;
     }
 
     .maindiv {
-        backdrop-filter: blur(6px);
-        width:fit-content;
-        margin-left:auto;
-        margin-right:auto;
-        padding:2em 3em;
-        text-align:center;
-      
+        width: fit-content;
+        -webkit-backdrop-filter: blur(8px);
+        backdrop-filter: blur(8px);
+        box-shadow: inset 0 0 0 200px rgba(255,255,255,0.08);
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
     }
-
-    #main-row{
-        margin-top:11em;
+    .field-validation-error {
+        color: red;
+    }
+    #main-row {
+        margin-top: 11em;
     }
 
     .form-control::placeholder {
-        color: #d9d9d9;
+        color: deeppink;
     }
 
     .form-control {
-        padding: 1em 0;
-        background-color:transparent;
-        border-top:none;
-        border-right:none;
-        border-left:none;
-        border-bottom-color:black;
-        outline:none;
+        padding: 1.5em 0;
+        background-color: transparent;
+        border-top: none;
+        border-right: none;
+        border-left: none;
+        border-bottom-color: black;
+        outline: none;
+        width: 120%;
     }
 
-    #register{
-        margin-top:20px;
+    #register {
+        margin-top: 20px;
     }
+
     #buttons {
         margin-top: 10px;
     }
+
     .custom-btn {
-        width: 100%;
+        width: 120%;
         height: 33px;
         color: #fff;
         border-radius: 5px;
@@ -134,7 +153,6 @@
         .btn-2:hover {
             box-shadow: 4px 4px 6px 0 rgba(255,255,255,.5), -4px -4px 6px 0 rgba(116, 125, 136, .5), inset -4px -4px 6px 0 rgba(255,255,255,.2), inset 4px 4px 6px 0 rgba(0, 0, 0, .4);
         }
-
 </style>
 
 
