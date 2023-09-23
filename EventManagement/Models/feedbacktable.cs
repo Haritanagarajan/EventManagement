@@ -11,14 +11,21 @@ namespace EventManagement.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class feedbacktable
     {
         public int id { get; set; }
         public Nullable<int> UserId { get; set; }
+
         public string Experiencetype { get; set; }
+
+
         public string Comments { get; set; }
+
         public string UserName { get; set; }
+
+
         public string Useremail { get; set; }
     }
 }

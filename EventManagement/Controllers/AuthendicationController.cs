@@ -181,6 +181,8 @@ namespace EventManagement.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "User")]
+
         public ActionResult Edit(int? id, HttpPostedFileBase TProfile, [Bind(Include = "TUsername,TPassword,TEmail,TMobile,TRoleid")] Usertable updatedUser)
         {
             if (id == null)
@@ -207,6 +209,11 @@ namespace EventManagement.Controllers
                     }
 
                     existingUser.TProfile = profile;
+
+
+                    int roleid = 2;
+
+                    existingUser.TRoleid = roleid;
                 }
 
                 existingUser.TUsername = updatedUser.TUsername;
@@ -214,7 +221,7 @@ namespace EventManagement.Controllers
                 existingUser.TEmail = updatedUser.TEmail;
                 existingUser.TMobile = updatedUser.TMobile;
                 existingUser.LastLoginDate = DateTime.Now;
-                existingUser.TRoleid = updatedUser.TRoleid;
+                //existingUser.TRoleid = updatedUser.TRoleid;
 
 
                 EventManagementEntities.Entry(existingUser).State = EntityState.Modified;

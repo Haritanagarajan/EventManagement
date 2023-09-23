@@ -4,8 +4,7 @@
     ViewBag.Title = "Cart";
 }
 
-<p>Welcome to EventPulse, @User.Identity.Name</p>
-<p>Welcome to EventPulse, @User.Identity.IsAuthenticated</p>
+
 
 <script>
     $(document).ready(function () {
@@ -51,233 +50,382 @@
 
 
 
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            @if (Model.birthdaytable.Any() || Model.babyshowertable.Any() || Model.Anniversary.Any() || Model.BachelorParty.Any() || Model.CocktailParty.Any() || Model.Wedding.Any() || Model.Reunion.Any())
+            {
+                <div class="container mt-5 main">
+                    <div class="row">
+                        @if (Model.birthdaytable.Any())
+                        {
+                            <div class="col-lg-4">
+                                @foreach (var bday in Model.birthdaytable)
+                                {
+                                    int? userId = Session["UserId"] as int?;
 
+                                    if (Session["UserId"] != null && Session["UserId"].ToString() == bday.bdayuserid.ToString())
+                                    {
 
+                                        <div class="card mt-5 mb-3">
+                                            @if (bday.EventName.eventimage != null)
+                                            {
+                                                <img src="data:image;base64,@Convert.ToBase64String(bday.EventName.eventimage)" alt="Event Image" class="card-img-top" />
+                                            }
+                                            <div class="card-body" style="font-style:italic">
+                                                <h5 class="card-title">@bday.EventName.eventname1</h5>
+                                                <p class="card-text">@bday.bdaydatetime</p>
+                                                <p class="card-text">Location: @bday.locationtable.locationname</p>
+                                                <p class="card-text">Cakes: @bday.caketable.cakesavailable</p>
+                                                <p class="card-text">Theme: @bday.themetable.themename</p>
+                                                <p class="card-text">Decorations: @bday.decorationtable.decoravailable</p>
+                                                <p class="card-text">Event Cost: @bday.bdayeventcost</p>
+                                                <p class="card-text">User ID: @bday.bdayuserid</p>
+                                                <p class="card-text">Chairs : @bday.bdaychairs</p>
+                                                <p class="card-text">Tables : @bday.bdaytables</p>
+                                                <p class="card-text">Hall Capacity : @bday.bdayhallcapacity</p>
 
-<div class="container" style="background-color: #949e99; padding: 20px; color: white;">
-
-    @if (Model.birthdaytable.Any() || Model.babyshowertable.Any() || Model.Anniversary.Any() || Model.BachelorParty.Any() || Model.CocktailParty.Any() || Model.Wedding.Any() || Model.Reunion.Any())
-    {
-
-        <h5 class="text-uppercase p-2 text-center">All Events</h5>
-        <table class="table table-bordered table-striped">
-            <thead class="thead-dark text-black">
-                <tr>
-                    <th>Event Type</th>
-                    <th>Event Date</th>
-                    <th>Location</th>
-                    <th>Cakes</th>
-                    <th>Theme</th>
-                    <th>Decorations</th>
-                    <th>Event Cost</th>
-                    <th>User ID</th>
-                    <th>Delete</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var bday in Model.birthdaytable)
-                {
-                    int? userId = Session["UserId"] as int?;
-
-                    if (Session["UserId"] != null && Session["UserId"].ToString() == bday.bdayuserid.ToString())
-                    {
-                        <tr>
-                            <td>Birthday</td>
-                            <td>@bday.bdaydatetime</td>
-                            <td>@bday.bdaylocation</td>
-                            <td>@bday.bdaycakes</td>
-                            <td>@bday.bdaytheme</td>
-                            <td>@bday.bdaydecorations</td>
-                            <td>@bday.bdayeventcost</td>
-                            <td>@bday.bdayuserid</td>
-
-                            <td>
-                                @Html.ActionLink("Delete", "Delete", "Birthday", new { id = bday.id }, null)
-                            </td>
-
-                        </tr>
-                    }
-                }
-
-                @foreach (var baby in Model.babyshowertable)
-                {
-                    int? userId = Session["UserId"] as int?;
-
-                    if (Session["UserId"] != null && Session["UserId"].ToString() == baby.babyshoweruserid.ToString())
-                    {
-                        <tr>
-                            <td>Baby Shower</td>
-                            <td>@baby.babyshowerdatetime</td>
-                            <td>@baby.babyshowerlocation</td>
-                            <td>@baby.babyshowercakes</td>
-                            <td>@baby.babyshowertheme</td>
-                            <td>@baby.babyshowerdecorations</td>
-                            <td>@baby.babyshowereventcost</td>
-                            <td>@baby.babyshoweruserid</td>
-                            <td>
-                                @Html.ActionLink("Delete", "Delete", "Babyshower", new { id = baby.id }, null)
-                            </td>
-                        </tr>
-                    }
-                }
-
-                @foreach (var anni in Model.Anniversary)
-                {
-                    int? userId = Session["UserId"] as int?;
-
-                    if (Session["UserId"] != null && Session["UserId"].ToString() == anni.anniuserid.ToString())
-                    {
-                        <tr>
-                            <td>Anniversary</td>
-                            <td>@anni.annidatetime</td>
-                            <td>@anni.annilocation</td>
-                            <td>@anni.annicakes</td>
-                            <td>@anni.annitheme</td>
-                            <td>@anni.annidecorations</td>
-                            <td>@anni.annieventcost</td>
-                            <td>@anni.anniuserid</td>
-                            <td>
-                                @Html.ActionLink("Delete", "Delete", "Anniversary", new { id = anni.id }, null)
-                            </td>
-                        </tr>
-                    }
-                }
-
-                @foreach (var bachelor in Model.BachelorParty)
-                {
-                    int? userId = Session["UserId"] as int?;
-
-                    if (Session["UserId"] != null && Session["UserId"].ToString() == bachelor.bacheloruserid.ToString())
-                    {
-                        <tr>
-                            <td>Bachelor Party</td>
-                            <td>@bachelor.bachelordatetime</td>
-                            <td>@bachelor.bachelorlocation</td>
-                            <td>@bachelor.bachelorcakes</td>
-                            <td>@bachelor.bachelortheme</td>
-                            <td>@bachelor.bachelordecorations</td>
-                            <td>@bachelor.bacheloreventcost</td>
-                            <td>@bachelor.bacheloruserid</td>
-                            <td>
-                                @Html.ActionLink("Delete", "Delete", "Bachelor", new { id = bachelor.id }, null)
-                            </td>
-                        </tr>
-                    }
-                }
-
-                @foreach (var cock in Model.CocktailParty)
-                {
-                    int? userId = Session["UserId"] as int?;
-
-                    if (Session["UserId"] != null && Session["UserId"].ToString() == cock.cockuserid.ToString())
-                    {
-                        <tr>
-                            <td>Cocktail Party</td>
-                            <td>@cock.cockdatetime</td>
-                            <td>@cock.cocklocation</td>
-                            <td>@cock.cockcakes</td>
-                            <td>@cock.cocktheme</td>
-                            <td>@cock.cockdecorations</td>
-                            <td>@cock.cockeventcost</td>
-                            <td>@cock.cockuserid</td>
-                            <td>
-                                @Html.ActionLink("Delete", "Delete", "Cocktail", new { id = cock.id }, null)
-                            </td>
-                        </tr>
-                    }
-                }
-
-                @foreach (var wedding in Model.Wedding)
-                {
-                    int? userId = Session["UserId"] as int?;
-
-                    if (Session["UserId"] != null && Session["UserId"].ToString() == wedding.weddinguserid.ToString() && User.Identity.IsAuthenticated)
-                    {
-                        <tr>
-                            <td>Wedding</td>
-                            <td>@wedding.weddingdatetime</td>
-                            <td>@wedding.weddinglocation</td>
-                            <td>@wedding.weddingcakes</td>
-                            <td>@wedding.weddingtheme</td>
-                            <td>@wedding.weddingdecorations</td>
-                            <td>@wedding.weddingeventcost</td>
-                            <td>@wedding.weddinguserid</td>
-                            <td>
-                                @Html.ActionLink("Delete", "Delete", "Wedding", new { id = wedding.id }, null)
-                            </td>
-                        </tr>
-                    }
-                }
-
-                @foreach (var reunion in Model.Reunion)
-                {
-                    int? userId = Session["UserId"] as int?;
-
-                    <tr>
-                        <td>Reunion</td>
-                        <td>@reunion.reuniondatetime</td>
-                        <td>@reunion.reunionlocation</td>
-                        <td>@reunion.reunioncakes</td>
-                        <td>@reunion.reuniontheme</td>
-                        <td>@reunion.reuniondecorations</td>
-                        <td>@reunion.reunioneventcost</td>
-                        <td>@reunion.reunionuserid</td>
-                        <td>
-                            @Html.ActionLink("Delete", "Delete", "Reunion", new { id = reunion.id }, null)
-                        </td>
-                    </tr>
-                }
-            </tbody>
-            <tfoot>
-                <tr>
-                    <th colspan="6">Total Cost:</th>
-                    <td>
-                        @{
-                            var totalCost = Model.birthdaytable.Sum(b => b.bdayeventcost) +
-                                             Model.babyshowertable.Sum(b => b.babyshowereventcost) +
-                                             Model.Anniversary.Sum(a => a.annieventcost) +
-                                             Model.BachelorParty.Sum(b => b.bacheloreventcost) +
-                                             Model.CocktailParty.Sum(c => c.cockeventcost) +
-                                             Model.Wedding.Sum(w => w.weddingeventcost) +
-                                             Model.Reunion.Sum(r => r.reunioneventcost);
+                                                <p class="card-text" style="color:red">
+                                                    @Html.ActionLink("Cancel this Event", "Delete", "Birthday", new { id = bday.id }, new { @style = "text-decoration:none;color:#b30000;font-weight:bold;" })
+                                                </p>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                            </div>
                         }
-                        ₹@totalCost
+                    </div>
+                </div>
 
 
-                    </td>
 
-                </tr>
 
-                <tr>
 
-                    <th colspan="6">Prebooking:</th>
-                    <td>
-                        @{
-                            int halfamnt = (int)totalCost / 2;
+
+
+
+
+
+
+                <div class="container main">
+                    <div class="row">
+                        @if (Model.babyshowertable.Any())
+                        {
+                            <div class="col-lg-4">
+                                @foreach (var item in Model.babyshowertable)
+                                {
+                                    int? userId = Session["UserId"] as int?;
+
+                                    if (Session["UserId"] != null && Session["UserId"].ToString() == item.babyshoweruserid.ToString())
+                                    {
+                                        <div class="card mt-5 mb-3">
+                                            @if (item.EventName.eventimage != null)
+                                            {
+                                                <img src="data:image;base64,@Convert.ToBase64String(item.EventName.eventimage)" alt="Event Image" class="card-img-top" />
+                                            }
+                                            <div class="card-body" style="font-style:italic">
+                                                <h5 class="card-title">@item.EventName.eventname1</h5>
+                                                <p class="card-text">@item.babyshowerdatetime</p>
+                                                <p class="card-text">Location: @item.locationtable.locationname</p>
+                                                <p class="card-text">Cakes: @item.caketable.cakesavailable</p>
+                                                <p class="card-text">Theme: @item.themetable.themename</p>
+                                                <p class="card-text">Decorations: @item.decorationtable.decoravailable</p>
+                                                <p class="card-text">Event Cost: @item.babyshowereventcost</p>
+                                                <p class="card-text">User ID: @item.babyshoweruserid</p>
+                                                <p class="card-text">Chairs : @item.babyshowerchairs</p>
+                                                <p class="card-text">Tables : @item.babyshowertables</p>
+                                                <p class="card-text">Hall Capacity : @item.babyshowerhallcapacity</p>
+
+                                                <p class="card-text" style="color:red">
+                                                    @Html.ActionLink("Cancel this Event", "Delete", "BabySHOWER", new { id = item.id }, new { @style = "text-decoration:none;color:#b30000;font-weight:bold;" })
+                                                </p>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                            </div>
                         }
-
-                        ₹@halfamnt
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        @*@Html.ActionLink("Paynow", "CreateOrder", "Payment", new { totalCost = totalCost }, new { @class = "btn" })*@
-                        <button id="proceedToPayment" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#razorpayModal">>Proceed to Payment</button>
-                </tr>
-
-            </tfoot>
-        </table>
+                    </div>
+                </div>
 
 
 
-    }
-    else
-    {
-        <p>No events found in the cart.</p>
-    }
 
+
+
+
+
+
+
+                <div class="container mt-5 main">
+                    <div class="row">
+                        @if (Model.Wedding.Any())
+                        {
+                            <div class="col-lg-4">
+                                @foreach (var item in Model.Wedding)
+                                {
+                                    int? userId = Session["UserId"] as int?;
+
+                                    if (Session["UserId"] != null && Session["UserId"].ToString() == item.weddinguserid.ToString())
+                                    {
+                                        <div class="card mt-5 mb-3">
+                                            @if (item.EventName.eventimage != null)
+                                            {
+                                                <img src="data:image;base64,@Convert.ToBase64String(item.EventName.eventimage)" alt="Event Image" class="card-img-top" />
+                                            }
+                                            <div class="card-body" style="font-style:italic">
+                                                <h5 class="card-title">@item.EventName.eventname1</h5>
+                                                <p class="card-text">@item.weddingdatetime</p>
+                                                <p class="card-text">Location: @item.locationtable.locationname</p>
+                                                <p class="card-text">Cakes: @item.weddingcakes</p>
+                                                <p class="card-text">Theme: @item.themetable.themename</p>
+                                                <p class="card-text">Decorations: @item.decorationtable.decoravailable</p>
+                                                <p class="card-text">Event Cost: @item.weddingeventcost</p>
+                                                <p class="card-text">User ID: @item.weddinguserid</p>
+                                                <p class="card-text">Chairs : @item.weddingchairs</p>
+                                                <p class="card-text">Tables : @item.weddingtables</p>
+                                                <p class="card-text">Hall Capacity : @item.weddinghallcapacity</p>
+
+                                                <p class="card-text" style="color:red">
+                                                    @Html.ActionLink("Cancel this Event", "Delete", "Wedding", new { id = item.id }, new { @style = "text-decoration:none;color:#b30000;font-weight:bold;" })
+                                                </p>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+                <div class="container mt-5 main">
+                    <div class="row">
+                        @if (Model.Reunion.Any())
+                        {
+                            <div class="col-lg-4">
+                                @foreach (var item in Model.Reunion)
+                                {
+                                    int? userId = Session["UserId"] as int?;
+
+                                    if (Session["UserId"] != null && Session["UserId"].ToString() == item.reunionuserid.ToString())
+                                    {
+                                        <div class="card mt-5 mb-3">
+                                            @if (item.EventName.eventimage != null)
+                                            {
+                                                <img src="data:image;base64,@Convert.ToBase64String(item.EventName.eventimage)" alt="Event Image" class="card-img-top" />
+                                            }
+                                            <div class="card-body" style="font-style:italic">
+                                                <h5 class="card-title">@item.EventName.eventname1</h5>
+                                                <p class="card-text">@item.reuniondatetime</p>
+                                                <p class="card-text">Location: @item.locationtable.locationname</p>
+                                                <p class="card-text">Cakes: @item.caketable.cakesavailable</p>
+                                                <p class="card-text">Theme: @item.themetable.themename</p>
+                                                <p class="card-text">Decorations: @item.decorationtable.decoravailable</p>
+                                                <p class="card-text">Event Cost: @item.reunioneventcost</p>
+                                                <p class="card-text">User ID: @item.reunionuserid</p>
+                                                <p class="card-text">Chairs : @item.reunionchairs</p>
+                                                <p class="card-text">Tables : @item.reuniontables</p>
+                                                <p class="card-text">Hall Capacity : @item.reunionhallcapacity</p>
+
+                                                <p class="card-text" style="color:red">
+                                                    @Html.ActionLink("Cancel this Event", "Delete", "Reunion", new { id = item.id }, new { @style = "text-decoration:none;color:#b30000;font-weight:bold;" })
+                                                </p>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+
+
+
+
+
+
+
+                <div class="container main">
+                    <div class="row">
+                        @if (Model.Anniversary.Any())
+                        {
+                            <div class="col-lg-4">
+                                @foreach (var item in Model.Anniversary)
+                                {
+                                    int? userId = Session["UserId"] as int?;
+
+                                    if (Session["UserId"] != null && Session["UserId"].ToString() == item.anniuserid.ToString())
+                                    {
+                                        <div class="card mt-5 mb-3">
+                                            @if (item.EventName.eventimage != null)
+                                            {
+                                                <img src="data:image;base64,@Convert.ToBase64String(item.EventName.eventimage)" alt="Event Image" class="card-img-top" />
+                                            }
+                                            <div class="card-body" style="font-style:italic">
+                                                <h5 class="card-title">@item.EventName.eventname1</h5>
+                                                <p class="card-text">@item.annidatetime</p>
+                                                <p class="card-text">Location: @item.locationtable.locationname</p>
+                                                <p class="card-text">Cakes: @item.caketable.cakesavailable</p>
+                                                <p class="card-text">Theme: @item.themetable.themename</p>
+                                                <p class="card-text">Decorations: @item.decorationtable.decoravailable</p>
+                                                <p class="card-text">Event Cost: @item.annieventcost</p>
+                                                <p class="card-text">User ID: @item.anniuserid</p>
+                                                <p class="card-text">Chairs : @item.annichairs</p>
+                                                <p class="card-text">Tables : @item.annitables</p>
+                                                <p class="card-text">Hall Capacity : @item.annihallcapacity</p>
+
+                                                <p class="card-text" style="color:red">
+                                                    @Html.ActionLink("Cancel this Event", "Delete", "Anniversary", new { id = item.id }, new { @style = "text-decoration:none;color:#b30000;font-weight:bold;" })
+                                                </p>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+
+
+
+
+
+
+
+                <div class="container mt-5 main">
+                    <div class="row">
+                        @if (Model.CocktailParty.Any())
+                        {
+                            <div class="col-lg-4">
+                                @foreach (var item in Model.CocktailParty)
+                                {
+                                    int? userId = Session["UserId"] as int?;
+
+                                    if (Session["UserId"] != null && Session["UserId"].ToString() == item.cockuserid.ToString())
+                                    {
+                                        <div class="card mt-5 mb-3">
+                                            @if (item.EventName.eventimage != null)
+                                            {
+                                                <img src="data:image;base64,@Convert.ToBase64String(item.EventName.eventimage)" alt="Event Image" class="card-img-top" />
+                                            }
+                                            <div class="card-body" style="font-style:italic">
+                                                <h5 class="card-title">@item.EventName.eventname1</h5>
+                                                <p class="card-text">@item.cockdatetime</p>
+                                                <p class="card-text">Location: @item.locationtable.locationname</p>
+                                                <p class="card-text">Cakes: @item.caketable.cakesavailable</p>
+                                                <p class="card-text">Theme: @item.themetable.themename</p>
+                                                <p class="card-text">Decorations: @item.decorationtable.decoravailable</p>
+                                                <p class="card-text">Event Cost: @item.cockeventcost</p>
+                                                <p class="card-text">User ID: @item.cockuserid</p>
+                                                <p class="card-text">Chairs : @item.cockchairs</p>
+                                                <p class="card-text">Tables : @item.cocktables</p>
+                                                <p class="card-text">Hall Capacity : @item.cockhallcapacity</p>
+
+                                                <p class="card-text" style="color:red">
+                                                    @Html.ActionLink("Cancel this Event", "Delete", "Cocktail", new { id = item.id }, new { @style = "text-decoration:none;color:#b30000;font-weight:bold;" })
+                                                </p>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+
+
+
+
+
+
+                <div class="container mt-5 main">
+                    <div class="row">
+                        @if (Model.BachelorParty.Any())
+                        {
+                            <div class="col-lg-4">
+                                @foreach (var item in Model.BachelorParty)
+                                {
+                                    int? userId = Session["UserId"] as int?;
+
+                                    if (Session["UserId"] != null && Session["UserId"].ToString() == item.bacheloruserid.ToString())
+                                    {
+                                        <div class="card mt-5 mb-3">
+                                            @if (item.EventName.eventimage != null)
+                                            {
+                                                <img src="data:image;base64,@Convert.ToBase64String(item.EventName.eventimage)" alt="Event Image" class="card-img-top" />
+                                            }
+                                            <div class="card-body" style="font-style:italic">
+                                                <h5 class="card-title">@item.EventName.eventname1</h5>
+                                                <p class="card-text">@item.bachelordatetime</p>
+                                                <p class="card-text">Location: @item.locationtable.locationname</p>
+                                                <p class="card-text">Cakes: @item.caketable.cakesavailable</p>
+                                                <p class="card-text">Theme: @item.themetable.themename</p>
+                                                <p class="card-text">Decorations: @item.decorationtable.decoravailable</p>
+                                                <p class="card-text">Event Cost: @item.bacheloreventcost</p>
+                                                <p class="card-text">User ID: @item.bacheloruserid</p>
+                                                <p class="card-text">Chairs : @item.bachelorchairs</p>
+                                                <p class="card-text">Tables : @item.bachelortables</p>
+                                                <p class="card-text">Hall Capacity : @item.bachelorhallcapacity</p>
+
+                                                <p class="card-text" style="color:red">
+                                                    @Html.ActionLink("Cancel this Event", "Delete", "Bachelor", new { id = item.id }, new { @style = "text-decoration:none;color:#b30000;font-weight:bold;" })
+                                                </p>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Cost:</h5>
+                        <p class="card-text">
+                            @{
+                                var totalCost = Model.birthdaytable.Sum(b => b.bdayeventcost) +
+                                                Model.babyshowertable.Sum(b => b.babyshowereventcost) +
+                                                Model.Anniversary.Sum(a => a.annieventcost) +
+                                                Model.BachelorParty.Sum(b => b.bacheloreventcost) +
+                                                Model.CocktailParty.Sum(c => c.cockeventcost) +
+                                                Model.Wedding.Sum(w => w.weddingeventcost) +
+                                                Model.Reunion.Sum(r => r.reunioneventcost);
+                            }
+                            ₹@totalCost
+                        </p>
+
+                        <h5 class="card-title">Prebooking:</h5>
+                        <p class="card-text">
+                            @{
+                                int halfamnt = (int)totalCost / 2;
+                            }
+                            ₹@halfamnt
+                        </p>
+
+                        <button id="proceedToPayment" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#razorpayModal">Proceed to Payment</button>
+                    </div>
+                </div>
+
+
+
+            }
+
+        </div>
+
+
+    </div>
 </div>
+
+
+
 
 
 
@@ -327,7 +475,7 @@
                         <label for="amount" class="form-label">Booked Date and Time</label>
                         <input type="datetime" class="form-control" id="bookingdatetime" name="bookingdatetime" readonly>
                     </div>
-                   
+
                     <button type="submit" class="btn btn-dark" id="payButton">Pay Now</button>
                 </form>
 
