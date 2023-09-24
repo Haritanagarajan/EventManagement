@@ -28,7 +28,11 @@ namespace EventManagement.Controllers
         EventManagement2Entities2 EventManagementEntities = new EventManagement2Entities2();
 
         string Baseurl = "https://localhost:44341/"; //use webapi port
-        // GET: Feedback
+                                                     // GET: Feedback
+
+
+
+        [Authorize(Roles = "User")]
         public async Task<ActionResult> Index()
         {
             List<feedbacktable> feed = new List<feedbacktable>();
@@ -56,6 +60,11 @@ namespace EventManagement.Controllers
         }
 
 
+
+
+
+        [Authorize(Roles = "User")]
+
         [MyFilter]
         public ActionResult Details(int id)
         {
@@ -67,7 +76,13 @@ namespace EventManagement.Controllers
             return View(new feedbacktable());
         }
 
+
+
+
+
         [HttpPost]
+        [Authorize(Roles = "User")]
+
         public ActionResult Create(feedbacktable employee)
         {
 
@@ -78,7 +93,7 @@ namespace EventManagement.Controllers
             _employeeRepository.InsertEmployee(employee);
 
             _employeeRepository.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("ThankYou","Cart");
         }
         public ActionResult Update(int Id)
         {
@@ -105,24 +120,24 @@ namespace EventManagement.Controllers
 
 
 
-        public ActionResult Sample(int? num)
-        {
-            try
-            {
-                if (num < 0)
-                {
-                    return Content("num value is:" + num);
-                }
-                else
-                {
-                    throw new CustomException();
-                }
-            }
-            catch (CustomException ex)
-            {
-                return Content("Custom Exception: " + ex.Message);
-            }
-        }
+        //public ActionResult Sample(int? num)
+        //{
+        //    try
+        //    {
+        //        if (num < 0)
+        //        {
+        //            return Content("num value is:" + num);
+        //        }
+        //        else
+        //        {
+        //            throw new CustomException();
+        //        }
+        //    }
+        //    catch (CustomException ex)
+        //    {
+        //        return Content("Custom Exception: " + ex.Message);
+        //    }
+        //}
 
 
     }

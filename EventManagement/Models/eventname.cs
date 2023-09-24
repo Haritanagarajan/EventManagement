@@ -11,7 +11,8 @@ namespace EventManagement.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class EventName
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -27,7 +28,15 @@ namespace EventManagement.Models
         }
     
         public int eventid { get; set; }
+
+
+        [Required(ErrorMessage = "Event Name is Required")]
+
         public string eventname1 { get; set; }
+
+
+        [Required(ErrorMessage = "Event Image is Required")]
+
         public byte[] eventimage { get; set; }
         public bool eventd { get; set; }
         public Nullable<int> eventuserid { get; set; }

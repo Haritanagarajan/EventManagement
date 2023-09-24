@@ -11,7 +11,8 @@ namespace EventManagement.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Reunion
     {
         public int id { get; set; }
@@ -19,9 +20,21 @@ namespace EventManagement.Models
         public Nullable<int> reunionid { get; set; }
         public Nullable<int> reuniondecorations { get; set; }
         public Nullable<int> reuniontheme { get; set; }
+
+
+        [Required(ErrorMessage = "Choose  chairs")]
+        [Range(0, 500, ErrorMessage = "The number of chairs must be between 0 and 500.")]
         public Nullable<int> reunionchairs { get; set; }
+
+
+        [Required(ErrorMessage = "Choose  Tables")]
+        [Range(0, 500, ErrorMessage = "The number of Tables must be between 0 and 100.")]
         public Nullable<int> reuniontables { get; set; }
         public Nullable<int> reunionhallcapacity { get; set; }
+
+
+        [Required(ErrorMessage = "DateTime is Required")]
+
         public Nullable<System.DateTime> reuniondatetime { get; set; }
         public Nullable<int> reunioncakes { get; set; }
         public Nullable<int> reunionlocation { get; set; }

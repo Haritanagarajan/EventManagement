@@ -11,7 +11,8 @@ namespace EventManagement.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class locationtable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -27,9 +28,22 @@ namespace EventManagement.Models
         }
     
         public int locationid { get; set; }
+
+
+        [Required(ErrorMessage = "Location Name is Required")]
+
         public string locationname { get; set; }
+
+
+        [Required(ErrorMessage = "Location Pincode is Required")]
+
         public Nullable<long> pincode { get; set; }
         public bool locationd { get; set; }
+
+
+
+        [Required(ErrorMessage = "Location Image is Required")]
+
         public byte[] locationimage { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

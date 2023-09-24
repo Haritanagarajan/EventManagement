@@ -132,7 +132,7 @@
                 @Html.AntiForgeryToken()
 
                 <div class="form-actions no-color">
-                    <input type="submit" value="Delete" class="btn btn-default" style="color:red;font-weight:bold;font-style:italic" />
+                    <input type="submit" value="Delete" class="btn btn-default" style="color:red;font-weight:bold;font-style:italic" id="createtoast" />
                 </div>
             }
         </div>
@@ -145,3 +145,18 @@
         padding-bottom: 70vh;
     }
 </style>
+
+
+
+@section Scripts{
+
+
+    <script type="text/javascript">
+        $(function () {
+            $("#createtoast").click(function () {
+                toastr.success("Successfully deleted", "Delete", { Timeout: 4000 });
+            });
+        })
+    </script>
+
+}

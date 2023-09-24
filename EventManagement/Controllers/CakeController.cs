@@ -12,7 +12,7 @@ using Razorpay.Api;
 using System.Web.UI;
 using PagedList;
 using PagedList.Mvc;
-
+using EventManagement.Utility;
 
 namespace EventManagement.Controllers
 {
@@ -80,9 +80,29 @@ namespace EventManagement.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
-            caketable caketable = EventManagementEntities.caketables.Find(id);
-            return View(caketable);
+            try
+            {
+                if (id == null)
+                {
+                    throw new CustomDeleteException("Invalid ID. The ID cannot be null.");
+                }
+
+                caketable caketable = EventManagementEntities.caketables.Find(id);
+
+                if (caketable == null)
+                {
+                    throw new CustomDeleteException($"Cake Table with ID {id} not found.");
+                }
+
+                return View(caketable);
+            }
+            catch (CustomDeleteException ex)
+            {
+                
+                return RedirectToAction("Error404", "Error", new { message = ex.Message });
+            }
         }
+
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -153,7 +173,7 @@ namespace EventManagement.Controllers
                     EventManagementEntities.SaveChanges();
                     return RedirectToAction("Index");
                 }
-                catch (DbUpdateConcurrencyException ex)
+                catch (DbUpdateConcurrencyException)
                 {
                     ModelState.AddModelError(string.Empty, "Concurrency error occurred.");
                 }

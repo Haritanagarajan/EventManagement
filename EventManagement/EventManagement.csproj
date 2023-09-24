@@ -188,11 +188,8 @@
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\FeedbackController.cs" />
     <Compile Include="Controllers\LocationController.cs" />
-    <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\ReunionController.cs" />
-    <Compile Include="Controllers\SweetController.cs" />
     <Compile Include="Controllers\ThemeController.cs" />
-    <Compile Include="Controllers\UserprofileController.cs" />
     <Compile Include="Controllers\WeddingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -212,7 +209,6 @@
     <Compile Include="Models\caketable.cs">
       <DependentUpon>EventManagement.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Calender.cs" />
     <Compile Include="Models\CocktailParty.cs">
       <DependentUpon>EventManagement.tt</DependentUpon>
     </Compile>
@@ -221,7 +217,6 @@
     <Compile Include="Models\decorationtable.cs">
       <DependentUpon>EventManagement.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\EmailModel.cs" />
     <Compile Include="Models\EventManagement.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -269,7 +264,7 @@
     </Compile>
     <Compile Include="Models\Wedgridcs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utility\CustomException.cs" />
+    <Compile Include="Utility\CustomDeleteException.cs" />
     <Compile Include="ViewModel\CartViewModel.cs" />
     <Content Include="Assets\1cM.gif" />
     <Content Include="Assets\avatar %282%29.png" />
@@ -296,6 +291,7 @@
     <Content Include="Grid.mvc.readme" />
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
+    <Content Include="Views\Cart\ThankYou.cshtml" />
     <None Include="Views\Shared\FilterView.cshtml" />
     <Content Include="Scripts\gridmvc.js" />
     <Content Include="Scripts\gridmvc.lang.ru.js" />
@@ -489,28 +485,21 @@
     <Content Include="Views\Cocktail\Delete.cshtml" />
     <Content Include="Views\Reunion\Delete.cshtml" />
     <Content Include="Views\Wedding\Delete.cshtml" />
-    <Content Include="Views\Payment\Failed.cshtml" />
-    <Content Include="Views\Payment\Success.cshtml" />
-    <Content Include="Views\Payment\Index.cshtml" />
-    <Content Include="Views\Payment\Complete.cshtml" />
     <Content Include="Views\Cake\Index1.cshtml" />
     <Content Include="Views\Theme\Index1.cshtml" />
     <Content Include="Views\Location\Index1.cshtml" />
     <Content Include="Views\Decoration\Index1.cshtml" />
-    <Content Include="Views\Sweet\Alert.cshtml" />
     <Content Include="Views\Feedback\Index.cshtml" />
     <Content Include="Views\Feedback\Index1.cshtml" />
     <Content Include="Views\Feedback\Details.cshtml" />
     <Content Include="Views\Feedback\Create.cshtml" />
     <Content Include="Views\Feedback\Update.cshtml" />
     <Content Include="Views\Feedback\Delete.cshtml" />
-    <Content Include="Views\Payment\PlaceOrder.cshtml" />
     <Content Include="Views\Cart\Recipt.cshtml" />
     <Content Include="Views\Cart\MiddlePayment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Userprofile\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

@@ -23,33 +23,33 @@
         <div class="row justify-content-center" id="main-row">
             <div class="col-4 ">
                 <div class="main-w3l maindiv ">
-                   
-                        <h2 class="login">Login Now</h2>
-                        @using (Html.BeginForm("Login", "Authendication", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 
-                        {
-                            @Html.AntiForgeryToken()
-                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                            <div class="form-group">
-                                @Html.TextBoxFor(m => m.TUsername, new { @class = "form-control mt-3", @placeholder = "Enter your UserName", @type = "text" })
-                                @Html.ValidationMessageFor(m => m.TUsername, "", new { @class = "error" })
-                            </div>
-                            <div class="form-group">
-                                @Html.PasswordFor(m => m.TPassword, new { @class = "form-control mt-3", @placeholder = "Password" })
-                                @Html.ValidationMessageFor(m => m.TPassword, "", new { @class = "text-danger" })
-                            </div>
+                    <h2 class="login">Login Now</h2>
+                    @using (Html.BeginForm("Login", "Authendication", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 
-                            <div class="" id="register">
-                                @Html.ActionLink("Don't Have an Account ? Register", "Register", "Authendication", new { @style = "color:black;text-decoration:none;font-size:15px" })
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.TextBoxFor(m => m.TUsername, new { @class = "form-control mt-3", @placeholder = "Enter your UserName", @type = "text" })
+                            @Html.ValidationMessageFor(m => m.TUsername, "", new { @class = "error" })
+                        </div>
+                        <div class="form-group">
+                            @Html.PasswordFor(m => m.TPassword, new { @class = "form-control mt-3", @placeholder = "Password" })
+                            @Html.ValidationMessageFor(m => m.TPassword, "", new { @class = "text-danger" })
+                        </div>
 
-                            </div>
-                            <div class="clear" id="buttons"></div>
-                            <button type="submit" value="Submit" class="custom-btn btn-2" id="">Connect</button>
-                        }
-                    </div>
+                        <div class="" id="register">
+                            @Html.ActionLink("Don't Have an Account ? Register", "Register", "Authendication", new { @style = "color:black;text-decoration:none;font-size:15px" })
+
+                        </div>
+                        <div class="clear" id="buttons"></div>
+                        <button type="submit" value="Submit" class="custom-btn btn-2" id="createtoast">Connect</button>
+                    }
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
 
@@ -66,10 +66,22 @@
 
 
 
+
+
+
 </body>
 </html>
 
+@section Scripts{
 
+    <script type="text/javascript">
+        $(function () {
+            $("#createtoast").click(function () {
+                toastr.success("Logined", "Login", { Timeout: 4000 });
+            });
+        })
+    </script>
+}
 
 
 <style>
@@ -93,9 +105,11 @@
         margin-right: auto;
         text-align: center;
     }
+
     .field-validation-error {
         color: red;
     }
+
     #main-row {
         margin-top: 11em;
     }

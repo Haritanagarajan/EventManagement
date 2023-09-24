@@ -11,7 +11,8 @@ namespace EventManagement.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class decorationtable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -27,8 +28,16 @@ namespace EventManagement.Models
         }
     
         public int decorid { get; set; }
+
+
+        [Required(ErrorMessage = "Decoration Name is Required")]
+
         public string decoravailable { get; set; }
         public bool decord { get; set; }
+
+
+        [Required(ErrorMessage = "Decorations Image is Required")]
+
         public byte[] decorimage { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

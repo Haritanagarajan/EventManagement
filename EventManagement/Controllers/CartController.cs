@@ -48,6 +48,8 @@ namespace EventManagement.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "User")]
+
         public ActionResult PlaceOrder(int halfAmount, int PartialAmount, DateTime bookingdatetime)
         {
             int? userId = Session["UserId"] as int?;
@@ -101,12 +103,17 @@ namespace EventManagement.Controllers
             return RedirectToAction("MiddlePayment",order);
         }
 
+
+        [Authorize(Roles = "User")]
+
         public ActionResult MiddlePayment(Models.FinalPaymentReceived order)
         {
             return View(order);
         }
 
         [HttpPost]
+        [Authorize(Roles = "User")]
+
         public ActionResult Complete(Models.FinalPaymentReceived order, string razorpayid)
         {
             int? totalcost = TempData["totalcost"] as int?;
@@ -168,6 +175,7 @@ namespace EventManagement.Controllers
         }
 
 
+        [Authorize(Roles = "User")]
 
         public ActionResult Recipt(int? id)
         {
@@ -180,6 +188,8 @@ namespace EventManagement.Controllers
 
 
         [HttpPost]
+        [Authorize(Roles = "User")]
+
         [ValidateAntiForgeryToken]
         public ActionResult Mailer(string razorpayOrderId)
         {
@@ -218,12 +228,17 @@ namespace EventManagement.Controllers
             }
 
 
-            return RedirectToAction("Index1");
+            return RedirectToAction("Create","Feedback");
 
         }
 
 
+        [Authorize(Roles = "User")]
 
+        public ActionResult ThankYou()
+        {
+            return View();
+        }
 
         //public ActionResult Milerview()
         //{

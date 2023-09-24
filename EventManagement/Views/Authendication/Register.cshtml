@@ -107,7 +107,7 @@
                     @Html.ActionLink("Have an Account ? Login", "Login", "Authendication", new { @style = "color:black;text-decoration:none;font-size:15px" })
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10" id="buttons">
-                            <button type="submit" value="Create" class="custom-btn btn-2">Connect</button>
+                            <button type="submit" value="Create" class="custom-btn btn-2" id="createtoast">Connect</button>
                         </div>
                     </div>
                 }
@@ -124,6 +124,16 @@
             $("#CaptchaInputText").addClass("form-control");
         })
     </script>
+
+
+
+    <script type="text/javascript">
+        $(function () {
+            $("#createtoast").click(function () {
+                toastr.success("Registered", "Create", { Timeout: 4000 });
+            });
+        })
+    </script>
 }
 
 
@@ -134,9 +144,11 @@
         background-size: cover;
         background-position: center;
     }
+
     .field-validation-error {
         color: red;
     }
+
     .security {
         font-weight: bold;
     }
@@ -148,7 +160,7 @@
         box-shadow: inset 0 0 0 200px rgba(255,255,255,0.08);
         margin-left: auto;
         margin-right: auto;
-       text-align: center;
+        text-align: center;
     }
 
     #buttons {

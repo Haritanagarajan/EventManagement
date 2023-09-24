@@ -11,140 +11,152 @@
     {
         @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <h4 style="font-style:italic">Reserve an Wedding Celebration</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.weddingdecorations, "Find Your Decor Style", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("weddingdecorations", ViewBag.Decor as SelectList, "Decor", new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.weddingdecorations, "", new { @class = "text-danger" })
+        <div class="form-horizontal">
+            <h4 style="font-style:italic">Reserve an Wedding Celebration</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.weddingdecorations, "Find Your Decor Style", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("weddingdecorations", ViewBag.Decor as SelectList, "Decor", new { @class = "form-control", data_val_required = "Pick Your Decorations." })
+                    @Html.ValidationMessageFor(model => model.weddingdecorations, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
 
-        <button type="button" class="btn buttons" data-bs-toggle="modal" data-bs-target="#exampleModal" style="color:white;background-color:black;width:50px;font-style:italic">
-            <i class="fa-solid fa-eye"></i>
-        </button>
+            <button type="button" class="btn buttons" data-bs-toggle="modal" data-bs-target="#exampleModal" style="color:white;background-color:black;width:50px;font-style:italic">
+                <i class="fa-solid fa-eye"></i>
+            </button>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.weddingtheme, "Decide on Your  Theme", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("weddingtheme", ViewBag.Theme as SelectList, "Themes", new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.weddingtheme, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.weddingtheme, "Decide on Your  Theme", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("weddingtheme", ViewBag.Theme as SelectList, "Themes", new { @class = "form-control", data_val_required = "Pick Your Themes." })
+                    @Html.ValidationMessageFor(model => model.weddingtheme, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <button type="button" class="btn buttons" data-bs-toggle="modal" data-bs-target="#exampleModal1" style="color:white;background-color:black;width:50px;font-style:italic">
-            <i class="fa-solid fa-eye"></i>
-        </button>
+            <button type="button" class="btn buttons" data-bs-toggle="modal" data-bs-target="#exampleModal1" style="color:white;background-color:black;width:50px;font-style:italic">
+                <i class="fa-solid fa-eye"></i>
+            </button>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.weddingchairs, "Select the chairs", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.weddingchairs, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.weddingchairs, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.weddingchairs, "Select the chairs", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.weddingchairs, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.weddingchairs, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.weddingtables, "Select the tables", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.weddingtables, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.weddingtables, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.weddingtables, "Select the tables", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.weddingtables, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.weddingtables, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.weddingdatetime, "Pick your date and time", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @*@Html.EditorFor(model => model.weddingdatetime, new { htmlAttributes = new { @class = "form-control datepicker" } })*@
-                <input type="datetime-local" class="" name="weddingdatetime" />
-                @Html.ValidationMessageFor(model => model.weddingdatetime, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.weddingdatetime, "Pick your date and time", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @*@Html.EditorFor(model => model.weddingdatetime, new { htmlAttributes = new { @class = "form-control datepicker" } })*@
+                    <input type="datetime-local" class="" name="weddingdatetime" required />
+                    @Html.ValidationMessageFor(model => model.weddingdatetime, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
 
 
-        weddingdatetime
-        <div class="form-group">
-            @Html.LabelFor(model => model.weddingcakes, "Pick Your Dessert Delight", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("weddingcakes", ViewBag.Cake as SelectList, "Cakes ", new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.weddingcakes, "", new { @class = "text-danger" })
+            weddingdatetime
+            <div class="form-group">
+                @Html.LabelFor(model => model.weddingcakes, "Pick Your Dessert Delight", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("weddingcakes", ViewBag.Cake as SelectList, "Cakes ", new { @class = "form-control", data_val_required = "Pick Your Dessert." })
+                    @Html.ValidationMessageFor(model => model.weddingcakes, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <button type="button" class="btn buttons" data-bs-toggle="modal" data-bs-target="#exampleModal2" style="color:white;background-color:black;width:50px;font-style:italic">
-            <i class="fa-solid fa-eye"></i>
-        </button>
+            <button type="button" class="btn buttons" data-bs-toggle="modal" data-bs-target="#exampleModal2" style="color:white;background-color:black;width:50px;font-style:italic">
+                <i class="fa-solid fa-eye"></i>
+            </button>
 
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.weddinglocation, "Select your favv location", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("weddinglocation", ViewBag.Location as SelectList, "Locations", new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.weddinglocation, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.weddinglocation, "Select your favv location", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("weddinglocation", ViewBag.Location as SelectList, "Locations", new { @class = "form-control", data_val_required = "Pick Your Locations." })
+                    @Html.ValidationMessageFor(model => model.weddinglocation, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <button type="button" class="btn buttons" data-bs-toggle="modal" data-bs-target="#exampleModal3" style="color:white;background-color:black;width:50px;font-style:italic">
-            <i class="fa-solid fa-eye"></i>
-        </button>
-
+            <button type="button" class="btn buttons" data-bs-toggle="modal" data-bs-target="#exampleModal3" style="color:white;background-color:black;width:50px;font-style:italic">
+                <i class="fa-solid fa-eye"></i>
+            </button>
 
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.weddingbeverages, "Do you require food selection?", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.weddingbeverages)
-                    @Html.ValidationMessageFor(model => model.weddingbeverages, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.weddingbeverages, "Do you require food selection?", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.weddingbeverages)
+                        @Html.ValidationMessageFor(model => model.weddingbeverages, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.weddingPhotography, "Do you require Photography selection?", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.weddingPhotography)
+                        @Html.ValidationMessageFor(model => model.weddingPhotography, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.weddingStyling, "Do you require styling selection?", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.weddingStyling)
+                        @Html.ValidationMessageFor(model => model.weddingStyling, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.weddingHospitality, "Do you require hospitality selection?", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.weddingHospitality)
+                        @Html.ValidationMessageFor(model => model.weddingHospitality, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10 pb-5">
+                    <input type="submit" value="Curate your wedding event" class="btn btn-default" style="color:white;background-color:black;width:250px;font-style:italic" id="createtoast" />
                 </div>
             </div>
         </div>
-
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.weddingPhotography, "Do you require Photography selection?", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.weddingPhotography)
-                    @Html.ValidationMessageFor(model => model.weddingPhotography, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.weddingStyling, "Do you require styling selection?", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.weddingStyling)
-                    @Html.ValidationMessageFor(model => model.weddingStyling, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.weddingHospitality, "Do you require hospitality selection?", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.weddingHospitality)
-                    @Html.ValidationMessageFor(model => model.weddingHospitality, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10 pb-5">
-                <input type="submit" value="Curate your wedding event" class="btn btn-default" style="color:white;background-color:black;width:250px;font-style:italic" />
-            </div>
-        </div>
-    </div>
     }
 </div>
 
+
+
+
+@section Script{
+
+    <script type="text/javascript">
+        $(function () {
+            $("#createtoast").click(function () {
+                toastr.success("Successfully Created", "Create", { Timeout: 4000 });
+            });
+        })
+    </script>
 
 
 <script>
@@ -152,7 +164,7 @@
     document.getElementsByName("weddingdatetime")[0].min = today;
 </script>
 
-
+}
 <style>
     .control-label {
         font-style: italic;
@@ -163,6 +175,7 @@
         margin-top: 30px;
         color: white;
     }
+
     .buttons {
         margin-top: 10px;
         border-radius: 20px;

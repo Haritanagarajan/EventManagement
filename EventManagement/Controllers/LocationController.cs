@@ -144,7 +144,7 @@ namespace EventManagement.Controllers
                     EventManagementEntities.SaveChanges();
                     return RedirectToAction("Index");
                 }
-                catch (DbUpdateConcurrencyException ex)
+                catch (DbUpdateConcurrencyException)
                 {
                     ModelState.AddModelError(string.Empty, "Concurrency error occurred.");
                 }

@@ -11,7 +11,8 @@ namespace EventManagement.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class themetable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -27,8 +28,16 @@ namespace EventManagement.Models
         }
     
         public int themeid { get; set; }
+
+
+        [Required(ErrorMessage = "Theme Name is Required")]
+
         public string themename { get; set; }
         public bool themed { get; set; }
+
+
+        [Required(ErrorMessage = "Theme Image is Required")]
+
         public byte[] themeimage { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

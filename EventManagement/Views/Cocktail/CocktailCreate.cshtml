@@ -18,7 +18,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.cockdecorations, "Find Your Decor Style", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownList("cockdecorations", ViewBag.Decor as SelectList, "Decor", new { @class = "form-control" })
+                    @Html.DropDownList("cockdecorations", ViewBag.Decor as SelectList, "Decor", new { @class = "form-control", data_val_required = "Pick Your Decorations." })
                     @Html.ValidationMessageFor(model => model.cockdecorations, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -28,7 +28,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.cocktheme, "Decide on Your  Theme", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownList("cocktheme", ViewBag.Theme as SelectList, "Themes", new { @class = "form-control" })
+                    @Html.DropDownList("cocktheme", ViewBag.Theme as SelectList, "Themes", new { @class = "form-control", data_val_required = "Pick Your Themes." })
                     @Html.ValidationMessageFor(model => model.cocktheme, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -57,7 +57,7 @@
                 @Html.LabelFor(model => model.cockdatetime, "Pick your date and time", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @*@Html.EditorFor(model => model.cockdatetime, new { htmlAttributes = new { @class = "form-control datepicker" } })*@
-                    <input type="datetime-local" class="" name="cockdatetime" />
+                    <input type="datetime-local" class="" name="cockdatetime" required />
 
                     @Html.ValidationMessageFor(model => model.cockdatetime, "", new { @class = "text-danger" })
                 </div>
@@ -66,7 +66,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.cockcakes, "Pick Your Dessert Delight", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownList("cockcakes", ViewBag.Cake as SelectList, "Cakes ", new { @class = "form-control" })
+                    @Html.DropDownList("cockcakes", ViewBag.Cake as SelectList, "Cakes ", new { @class = "form-control", data_val_required = "Pick Your Dessert." })
                     @Html.ValidationMessageFor(model => model.cockcakes, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -76,7 +76,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.cocklocation, "Select your favv location", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownList("cocklocation", ViewBag.Location as SelectList, "Locations", new { @class = "form-control" })
+                    @Html.DropDownList("cocklocation", ViewBag.Location as SelectList, "Locations", new { @class = "form-control", data_val_required = "Pick Your Locations." })
                     @Html.ValidationMessageFor(model => model.cocklocation, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -99,7 +99,7 @@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10 pb-5">
-                    <input type="submit" value="Curate your cocktail event" class="btn btn-default" style="color:white;background-color:black;width:250px;font-style:italic" />
+                    <input type="submit" value="Curate your cocktail event" class="btn btn-default" style="color:white;background-color:black;width:250px;font-style:italic" id="createtoast" />
                 </div>
             </div>
         </div>
@@ -109,12 +109,23 @@
 
 
 
+@section Script{
+
+    <script type="text/javascript">
+        $(function () {
+            $("#createtoast").click(function () {
+                toastr.success("Successfully Created", "Create", { Timeout: 4000 });
+            });
+        })
+    </script>
+
+
 <script>
     var today = new Date().toISOString().slice(0, 16);
     document.getElementsByName("cockdatetime")[0].min = today;
 </script>
 
-
+}
 <style>
     .control-label {
         font-style: italic;
@@ -125,9 +136,10 @@
         margin-top: 30px;
         color: white;
     }
-    .buttons{
-        margin-top:10px;
-        border-radius:20px;
+
+    .buttons {
+        margin-top: 10px;
+        border-radius: 20px;
     }
 </style>
 

@@ -11,7 +11,8 @@ namespace EventManagement.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class CocktailParty
     {
         public int id { get; set; }
@@ -19,9 +20,21 @@ namespace EventManagement.Models
         public Nullable<int> cockid { get; set; }
         public Nullable<int> cockdecorations { get; set; }
         public Nullable<int> cocktheme { get; set; }
+
+
+        [Required(ErrorMessage = "Choose  chairs")]
+        [Range(0, 500, ErrorMessage = "The number of chairs must be between 0 and 500.")]
         public Nullable<int> cockchairs { get; set; }
+
+
+        [Required(ErrorMessage = "Choose  Tables")]
+        [Range(0, 500, ErrorMessage = "The number of Tables must be between 0 and 100.")]
         public Nullable<int> cocktables { get; set; }
         public Nullable<int> cockhallcapacity { get; set; }
+
+
+        [Required(ErrorMessage = "DateTime is Required")]
+
         public Nullable<System.DateTime> cockdatetime { get; set; }
         public Nullable<int> cockcakes { get; set; }
         public Nullable<int> cocklocation { get; set; }

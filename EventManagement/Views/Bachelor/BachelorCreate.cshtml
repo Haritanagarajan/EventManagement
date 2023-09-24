@@ -17,7 +17,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.bachelordecorations, "Find Your Decor Style", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownList("bachelordecorations", ViewBag.Decor as SelectList, "Decor", new { @class = "form-control" })
+                    @Html.DropDownList("bachelordecorations", ViewBag.Decor as SelectList, "Decor", new { @class = "form-control", data_val_required = "Pick Your Decorations." })
                     @Html.ValidationMessageFor(model => model.bachelordecorations, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -27,7 +27,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.bachelortheme, "Decide on Your  Theme", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownList("bachelortheme", ViewBag.Theme as SelectList, "Themes", new { @class = "form-control" })
+                    @Html.DropDownList("bachelortheme", ViewBag.Theme as SelectList, "Themes", new { @class = "form-control", data_val_required = "Pick Your Themes." })
                     @Html.ValidationMessageFor(model => model.bachelortheme, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -56,7 +56,7 @@
                 @Html.LabelFor(model => model.bachelordatetime, "Pick your date and time", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @*@Html.EditorFor(model => model.bachelordatetime, new { htmlAttributes = new { @class = "form-control datepicker" } })*@
-                    <input type="datetime-local" class="" name="bachelordatetime" />
+                    <input type="datetime-local" class="" name="bachelordatetime" required />
                     @Html.ValidationMessageFor(model => model.bachelordatetime, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -64,7 +64,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.bachelorcakes, "Pick Your Dessert Delight", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownList("bachelorcakes", ViewBag.Cake as SelectList, "Cakes ", new { @class = "form-control" })
+                    @Html.DropDownList("bachelorcakes", ViewBag.Cake as SelectList, "Cakes ", new { @class = "form-control", data_val_required = "Pick Your Dessert." })
                     @Html.ValidationMessageFor(model => model.bachelorcakes, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -74,13 +74,13 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.bachelorlocation, "Select your favv location", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownList("bachelorlocation", ViewBag.Location as SelectList, "Locations", new { @class = "form-control" })
+                    @Html.DropDownList("bachelorlocation", ViewBag.Location as SelectList, "Locations", new { @class = "form-control", data_val_required = "Pick Your Locations." })
                     @Html.ValidationMessageFor(model => model.bachelorlocation, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <button type="button" class="btn buttons" data-bs-toggle="modal" data-bs-target="#exampleModal3" style="color:white;background-color:black;width:50px;font-style:italic">
-                <i class="fa-solid fa-eye"></i>            
+                <i class="fa-solid fa-eye"></i>
             </button>
 
 
@@ -97,7 +97,7 @@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10 pb-5">
-                    <input type="submit" value="Curate your Bachelor event" class="btn btn-default" style="color:white;background-color:black;width:250px;font-style:italic" />
+                    <input type="submit" value="Curate your Bachelor event" class="btn btn-default" style="color:white;background-color:black;width:250px;font-style:italic" id="createtoast" />
                 </div>
             </div>
         </div>
@@ -105,11 +105,23 @@
 </div>
 
 
-<script>
-    var today = new Date().toISOString().slice(0, 16);
-    document.getElementsByName("bachelordatetime")[0].min = today;
-</script>
 
+
+@section Scripts{
+    <script>
+        var today = new Date().toISOString().slice(0, 16);
+        document.getElementsByName("bachelordatetime")[0].min = today;
+    </script>
+
+
+    <script type="text/javascript">
+        $(function () {
+            $("#createtoast").click(function () {
+                toastr.success("Successfully Created", "Create", { Timeout: 4000 });
+            });
+        })
+    </script>
+}
 
 
 
@@ -123,9 +135,10 @@
         margin-top: 30px;
         color: white;
     }
-    .buttons{
-        margin-top:10px;
-        border-radius:20px;
+
+    .buttons {
+        margin-top: 10px;
+        border-radius: 20px;
     }
 </style>
 

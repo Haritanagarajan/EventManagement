@@ -6,6 +6,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using EventManagement.Utility;
 
 namespace EventManagement.Controllers
 {
@@ -249,7 +250,7 @@ namespace EventManagement.Controllers
                         EventManagementEntities.SaveChanges();
                         return Content("Successfully edited");
                     }
-                    catch (DbUpdateConcurrencyException ex)
+                    catch (DbUpdateConcurrencyException)
                     {
                         ModelState.AddModelError(string.Empty, "Concurrency error occurred.");
                     }
@@ -285,7 +286,18 @@ namespace EventManagement.Controllers
         [Authorize(Roles = "User")]
         public ActionResult Delete(int? id)
         {
+            if (id == null)
+            {
+                throw new CustomDeleteException("Invalid ID. The ID cannot be null.");
+            }
+
             BachelorParty batch = EventManagementEntities.BachelorParties.Find(id);
+
+            if (batch == null)
+            {
+                throw new CustomDeleteException($"Bachelor Party with ID {id} not found.");
+            }
+
             return View(batch);
         }
 

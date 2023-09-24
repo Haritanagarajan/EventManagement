@@ -6,6 +6,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using EventManagement.Utility;
 
 namespace EventManagement.Controllers
 {
@@ -247,7 +248,7 @@ namespace EventManagement.Controllers
                         EventManagementEntities.SaveChanges();
                         return Content("Successfully edited");
                     }
-                    catch (DbUpdateConcurrencyException ex)
+                    catch (DbUpdateConcurrencyException)
                     {
                         ModelState.AddModelError(string.Empty, "Concurrency error occurred.");
                     }
@@ -282,9 +283,21 @@ namespace EventManagement.Controllers
         [Authorize(Roles = "User")]
         public ActionResult Delete(int? id)
         {
+            if (id == null)
+            {
+                throw new CustomDeleteException("Invalid ID. The ID cannot be null.");
+            }
+
             birthdaytable bday = EventManagementEntities.birthdaytables.Find(id);
+
+            if (bday == null)
+            {
+                throw new CustomDeleteException($"Birthday Table with ID {id} not found.");
+            }
+
             return View(bday);
         }
+
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

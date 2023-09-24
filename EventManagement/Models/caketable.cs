@@ -11,7 +11,8 @@ namespace EventManagement.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class caketable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -27,8 +28,17 @@ namespace EventManagement.Models
         }
     
         public int cakeid { get; set; }
+
+
+        [Required(ErrorMessage ="Cake Name is Required")]
         public string cakesavailable { get; set; }
+
+
         public bool caked { get; set; }
+
+
+        [Required(ErrorMessage = "Cake Image is Required")]
+
         public byte[] cakeimage { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

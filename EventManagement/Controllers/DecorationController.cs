@@ -9,6 +9,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
+using EventManagement.Utility;
 
 namespace EventManagement.Controllers
 {
@@ -70,8 +71,27 @@ namespace EventManagement.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
-            decorationtable decorationtable = EventManagementEntities.decorationtables.Find(id);
-            return View(decorationtable);
+            try
+            {
+                if (id == null)
+                {
+                    throw new CustomDeleteException("Invalid ID. The ID cannot be null.");
+                }
+
+                decorationtable decoration = EventManagementEntities.decorationtables.Find(id);
+
+                if (decoration == null)
+                {
+                    throw new CustomDeleteException($"Decoration Table with ID {id} not found.");
+                }
+
+                return View(decoration);
+            }
+            catch (CustomDeleteException ex)
+            {
+              
+                return RedirectToAction("Error404", "Error", new { message = ex.Message });
+            }
         }
 
         [HttpPost, ActionName("Delete")]
@@ -143,7 +163,7 @@ namespace EventManagement.Controllers
                     EventManagementEntities.SaveChanges();
                     return RedirectToAction("Index");
                 }
-                catch (DbUpdateConcurrencyException ex)
+                catch (DbUpdateConcurrencyException)
                 {
                     ModelState.AddModelError(string.Empty, "Concurrency error occurred.");
                 }

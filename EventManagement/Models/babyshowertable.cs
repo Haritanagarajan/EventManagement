@@ -11,7 +11,8 @@ namespace EventManagement.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class babyshowertable
     {
         public int id { get; set; }
@@ -19,15 +20,31 @@ namespace EventManagement.Models
         public Nullable<int> babyshowerid { get; set; }
         public Nullable<int> babyshowerdecorations { get; set; }
         public Nullable<int> babyshowertheme { get; set; }
+
+
+        [Required(ErrorMessage = "Choose  chairs")]
+        [Range(0, 500, ErrorMessage = "The number of chairs must be between 0 and 500.")]
         public Nullable<int> babyshowerchairs { get; set; }
+
+
+
+        [Required(ErrorMessage = "Choose  Tables")]
+        [Range(0, 500, ErrorMessage = "The number of Tables must be between 0 and 100.")]
         public Nullable<int> babyshowertables { get; set; }
+
+
+
+
         public Nullable<int> babyshowerhallcapacity { get; set; }
+
+        [Required(ErrorMessage = "DateTime is Required")]
+
         public Nullable<System.DateTime> babyshowerdatetime { get; set; }
         public Nullable<int> babyshowercakes { get; set; }
         public Nullable<int> babyshowerlocation { get; set; }
         public Nullable<long> babyshowereventcost { get; set; }
         public bool babyshowerbeverages { get; set; }
-    
+
         public virtual Usertable Usertable { get; set; }
         public virtual EventName EventName { get; set; }
         public virtual decorationtable decorationtable { get; set; }

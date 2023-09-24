@@ -20,7 +20,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.bdaydecorations, "Find Your Decor Style", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownList("bdaydecorations", ViewBag.Decor as SelectList, "Decor", new { @class = "form-control" })
+                    @Html.DropDownList("bdaydecorations", ViewBag.Decor as SelectList, "Decor", new { @class = "form-control", data_val_required = "Pick Your Decorations." })
                     @Html.ValidationMessageFor(model => model.bdaydecorations, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -30,7 +30,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.bdaytheme, "Decide on Your  Theme", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownList("bdaytheme", ViewBag.Theme as SelectList, "Themes", new { @class = "form-control" })
+                    @Html.DropDownList("bdaytheme", ViewBag.Theme as SelectList, "Themes", new { @class = "form-control", data_val_required = "Pick Your Themes." })
                     @Html.ValidationMessageFor(model => model.bdaytheme, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -59,7 +59,7 @@
                 @Html.LabelFor(model => model.bdaydatetime, "Pick your date and time", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @*@Html.EditorFor(model => model.bdaydatetime, new { htmlAttributes = new { @class = "form-control datepicker" } })*@
-                    <input type="datetime-local" class="" name="bdaydatetime" />
+                    <input type="datetime-local" class="" name="bdaydatetime" required />
 
                     @Html.ValidationMessageFor(model => model.bdaydatetime, "", new { @class = "text-danger" })
                 </div>
@@ -68,7 +68,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.bdaycakes, "Pick Your Dessert Delight", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownList("bdaycakes", ViewBag.Cake as SelectList, "Cakes ", new { @class = "form-control" })
+                    @Html.DropDownList("bdaycakes", ViewBag.Cake as SelectList, "Cakes ", new { @class = "form-control", data_val_required = "Pick Your Dessert." })
                     @Html.ValidationMessageFor(model => model.bdaycakes, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -78,7 +78,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.bdaylocation, "Select your favv location", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownList("bdaylocation", ViewBag.Location as SelectList, "Locations", new { @class = "form-control" })
+                    @Html.DropDownList("bdaylocation", ViewBag.Location as SelectList, "Locations", new { @class = "form-control", data_val_required = "Pick Your Locations." })
                     @Html.ValidationMessageFor(model => model.bdaylocation, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -98,8 +98,8 @@
             </div>
 
             <div class="form-group">
-                <div class="col-md-offset-2 col-md-10 pb-5" >
-                    <input type="submit" value="Curate your anniversary event" class="btn btn-default" style="color:white;background-color:black;width:250px;font-style:italic" />
+                <div class="col-md-offset-2 col-md-10 pb-5">
+                    <input type="submit" value="Curate your anniversary event" class="btn btn-default" style="color:white;background-color:black;width:250px;font-style:italic" id="createtoast" />
                 </div>
             </div>
         </div>
@@ -108,11 +108,23 @@
 </div>
 
 
-<script>
-    var today = new Date().toISOString().slice(0, 16);
-    document.getElementsByName("bdaydatetime")[0].min = today;
-</script>
 
+
+@section Scripts{
+    <script>
+        var today = new Date().toISOString().slice(0, 16);
+        document.getElementsByName("bdaydatetime")[0].min = today;
+    </script>
+
+
+    <script type="text/javascript">
+        $(function () {
+            $("#createtoast").click(function () {
+                toastr.success("Successfully Created", "Create", { Timeout: 4000 });
+            });
+        })
+    </script>
+}
 
 <style>
     .control-label {
@@ -124,9 +136,10 @@
         margin-top: 30px;
         color: white;
     }
-    .buttons{
-        margin-top:10px;
-        border-radius:20px;
+
+    .buttons {
+        margin-top: 10px;
+        border-radius: 20px;
     }
 </style>
 

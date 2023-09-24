@@ -8,12 +8,14 @@ using System.Web.UI.WebControls;
 
 namespace EventManagement.Utility
 {
-    public class CustomException: Exception
+    public class CustomDeleteException: Exception
     {
+        
+            public CustomDeleteException(string message) : base(message)
+            {
+            }
+        
 
-        public CustomException() : base("Should Not Contain Digits!")
-        { 
-        }
 
     }
 

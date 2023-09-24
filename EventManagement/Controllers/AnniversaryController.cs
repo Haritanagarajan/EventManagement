@@ -1,4 +1,5 @@
 ﻿using EventManagement.Models;
+using EventManagement.Utility;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -52,6 +53,7 @@ namespace EventManagement.Controllers
             List<caketable> cake = EventManagementEntities.caketables.ToList();
             ViewBag.Cake = new SelectList(cake, "cakeid", "cakesavailable");
 
+            
             return View();
         }
         [HttpPost]
@@ -59,6 +61,10 @@ namespace EventManagement.Controllers
         {
             if (ModelState.IsValid)
             {
+
+
+              
+
                 List<Anniversary> bookedanni = EventManagementEntities.Anniversaries.ToList();
                 bool isInvalid = false;
 
@@ -78,6 +84,7 @@ namespace EventManagement.Controllers
 
 
                 }
+
 
                 if (isInvalid)
                 {
@@ -114,6 +121,8 @@ namespace EventManagement.Controllers
                 }
                 else
                 {
+
+
 
                     int lastUserId = EventManagementEntities.Anniversaries.Any() ? EventManagementEntities.Anniversaries.Max(u => u.id) : 0;
 
@@ -249,7 +258,7 @@ namespace EventManagement.Controllers
                         EventManagementEntities.SaveChanges();
                         return Content("Successfully edited");
                     }
-                    catch (DbUpdateConcurrencyException ex)
+                    catch (DbUpdateConcurrencyException)
                     {
                         ModelState.AddModelError(string.Empty, "Concurrency error occurred.");
                     }
@@ -284,9 +293,21 @@ namespace EventManagement.Controllers
         [Authorize(Roles = "User")]
         public ActionResult Delete(int? id)
         {
+            if (id == null)
+            {
+                throw new CustomDeleteException("Invalid ID. The ID cannot be null.");
+            }
+
             Anniversary anni = EventManagementEntities.Anniversaries.Find(id);
+
+            if (anni == null)
+            {
+                throw new CustomDeleteException($"Anniversary with ID {id} not found.");
+            }
+
             return View(anni);
         }
+
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

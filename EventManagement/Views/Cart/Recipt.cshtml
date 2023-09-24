@@ -83,12 +83,25 @@
                             <p style="color: #464646; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 22px; margin: 0;"></p>
                         </td>
                         <td width="36" style="color: #464646; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 16px; vertical-align: top;"></td>
+
+
                     </tr>
 
                     <tr height="50">
                     </tr>
                 </table>
     </table>
+    <div class="col-9">
+        @using (Html.BeginForm("Mailer", "Cart", new { razorpayOrderId = Model.razorpayid }, FormMethod.Post, new { id = "sendEmailForm" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.Hidden("razorpayOrderId", Model.razorpayid)
+
+            <h5>
+                <button type="submit" class="btn btn-dark" onclick="sendOrderEmail()">Do You want a mail for this Order</button>
+            </h5>
+        }
+    </div>
 </body>
 </html>
 
@@ -97,15 +110,6 @@
 
 
 
-@using (Html.BeginForm("Mailer", "Cart", new { razorpayOrderId = Model.razorpayid }, FormMethod.Post, new { id = "sendEmailForm" }))
-{
-    @Html.AntiForgeryToken()
-@Html.Hidden("razorpayOrderId", Model.razorpayid)
-
-<h5>
-    <button type="submit" class="btn btn-dark" onclick="sendOrderEmail()">Do You want a mail for this Order</button>
-</h5>
-}
 
 
 

@@ -47,7 +47,7 @@
                 <input class="forms" name="Useremail" placeholder="your email id" required />
             </div>
 
-            <input type="submit" value="Create" class="btn btn-default" />
+            <input type="submit" value="Create" class="btn btn-default" id="createtoast" />
 
 
         </div>
@@ -55,6 +55,20 @@
 
 }
 
+
+
+
+@section Script{
+
+    <script type="text/javascript">
+      $(function () {
+          $("#createtoast").click(function () {
+              toastr.success("Successfully Created", "Create", { Timeout: 4000 });
+          });
+      })
+    </script>
+
+}
 <style>
 
     .content {

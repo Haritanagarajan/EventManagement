@@ -11,7 +11,8 @@ namespace EventManagement.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class birthdaytable
     {
         public int id { get; set; }
@@ -19,9 +20,21 @@ namespace EventManagement.Models
         public Nullable<int> bdayid { get; set; }
         public Nullable<int> bdaydecorations { get; set; }
         public Nullable<int> bdaytheme { get; set; }
+
+
+        [Required(ErrorMessage = "Choose  chairs")]
+        [Range(0, 500, ErrorMessage = "The number of chairs must be between 0 and 500.")]
         public Nullable<int> bdaychairs { get; set; }
+
+
+        [Required(ErrorMessage = "Choose  Tables")]
+        [Range(0, 500, ErrorMessage = "The number of Tables must be between 0 and 100.")]
         public Nullable<int> bdaytables { get; set; }
         public Nullable<int> bdayhallcapacity { get; set; }
+
+
+        [Required(ErrorMessage = "DateTime is Required")]
+
         public Nullable<System.DateTime> bdaydatetime { get; set; }
         public Nullable<int> bdaycakes { get; set; }
         public Nullable<int> bdaylocation { get; set; }

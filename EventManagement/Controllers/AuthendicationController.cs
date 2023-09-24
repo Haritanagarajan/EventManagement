@@ -221,7 +221,6 @@ namespace EventManagement.Controllers
                 existingUser.TEmail = updatedUser.TEmail;
                 existingUser.TMobile = updatedUser.TMobile;
                 existingUser.LastLoginDate = DateTime.Now;
-                //existingUser.TRoleid = updatedUser.TRoleid;
 
 
                 EventManagementEntities.Entry(existingUser).State = EntityState.Modified;
@@ -231,7 +230,7 @@ namespace EventManagement.Controllers
                     EventManagementEntities.SaveChanges();
                     return RedirectToAction("Index");
                 }
-                catch (DbUpdateConcurrencyException ex)
+                catch (DbUpdateConcurrencyException)
                 {
                     ModelState.AddModelError(string.Empty, "Concurrency error occurred.");
                 }

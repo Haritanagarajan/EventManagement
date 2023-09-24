@@ -93,9 +93,13 @@
             @Html.DisplayFor(model => model.locationtable.locationname)
         </dd>
     </dl>
+
+    <a href="@Url.Action("Edit", new { id = Model.id })">
+        <i class="fa-solid fa-pen-to-square fa-lg" style="color:cornflowerblue;margin-bottom:10px"></i>
+    </a>
 </div>
 
-<p>
+@*<p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
     @Html.ActionLink("Back to List", "Index")
-</p>
+</p>*@

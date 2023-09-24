@@ -26,7 +26,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.annidecorations, "Find Your Decor Style", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownList("annidecorations", ViewBag.Decor as SelectList, "Decor", new { @class = "form-control" })
+                    @Html.DropDownList("annidecorations", ViewBag.Decor as SelectList, "Decor", new { @class = "form-control", data_val_required = "Pick Your Decorations." })
                     @Html.ValidationMessageFor(model => model.annidecorations, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -39,7 +39,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.annitheme, "Decide on Your  Theme", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownList("annitheme", ViewBag.Theme as SelectList, "Themes", new { @class = "form-control" })
+                    @Html.DropDownList("annitheme", ViewBag.Theme as SelectList, "Themes", new { @class = "form-control", data_val_required = "Pick Your themes." })
                     @Html.ValidationMessageFor(model => model.annitheme, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -58,6 +58,7 @@
                 </div>
             </div>
 
+
             <div class="form-group">
                 @Html.LabelFor(model => model.annitables, "Select the tables ", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -72,7 +73,7 @@
                 @Html.LabelFor(model => model.annidatetime, "Pick your date and time ", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @*@Html.EditorFor(model => model.annidatetime, new { htmlAttributes = new { @class = "form-control " } })*@
-                    <input type="datetime-local" class="" name="annidatetime" />
+                    <input type="datetime-local" class="" name="annidatetime" required />
                     @Html.ValidationMessageFor(model => model.annidatetime, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -82,7 +83,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.annicakes, "Pick Your Dessert Delight", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownList("annicakes", ViewBag.Cake as SelectList, "Cakes ", new { @class = "form-control" })
+                    @Html.DropDownList("annicakes", ViewBag.Cake as SelectList, "Cakes ", new { @class = "form-control ", data_val_required = "Pick Your Dessert Delight ." })
                     @Html.ValidationMessageFor(model => model.annicakes, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -95,7 +96,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.annilocation, "Select your favv location", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownList("annilocation", ViewBag.Location as SelectList, "Locations", new { @class = "form-control" })
+                    @Html.DropDownList("annilocation", ViewBag.Location as SelectList, "Locations", new { @class = "form-control", data_val_required = "Pick Your Location." })
                     @Html.ValidationMessageFor(model => model.annilocation, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -148,7 +149,7 @@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10 text-white pb-5">
-                    <input type="submit" value="Curate your anniversary event" class="btn btn-default" style="color:white;background-color:black;width:250px;font-style:italic" />
+                    <input type="submit" value="Curate your anniversary event" class="btn btn-default" style="color:white;background-color:black;width:250px;font-style:italic" id="createtoast" />
                 </div>
             </div>
         </div>
@@ -160,11 +161,27 @@
 
 
 
+@section Scripts{
 
-<script>
-    var today = new Date().toISOString().slice(0, 16);
-    document.getElementsByName("annidatetime")[0].min = today;
-</script>
+    <script>
+        var today = new Date().toISOString().slice(0, 16);
+        document.getElementsByName("annidatetime")[0].min = today;
+    </script>
+
+
+
+    <script type="text/javascript">
+        $(function () {
+            $("#createtoast").click(function () {
+                toastr.success("Successfully Created", "Create", { Timeout: 4000 });
+            });
+        })
+    </script>
+
+
+
+}
+
 
 
 
