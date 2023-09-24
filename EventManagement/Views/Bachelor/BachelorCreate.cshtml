@@ -21,8 +21,8 @@
                     @Html.ValidationMessageFor(model => model.bachelordecorations, "", new { @class = "text-danger" })
                 </div>
             </div>
-            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" style="color:white;background-color:black;width:250px;font-style:italic">
-                View decorations
+            <button type="button" class="btn buttons" data-bs-toggle="modal" data-bs-target="#exampleModal" style="color:white;background-color:black;width:50px;font-style:italic">
+                <i class="fa-solid fa-eye"></i>
             </button>
             <div class="form-group">
                 @Html.LabelFor(model => model.bachelortheme, "Decide on Your  Theme", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -31,8 +31,8 @@
                     @Html.ValidationMessageFor(model => model.bachelortheme, "", new { @class = "text-danger" })
                 </div>
             </div>
-            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal1" style="color:white;background-color:black;width:250px;font-style:italic">
-                View Themes
+            <button type="button" class="btn buttons" data-bs-toggle="modal" data-bs-target="#exampleModal1" style="color:white;background-color:black;width:50px;font-style:italic">
+                <i class="fa-solid fa-eye"></i>
             </button>
             <div class="form-group">
                 @Html.LabelFor(model => model.bachelorchairs, "Select the chairs", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -68,8 +68,8 @@
                     @Html.ValidationMessageFor(model => model.bachelorcakes, "", new { @class = "text-danger" })
                 </div>
             </div>
-            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal2" style="color:white;background-color:black;width:250px;font-style:italic">
-                View Cakes
+            <button type="button" class="btn buttons" data-bs-toggle="modal" data-bs-target="#exampleModal2" style="color:white;background-color:black;width:50px;font-style:italic">
+                <i class="fa-solid fa-eye"></i>
             </button>
             <div class="form-group">
                 @Html.LabelFor(model => model.bachelorlocation, "Select your favv location", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -79,8 +79,8 @@
                 </div>
             </div>
 
-            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal3" style="color:white;background-color:black;width:250px;font-style:italic">
-                View Locations
+            <button type="button" class="btn buttons" data-bs-toggle="modal" data-bs-target="#exampleModal3" style="color:white;background-color:black;width:50px;font-style:italic">
+                <i class="fa-solid fa-eye"></i>            
             </button>
 
 
@@ -123,6 +123,10 @@
         margin-top: 30px;
         color: white;
     }
+    .buttons{
+        margin-top:10px;
+        border-radius:20px;
+    }
 </style>
 
 
@@ -139,12 +143,12 @@
                 <div class="row">
                     @foreach (var item in ViewBag.DecorationOptions)
                     {
-                        <div class="col-lg-4">
+                        <div class="col-lg-12 col-sm-12">
                             <div class="hover10 column">
 
                                 @if (item.decorimage != null)
                                 {
-                                    <img src="data:image;base64,@Convert.ToBase64String(item.decorimage)" alt="Decoration Image" id="main-img" width="330%" />
+                                    <img src="data:image;base64,@Convert.ToBase64String(item.decorimage)" alt="Decoration Image" class="img-fluid" id="main-img" width="330%" />
                                 }
                             </div>
                         </div>
@@ -158,8 +162,7 @@
 
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-secondary buttons" data-bs-dismiss="modal">Close</button>
         </div>
     </div>
 </div>
@@ -171,19 +174,19 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Available Decorations</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Available Themes</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="row">
                     @foreach (var item in ViewBag.ThemeOptions)
                     {
-                        <div class="col-lg-4">
+                        <div class="col-lg-12 col-sm-12">
                             <div class="hover10 column">
 
                                 @if (item.themeimage != null)
                                 {
-                                    <img src="data:image;base64,@Convert.ToBase64String(item.themeimage)" alt="Decoration Image" id="main-img" width="330%" />
+                                    <img src="data:image;base64,@Convert.ToBase64String(item.themeimage)" alt="Themes Image" id="main-img" class="img-fluid" width="330%" />
                                 }
                             </div>
                         </div>
@@ -197,8 +200,7 @@
 
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-secondary buttons" data-bs-dismiss="modal">Close</button>
         </div>
     </div>
 </div>
@@ -210,19 +212,19 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Available Decorations</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Available Cakes</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="row">
                     @foreach (var item in ViewBag.CakeOptions)
                     {
-                        <div class="col-lg-4">
+                        <div class="col-lg-12 col-sm-12">
                             <div class="hover10 column">
 
                                 @if (item.cakeimage != null)
                                 {
-                                    <img src="data:image;base64,@Convert.ToBase64String(item.cakeimage)" alt="Decoration Image" id="main-img" width="330%" />
+                                    <img src="data:image;base64,@Convert.ToBase64String(item.cakeimage)" alt="Cakes Image" id="main-img" class="img-fluid" width="330%" />
                                 }
                             </div>
                         </div>
@@ -236,8 +238,7 @@
 
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-secondary buttons" data-bs-dismiss="modal">Close</button>
         </div>
     </div>
 </div>
@@ -249,19 +250,19 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Available Decorations</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Available Locations</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="row">
                     @foreach (var item in ViewBag.LocationOptions)
                     {
-                        <div class="col-lg-4">
+                        <div class="col-lg-12 col-sm-12">
                             <div class="hover10 column">
 
                                 @if (item.locationimage != null)
                                 {
-                                    <img src="data:image;base64,@Convert.ToBase64String(item.locationimage)" alt="Decoration Image" id="main-img" width="330%" />
+                                    <img src="data:image;base64,@Convert.ToBase64String(item.locationimage)" alt="Location Image" id="main-img" class="img-fluid" width="330%" />
                                 }
                             </div>
                         </div>
@@ -275,8 +276,7 @@
 
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-secondary buttons" data-bs-dismiss="modal">Close</button>
         </div>
     </div>
 </div>
