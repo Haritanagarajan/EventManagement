@@ -31,7 +31,9 @@ namespace EventManagement.Controllers
             return View();
         }
 
-        [Authorize(Roles="Admin")]
+        [Authorize(Roles = "Admin")]
+
+
 
         [HttpGet]
         public ActionResult Index()
@@ -61,7 +63,7 @@ namespace EventManagement.Controllers
                     return View("Register");
                 }
 
-                if(TProfile != null)
+                if (TProfile != null)
                 {
 
                     ViewBag.ErrorMessage = "Error : Profile is required";
@@ -94,12 +96,12 @@ namespace EventManagement.Controllers
                     EventManagementEntities.Usertables.Add(user);
                     EventManagementEntities.SaveChanges();
                 }
-               
+
                 return RedirectToAction("Login");
             }
 
 
-            
+
 
             return View(user);
         }
@@ -131,10 +133,10 @@ namespace EventManagement.Controllers
                     }
                     Response.Cookies.Add(cookie);
                     Session["UserId"] = roleUser.TUserid.Value;
-                    Usertable userDetails = EventManagementEntities.Usertables.Where(u=>u.TUserid==roleUser.TUserid.Value).FirstOrDefault();
+                    Usertable userDetails = EventManagementEntities.Usertables.Where(u => u.TUserid == roleUser.TUserid.Value).FirstOrDefault();
                     Session["UserEmail"] = userDetails.TEmail;
                     Session["UserContact"] = userDetails.TMobile;
-                    return RedirectToAction("EventsName","Events");
+                    return RedirectToAction("EventsName", "Events");
             }
 
             ViewBag.Message = message;
@@ -143,11 +145,11 @@ namespace EventManagement.Controllers
 
 
         [HttpGet]
-        [Authorize(Roles= "Admin")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             Usertable user = EventManagementEntities.Usertables.Find(id);
-            return View(user); 
+            return View(user);
         }
 
         [HttpPost, ActionName("Delete")]
@@ -170,8 +172,15 @@ namespace EventManagement.Controllers
             return View(user);
         }
 
+
+
+
+
+
+
+
         [HttpGet]
-        [Authorize(Roles="Admin")]
+        [Authorize(Roles = "User")]
         public ActionResult Edit(int? id)
         {
             Usertable user = EventManagementEntities.Usertables.Find(id);
@@ -236,7 +245,7 @@ namespace EventManagement.Controllers
                 }
             }
 
-          
+
             return View(existingUser);
         }
 
@@ -248,7 +257,7 @@ namespace EventManagement.Controllers
         }
 
 
-    public ActionResult Logout()
+        public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
             return RedirectToAction("Login");
