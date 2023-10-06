@@ -58,18 +58,18 @@
                             @Html.ActionLink("Cake", "Index", "Cake", null, new { @class = "nav-link text-center" })
                             <li class="navv">
 
-                                <div class="dropdown">
+                                @*<div class="dropdown">*@
                                     <button class="btn dropdown-toggle text-white" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="font-style:italic">
                                         Greeting's  @User.Identity.Name
                                     </button>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                        <li>
-                                            <a class="dropdown-item" href="@Url.Action("Edit", "Authendication", new { id = Session["UserId"] })">
+                                    @*<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                        <li>*@
+                                            @*<a class="dropdown-item" href="@Url.Action("Edit", "Authendication", new { id = Session["UserId"] })">
                                                 Edit Profile
                                             </a>
                                         </li>
                                     </ul>
-                                </div>
+                                </div>*@
 
                             </li>
                             @Html.ActionLink("Logout", "Logout", "Authendication", null, new { @class = "nav-link text-center text-white" })
@@ -87,18 +87,18 @@
                             @Html.ActionLink("Locations", "Index1", "Location", null, new { @class = "nav-link text-center", @style = "float:right" })
                             @Html.ActionLink("Decorations", "Index1", "Decoration", null, new { @class = "nav-link text-center", @style = "float:right" })
                             <li class="navv">
-                                <div class="dropdown" >
+                                @*<div class="dropdown" >*@
                                     <button class="btn dropdown-toggle text-white" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="font-style:italic">
                                         Greeting's  @User.Identity.Name
                                     </button>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    @*<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                         <li>
                                             <a class="dropdown-item" href="@Url.Action("Edit", "Authendication", new { id = Session["UserId"] })">
                                                 Edit Profile
                                             </a>
                                         </li>
                                     </ul>
-                                </div>
+                                </div>*@
                             </li>
                             @using (Html.BeginForm("Index1", "Cake", FormMethod.Get, new { id = "search-form" }))
                             {

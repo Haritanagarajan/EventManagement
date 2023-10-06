@@ -42,7 +42,7 @@ namespace EventManagement.Models
 
 
 
-        [Required(ErrorMessage = "Location Image is Required")]
+        //[Required(ErrorMessage = "Location Image is Required")]
 
         public byte[] locationimage { get; set; }
     

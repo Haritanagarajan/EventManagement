@@ -5,9 +5,9 @@
 
 @{
     ViewBag.Title = "Index1";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
-
-
 
 
 <div class="container-fluid text-center mb-n5">
@@ -18,11 +18,19 @@
         </div>
     </div>
 </div>
-
+<div class="container d-flex justify-content-center">
+    <a href="@Url.Action("DecorCreate")">
+        <i class="fa-regular fa-square-plus" style="color: #4d004d;"></i>
+    </a>
+</div>
 <div class="container mt-5 main">
     <div class="row">
+
         @foreach (var item in Model)
         {
+            if (item.decord == false)
+            {
+
             <div class="col-lg-4">
                 <div class="card mt-5 mb-3">
                     <div class="card-img-top">
@@ -38,11 +46,14 @@
                             <div class="card-title mt-4">
                                 @Html.DisplayFor(modelItem => item.decoravailable)
                                 <a class="ms-3" href="@Url.Action("Edit", new { id = item.decorid })">
-                                    <i class="fa-solid fa-pen-to-square" style="color: #4d004d"></i></a> |
+                                    <i class="fa-solid fa-pen-to-square" style="color: #4d004d"></i>
+                                </a> |
                                 <a href="@Url.Action("Details", new { id = item.decorid })">
-                                    <i class="fa-solid fa-circle-info" style="color: #4d004d"></i></a> |
+                                    <i class="fa-solid fa-circle-info" style="color: #4d004d"></i>
+                                </a> |
                                 <a href="@Url.Action("Delete", new { id = item.decorid })">
-                                    <i class="fa-solid fa-trash" style="color: #4d004d;"></i></a>
+                                    <i class="fa-solid fa-trash" style="color: #4d004d;"></i>
+                                </a>
                             </div>
                             <div class="card-text">
                             </div>
@@ -50,8 +61,8 @@
                     </div>
                 </div>
             </div>
+            }
         }
-
     </div>
 </div>
 

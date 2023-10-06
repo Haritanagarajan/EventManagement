@@ -37,7 +37,7 @@ namespace EventManagement.Models
         public bool caked { get; set; }
 
 
-        [Required(ErrorMessage = "Cake Image is Required")]
+        //[Required(ErrorMessage = "Cake Image is Required")]
 
         public byte[] cakeimage { get; set; }
     

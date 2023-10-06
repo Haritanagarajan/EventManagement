@@ -1,10 +1,7 @@
 ﻿﻿﻿﻿@model EventManagement.Models.Usertable
-
 @{
     Layout = null;
 }
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,12 +15,10 @@
     <script src="https://kit.fontawesome.com/91232b44e6.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
     <div class="container">
         <div class="row justify-content-center" id="main-row">
             <div class="col-4 ">
                 <div class="main-w3l maindiv ">
-
                     <h2 class="login">Login Now</h2>
                     @using (Html.BeginForm("Login", "Authendication", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 
@@ -51,8 +46,6 @@
         </div>
     </div>
     </div>
-
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
     @if (@ViewBag.Message != null)
@@ -63,27 +56,15 @@
                 });
         </script>
     }
-
-
-
-
-
-
 </body>
 </html>
-
-@section Scripts{
-
-    <script type="text/javascript">
-        $(function () {
-            $("#createtoast").click(function () {
-                toastr.success("Logined", "Login", { Timeout: 4000 });
-            });
-        })
-    </script>
-}
-
-
+<script type="text/javascript">
+    $(function () {
+        $("#createtoast").click(function () {
+            toastr.success("Logined", "Login", { Timeout: 4000 });
+        });
+    })
+</script>
 <style>
     body {
         background-image: url(/Assets/roses.jpg);

@@ -36,7 +36,7 @@ namespace EventManagement.Models
         public bool themed { get; set; }
 
 
-        [Required(ErrorMessage = "Theme Image is Required")]
+        //[Required(ErrorMessage = "Theme Image is Required")]
 
         public byte[] themeimage { get; set; }
     

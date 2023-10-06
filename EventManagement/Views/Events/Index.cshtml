@@ -7,9 +7,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-
-
 <div class="container-fluid text-center mb-n5">
     <div class="row">
         <div class="col-12">
@@ -17,6 +14,12 @@
             <p style="font-style:italic;font-size:20px;">Welcome to the beating heart of our event, Pulse! Let the rhythm of excitement guide you through this incredible journey</p>
         </div>
     </div>
+</div>
+
+<div class="container d-flex justify-content-center">
+    <a href="@Url.Action("EventsCreate")">
+        <i class="fa-regular fa-square-plus" style="color: #4d004d;"></i>
+    </a>
 </div>
 
 <div class="container mt-5 main">
@@ -35,14 +38,17 @@
                             }
                         </div>
                         <div class="card-img-overlay">
-                            <div class="card-title">
+                            <div class="card-title mt-3">
                                 @Html.DisplayFor(modelItem => item.eventname1)
                                 <a class="ms-3" href="@Url.Action("Edit", new { id = item.eventid })">
-                                    <i class="fa-solid fa-pen-to-square" style="color: #4d004d"></i></a> |
+                                    <i class="fa-solid fa-pen-to-square" style="color: #4d004d"></i>
+                                </a> |
                                 <a href="@Url.Action("Details", new { id = item.eventid })">
-                                    <i class="fa-solid fa-circle-info" style="color: #4d004d"></i></a> |
+                                    <i class="fa-solid fa-circle-info" style="color: #4d004d"></i>
+                                </a> |
                                 <a href="@Url.Action("Delete", new { id = item.eventid })">
-                                    <i class="fa-solid fa-trash" style="color: #4d004d;"></i></a>
+                                    <i class="fa-solid fa-trash" style="color: #4d004d;"></i>
+                                </a>
                             </div>
                             <div class="card-text">
                             </div>

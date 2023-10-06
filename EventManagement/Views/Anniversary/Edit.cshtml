@@ -1,12 +1,9 @@
 ﻿@model EventManagement.Models.Anniversary
-
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <div class="container mt-5 pt-5  ps-5 pe-5" style="background-color: #4d004d;color:white">
-
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
@@ -20,8 +17,6 @@
             @Html.HiddenFor(model => model.anniuserid)
             @Html.HiddenFor(model => model.annieventcost)
             @Html.HiddenFor(model => model.annihallcapacity)
-
-
             <div class="form-group">
                 @Html.LabelFor(model => model.annidecorations, "Find Your Decor Style", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -29,12 +24,9 @@
                     @Html.ValidationMessageFor(model => model.annidecorations, "", new { @class = "text-danger" })
                 </div>
             </div>
-
-
             <button type="button" class="btn buttons" data-bs-toggle="modal" data-bs-target="#exampleModal" style="color:white;background-color:black;width:50px;font-style:italic">
                 <i class="fa-solid fa-eye"></i>
             </button>
-
             <div class="form-group">
                 @Html.LabelFor(model => model.annitheme, "Decide on Your  Theme", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -42,11 +34,9 @@
                     @Html.ValidationMessageFor(model => model.annitheme, "", new { @class = "text-danger" })
                 </div>
             </div>
-
             <button type="button" class="btn buttons" data-bs-toggle="modal" data-bs-target="#exampleModal1" style="color:white;background-color:black;width:50px;font-style:italic">
                 <i class="fa-solid fa-eye"></i>
             </button>
-
             <div class="form-group">
                 @Html.LabelFor(model => model.annichairs, "Select the chairs", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -54,7 +44,6 @@
                     @Html.ValidationMessageFor(model => model.annichairs, "", new { @class = "text-danger" })
                 </div>
             </div>
-
             <div class="form-group">
                 @Html.LabelFor(model => model.annitables, "Select the chairs", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -62,17 +51,13 @@
                     @Html.ValidationMessageFor(model => model.annitables, "", new { @class = "text-danger" })
                 </div>
             </div>
-
-
             <div class="form-group">
                 @Html.LabelFor(model => model.annidatetime, "Pick your date and time ", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @*@Html.EditorFor(model => model.annidatetime, new { htmlAttributes = new { @class = "form-control" } })*@
                     <input type="datetime-local" class="" name="annidatetime" required />
                     @Html.ValidationMessageFor(model => model.annidatetime, "", new { @class = "text-danger" })
                 </div>
             </div>
-
             <div class="form-group">
                 @Html.LabelFor(model => model.annicakes, "Pick Your Dessert Delight", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -80,11 +65,9 @@
                     @Html.ValidationMessageFor(model => model.annicakes, "", new { @class = "text-danger" })
                 </div>
             </div>
-
             <button type="button" class="btn buttons" data-bs-toggle="modal" data-bs-target="#exampleModal2" style="color:white;background-color:black;width:50px;font-style:italic">
                 <i class="fa-solid fa-eye"></i>
             </button>
-
             <div class="form-group">
                 @Html.LabelFor(model => model.annilocation, "Select your favv location", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -92,12 +75,9 @@
                     @Html.ValidationMessageFor(model => model.annilocation, "", new { @class = "text-danger" })
                 </div>
             </div>
-
             <button type="button" class="btn buttons" data-bs-toggle="modal" data-bs-target="#exampleModal3" style="color:white;background-color:black;width:50px;font-style:italic">
                 <i class="fa-solid fa-eye"></i>
             </button>
-
-
             <div class="form-group">
                 @Html.LabelFor(model => model.annibeverages, "Do you require food selection?", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -107,8 +87,6 @@
                     </div>
                 </div>
             </div>
-
-
             <div class="form-group">
                 "
                 @Html.LabelFor(model => model.anniPhotography, "Do you require Photography selection?", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -119,7 +97,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="form-group">
                 @Html.LabelFor(model => model.anniStyling, "Do you require styling selection?", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -129,7 +106,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="form-group">
                 @Html.LabelFor(model => model.anniHospitality, "Do you require hospitality selection?", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -139,18 +115,14 @@
                     </div>
                 </div>
             </div>
-
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" value="Preserve" class="btn btn-default mb-5" style="color:white;background-color:black;width:250px;font-style:italic" id="createtoast" />
                 </div>
             </div>
-
-
         </div>
     }
 </div>
-
 <style>
     .control-label {
         font-style: italic;
@@ -168,27 +140,18 @@
         border-radius: 20px;
     }
 </style>
+<script>
+    var today = new Date().toISOString().slice(0, 16);
+    document.getElementsByName("annidatetime")[0].min = today;
+</script>
+<script type="text/javascript">
+    $(function () {
+        $("#createtoast").click(function () {
+            toastr.success("Successfully Created", "Create", { Timeout: 4000 });
+        });
+    })
+</script>
 
-
-
-
-@section Scripts{
-
-    <script>
-        var today = new Date().toISOString().slice(0, 16);
-        document.getElementsByName("annidatetime")[0].min = today;
-    </script>
-
-
-
-    <script type="text/javascript">
-        $(function () {
-            $("#createtoast").click(function () {
-                toastr.success("Successfully Created", "Create", { Timeout: 4000 });
-            });
-        })
-    </script>
-}
 
 
 

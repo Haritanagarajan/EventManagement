@@ -172,13 +172,6 @@ namespace EventManagement.Controllers
             return View(user);
         }
 
-
-
-
-
-
-
-
         [HttpGet]
         [Authorize(Roles = "User")]
         public ActionResult Edit(int? id)

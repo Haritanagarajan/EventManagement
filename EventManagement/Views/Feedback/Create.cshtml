@@ -1,6 +1,9 @@
 ﻿@model EventManagement.Models.feedbacktable
 
-
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
 
 @using (Html.BeginForm())
@@ -58,17 +61,16 @@
 
 
 
-@section Script{
 
-    <script type="text/javascript">
-      $(function () {
-          $("#createtoast").click(function () {
-              toastr.success("Successfully Created", "Create", { Timeout: 4000 });
-          });
-      })
-    </script>
+<script type="text/javascript">
+    $(function () {
+        $("#createtoast").click(function () {
+            toastr.success("Successfully Created", "Create", { Timeout: 4000 });
+        });
+    })
+</script>
 
-}
+
 <style>
 
     .content {

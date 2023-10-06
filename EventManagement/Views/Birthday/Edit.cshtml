@@ -69,7 +69,6 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.bdaydatetime, "Pick your date and time", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @*@Html.EditorFor(model => model.bdaydatetime, new { htmlAttributes = new { @class = "form-control datepicker" } })*@
                     <input type="datetime-local" class="" name="bdaydatetime" required />
 
                     @Html.ValidationMessageFor(model => model.bdaydatetime, "", new { @class = "text-danger" })
@@ -119,27 +118,17 @@
         </div>
     }
 </div>
-
-
-
-
-
-@section Scripts{
-    <script>
-        var today = new Date().toISOString().slice(0, 16);
-        document.getElementsByName("bdaydatetime")[0].min = today;
-    </script>
-
-
-
-    v
-    <script type="text/javascript">
-        $(function () {
-            $("#createtoast").click(function () {
-                toastr.success("Successfully Edited", "Edit", { Timeout: 4000 });
-            });
-        })
-    </script>
+<script>
+    var today = new Date().toISOString().slice(0, 16);
+    document.getElementsByName("bdaydatetime")[0].min = today;
+</script>
+<script type="text/javascript">
+    $(function () {
+        $("#createtoast").click(function () {
+            toastr.success("Successfully Edited", "Edit", { Timeout: 4000 });
+        });
+    })
+</script>
 }
 <style>
     .control-label {

@@ -4,11 +4,6 @@
     ViewBag.Title = "Cart";
 }
 
-
-
-
-
-
 <div class="container cart">
     <div class="row">
         @if (Model.birthdaytable.Any() || Model.babyshowertable.Any() || Model.Anniversary.Any() || Model.BachelorParty.Any() || Model.CocktailParty.Any() || Model.Wedding.Any() || Model.Reunion.Any())
@@ -51,16 +46,6 @@
                 }
             </div>
 
-
-
-
-
-
-
-
-
-
-
             <div class="col-lg-6 col-sm-12">
                 @if (Model.babyshowertable.Any())
                 {
@@ -97,15 +82,6 @@
                     }
                 }
             </div>
-
-
-
-
-
-
-
-
-
 
             <div class="col-lg-6 col-sm-12">
                 @if (Model.Wedding.Any())
@@ -144,14 +120,6 @@
                 }
             </div>
 
-
-
-
-
-
-
-
-
             <div class="col-lg-6 col-sm-12">
                 @if (Model.Reunion.Any())
                 {
@@ -188,12 +156,6 @@
                     }
                 }
             </div>
-
-
-
-
-
-
 
             <div class="col-lg-6 col-sm-12">
                 @if (Model.Anniversary.Any())
@@ -232,12 +194,6 @@
                 }
             </div>
 
-
-
-
-
-
-
             <div class="col-lg-6 col-sm-12">
                 @if (Model.CocktailParty.Any())
                 {
@@ -274,12 +230,6 @@
                     }
                 }
             </div>
-
-
-
-
-
-
             <div class="col-lg-6 col-sm-12">
                 @if (Model.BachelorParty.Any())
                 {
@@ -294,31 +244,28 @@
                                 {
                                     <img src="data:image;base64,@Convert.ToBase64String(item.EventName.eventimage)" alt="Event Image" class="card-img-top" />
                                 }
-                            <div class="card-body" style="font-style:italic">
-                                <h5 class="card-title">@item.EventName.eventname1</h5>
-                                <p class="card-text">@item.bachelordatetime</p>
-                                <p class="card-text">Location: @item.locationtable.locationname</p>
-                                <p class="card-text">Cakes: @item.caketable.cakesavailable</p>
-                                <p class="card-text">Theme: @item.themetable.themename</p>
-                                <p class="card-text">Decorations: @item.decorationtable.decoravailable</p>
-                                <p class="card-text">Event Cost: @item.bacheloreventcost</p>
-                                <p class="card-text">User ID: @item.bacheloruserid</p>
-                                <p class="card-text">Chairs : @item.bachelorchairs</p>
-                                <p class="card-text">Tables : @item.bachelortables</p>
-                                <p class="card-text">Hall Capacity : @item.bachelorhallcapacity</p>
+                                <div class="card-body" style="font-style:italic">
+                                    <h5 class="card-title">@item.EventName.eventname1</h5>
+                                    <p class="card-text">@item.bachelordatetime</p>
+                                    <p class="card-text">Location: @item.locationtable.locationname</p>
+                                    <p class="card-text">Cakes: @item.caketable.cakesavailable</p>
+                                    <p class="card-text">Theme: @item.themetable.themename</p>
+                                    <p class="card-text">Decorations: @item.decorationtable.decoravailable</p>
+                                    <p class="card-text">Event Cost: @item.bacheloreventcost</p>
+                                    <p class="card-text">User ID: @item.bacheloruserid</p>
+                                    <p class="card-text">Chairs : @item.bachelorchairs</p>
+                                    <p class="card-text">Tables : @item.bachelortables</p>
+                                    <p class="card-text">Hall Capacity : @item.bachelorhallcapacity</p>
 
-                                <p class="card-text" style="color:red">
-                                    @Html.ActionLink("Cancel this Event", "Delete", "Bachelor", new { id = item.id }, new { @style = "text-decoration:none;color:#b30000;font-weight:bold;" })
-                                </p>
-                            </div>
+                                    <p class="card-text" style="color:red">
+                                        @Html.ActionLink("Cancel this Event", "Delete", "Bachelor", new { id = item.id }, new { @style = "text-decoration:none;color:#b30000;font-weight:bold;" })
+                                    </p>
+                                </div>
                             </div>
                         }
                     }
                 }
             </div>
-
-
-
 
             <div class="card">
                 <div class="card-body">
@@ -348,34 +295,25 @@
                 </div>
             </div>
 
+        }
+
+        else
+        {
+            <div class="container-fluid mt-5 pt-5">
+                <div class="row">
+                    <div class="col-12">
+                        <H1 style="font-style:italic"> 😥  no items in the Cart</H1>
+
+                    </div>
+                </div>
+            </div>
 
 
-                            }
-
-                            else
-                            {
-                                <div class="container-fluid mt-5 pt-5">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <H1 style="font-style:italic"> 😥  no items in the Cart</H1>
-
-                                        </div>
-                                    </div>
-                                </div>
+        }
 
 
-                            }
-
-
-</div>
     </div>
-
-
-
-
-
-
-
+</div>
 
 
 <div id="razorpayModal" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -431,11 +369,7 @@
 
 <div id="paymentResult"></div>
 
-
-
-@section Scripts{
-
-    <script>
+<script>
       $(document).ready(function () {
       console.log("hi partial");
           document.getElementById("PartialAmount").value =@(  Model.birthdaytable.Sum(b => b.bdayeventcost) +
@@ -446,10 +380,10 @@
                                     Model.Wedding.Sum(w => w.weddingeventcost) +
                                     Model.Reunion.Sum(r => r.reunioneventcost)) /2;
   });
-    </script>
+</script>
 
 
-    <script>
+<script>
     $(document).ready(function () {
         console.log("hi");
         document.getElementById("halfAmount").value =@(  Model.birthdaytable.Sum(b => b.bdayeventcost) +
@@ -460,16 +394,10 @@
                                       Model.Wedding.Sum(w => w.weddingeventcost) +
                                       Model.Reunion.Sum(r => r.reunioneventcost));
     });
-    </script>
+</script>
 
 
-
-
-
-
-
-
-    <script>
+<script>
     $(document).ready(function () {
         console.log("hi");
         var dateValue =
@@ -489,15 +417,12 @@
 
         document.getElementById("bookingdatetime").value = dateValue;
     });
-    </script>
-
-
-}
+</script>
 
 
 <style>
-    .cart{
-        padding-bottom:80vh;
+    .cart {
+        padding-bottom: 80vh;
     }
 </style>
 

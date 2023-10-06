@@ -58,7 +58,6 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.babyshowerdatetime, "Pick your date and time", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @*@Html.EditorFor(model => model.babyshowerdatetime, new { htmlAttributes = new { @class = "form-control datepicker" } })*@
                     <input type="datetime-local" class="" name="babyshowerdatetime" required />
                     @Html.ValidationMessageFor(model => model.babyshowerdatetime, "", new { @class = "text-danger" })
                 </div>
@@ -105,34 +104,18 @@
         </div>
     }
 </div>
-
-
-
-
-@section  Scripts{
-
-
-    <script>
-        var today = new Date().toISOString().slice(0, 16);
-        document.getElementsByName("babyshowerdatetime")[0].min = today;
-    </script>
-
-
-
-
-    <script type="text/javascript">
-        $(function () {
-            $("#createtoast").click(function () {
-                toastr.success("Successfully Created", "Create", { Timeout: 4000 });
-            });
-        })
-    </script>
+<script>
+    var today = new Date().toISOString().slice(0, 16);
+    document.getElementsByName("babyshowerdatetime")[0].min = today;
+</script>
+<script type="text/javascript">
+    $(function () {
+        $("#createtoast").click(function () {
+            toastr.success("Successfully Created", "Create", { Timeout: 4000 });
+        });
+    })
+</script>
 }
-
-
-
-
-
 <style>
     .control-label {
         font-style: italic;
@@ -149,10 +132,6 @@
         margin-top: 10px;
     }
 </style>
-
-
-
-
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="font-style:italic">
     <div class="modal-dialog">
         <div class="modal-content">

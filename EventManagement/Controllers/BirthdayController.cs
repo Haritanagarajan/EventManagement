@@ -312,19 +312,3 @@ namespace EventManagement.Controllers
 
 }
 
-
-
-//    id int primary key,
-//   bdayuserid int references Usertable(TUserid),
-//    bdayid int references EventNames(eventid),
-//bdaydecorations int references decorationtable(decorid),
-//bdaytheme int references themetable(themeid),
-//bdaychairs int,
-//bdaytables int,
-//bdayhallcapacity int,
-//bdaydate int references datetable(dateid),
-//bdaytime int references timetable(timeid),
-//bdaycakes int references caketable(cakeid),
-//bdaylocation int references locationtable(locationid),
-//bdayeventcost bigint,
-//bdaybeverages bit not null default 0

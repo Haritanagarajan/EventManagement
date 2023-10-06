@@ -120,26 +120,6 @@ namespace EventManagement.Controllers
 
 
 
-        //public ActionResult Sample(int? num)
-        //{
-        //    try
-        //    {
-        //        if (num < 0)
-        //        {
-        //            return Content("num value is:" + num);
-        //        }
-        //        else
-        //        {
-        //            throw new CustomException();
-        //        }
-        //    }
-        //    catch (CustomException ex)
-        //    {
-        //        return Content("Custom Exception: " + ex.Message);
-        //    }
-        //}
-
-
     }
 }
 

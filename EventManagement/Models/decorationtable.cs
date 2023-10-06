@@ -36,7 +36,7 @@ namespace EventManagement.Models
         public bool decord { get; set; }
 
 
-        [Required(ErrorMessage = "Decorations Image is Required")]
+        //[Required(ErrorMessage = "Decorations Image is Required")]
 
         public byte[] decorimage { get; set; }
     

@@ -1,23 +1,16 @@
 ﻿@using CaptchaMvc.HtmlHelpers
-
 @model EventManagement.Models.Usertable
-
 @{
     ViewBag.Title = "Register";
     Layout = null;
 }
-
-
-
 <script src="https://kit.fontawesome.com/91232b44e6.js" crossorigin="anonymous"></script>
-
 <div class="row" id="main-row">
     <div class="col-md-4">
         <div class="main-w3l maindiv">
             <div class="w3layouts-main text-center">
                 <h2>Register Now</h2>
                 @using (Html.BeginForm("Register", "Authendication", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
-
                 {
                     @Html.AntiForgeryToken()
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -27,36 +20,30 @@
                             @Html.ValidationMessageFor(model => model.TUsername, "", new { @class = "text-danger" })
                         </div>
                     </div>
-
                     <div class="form-group">
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.TEmail, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your Email" } })
                             @Html.ValidationMessageFor(model => model.TEmail, "", new { @class = "text-danger" })
                         </div>
                     </div>
-
                     <div class="form-group">
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.TPassword, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your Password", @type = "password" } })
                             @Html.ValidationMessageFor(model => model.TPassword, "", new { @class = "text-danger" })
                         </div>
                     </div>
-
                     <div class="form-group">
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.TConfirmPassword, new { htmlAttributes = new { @class = "form-control", @placeholder = "Confirm your password", @type = "password" } })
                             @Html.ValidationMessageFor(model => model.TConfirmPassword, "", new { @class = "text-danger" })
                         </div>
                     </div>
-
                     <div class="form-group ">
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.TMobile, new { htmlAttributes = new { @class = "form-control ", @placeholder = "Enter your Mobile no ", @type = "text" } })
                             @Html.ValidationMessageFor(model => model.TMobile, "", new { @class = "text-danger" })
                         </div>
                     </div>
-
-
                     <div class="form-group pt-5">
                         <div class="col-md-10 ">
                             <label class="radio-inline">
@@ -71,8 +58,6 @@
                             @Html.ValidationMessageFor(model => model.TGender, "", new { @class = "text-danger" })
                         </div>
                     </div>
-
-
                     <div class="form-group">
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.TAge, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your Age" } })
@@ -91,8 +76,6 @@
                             @Html.ValidationMessageFor(model => model.TProfile, "", new { @class = "text-danger" })
                         </div>
                     </div>
-
-
                     <div class="form-group">
                         @Html.Label("Security Code:", new { @class = "col md-2 control label security" })
                         <div class="col-md-10">
@@ -101,9 +84,6 @@
                             <p class="text-danger">@ViewBag.ErrorMessage</p>
                         </div>
                     </div>
-
-
-
                     @Html.ActionLink("Have an Account ? Login", "Login", "Authendication", new { @style = "color:black;text-decoration:none;font-size:15px" })
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10" id="buttons">
@@ -115,28 +95,18 @@
         </div>
     </div>
 </div>
-
-
-
-@section Scripts{
-    <script>
-        $(document).ready(function () {
-            $("#CaptchaInputText").addClass("form-control");
-        })
-    </script>
-
-
-
-    <script type="text/javascript">
-        $(function () {
-            $("#createtoast").click(function () {
-                toastr.success("Registered", "Create", { Timeout: 4000 });
-            });
-        })
-    </script>
-}
-
-
+<script>
+    $(document).ready(function () {
+        $("#CaptchaInputText").addClass("form-control");
+    })
+</script>
+<script type="text/javascript">
+    $(function () {
+        $("#createtoast").click(function () {
+            toastr.success("Registered", "Create", { Timeout: 4000 });
+        });
+    })
+</script>
 <style>
     body {
         background-image: url(/Assets/roses.jpg);

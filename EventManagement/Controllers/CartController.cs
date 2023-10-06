@@ -22,7 +22,7 @@ namespace EventManagement.Controllers
         private readonly EventManagement2Entities2 db = new EventManagement2Entities2();
 
         // GET: Cart
-      
+
 
         [HttpGet]
         [Authorize(Roles = "User")]
@@ -100,7 +100,7 @@ namespace EventManagement.Controllers
 
 
 
-            return RedirectToAction("MiddlePayment",order);
+            return RedirectToAction("MiddlePayment", order);
         }
 
 
@@ -131,8 +131,6 @@ namespace EventManagement.Controllers
             string orderId = Request.Params["rzp_orderid"];
 
             Razorpay.Api.RazorpayClient client = new Razorpay.Api.RazorpayClient("rzp_test_D3KXHgdS7fmKuO", "GYl4qNswv7eZvy5RMzSoFen3");
-
-            //Razorpay.Api.Payment payment = client.Payment.Fetch(paymentId);
 
             Payment payment = client.Payment.Fetch(paymentId);
 
@@ -166,30 +164,24 @@ namespace EventManagement.Controllers
             }
             else
             {
-                return RedirectToAction("Error204","Error");
+                return RedirectToAction("Error204", "Error");
             }
 
 
-            return RedirectToAction("Recipt", new { id =  order.id});
+            return RedirectToAction("Recipt", new { id = order.id });
 
         }
 
 
         [Authorize(Roles = "User")]
-
         public ActionResult Recipt(int? id)
         {
             FinalPaymentReceived final = EventManagementEntities.FinalPaymentReceiveds.Find(id);
             return View(final);
         }
 
-
-       
-
-
         [HttpPost]
         [Authorize(Roles = "User")]
-
         [ValidateAntiForgeryToken]
         public ActionResult Mailer(string razorpayOrderId)
         {
@@ -228,10 +220,9 @@ namespace EventManagement.Controllers
             }
 
 
-            return RedirectToAction("Create","Feedback");
+            return RedirectToAction("Create", "Feedback");
 
         }
-
 
         [Authorize(Roles = "User")]
 
@@ -240,44 +231,6 @@ namespace EventManagement.Controllers
             return View();
         }
 
-        //public ActionResult Milerview()
-        //{
-        //    return View();
-        //}
-
-        //[HttpPost]
-        //public ActionResult Mailer(EmailModel model)
-        //{
-        //    string receiver = Session["UserEmail"] as string;
-
-        //    using (MailMessage mm = new MailMessage(model.Email, receiver))
-        //    {
-        //        mm.Subject = model.Subject;
-        //        mm.Body = model.Body;
-        //        if (model.Attachment.ContentLength > 0)
-        //        {
-        //            string fileName = Path.GetFileName(model.Attachment.FileName);
-        //            mm.Attachments.Add(new Attachment(model.Attachment.InputStream, fileName));
-        //        }
-        //        mm.IsBodyHtml = false;
-        //        using (System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient())
-        //        {
-        //            smtp.Host = "smtp.gmail.com"; //IP Address
-        //            smtp.EnableSsl = true; //false
-        //            smtp.UseDefaultCredentials = false;
-        //            NetworkCredential NetworkCred = new NetworkCredential(model.Email, model.Password);
-        //            //NetworkCredential NetworkCred = new NetworkCredential("Mail ID", "Password");
-
-        //            smtp.Credentials = NetworkCred;
-        //            smtp.Port = 587; //25
-        //            //Turn Less Secure apps to "ON" in your Sender Google Account
-        //            smtp.Send(mm);
-        //            ViewBag.Message = "Email sent.";
-        //        }
-        //    }
-
-        //    return View();
-        //}
 
     }
 

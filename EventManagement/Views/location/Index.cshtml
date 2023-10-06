@@ -4,11 +4,9 @@
 
 @{
     ViewBag.Title = "Index1";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
-
-
-
-
 
 
 <div class="container-fluid text-center mb-n5">
@@ -19,40 +17,50 @@
         </div>
     </div>
 </div>
-
+<div class="container d-flex justify-content-center">
+    <a href="@Url.Action("LocationCreate")">
+        <i class="fa-regular fa-square-plus" style="color: #4d004d;"></i>
+    </a>
+</div>
 <div class="container mt-5 main">
     <div class="row">
+
         @foreach (var item in Model)
         {
-            <div class="col-lg-4">
-                <div class="card mt-5 mb-3">
-                    <div class="card-img-top">
-                        <div class="hover10 column">
+            if (item.locationd == false)
+            {
 
-                            @if (item.locationimage != null)
-                            {
-                                <img src="data:image;base64,@Convert.ToBase64String(item.locationimage)" alt="Employee Image" id="main-img" />
+                <div class="col-lg-4">
+                    <div class="card mt-5 mb-3">
+                        <div class="card-img-top">
+                            <div class="hover10 column">
+                                @if (item.locationimage != null)
+                                {
+                                    <img src="data:image;base64,@Convert.ToBase64String(item.locationimage)" alt="Employee Image" id="main-img" />
 
-                            }
-                        </div>
-                        <div class="card-img-overlay">
-                            <div class="card-title mt-4">
-                                @Html.DisplayFor(modelItem => item.locationname)
-                                <a class="ms-3" href="@Url.Action("Edit", new { id = item.locationid })">
-                                    <i class="fa-solid fa-pen-to-square" style="color: #4d004d"></i></a> |
-                                <a href="@Url.Action("Details", new { id = item.locationid })">
-                                    <i class="fa-solid fa-circle-info" style="color: #4d004d"></i></a> |
-                                <a href="@Url.Action("Delete", new { id = item.locationid })">
-                                    <i class="fa-solid fa-trash" style="color: #4d004d;"></i> </a>
+                                }
                             </div>
-                            <div class="card-text">
+                            <div class="card-img-overlay">
+                                <div class="card-title mt-4">
+                                    @Html.DisplayFor(modelItem => item.locationname)
+                                    <a class="ms-3" href="@Url.Action("Edit", new { id = item.locationid })">
+                                        <i class="fa-solid fa-pen-to-square" style="color: #4d004d"></i>
+                                    </a> |
+                                    <a href="@Url.Action("Details", new { id = item.locationid })">
+                                        <i class="fa-solid fa-circle-info" style="color: #4d004d"></i>
+                                    </a> |
+                                    <a href="@Url.Action("Delete", new { id = item.locationid })">
+                                        <i class="fa-solid fa-trash" style="color: #4d004d;"></i>
+                                    </a>
+                                </div>
+                                <div class="card-text">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            }
         }
-
     </div>
 </div>
 

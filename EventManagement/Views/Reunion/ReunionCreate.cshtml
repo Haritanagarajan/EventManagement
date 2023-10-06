@@ -56,7 +56,6 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.reuniondatetime, "Pick your date and time", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @*@Html.EditorFor(model => model.reuniondatetime, new { htmlAttributes = new { @class = "form-control datepicker" } })*@
                     <input type="datetime-local" class="" name="reuniondatetime" required />
                     @Html.ValidationMessageFor(model => model.reuniondatetime, "", new { @class = "text-danger" })
                 </div>
@@ -136,15 +135,14 @@
 
 
 
-@section Script{
 
-    <script type="text/javascript">
-        $(function () {
-            $("#createtoast").click(function () {
-                toastr.success("Successfully Created", "Create", { Timeout: 4000 });
-            });
-        })
-    </script>
+<script type="text/javascript">
+    $(function () {
+        $("#createtoast").click(function () {
+            toastr.success("Successfully Created", "Create", { Timeout: 4000 });
+        });
+    })
+</script>
 
 
 <script>
@@ -152,7 +150,6 @@
     document.getElementsByName("reuniondatetime")[0].min = today;
 </script>
 
-}
 
 <style>
     .control-label {

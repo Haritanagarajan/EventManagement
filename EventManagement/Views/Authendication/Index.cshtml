@@ -1,11 +1,8 @@
 ﻿@model IEnumerable<EventManagement.Models.Usertable>
-
 @{
     ViewBag.Title = "Index";
 }
-
 <h2>Index</h2>
-
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -49,54 +46,53 @@
         </th>
         <th></th>
     </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TUserid)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TUsername)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TEmail)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TPassword)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TConfirmPassword)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TMobile)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TGender)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TAge)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TDob)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastLoginDate)
-        </td>
-        <td>
-            @if (item.TProfile != null)
-            {
-                <img src="data:image;base64,@Convert.ToBase64String(item.TProfile)" alt="Employee Image" width="70" />
-            }
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TRoleid)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.TUserid }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
-
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TUserid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TUsername)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TPassword)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TConfirmPassword)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TMobile)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TGender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TAge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TDob)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastLoginDate)
+            </td>
+            <td>
+                @if (item.TProfile != null)
+                {
+                    <img src="data:image;base64,@Convert.ToBase64String(item.TProfile)" alt="Employee Image" width="70" />
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TRoleid)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.TUserid }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
 </table>

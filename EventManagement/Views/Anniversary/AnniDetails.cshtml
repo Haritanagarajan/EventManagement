@@ -1,10 +1,8 @@
 ﻿@model EventManagement.Models.Anniversary
-
 @{
     ViewBag.Title = "AnniDetails";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <div style="background-color: #4d004d; color: white; font-style: italic;" class="container mt-5 pt-5">
     <h4 style="font-weight: bold;">Anniversary</h4>
     <hr />
@@ -15,21 +13,18 @@
         <dd>
             @Html.DisplayFor(model => model.Usertable.TUsername)
         </dd>
-
         <dt>
             <span style="font-weight: bold;">Event Name</span>
         </dt>
         <dd>
             @Html.DisplayFor(model => model.EventName.eventname1)
         </dd>
-
         <dt>
             <span style="font-weight: bold;">Chairs</span>
         </dt>
         <dd>
             @Html.DisplayFor(model => model.annichairs)
         </dd>
-
         <dt>
             <span style="font-weight: bold;">Tables</span>
         </dt>
@@ -43,7 +38,6 @@
         <dd>
             @Html.DisplayFor(model => model.annihallcapacity)
         </dd>
-
         <dt>
             <span style="font-weight: bold;">Event Cost</span>
         </dt>
@@ -118,11 +112,6 @@
     <a href="@Url.Action("Edit", new { id = Model.id })">
         <i class="fa-solid fa-pen-to-square fa-lg" style="color:cornflowerblue;margin-bottom:10px"></i>
     </a>
-
 </div>
-
-@*<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id, @style = "text-decoration:none;font-style:italic" })
-</p>*@
 
 

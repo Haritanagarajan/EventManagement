@@ -314,18 +314,3 @@ namespace EventManagement.Controllers
 }
 
 
-
-//id int primary key,
-//babyshoweruserid int references Usertable(TUserid),
-//babyshowerid int references EventNames(eventid),
-//babyshowerdecorations int references decorationtable(decorid),
-//babyshowertheme int references themetable(themeid),
-//babyshowerchairs int,
-//babyshowertables int,
-//babyshowerhallcapacity int,
-//babyshowerdate int references datetable(dateid),
-//babyshowertime int references timetable(timeid),
-//babyshowercakes int references caketable(cakeid),
-//babyshowerlocation  int references locationtable(locationid),
-//babyshowereventcost bigint,
-//babyshowerbeverages bit not null default 0

@@ -61,10 +61,6 @@ namespace EventManagement.Controllers
         {
             if (ModelState.IsValid)
             {
-
-
-              
-
                 List<Anniversary> bookedanni = EventManagementEntities.Anniversaries.ToList();
                 bool isInvalid = false;
 
